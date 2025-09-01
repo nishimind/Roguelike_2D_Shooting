@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveInput;             // ì¸óÕíl
     private bool isSlow = false;           // å∏ë¨èÛë‘Ç©Ç«Ç§Ç©
-  
+    private bool upPressed, downPressed, leftPressed, rightPressed;
+
 
     private Rigidbody2D rb;
 
@@ -25,48 +26,47 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Input SystemÇ≈åƒÇŒÇÍÇÈà⁄ìÆì¸óÕ
-    public void OnMoveStick(InputAction.CallbackContext context)
+
+  /*  public void OnMoveStick(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-    }
+    }*/
     public void OnMoveUp(InputAction.CallbackContext context)
     {
-        // É{É^ÉìÇ™âüÇ≥ÇÍÇƒÇ¢ÇÈä‘ÇæÇØ y Ç…â¡éZ
-        moveInput.y = context.ReadValue<float>(); // 1 if pressed, 0 if not
+        upPressed = context.ReadValue<float>() > 0.5f;
     }
     public void OnMoveDown(InputAction.CallbackContext context)
     {
-        moveInput.y = -context.ReadValue<float>();
-    }
-    public void OnMoveRight(InputAction.CallbackContext context)
-    {
-        moveInput.x = context.ReadValue<float>();
+        downPressed = context.ReadValue<float>() > 0.5f;
     }
     public void OnMoveLeft(InputAction.CallbackContext context)
     {
-        moveInput.x = -context.ReadValue<float>();
+        leftPressed = context.ReadValue<float>() > 0.5f;
     }
-
-    // Input SystemÇ≈åƒÇŒÇÍÇÈå∏ë¨ì¸óÕ
-     public void OnSlow(InputAction.CallbackContext context)
-        {
+    public void OnMoveRight(InputAction.CallbackContext context)
+    {
+        rightPressed = context.ReadValue<float>() > 0.5f;
+    }
+    public void OnSlow(InputAction.CallbackContext context)
+    {
         isSlow = context.ReadValue<float>() > 0.5f;
     }
 
-
-
     private void FixedUpdate()
     {
-        moveInput.x = Mathf.Clamp(moveInput.x, -1f, 1f);
-        moveInput.y = Mathf.Clamp(moveInput.y, -1f, 1f);
+        // Vector2 Ç…ïœä∑
+   //  if(upPressed||downPressed||rightPressed||leftPressed) 
+            moveInput = Vector2.zero;
+        if (upPressed) moveInput.y = 1;
+        if (downPressed) moveInput.y= -1;
+        if (rightPressed) moveInput.x = 1;
+        if (leftPressed) moveInput.x = -1;
+
+        moveInput = Vector2.ClampMagnitude(moveInput, 1f);
 
         float currentSpeed = isSlow ? moveSpeed * slowMultiplier : moveSpeed;
-        Vector2 velocity = moveInput * currentSpeed;
-        rb.velocity = velocity;
-        Debug.Log(moveInput);
-        Debug.Log(isSlow);
-   
-        //moveInput=Vector2.zero ;
+        rb.velocity = moveInput * currentSpeed;
+      
         ClampPosition();
     }
 
