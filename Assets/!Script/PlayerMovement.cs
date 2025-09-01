@@ -48,10 +48,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Input System‚ÅŒÄ‚Î‚ê‚éŒ¸‘¬“ü—Í
-    public void OnSlow(InputAction.CallbackContext context)
-    {
-        isSlow = true;
+     public void OnSlow(InputAction.CallbackContext context)
+        {
+        isSlow = context.ReadValue<float>() > 0.5f;
     }
+
+
 
     private void FixedUpdate()
     {
@@ -62,7 +64,8 @@ public class PlayerMovement : MonoBehaviour
         Vector2 velocity = moveInput * currentSpeed;
         rb.velocity = velocity;
         Debug.Log(moveInput);
-        isSlow = false;
+        Debug.Log(isSlow);
+   
         //moveInput=Vector2.zero ;
         ClampPosition();
     }
