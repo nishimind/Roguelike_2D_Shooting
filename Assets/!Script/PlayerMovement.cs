@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("ˆÚ“®‘¬“x")]
     public float moveSpeed = 5f;
-    public float slowMultiplier = 0.2f;
+    public float slowMultiplier = 0.3f;
 
     [Header("ˆÚ“®”ÍˆÍ")]
     public float minX = -8f;
