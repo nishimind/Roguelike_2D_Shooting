@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     //サンプルコメントあああああお
+    //sampleコメントいいいいいいい
     [Header("移動速度")]
     public float moveSpeed = 5f;
     public float slowMultiplier = 0.3f;
