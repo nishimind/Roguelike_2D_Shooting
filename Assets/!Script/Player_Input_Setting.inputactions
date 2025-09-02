@@ -30,7 +30,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MoveRight",
@@ -38,7 +38,7 @@
                     "id": "3b862136-c1ea-4640-9da4-3e886edb55d5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -76,7 +76,7 @@
                     "name": "",
                     "id": "c4bafa50-1d5e-4f2e-9e65-1cc875bc38f7",
                     "path": "<Keyboard>/w",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "MoveUp",
@@ -109,7 +109,7 @@
                     "name": "",
                     "id": "409b3994-0ed3-4a47-9c26-41ba5aca4a76",
                     "path": "<Keyboard>/s",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "MoveDown",
@@ -142,7 +142,7 @@
                     "name": "",
                     "id": "29b3cc98-496e-4d07-bdeb-90a51ef2ef97",
                     "path": "<Keyboard>/d",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "MoveRight",
@@ -208,7 +208,7 @@
                     "name": "",
                     "id": "1eb50139-565f-4722-83f2-ffb0aacefe33",
                     "path": "<Keyboard>/shift",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Slow",
@@ -219,7 +219,7 @@
                     "name": "",
                     "id": "ca5bc427-e920-4ac4-afa7-b2c8154d91e5",
                     "path": "<Gamepad>/buttonWest",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Slow",
