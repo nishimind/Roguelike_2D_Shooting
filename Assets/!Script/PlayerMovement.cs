@@ -15,10 +15,17 @@ public class PlayerMovement : MonoBehaviour
     public float minY = -4.5f;
     public float maxY = 4.5f;
 
+    // 弾関連
+    [SerializeField,Header("弾オブジェクト")]
+    private GameObject _bullet;
+    [SerializeField, Header("発射する時間")]
+    private float _shootTime;
+
     private Vector2 moveInput;            // スティック入力
     private bool isSlow;                  // 減速状態
 
     private Rigidbody2D rb;
+    private float shootCount;
 
     // ボタン入力状態
     private bool upPressed, downPressed, leftPressed, rightPressed;
@@ -31,8 +38,19 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        shootCount = 0f;
     }
-
+    
+    private void Update()
+    {
+        // 弾発射
+        shootCount += Time.deltaTime;
+        if (shootCount >= _shootTime)
+        {
+            Instantiate(_bullet, transform.position, transform.rotation);
+            shootCount = 0f;
+        }
+    }
     // スティック移動
     public void OnMoveStick(InputAction.CallbackContext context)
     {

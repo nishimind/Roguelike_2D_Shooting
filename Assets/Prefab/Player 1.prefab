@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8134880904884409124
+--- !u!1 &549710202922418569
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5168642875809046327}
-  - component: {fileID: 4681525360960754379}
-  - component: {fileID: 112182245985300489}
-  - component: {fileID: 721468529004030540}
-  - component: {fileID: 1079350797843982714}
+  - component: {fileID: 5073432744761232686}
+  - component: {fileID: 9169540595750884350}
+  - component: {fileID: 7930112483131336411}
+  - component: {fileID: 5247260914589982791}
+  - component: {fileID: 3224314622474335138}
+  - component: {fileID: 4324820359521597868}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5168642875809046327
+--- !u!4 &5073432744761232686
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8134880904884409124}
+  m_GameObject: {fileID: 549710202922418569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.02, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.45, y: 1.45, z: 1.45}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4681525360960754379
+--- !u!212 &9169540595750884350
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8134880904884409124}
+  m_GameObject: {fileID: 549710202922418569}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a4e668cbe7bac6546b5a519f10f411ea, type: 3}
+  m_Color: {r: 0.759434, g: 1, b: 0.9452183, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -87,13 +88,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &112182245985300489
+--- !u!114 &7930112483131336411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8134880904884409124}
+  m_GameObject: {fileID: 549710202922418569}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
@@ -114,7 +115,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 721468529004030540}
+      - m_Target: {fileID: 5247260914589982791}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnMoveStick
         m_Mode: 0
@@ -130,7 +131,7 @@ MonoBehaviour:
     m_ActionName: Player/MoveStick[/SwitchProControllerHID/leftStick]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 721468529004030540}
+      - m_Target: {fileID: 5247260914589982791}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnMoveUp
         m_Mode: 0
@@ -146,7 +147,7 @@ MonoBehaviour:
     m_ActionName: Player/MoveUp[/Keyboard/w,/Keyboard/upArrow,/SwitchProControllerHID/dpad/up]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 721468529004030540}
+      - m_Target: {fileID: 5247260914589982791}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnMoveDown
         m_Mode: 0
@@ -162,7 +163,7 @@ MonoBehaviour:
     m_ActionName: Player/MoveDown[/Keyboard/s,/Keyboard/downArrow,/SwitchProControllerHID/dpad/down]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 721468529004030540}
+      - m_Target: {fileID: 5247260914589982791}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnMoveRight
         m_Mode: 0
@@ -178,7 +179,7 @@ MonoBehaviour:
     m_ActionName: Player/MoveRight[/Keyboard/d,/Keyboard/rightArrow,/SwitchProControllerHID/dpad/right]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 721468529004030540}
+      - m_Target: {fileID: 5247260914589982791}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnMoveLeft
         m_Mode: 0
@@ -194,7 +195,7 @@ MonoBehaviour:
     m_ActionName: Player/MoveLeft[/Keyboard/a,/Keyboard/leftArrow,/SwitchProControllerHID/dpad/left]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 721468529004030540}
+      - m_Target: {fileID: 5247260914589982791}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnSlow
         m_Mode: 0
@@ -213,13 +214,13 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &721468529004030540
+--- !u!114 &5247260914589982791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8134880904884409124}
+  m_GameObject: {fileID: 549710202922418569}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28925c43db7abac43b307acaa1dfabcc, type: 3}
@@ -231,14 +232,16 @@ MonoBehaviour:
   maxX: 8
   minY: -4.5
   maxY: 4.5
---- !u!50 &1079350797843982714
+  _bullet: {fileID: 0}
+  _shootTime: 0
+--- !u!50 &3224314622474335138
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8134880904884409124}
+  m_GameObject: {fileID: 549710202922418569}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -257,4 +260,39 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!58 &4324820359521597868
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549710202922418569}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.2
