@@ -1,52 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Camera_Chacker : MonoBehaviour
 {
-    enum Mode
+    [SerializeField] private Renderer _renderer;
+    [SerializeField] private Camera _mainCam;
+    [SerializeField] private BulletPool _pool;
+
+    // 弾にプールをセット
+    public void Init(BulletPool pool)
     {
-        None,
-        Render,
-        RenderOut,
+        _pool = pool;
     }
 
-    private Mode _mode;
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        _mode = Mode.None;
+        _renderer = GetComponent<Renderer>();
+        _mainCam = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        _Dead();
+        if (_mainCam == null || _renderer == null || _pool == null) return;
+
+        // Main Camera に映っていなければプールに返却
+        if (!IsVisibleFrom(_mainCam))
+        {
+            Debug.Log("画面買い");
+            _pool.Release(gameObject);
+        }
     }
 
-    private void OnWillRenderObject()
+    // カメラの視錐台判定
+    private bool IsVisibleFrom(Camera cam)
     {
-        if (Camera.current.name == "Main Camera")
-        {
-            _mode = Mode.Render;
-        }
-    }
-
-    private void _Dead()
-    {
-        // カメラに写ってなければ消す
-        if (_mode == Mode.RenderOut)
-        {
-            Destroy(gameObject);
-        }
-        else if (_mode == Mode.Render)
-        {          
-            _mode = Mode.RenderOut;
-        }
-       
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(cam);
+        return GeometryUtility.TestPlanesAABB(planes, _renderer.bounds);
     }
 }
-
-
-

@@ -17,8 +17,10 @@ public class PlayerMovement : MonoBehaviour
     public float maxY = 4.5f;
 
     // 弾関連
-    [SerializeField,Header("弾オブジェクト")]
-    private GameObject _bullet;
+    //[SerializeField,Header("弾オブジェクト")]
+    //private GameObject _bullet;
+    [SerializeField,Header("弾のプーラー")]
+    private BulletPool _bulletPooler;
     [SerializeField, Header("発射する時間")]
     private float _shootTime;
 
@@ -29,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private float shootCount;
 
     // ボタン入力状態
-    private bool upPressed, downPressed, leftPressed, rightPressed;
+    private bool upPressed, downPressed, leftPressed, rightPressed,shotPressed;
 
     // 最後に押した方向
     private enum LastDir { None, Up, Down, Left, Right }
@@ -44,13 +46,13 @@ public class PlayerMovement : MonoBehaviour
     
     private void Update()
     {
-        // 弾発射
-        shootCount += Time.deltaTime;
-        if (shootCount >= _shootTime)
-        {
-            Instantiate(_bullet, transform.position, transform.rotation);
-            shootCount = 0f;
-        }
+        //弾を撃つ処理を下に移動させました
+
+    }
+    public void OnShot(InputAction.CallbackContext context)
+    {
+        shotPressed = context.ReadValue<float>() > 0.5f;
+      
     }
     // スティック移動
     public void OnMoveStick(InputAction.CallbackContext context)
@@ -98,7 +100,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // ボタン入力を優先する方向に変換
+        PlayerMove();
+
+        ClampPosition();
+
+        //弾を撃つ処理を移動させました, 弾発射処理を軽い方式に修正
+        shootCount += Time.deltaTime;
+        if (shotPressed && shootCount >= _shootTime)
+        {
+            _bulletPooler.Get(transform.position, transform.rotation);
+            shootCount = 0f;
+        }
+
+    }
+    private void PlayerMove()
+    {  // ボタン入力を優先する方向に変換
         Vector2 finalInput = moveInput;
 
         // 垂直方向
@@ -115,8 +131,6 @@ public class PlayerMovement : MonoBehaviour
         // 速度適用
         float currentSpeed = isSlow ? moveSpeed * slowMultiplier : moveSpeed;
         rb.velocity = finalInput * currentSpeed;
-
-        ClampPosition();
     }
 
     private void ClampPosition()
