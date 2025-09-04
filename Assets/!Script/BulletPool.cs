@@ -42,6 +42,7 @@ public class BulletPool : MonoBehaviour
         {
             obj = Instantiate(bulletPrefab); // ë´ÇËÇ»ÇØÇÍÇŒí«â¡ê∂ê¨
         }
+     
 
         obj.transform.position = position;
         obj.transform.rotation = rotation;

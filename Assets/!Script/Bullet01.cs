@@ -6,8 +6,8 @@ public class Bullet01 : MonoBehaviour
 {
     [SerializeField, Header("’e‚Ì‘¬“x")]
     private float _speed;
-    [SerializeField, Header("’e‚ÌˆÐ—Í")]
-    private int _power;
+   // [SerializeField, Header("’e‚ÌˆÐ—Í")]
+  //  private int _power;
 
     private Rigidbody2D _rb;  
     

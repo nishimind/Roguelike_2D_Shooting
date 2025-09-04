@@ -11,13 +11,16 @@ public class PlayerCollision : MonoBehaviour
         playerHealth = GetComponent<PlayerHealth>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        BulletDamage bullet = other.GetComponent<BulletDamage>();
-        if (bullet != null)
+        if (collision.gameObject.tag == "Bullet")
         {
-            playerHealth.TakeDamage(bullet.damage);
-           if(bullet.ifdestroied) Destroy(other.gameObject); // íeÇè¡Ç∑
+            BulletDamage bullet = collision.GetComponent<BulletDamage>();
+            if (bullet != null)
+            {
+                playerHealth.TakeDamage(bullet.damage);
+                if (bullet.ifdestroied) collision.GetComponent<Camera_Chacker>()._pool.Release(bullet.gameObject); // íeÇè¡Ç∑
+            }
         }
     }
 }

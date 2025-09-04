@@ -4,7 +4,7 @@ public class Camera_Chacker : MonoBehaviour
 {
     [SerializeField] private Renderer _renderer;
     [SerializeField] private Camera _mainCam;
-    [SerializeField] private BulletPool _pool;
+    [SerializeField] public BulletPool _pool;
 
     // 弾にプールをセット
     public void Init(BulletPool pool)
@@ -25,7 +25,7 @@ public class Camera_Chacker : MonoBehaviour
         // Main Camera に映っていなければプールに返却
         if (!IsVisibleFrom(_mainCam))
         {
-            Debug.Log("画面買い");
+            //Debug.Log("画面外");
             _pool.Release(gameObject);
         }
     }

@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
    
         public int maxHP = 10;
         public int currentHP;
+    public bool isPlayer;
 
         void Start()
         {
@@ -26,8 +27,15 @@ public class PlayerHealth : MonoBehaviour
 
         void Die()
         {
-            // ゲームオーバー処理など
+        // ゲームオーバー処理など
+        if (isPlayer)
+        {
             Debug.Log("Player Dead!");
+        }
+        else {
+            //敵の処理
+            Destroy(gameObject); 
+        }
         }
     
 }

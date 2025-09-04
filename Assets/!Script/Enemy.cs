@@ -5,10 +5,15 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     //変数を設定
-    [SerializeField,Header("弾オブジェクト")]
-    private GameObject _bullet;
+    // [SerializeField,Header("弾オブジェクト")]
+    //   private GameObject _bullet;
+    private Queue<GameObject> pool = new Queue<GameObject>();
+
     [SerializeField, Header("弾の発射する時間")]
     private float _shootTime;
+    [SerializeField, Header("弾のプーラー")]
+
+    private BulletPool _bulletPooler;
 
     //プレイヤーを設定する変数
     private GameObject _player;
@@ -37,7 +42,9 @@ public class Enemy : MonoBehaviour
         if(_shootCount < _shootTime) return;
 
         //弾を生成する
-        GameObject bulletObj = Instantiate(_bullet);
+        //  GameObject bulletObj = Instantiate(_bullet);
+        GameObject bulletObj = _bulletPooler.Get(transform.position, transform.rotation);
+
         //生成した弾を敵の座標に設定する
         bulletObj.transform.position = transform.position;
         //敵からプレイヤーに向かって弾を発射する（ベクトル）
