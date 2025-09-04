@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5247260914589982791}
   - component: {fileID: 3224314622474335138}
   - component: {fileID: 4324820359521597868}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,6 +209,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2c8224bd-a739-4c0f-b5fa-19e3b2cf0631
     m_ActionName: Player/Slow[/Keyboard/shift,/SwitchProControllerHID/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f93a5522-8819-44ff-a9c1-ff613a9da194
+    m_ActionName: Player/Shot[/Keyboard/z,/Mouse/press]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -232,7 +236,7 @@ MonoBehaviour:
   maxX: 8
   minY: -4.5
   maxY: 4.5
-  _bullet: {fileID: 0}
+  _bulletPooler: {fileID: 0}
   _shootTime: 0
 --- !u!50 &3224314622474335138
 Rigidbody2D:
