@@ -5,7 +5,8 @@ using TMPro;
 public class CardUI : MonoBehaviour
 {
     [SerializeField] private Image icon;
-    [SerializeField] private TextMeshProUGUI nameText;   
+    [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI detailText;
     [SerializeField] private TextMeshProUGUI priceText; 
     [SerializeField] private GameObject highlight;
 
@@ -16,6 +17,7 @@ public class CardUI : MonoBehaviour
         Data = data;
         icon.sprite = data.icon;
         nameText.text = data.cardName;
+        detailText.text = data.description;
         priceText.text = data.price.ToString();
         SetHighlight(false);
     }
