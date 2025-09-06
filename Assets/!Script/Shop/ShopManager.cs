@@ -2,82 +2,170 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
+using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
-    [SerializeField] private CardData[] allCards;   // 全カード
-    [SerializeField] private Transform cardParent; // 並べる場所
-    [SerializeField] private GameObject cardPrefab; // カードUIプレハブ
-    [SerializeField] private int cardCount = 3;
+    [Header("カード設定")]
+    [SerializeField] private CardData[] allCards;        // 全カード（重複が入ってもOK）
+    [SerializeField] private int cardCount = 3;          // 並べる枚数
 
-    private List<CardUI> shopCards = new List<CardUI>();
+    [Header("UI")]
+    [SerializeField] private Transform cardParent;       // 並べる場所（Layout Group 推奨）
+    [SerializeField] private GameObject cardPrefab;      // カードUIプレハブ
+    [SerializeField] private GameObject shopRoot;        // ショップ全体の親（空になったら閉じたい時に）
+    [SerializeField] private TextMeshProUGUI    moneyText;
+
+    [Header("参照")]
+    [SerializeField] private PlayerStatus player;        // 可能ならインスペクターで割り当て
+
+    private readonly List<CardUI> shopCards = new List<CardUI>();
     private int cursorIndex = 0;
-    private PlayerStatus player;
 
-    void Start()
+    private void Start()
     {
-        player = FindObjectOfType<PlayerStatus>();
+        // Player 未設定なら捜索（なければ警告して以降の操作は止める）
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerStatus>();
+            if (player == null)
+            {
+                Debug.LogWarning("[ShopManager] PlayerStatus が見つかりません。インスペクターで割り当ててください。");
+            }
+        }
+
         SetupShop();
     }
 
-    void SetupShop()
+    private void SetupShop()
     {
-        // ランダム抽選（重複禁止）
-        List<CardData> selected = allCards.OrderBy(x => Random.value).Take(cardCount).ToList();
-
-        foreach (var card in selected)
+        // 既存クリア（シーン再入場等で二重生成を避ける）
+        shopCards.Clear();
+        if (cardParent != null)
         {
-            GameObject obj = Instantiate(cardPrefab, cardParent);
-            CardUI ui = obj.GetComponent<CardUI>();
+            for (int i = cardParent.childCount - 1; i >= 0; i--)
+            {
+                Destroy(cardParent.GetChild(i).gameObject);
+            }
+        }
+
+        // null 除去 → 重複排除 → シャッフル → 需要枚数だけ
+        var pool = allCards
+            .Where(c => c != null)
+            .Distinct()
+            .OrderBy(_ => Random.value)
+            .Take(Mathf.Min(cardCount, allCards?.Length ?? 0));
+
+        foreach (var card in pool)
+        {
+            var obj = Instantiate(cardPrefab, cardParent);
+            var ui = obj.GetComponent<CardUI>();
+            if (ui == null)
+            {
+                Debug.LogError("[ShopManager] cardPrefab に CardUI が付いていません。");
+                Destroy(obj);
+                continue;
+            }
             ui.Setup(card);
             shopCards.Add(ui);
         }
-        HighlightCard();
+        //お金の仮表示
+        moneyText.text = player.Money.ToString();
+
+        cursorIndex = 0;
+        UpdateHighlight();
     }
 
-    void Update()
+    // --- 入力（Input System） ---
+    // アクションの Interactions は「Press（Press Only）」を推奨
+    public void Left(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            cursorIndex = Mathf.Max(0, cursorIndex - 1);
-            HighlightCard();
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            cursorIndex = Mathf.Min(shopCards.Count - 1, cursorIndex + 1);
-            HighlightCard();
-        }
-        else if (Input.GetKeyDown(KeyCode.Return)) // 購入
-        {
-            TryPurchase();
-        }
+        if (!context.performed) return;
+        if (shopCards.Count == 0) return;
+
+        cursorIndex = Mathf.Max(0, cursorIndex - 1);
+        UpdateHighlight();
     }
 
-    void HighlightCard()
+    public void Right(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        if (shopCards.Count == 0) return;
+
+        cursorIndex = Mathf.Min(shopCards.Count - 1, cursorIndex + 1);
+        UpdateHighlight();
+    }
+
+    public void Decide(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        TryPurchase();
+    }
+
+    // --- 内部処理 ---
+    private void UpdateHighlight()
     {
         for (int i = 0; i < shopCards.Count; i++)
         {
-            shopCards[i].SetHighlight(i == cursorIndex);
+            var ui = shopCards[i];
+            if (ui != null) ui.SetHighlight(i == cursorIndex);
         }
     }
 
-    void TryPurchase()
+    private void TryPurchase()
     {
+        if (shopCards.Count == 0)
+        {
+            Debug.Log("[Shop] カードがありません。");
+            return;
+        }
+        if (player == null)
+        {
+            Debug.LogWarning("[Shop] PlayerStatus が未設定のため購入できません。");
+            return;
+        }
+
         var cardUI = shopCards[cursorIndex];
+        if (cardUI == null || cardUI.Data == null)
+        {
+            Debug.LogWarning("[Shop] カード情報が不正です。");
+            return;
+        }
+
         var card = cardUI.Data;
 
-        if (player.Money >= card.price)
-        {
-            player.Money -= card.price;
-            card.ApplyEffect(player);
-            Destroy(cardUI.gameObject); // 購入したら消す
-            shopCards.RemoveAt(cursorIndex);
-            cursorIndex = Mathf.Clamp(cursorIndex, 0, shopCards.Count - 1);
-            HighlightCard();
-        }
-        else
+        if (player.Money < card.price)
         {
             Debug.Log("お金が足りません！");
+            return;
         }
+
+        // 決済と効果
+        player.Money -= card.price;
+        card.ApplyEffect(player);
+
+        // UIとリスト更新
+        Destroy(cardUI.gameObject);
+        shopCards.RemoveAt(cursorIndex);
+
+        //お金の仮表示
+        moneyText.text = player.Money.ToString();
+
+        // 残り0なら閉店 or ハイライト更新
+        if (shopCards.Count == 0)
+        {
+            cursorIndex = 0;
+            UpdateHighlight();
+
+            if (shopRoot != null)
+            {
+                shopRoot.SetActive(false); // 閉店したい場合は有効に
+            }
+            return;
+        }
+
+        cursorIndex = Mathf.Clamp(cursorIndex, 0, shopCards.Count - 1);
+        UpdateHighlight();
     }
 }
