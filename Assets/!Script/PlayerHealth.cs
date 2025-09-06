@@ -24,8 +24,14 @@ public class PlayerHealth : MonoBehaviour
                 Die();
             }
         }
+    // HPを回復する処理
+    public void Heal(int amount)
+    {
+        currentHP = Mathf.Min(maxHP, currentHP + amount);
+        Debug.Log("HP回復: " + amount + " 現在HP: " + currentHP);
+    }
 
-        void Die()
+    void Die()
         {
         // ゲームオーバー処理など
         if (isPlayer)

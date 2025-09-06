@@ -16,3 +16,5 @@ MonoBehaviour:
   description: "\u653B\u6483\u304C\u30A2\u30C3\u30D7\u3059\u308B\u3088"
   price: 10
   icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  effectType: 0
+  effectValue: 10

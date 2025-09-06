@@ -11,12 +11,15 @@ GameObject:
   - component: {fileID: 5073432744761232686}
   - component: {fileID: 9169540595750884350}
   - component: {fileID: 7930112483131336411}
+  - component: {fileID: 6948924665363268151}
+  - component: {fileID: 1786794675507012613}
+  - component: {fileID: 8936633636126229884}
   - component: {fileID: 5247260914589982791}
   - component: {fileID: 3224314622474335138}
   - component: {fileID: 4324820359521597868}
   m_Layer: 6
-  m_Name: Player 1
-  m_TagString: Untagged
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,14 +213,68 @@ MonoBehaviour:
     m_ActionId: 2c8224bd-a739-4c0f-b5fa-19e3b2cf0631
     m_ActionName: Player/Slow[/Keyboard/shift,/SwitchProControllerHID/buttonWest]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5247260914589982791}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnShot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f93a5522-8819-44ff-a9c1-ff613a9da194
-    m_ActionName: Player/Shot[/Keyboard/z,/Mouse/press]
+    m_ActionName: Player/Shot[/Keyboard/z,/SwitchProControllerHID/buttonSouth,/Mouse/press]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &6948924665363268151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549710202922418569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f967bc49da923547b642f7bba1ae5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 1786794675507012613}
+--- !u!114 &1786794675507012613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549710202922418569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d5e53d6c7f1384bae1ca6426cab89a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  currentHP: 0
+  isPlayer: 0
+--- !u!114 &8936633636126229884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549710202922418569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 166d6f6c4a721af49a86aaa917bd5627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 1786794675507012613}
+  hpText: {fileID: 0}
 --- !u!114 &5247260914589982791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +294,8 @@ MonoBehaviour:
   minY: -4.5
   maxY: 4.5
   _bulletPooler: {fileID: 0}
-  _shootTime: 0
+  bullletPower: 0
+  _shootTime: 0.5
 --- !u!50 &3224314622474335138
 Rigidbody2D:
   serializedVersion: 4

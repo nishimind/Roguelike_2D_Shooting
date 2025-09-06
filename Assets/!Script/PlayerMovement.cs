@@ -19,8 +19,10 @@ public class PlayerMovement : MonoBehaviour
     // 弾関連
     //[SerializeField,Header("弾オブジェクト")]
     //private GameObject _bullet;
-    [SerializeField,Header("弾のプーラー")]
-    private BulletPool _bulletPooler;
+    [Header("弾のプーラー")]
+    public BulletPool _bulletPooler;
+    [Header("弾の威力(PlayerStatusから設定)")]
+    public int bullletPower=1;
     [SerializeField, Header("発射する時間")]
     private float _shootTime;
 
@@ -108,7 +110,8 @@ public class PlayerMovement : MonoBehaviour
         shootCount += Time.deltaTime;
         if (shotPressed && shootCount >= _shootTime)
         {
-            _bulletPooler.Get(transform.position, transform.rotation);
+            GameObject bullet=_bulletPooler.Get(transform.position, transform.rotation);
+            bullet.GetComponent<BulletDamage>().damage=bullletPower;
             shootCount = 0f;
         }
 

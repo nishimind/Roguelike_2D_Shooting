@@ -8,9 +8,35 @@ public class CardData : ScriptableObject
     public int price;
     public Sprite icon;
 
-    // 効果を実際に適用する関数（例：攻撃力を上げるなど）
-    public virtual void ApplyEffect(PlayerStatus player)
+    public enum CardEffectType
     {
-        Debug.Log(cardName + " を購入しました！");
+        AttackUp,
+        AddShot,
+        Heal,
+        Defence,
+        Speed
+    }
+    public CardEffectType effectType;
+
+    public int effectValue; // 攻撃力アップ値や回復量など
+
+    // 効果を実際にプレイヤーに反映する処理
+    public void ApplyEffect(PlayerStatus player)
+    {
+        switch (effectType)
+        {
+            case CardEffectType.AttackUp:
+                Debug.Log("攻撃購入");
+                player.attackPower += effectValue;
+                break;
+
+            case CardEffectType.AddShot:
+                player.AddShotType(effectValue); // 新しいショット解放
+                break;
+
+            case CardEffectType.Heal:
+                player.health.currentHP = Mathf.Min(player.maxHp, player.health.currentHP + effectValue);
+                break;
+        }
     }
 }

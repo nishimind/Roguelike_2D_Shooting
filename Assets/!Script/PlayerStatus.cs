@@ -4,16 +4,53 @@ using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
 {
-    public int Money;
-    // Start is called before the first frame update
-    void Start()
+    [Header("ステータス")]
+    public int maxHp = 100;
+    public int attackPower = 10;
+    public int Money = 200;
+
+    [Header("ショット設定")]
+    public List<GameObject> availableShots = new List<GameObject>(); // 使用可能なショットのプレハブ
+    public Transform shotSpawn; // 弾を発射する位置
+
+    public GameObject player;
+    public PlayerHealth health;
+    public PlayerMovement playerMovement;
+
+    public void Awake()
     {
-        
+        player= GameObject.FindWithTag("Player");
+       health= player.GetComponent<PlayerHealth>();
+        playerMovement= player.GetComponent<PlayerMovement>();  
+
+         
+    }
+    private void Update()
+    {
+        health.maxHP = maxHp;
+        //Updateで合わせてもいいのか？
+
+        playerMovement.bullletPower = attackPower;
+
+    }
+    // 新しいショットを追加する処理
+    public void AddShotType(int typeId)
+    {
+        // 仮に typeId = 0,1,2 に対応するショットプレハブを追加する例
+        if (typeId >= 0 && typeId < availableShots.Count)
+        {
+            Debug.Log("新しいショットを追加: " + availableShots[typeId].name);
+            // ここで実際にショットの切り替えや追加処理を書く
+            // 例えばショットリストに追加するだけでもOK
+        }
+        else
+        {
+            Debug.LogWarning("AddShotType: typeIdが範囲外です。");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
+
+    
+   
 }

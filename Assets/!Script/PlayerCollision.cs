@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    private PlayerHealth playerHealth;
+   [SerializeField] private PlayerHealth playerHealth;
 
     void Start()
     {
