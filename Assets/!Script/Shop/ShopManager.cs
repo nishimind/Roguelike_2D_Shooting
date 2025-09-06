@@ -15,21 +15,21 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Transform cardParent;       // 並べる場所（Layout Group 推奨）
     [SerializeField] private GameObject cardPrefab;      // カードUIプレハブ
     [SerializeField] private GameObject shopRoot;        // ショップ全体の親（空になったら閉じたい時に）
-    [SerializeField] private TextMeshProUGUI    moneyText;
+
 
     [Header("参照")]
-    [SerializeField] private PlayerStatus player;        // 可能ならインスペクターで割り当て
+    [SerializeField] private PlayerStatus playerStatus;        // 可能ならインスペクターで割り当て
 
     private readonly List<CardUI> shopCards = new List<CardUI>();
     private int cursorIndex = 0;
 
     private void Start()
     {
-        // Player 未設定なら捜索（なければ警告して以降の操作は止める）
-        if (player == null)
+        // playerStatus 未設定なら捜索（なければ警告して以降の操作は止める）
+        if (playerStatus == null)
         {
-            player = FindObjectOfType<PlayerStatus>();
-            if (player == null)
+            playerStatus = FindObjectOfType<PlayerStatus>();
+            if (playerStatus == null)
             {
                 Debug.LogWarning("[ShopManager] PlayerStatus が見つかりません。インスペクターで割り当ててください。");
             }
@@ -70,8 +70,7 @@ public class ShopManager : MonoBehaviour
             ui.Setup(card);
             shopCards.Add(ui);
         }
-        //お金の仮表示
-        moneyText.text = player.Money.ToString();
+    
 
         cursorIndex = 0;
         UpdateHighlight();
@@ -120,7 +119,7 @@ public class ShopManager : MonoBehaviour
             Debug.Log("[Shop] カードがありません。");
             return;
         }
-        if (player == null)
+        if (playerStatus == null)
         {
             Debug.LogWarning("[Shop] PlayerStatus が未設定のため購入できません。");
             return;
@@ -135,22 +134,21 @@ public class ShopManager : MonoBehaviour
 
         var card = cardUI.Data;
 
-        if (player.Money < card.price)
+        if (playerStatus.Money < card.price)
         {
             Debug.Log("お金が足りません！");
             return;
         }
 
         // 決済と効果
-        player.Money -= card.price;
-        card.ApplyEffect(player);
+        playerStatus.Money -= card.price;
+        card.ApplyEffect(playerStatus);
 
         // UIとリスト更新
         Destroy(cardUI.gameObject);
         shopCards.RemoveAt(cursorIndex);
 
-        //お金の仮表示
-        moneyText.text = player.Money.ToString();
+      
 
         // 残り0なら閉店 or ハイライト更新
         if (shopCards.Count == 0)

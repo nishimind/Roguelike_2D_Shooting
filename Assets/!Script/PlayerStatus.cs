@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerStatus : MonoBehaviour
@@ -8,7 +9,10 @@ public class PlayerStatus : MonoBehaviour
     public int maxHp = 100;
     public int attackPower = 10;
     public int Money = 200;
-
+    [Header("ステータス表示設定")]
+    [SerializeField] private TextMeshProUGUI hpText;
+    [SerializeField] private TextMeshProUGUI powerText;
+    [SerializeField] private TextMeshProUGUI moneyText;
     [Header("ショット設定")]
     public List<GameObject> availableShots = new List<GameObject>(); // 使用可能なショットのプレハブ
     public Transform shotSpawn; // 弾を発射する位置
@@ -19,18 +23,35 @@ public class PlayerStatus : MonoBehaviour
 
     public void Awake()
     {
-        player= GameObject.FindWithTag("Player");
-       health= player.GetComponent<PlayerHealth>();
-        playerMovement= player.GetComponent<PlayerMovement>();  
+        player = GameObject.FindWithTag("Player");
 
-         
+        if (player != null)
+        {
+            health = player.GetComponent<PlayerHealth>();
+            playerMovement = player.GetComponent<PlayerMovement>();
+
+                health.maxHP = maxHp;
+           
+                playerMovement.bullletPower = attackPower;
+            
+        }
+        else
+        {
+            Debug.LogWarning("[Awake] Player が見つかりませんでした。処理をスキップします。");
+
+        }
     }
+
     private void Update()
     {
         health.maxHP = maxHp;
         //Updateで合わせてもいいのか？
 
         playerMovement.bullletPower = attackPower;
+
+        hpText.text = "HP: " + health.currentHP + "/" + health.maxHP;
+        powerText.text="Power:"+attackPower;
+        moneyText.text="Money:"+Money;
 
     }
     // 新しいショットを追加する処理
