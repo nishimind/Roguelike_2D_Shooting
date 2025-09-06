@@ -7,12 +7,18 @@ public class PlayerStatus : MonoBehaviour
 {
     [Header("ステータス")]
     public int maxHp = 100;
-    public int attackPower = 10;
     public int Money = 200;
-    [Header("ステータス表示設定")]
+    public int attackPower = 10;
+    public int defencePower = 0;
+
+    [Header("ステータスUI表示設定")]
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI powerText;
     [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private TextMeshProUGUI defenceText;
+    [SerializeField] public TextMeshProUGUI damageText;
+    [SerializeField] public TextMeshProUGUI actualDamageText;
+
     [Header("ショット設定")]
     public List<GameObject> availableShots = new List<GameObject>(); // 使用可能なショットのプレハブ
     public Transform shotSpawn; // 弾を発射する位置
@@ -52,6 +58,7 @@ public class PlayerStatus : MonoBehaviour
         hpText.text = "HP: " + health.currentHP + "/" + health.maxHP;
         powerText.text="Power:"+attackPower;
         moneyText.text="Money:"+Money;
+        defenceText.text= "Defence:" + defencePower;
 
     }
     // 新しいショットを追加する処理

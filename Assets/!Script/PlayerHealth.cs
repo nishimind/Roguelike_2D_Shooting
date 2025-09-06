@@ -10,14 +10,19 @@ public class PlayerHealth : MonoBehaviour
         public int currentHP;
     public bool isPlayer;
 
+    public PlayerStatus status;
         void Start()
         {
             currentHP = maxHP;
+        status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
         }
 
         public void TakeDamage(int damage)
         {
-            currentHP -= damage;
+        int realDamage = Mathf.Max(0, damage - status.defencePower);
+        status.damageText.text ="damage:"+damage;
+        status.actualDamageText.text= "ActualDamage:"+damage+"-"+status.defencePower+"="+realDamage;
+        currentHP -= realDamage;
             if (currentHP <= 0)
             {
                 currentHP = 0;
