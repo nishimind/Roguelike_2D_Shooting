@@ -4,6 +4,9 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
+
+
 
 public class ShopManager : MonoBehaviour
 {
@@ -15,7 +18,13 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Transform cardParent;       // 並べる場所（Layout Group 推奨）
     [SerializeField] private GameObject cardPrefab;      // カードUIプレハブ
     [SerializeField] private GameObject shopRoot;        // ショップ全体の親（空になったら閉じたい時に）
+    [Header("確認ダイアログ")]
+    [SerializeField] private GameObject confirmPanel; // 確認ダイアログ
+    [SerializeField] private TextMeshProUGUI yesText;
+    [SerializeField] private TextMeshProUGUI noText;
 
+    private bool isConfirmOpen = false;
+    private int confirmIndex = 0; // 0 = Yes, 1 = No
 
     [Header("参照")]
     [SerializeField] private PlayerStatus playerStatus;        // 可能ならインスペクターで割り当て
@@ -80,6 +89,7 @@ public class ShopManager : MonoBehaviour
     // アクションの Interactions は「Press（Press Only）」を推奨
     public void Left(InputAction.CallbackContext context)
     {
+        if (isConfirmOpen) return; // 
         if (!context.performed) return;
         if (shopCards.Count == 0) return;
 
@@ -89,6 +99,7 @@ public class ShopManager : MonoBehaviour
 
     public void Right(InputAction.CallbackContext context)
     {
+        if (isConfirmOpen) return; // 
         if (!context.performed) return;
         if (shopCards.Count == 0) return;
 
@@ -98,6 +109,7 @@ public class ShopManager : MonoBehaviour
 
     public void Decide(InputAction.CallbackContext context)
     {
+        if (isConfirmOpen) return; // 
         if (!context.performed) return;
         TryPurchase();
     }
@@ -166,4 +178,58 @@ public class ShopManager : MonoBehaviour
         cursorIndex = Mathf.Clamp(cursorIndex, 0, shopCards.Count - 1);
         UpdateHighlight();
     }
+    // Cancelキーで確認パネルを開く
+    public void Cancel(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+
+        if (!isConfirmOpen && confirmPanel != null)
+        {
+            confirmPanel.SetActive(true);
+            isConfirmOpen = true;
+            confirmIndex = 0;
+            UpdateConfirmHighlight();
+        }
+    }
+    // 確認中の左右入力
+    public void ConfirmLeft(InputAction.CallbackContext context)
+    {
+        if (!isConfirmOpen || !context.performed) return;
+
+        confirmIndex = Mathf.Max(0, confirmIndex - 1);
+        UpdateConfirmHighlight();
+    }
+    public void ConfirmRight(InputAction.CallbackContext context)
+    {
+        if (!isConfirmOpen || !context.performed) return;
+
+        confirmIndex = Mathf.Min(1, confirmIndex + 1);
+        UpdateConfirmHighlight();
+    }
+    // 決定入力
+    public void ConfirmDecide(InputAction.CallbackContext context)
+    {
+        if (!isConfirmOpen || !context.performed) return;
+
+        if (confirmIndex == 0)
+        {
+            // Yes
+            //ステージによって変えることになりそう
+            SceneManager.LoadScene("Main_Shooting");
+        }
+        else
+        {
+            // No
+            confirmPanel.SetActive(false);
+            isConfirmOpen = false;
+        }
+    }
+
+    // ハイライト更新
+    private void UpdateConfirmHighlight()
+    {
+        if (yesText != null) yesText.color = (confirmIndex == 0 ? Color.yellow : Color.white);
+        if (noText != null) noText.color = (confirmIndex == 1 ? Color.yellow : Color.white);
+    }
+
 }

@@ -14,11 +14,13 @@ public class CardData : ScriptableObject
         AddShot,
         Heal,
         Defence,
-        Speed
+        Speed,
+        ShootTime,
+
     }
     public CardEffectType effectType;
 
-    public int effectValue; // 攻撃力アップ値や回復量など
+    public float effectValue; // 攻撃力アップ値や回復量など
 
     // 効果を実際にプレイヤーに反映する処理
     public void ApplyEffect(PlayerStatus player)
@@ -27,16 +29,29 @@ public class CardData : ScriptableObject
         {
             case CardEffectType.AttackUp:
                 Debug.Log("攻撃購入");
-                player.attackPower += effectValue;
+                player.attackPower += Mathf.CeilToInt(effectValue);
                 break;
 
             case CardEffectType.AddShot:
-                player.AddShotType(effectValue); // 新しいショット解放
+                player.AddShotType(Mathf.CeilToInt(effectValue)); // 新しいショット解放
                 break;
 
             case CardEffectType.Heal:
-                player.health.currentHP = Mathf.Min(player.maxHp, player.health.currentHP + effectValue);
+                player.health.currentHP = Mathf.Min(player.maxHp, player.health.currentHP + Mathf.CeilToInt(effectValue));
                 break;
+
+            case CardEffectType.Defence:
+                player.defencePower += Mathf.CeilToInt(effectValue);
+                break;
+
+                case CardEffectType.Speed:
+                player.speed += Mathf.CeilToInt(effectValue);
+                break;
+
+            case CardEffectType.ShootTime:
+                player.shootTime -= effectValue;
+                break;
+
         }
     }
 }
