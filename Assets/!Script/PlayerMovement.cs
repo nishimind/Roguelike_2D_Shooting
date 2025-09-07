@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     //サンプルコメントあああああお
     //sampleコメントいいいいいいい
     //a
-    [Header("移動速度")]
+    [Header("移動速度(PlayerStatusから設定)")]
     public float moveSpeed = 5f;
     public float slowMultiplier = 0.3f;
 
@@ -23,8 +23,8 @@ public class PlayerMovement : MonoBehaviour
     public BulletPool _bulletPooler;
     [Header("弾の威力(PlayerStatusから設定)")]
     public int bullletPower=1;
-    [SerializeField, Header("発射する時間")]
-    private float _shootTime;
+    [SerializeField, Header("発射する時間(PlayerStatusから設定)")]
+    public float _shootTime;
 
     private Vector2 moveInput;            // スティック入力
     private bool isSlow;                  // 減速状態

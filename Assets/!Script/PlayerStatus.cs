@@ -10,6 +10,8 @@ public class PlayerStatus : MonoBehaviour
     public int Money = 200;
     public int attackPower = 10;
     public int defencePower = 0;
+    public float speed = 5;
+    public float shootTime = 0.5f;
 
     [Header("ステータスUI表示設定")]
     [SerializeField] private TextMeshProUGUI hpText;
@@ -18,6 +20,8 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] private TextMeshProUGUI defenceText;
     [SerializeField] public TextMeshProUGUI damageText;
     [SerializeField] public TextMeshProUGUI actualDamageText;
+    [SerializeField] public TextMeshProUGUI speedText;
+    [SerializeField] public TextMeshProUGUI shootTimeText;
 
     [Header("ショット設定")]
     public List<GameObject> availableShots = new List<GameObject>(); // 使用可能なショットのプレハブ
@@ -39,7 +43,7 @@ public class PlayerStatus : MonoBehaviour
                 health.maxHP = maxHp;
            
                 playerMovement.bullletPower = attackPower;
-            
+            playerMovement._shootTime = shootTime;
         }
         else
         {
@@ -54,11 +58,16 @@ public class PlayerStatus : MonoBehaviour
         //Updateで合わせてもいいのか？
 
         playerMovement.bullletPower = attackPower;
+        playerMovement._shootTime = shootTime;
+        playerMovement.moveSpeed=speed;
 
+        //UI表示
         hpText.text = "HP: " + health.currentHP + "/" + health.maxHP;
         powerText.text="Power:"+attackPower;
         moneyText.text="Money:"+Money;
         defenceText.text= "Defence:" + defencePower;
+        shootTimeText.text="shootTime:"+shootTime;
+        speedText.text = "speed:" + speed;
 
     }
     // 新しいショットを追加する処理
