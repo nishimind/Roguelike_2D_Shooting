@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99dd9b49297a8c74e8ead30749ec25a8, type: 3}
   m_Name: Status_ShootTime
   m_EditorClassIdentifier: 
-  cardName: "\u30B9\u30D4\u30FC\u30C9\u30A2\u30C3\u30D7"
+  cardName: "\u767A\u5C04\u9593\u9694"
   description: 
-  price: 5
+  price: 7
   icon: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  effectType: 4
-  effectValue: 20
+  effectType: 5
+  effectValue: 1
