@@ -8,11 +8,16 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
     private GameObject[] enemyBox;
     private GameObject[] player;
     // Start is called before the first frame update
-
+    
+    //二重に呼ばれないようにフラグを追加
+    private bool isChangingScene = false;
 
     // Update is called once per frame
     void Update()
     {
+        // 既に切り替え中なら処理しない 
+     //   if (!isChangingScene) return;
+
         //Enemyタグのついたオブジェクトをすべて取得
         enemyBox = GameObject.FindGameObjectsWithTag("Enemy");
         player = GameObject.FindGameObjectsWithTag("Player");
@@ -24,12 +29,21 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         //敵が全滅したらシーンを切り替える
         if (enemyBox.Length == 0)
         {
-            SceneManager.LoadScene("Shop");
+            StartCoroutine(ChangeSceneWithDelay("Shop", 2f));
+
         }
         //プレイヤーが全滅したらシーンを切り替える
         if (player.Length == 0)
         {
-            SceneManager.LoadScene("GsmeOver");
+            SceneManager.LoadScene("GameOver");
         }
+        IEnumerator ChangeSceneWithDelay(string sceneName, float delay)
+        {
+            isChangingScene = true; // フラグを立てて多重呼び出しを防ぐ
+            yield return new WaitForSeconds(delay);
+            SceneManager.LoadScene(sceneName);
+        }
+
     }
+
 }
