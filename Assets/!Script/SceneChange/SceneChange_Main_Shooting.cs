@@ -35,7 +35,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         //プレイヤーが全滅したらシーンを切り替える
         if (player.Length == 0)
         {
-            SceneManager.LoadScene("GameOver");
+            StartCoroutine(ChangeSceneWithDelay("GameOver", 2f));
         }
         IEnumerator ChangeSceneWithDelay(string sceneName, float delay)
         {
