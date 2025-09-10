@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField,Header("死亡時effect")]
     private GameObject deadEffect;
     private GameManager gameManager;
+    //死亡時カメラを揺らす
+    private Cinemachine.CinemachineImpulseSource  shaker;
     /*
     //ダメージを受けた際点滅する
     [SerializeField, Header("点滅時間")]
@@ -28,12 +30,14 @@ public class PlayerHealth : MonoBehaviour
     private bool isDamage;
     */
 
-  
-        void Start()
+
+    void Start()
         {
             currentHP = maxHP;
         status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        
         gameManager = FindObjectOfType<GameManager>();
+        shaker = FindObjectOfType<Cinemachine.CinemachineImpulseSource>();
         /*
         spriteRenderer = GetComponent<SpriteRenderer>();
         damageTimeCount = 0;
@@ -60,8 +64,9 @@ public class PlayerHealth : MonoBehaviour
                 Die();
                Instantiate(deadEffect, transform.position, Quaternion.identity);
                gameManager.DeadEffect();
+               shaker.GenerateImpulse();
 
-        　　}
+        }
         }
     /*
     //ダメージを受けた際の点滅処理
