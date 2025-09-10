@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f9289bf96a94b44b28bd859445db94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadEffectTimeScale: 0
-  deadEffectTime: 0
+  deadEffectTimeScale: 1
+  deadEffectTime: 0.25
 --- !u!4 &115596888
 Transform:
   m_ObjectHideFlags: 0

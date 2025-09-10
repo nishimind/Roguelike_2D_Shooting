@@ -61,7 +61,7 @@ public class PlayerHealth : MonoBehaviour
                Instantiate(deadEffect, transform.position, Quaternion.identity);
                gameManager.DeadEffect();
 
-        }
+        　　}
         }
     /*
     //ダメージを受けた際の点滅処理
