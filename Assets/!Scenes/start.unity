@@ -209,7 +209,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 691259377}
         m_TargetAssemblyTypeName: SceneChange, Assembly-CSharp
-        m_MethodName: Change_bitton
+        m_MethodName: ChangeSceneRandomly
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -269,6 +269,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6783a319f5707ab49a34ac4d1ebdf735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneNames:
+  - Main_Shooting
+  - stage2
+  - stage3
 --- !u!1 &992981033
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Header("発射する時間(PlayerStatusから設定)")]
     public float _shootTime;
 
+
     private Vector2 moveInput;            // スティック入力
     private bool isSlow;                  // 減速状態
 
