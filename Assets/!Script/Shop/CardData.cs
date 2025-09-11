@@ -33,7 +33,7 @@ public class CardData : ScriptableObject
                 break;
 
             case CardEffectType.AddShot:
-                player.AddShotType(Mathf.CeilToInt(effectValue)); // 新しいショット解放
+              //  player.AddShotType(Mathf.CeilToInt(effectValue)); // 新しいショット解放
                 break;
 
             case CardEffectType.Heal:

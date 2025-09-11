@@ -13,6 +13,14 @@ public class PlayerStatus : MonoBehaviour
     public float speed = 5;
     public float shootTime = 0.5f;
 
+    public enum ItemType
+    {
+        Key,
+        Sword,
+        Shield,
+        Potion
+    }
+
     [Header("ステータスUI表示設定")]
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI powerText;
@@ -30,6 +38,7 @@ public class PlayerStatus : MonoBehaviour
     public GameObject player;
     public PlayerHealth health;
     public PlayerMovement playerMovement;
+    public Dictionary<ItemType, bool> itemFlags = new Dictionary<ItemType, bool>();
 
     public void Awake()
     {
@@ -71,6 +80,7 @@ public class PlayerStatus : MonoBehaviour
 
     }
     // 新しいショットを追加する処理
+    /*
     public void AddShotType(int typeId)
     {
         // 仮に typeId = 0,1,2 に対応するショットプレハブを追加する例
@@ -84,8 +94,7 @@ public class PlayerStatus : MonoBehaviour
         {
             Debug.LogWarning("AddShotType: typeIdが範囲外です。");
         }
-    }
-
+    }*/
  
 
     
