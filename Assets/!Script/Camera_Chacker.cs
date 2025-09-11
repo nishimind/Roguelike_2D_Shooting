@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class Camera_Chacker : MonoBehaviour
-{//テストコメント
+{
     [SerializeField] private Renderer _renderer;
     [SerializeField] private Camera _mainCam;
     [SerializeField] public BulletPool _pool;
