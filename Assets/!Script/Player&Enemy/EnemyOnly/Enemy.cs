@@ -10,20 +10,20 @@ public class Enemy : MonoBehaviour
     private Queue<GameObject> pool = new Queue<GameObject>();
 
     [SerializeField, Header("弾の発射する時間")]
-    private float _shootTime;
+    protected float _shootTime;
     [SerializeField, Header("弾のプーラー")]
-    
-    private BulletPool _bulletPooler;
+
+    protected BulletPool _bulletPooler;
     [SerializeField, Header("移動速度")]
-    private float _moveSpeed;
+    protected float _moveSpeed;
 
     //プレイヤーを設定する変数
-    private GameObject _player;
-    private Rigidbody2D _rb;
+    protected GameObject _player;
+    protected Rigidbody2D _rb;
     //弾を発射する時間をカウントする変数
-    private float _shootCount;
+    protected float _shootCount;
     //画面内で攻撃する
-    private bool _bAttack;
+    protected bool _bAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +36,12 @@ public class Enemy : MonoBehaviour
         _shootCount = 0;
         _bAttack = false;
         _rb = GetComponent<Rigidbody2D>();
+        _Initialize();
+    }
+
+    protected virtual void _Initialize()
+    {
+
     }
 
     // Update is called once per frame
@@ -43,7 +49,13 @@ public class Enemy : MonoBehaviour
     {
         _Shooting();
         _Move();
+        _Attack();
+        
     }
+    protected virtual void _Attack()
+    {
+    }
+
 
     private void _Shooting()
     {
@@ -64,7 +76,7 @@ public class Enemy : MonoBehaviour
     }
 
     //下方向に移動
-    private void _Move()
+    protected virtual void _Move()
     {
         _rb.velocity = Vector2.down * _moveSpeed;
     }
