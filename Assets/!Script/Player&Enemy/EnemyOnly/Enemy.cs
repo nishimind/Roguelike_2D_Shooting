@@ -4,89 +4,93 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    //変数を設定
-    // [SerializeField,Header("弾オブジェクト")]
-    //   private GameObject _bullet;
-    private Queue<GameObject> pool = new Queue<GameObject>();
+    // 攻撃パターンを ScriptableObject で差し替え可能にする
+    [SerializeField, Header("攻撃パターン（ScriptableObject を指定）")]
+    protected AttackPatternSO attackPattern;
 
-    [SerializeField, Header("弾の発射する時間")]
+    [SerializeField, Header("弾の発射間隔(秒)")]
     protected float _shootTime;
-    [SerializeField, Header("弾のプーラー")]
 
+    [SerializeField, Header("弾のプーラー")]
     protected BulletPool _bulletPooler;
+
     [SerializeField, Header("移動速度")]
     protected float _moveSpeed;
 
-    //プレイヤーを設定する変数
+    // プレイヤーを参照する
     protected GameObject _player;
+
+    // コンポーネント
     protected Rigidbody2D _rb;
-    //弾を発射する時間をカウントする変数
+
+    // 弾発射のタイマー
     protected float _shootCount;
-    //画面内で攻撃する
+
+    // 攻撃してよいか（画面内フラグ）
     protected bool _bAttack;
 
-    // Start is called before the first frame update
+    // Start は最初に一度だけ呼ばれる
     void Start()
-    { 
-        //プレイヤーを探す プレイヤー消滅後停止
-        if(FindAnyObjectByType<PlayerMovement>() )
+    {
+        // プレイヤーを探す（存在チェック）
+        PlayerMovement pm = FindAnyObjectByType<PlayerMovement>();
+        if (pm != null)
         {
-           _player = FindObjectOfType<PlayerMovement>().gameObject;
-        }      
-        _shootCount = 0;
+            _player = pm.gameObject;
+        }
+
+        _shootCount = 0f;
         _bAttack = false;
         _rb = GetComponent<Rigidbody2D>();
+
         _Initialize();
     }
 
-    protected virtual void _Initialize()
-    {
+    // 派生クラスで初期化を追加できる
+    protected virtual void _Initialize() { }
 
-    }
-
-    // Update is called once per frame
+    // Update は毎フレーム呼ばれる
     void Update()
     {
-        _Shooting();
         _Move();
         _Attack();
-        
     }
+
+    // 攻撃の管理
     protected virtual void _Attack()
     {
-    }
+        if (!_bAttack || attackPattern == null) return;
 
-
-    private void _Shooting()
-    {
-        //弾を発射する
         _shootCount += Time.deltaTime;
-        if(_shootCount < _shootTime) return;
-
-        //弾を生成する
-        //  GameObject bulletObj = Instantiate(_bullet);
-        GameObject bulletObj = _bulletPooler.Get(transform.position, transform.rotation);
-
-        //生成した弾を敵の座標に設定する
-        bulletObj.transform.position = transform.position;
-        //敵からプレイヤーに向かって弾を発射する（ベクトル）
-        Vector3 dir = _player.transform.position - transform.position;
-        bulletObj.transform.rotation = Quaternion.FromToRotation(transform.up,dir);
-        _shootCount = 0.0f;
+        if (_shootCount >= _shootTime)
+        {
+            attackPattern.Shoot(this);  // ScriptableObject の Shoot 実行
+            _shootCount = 0f;
+        }
     }
 
-    //下方向に移動
+    // 下方向に移動
     protected virtual void _Move()
     {
         _rb.velocity = Vector2.down * _moveSpeed;
     }
 
-    //カメラに写っている間攻撃する
+    // カメラに映っている間だけ攻撃許可
     private void OnWillRenderObject()
     {
-        if(Camera.current.name == "Main Camera")
+        if (Camera.current != null && Camera.current.name == "Main Camera")
         {
             _bAttack = true;
         }
+    }
+
+    // --- 外部から参照するための公開メソッド ---
+    public BulletPool GetPool() => _bulletPooler;
+    public GameObject GetPlayer() => _player;
+
+    // ランタイムでパターンを差し替える用
+    public void SetAttackPattern(AttackPatternSO pattern)
+    {
+        attackPattern = pattern;
     }
 }
