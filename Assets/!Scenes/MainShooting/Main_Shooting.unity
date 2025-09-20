@@ -421,6 +421,10 @@ PrefabInstance:
       propertyPath: _bulletPooler
       value: 
       objectReference: {fileID: 1642472387}
+    - target: {fileID: 4215292350305892138, guid: 4e34d737da5dfa344abacfcdb3741be9, type: 3}
+      propertyPath: attackPattern
+      value: 
+      objectReference: {fileID: 11400000, guid: 8408ac9ec8a99604fabb7b90aac2242b, type: 2}
     - target: {fileID: 6688321107845221927, guid: 4e34d737da5dfa344abacfcdb3741be9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

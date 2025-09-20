@@ -59,11 +59,18 @@ public class Enemy : MonoBehaviour
     // 攻撃の管理
     protected virtual void _Attack()
     {
-        if (!_bAttack || attackPattern == null) return;
+        if (!_bAttack || attackPattern == null)
+        {
+            Debug.LogWarning($"{name} cannot shoot: bAttack={_bAttack}, attackPattern={attackPattern}");
+            return;
+        }
+        
 
         _shootCount += Time.deltaTime;
         if (_shootCount >= _shootTime)
         {
+            Debug.Log($"{name} shooting!");
+
             attackPattern.Shoot(this);  // ScriptableObject の Shoot 実行
             _shootCount = 0f;
         }
@@ -76,13 +83,23 @@ public class Enemy : MonoBehaviour
     }
 
     // カメラに映っている間だけ攻撃許可
-    private void OnWillRenderObject()
-    {
-        if (Camera.current != null && Camera.current.name == "Main Camera")
-        {
-            _bAttack = true;
-        }
-    }
+    /*  private void OnWillRenderObject()
+      {
+          if (Camera.current != null && Camera.current.CompareTag("MainCamera"))
+          {
+              if (!_bAttack)
+              {
+                  _bAttack = true;
+                  _shootCount = _shootTime;
+                  Debug.Log($"{name} attack enabled!");
+              }
+          }
+      }
+    */
+
+    // 確実に動作する方法
+    private void OnBecameVisible() { _bAttack = true; }
+    private void OnBecameInvisible() { _bAttack = false; }
 
     // --- 外部から参照するための公開メソッド ---
     public BulletPool GetPool() => _bulletPooler;
