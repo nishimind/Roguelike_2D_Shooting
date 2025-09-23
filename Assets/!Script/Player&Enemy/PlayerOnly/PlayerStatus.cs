@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerStatus : MonoBehaviour
 {
+    public static PlayerStatus Instance { get; private set; }
+
+
     [Header("ステータス")]
     public int maxHp = 100;
     public int Money = 200;
@@ -42,28 +47,25 @@ public class PlayerStatus : MonoBehaviour
 
     public void Awake()
     {
-        player = GameObject.FindWithTag("Player");
-
-        if (player != null)
+        // イベントにイベントハンドラーを追加
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        if (Instance != null && Instance != this)
         {
-            health = player.GetComponent<PlayerHealth>();
-            playerMovement = player.GetComponent<PlayerMovement>();
-
-                health.maxHP = maxHp;
-           
-                playerMovement.bullletPower = attackPower;
-            playerMovement._shootTime = shootTime;
+            Destroy(gameObject); // 既に存在するなら自分を破棄
+            return;
         }
-        else
-        {
-            Debug.LogWarning("[Awake] Player が見つかりませんでした。処理をスキップします。");
 
-        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject); // 永続化
+
     }
-
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        FindPlayer();
+    }
     private void Update()
     {
-        health.maxHP = maxHp;
+       if(health!=null) health.maxHP = maxHp;
         //Updateで合わせてもいいのか？
 
         playerMovement.bullletPower = attackPower;
@@ -95,8 +97,26 @@ public class PlayerStatus : MonoBehaviour
             Debug.LogWarning("AddShotType: typeIdが範囲外です。");
         }
     }*/
- 
+    public void FindPlayer()
+    {
+        player = GameObject.FindWithTag("Player");
 
+        if (player != null)
+        {
+            health = player.GetComponent<PlayerHealth>();
+            playerMovement = player.GetComponent<PlayerMovement>();
+
+            health.maxHP = maxHp;
+
+            playerMovement.bullletPower = attackPower;
+            playerMovement._shootTime = shootTime;
+        }
+        else
+        {
+            Debug.LogWarning("[Awake] Player が見つかりませんでした。処理をスキップします。");
+
+        }
+    }
     
    
 }

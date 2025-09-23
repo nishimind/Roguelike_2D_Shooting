@@ -111,9 +111,12 @@ public class PlayerMovement : MonoBehaviour
         shootCount += Time.deltaTime;
         if (shotPressed && shootCount >= _shootTime)
         {
-            GameObject bullet=_bulletPooler.Get(transform.position, transform.rotation);
+          if(_bulletPooler!=null)
+            {
+                GameObject bullet=_bulletPooler.Get(transform.position, transform.rotation);
             bullet.GetComponent<BulletDamage>().damage=bullletPower;
             shootCount = 0f;
+             }
         }
 
     }

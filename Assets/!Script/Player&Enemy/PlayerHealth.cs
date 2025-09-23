@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
         {
             currentHP = maxHP;
-        status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+       if(isPlayer) status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
         
         gameManager = FindObjectOfType<GameManager>();
         shaker = FindObjectOfType<Cinemachine.CinemachineImpulseSource>();
@@ -54,15 +54,16 @@ public class PlayerHealth : MonoBehaviour
         */
         public void TakeDamage(int damage)
         {
-        int realDamage = Mathf.Max(0, damage - status.defencePower);
-        status.damageText.text ="damage:"+damage;
-        status.actualDamageText.text= "ActualDamage:"+damage+"-"+status.defencePower+"="+realDamage;
-        currentHP -= realDamage;
+        //int realDamage = Mathf.Max(0, damage - status.defencePower);
+        //status.damageText.text ="damage:"+damage;
+      //  status.actualDamageText.text= "ActualDamage:"+damage+"-"+status.defencePower+"="+realDamage;
+        currentHP -= damage;
             if (currentHP <= 0)
             {
                 currentHP = 0; 
                 Die();
-               Instantiate(deadEffect, transform.position, Quaternion.identity);
+             if(deadEffect!=null)  Instantiate(deadEffect, transform.position, Quaternion.identity);
+             if(!isPlayer) return;
                gameManager.DeadEffect();
                shaker.GenerateImpulse();
 

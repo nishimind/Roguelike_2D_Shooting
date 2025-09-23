@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 
 
@@ -27,27 +28,43 @@ public class ShopManager : MonoBehaviour
     private int confirmIndex = 0; // 0 = Yes, 1 = No
 
     [Header("参照")]
-    [SerializeField] private PlayerStatus playerStatus;        // 可能ならインスペクターで割り当て
+   public PlayerStatus playerStatus;        // 可能ならインスペクターで割り当て
 
     private readonly List<CardUI> shopCards = new List<CardUI>();
     private int cursorIndex = 0;
 
     private void Start()
     {
+        FindPlayerDelay();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+      
+        SetupShop();
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {//いろいろ試したけどここでFindできない
+        FindPlayerDelay();
+    }
+    private IEnumerator FindPlayerDelay()
+    {
+        yield return null; // 1フレーム待つ
+        FindPlayer();
+                            }
+        public void FindPlayer()
+    { 
         // playerStatus 未設定なら捜索（なければ警告して以降の操作は止める）
         if (playerStatus == null)
         {
-            playerStatus = FindObjectOfType<PlayerStatus>();
+            playerStatus = FindObjectOfType<PlayerStatus>().GetComponent<PlayerStatus>();
+            Debug.Log(FindObjectOfType<PlayerStatus>().GetComponent<PlayerStatus>());
             if (playerStatus == null)
             {
                 Debug.LogWarning("[ShopManager] PlayerStatus が見つかりません。インスペクターで割り当ててください。");
             }
         }
 
-        SetupShop();
-    }
 
-    private void SetupShop()
+    }
+        private void SetupShop()
     {
         // 既存クリア（シーン再入場等で二重生成を避ける）
         shopCards.Clear();
@@ -111,6 +128,8 @@ public class ShopManager : MonoBehaviour
     {
         if (isConfirmOpen) return; // 
         if (!context.performed) return;
+        //↓ここでFindPlayerするの絶対よくない
+        FindPlayer();
         TryPurchase();
     }
 
