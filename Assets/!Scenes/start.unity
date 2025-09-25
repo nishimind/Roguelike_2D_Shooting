@@ -270,9 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneNames:
-  - Main_Shooting
-  - stage2
-  - stage3
+  - stage1
 --- !u!1 &992981033
 GameObject:
   m_ObjectHideFlags: 0

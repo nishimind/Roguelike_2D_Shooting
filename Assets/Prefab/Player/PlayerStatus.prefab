@@ -830,7 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   Money: 10
-  attackPower: 100
+  attackPower: 120
   defencePower: 0
   speed: 5
   shootTime: 0.5

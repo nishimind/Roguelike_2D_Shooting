@@ -232,13 +232,12 @@ public class ShopManager : MonoBehaviour
 
         if (confirmIndex == 0)
         {
-            // Yes
-            //ステージによって変えることになりそう
-            SceneManager.LoadScene("Main_Shooting");
+            // Yes → 次のステージへ
+            Siene_Change_Main_Shooting.GoToNextStage();
         }
         else
         {
-            // No
+            // No → ダイアログを閉じる
             confirmPanel.SetActive(false);
             isConfirmOpen = false;
         }
