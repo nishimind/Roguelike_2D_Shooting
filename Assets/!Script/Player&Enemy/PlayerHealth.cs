@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -16,10 +14,10 @@ public class PlayerHealth : MonoBehaviour
     private GameManager gameManager;
     private Cinemachine.CinemachineImpulseSource shaker;
 
-    [Header("ダメージ演出")]
-    [SerializeField, Header("点滅時間(秒)")]
+    // 点滅用
+    [SerializeField, Header("点滅時間")]
     private float damageTime = 0.5f;
-    [SerializeField, Header("点滅周期(秒)")]
+    [SerializeField, Header("点滅周期")]
     private float damageCycle = 0.1f;
 
     private SpriteRenderer spriteRenderer;
@@ -29,9 +27,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
-
-        if (isPlayer)
-            status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        if (isPlayer) status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
 
         gameManager = FindObjectOfType<GameManager>();
         shaker = FindObjectOfType<Cinemachine.CinemachineImpulseSource>();
@@ -57,29 +53,46 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            // 点滅開始
+            // ダメージ点滅開始
             isDamage = true;
             damageTimeCount = 0;
         }
     }
 
-    void Die()
+    private void Die()
     {
         if (deadEffect != null)
             Instantiate(deadEffect, transform.position, Quaternion.identity);
-
-        if (shaker != null)
-            shaker.GenerateImpulse();
 
         if (isPlayer)
         {
             Debug.Log("Player Dead!");
             gameManager.DeadEffect();
-            // Destroy(gameObject); ← プレイヤーはすぐ消さない
+
+            if (shaker != null)
+                shaker.GenerateImpulse();  // ← プレイヤー死亡時だけ揺らす
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // 敵は普通に消えるだけ
+        }
+    }
+
+    // ダメージ時の点滅処理
+    private void DamageBlink()
+    {
+        if (!isDamage) return;
+
+        damageTimeCount += Time.deltaTime;
+
+        float value = Mathf.Repeat(damageTimeCount, damageCycle);
+        spriteRenderer.enabled = value >= damageCycle * 0.5f;
+
+        if (damageTimeCount >= damageTime)
+        {
+            damageTimeCount = 0;
+            spriteRenderer.enabled = true;
+            isDamage = false;
         }
     }
 
@@ -88,25 +101,6 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHP = Mathf.Min(maxHP, currentHP + amount);
         Debug.Log("HP回復: " + amount + " 現在HP: " + currentHP);
-    }
-
-   
-    // ダメージ点滅処理
-    private void DamageBlink()
-    {
-        if (!isDamage) return;
-
-        damageTimeCount += Time.deltaTime; // 経過時間を加算
-
-        float value = Mathf.Repeat(damageTimeCount, damageCycle);
-        spriteRenderer.enabled = value >= damageCycle * 0.5f;
-
-        if (damageTimeCount >= damageTime)
-        {
-            damageTimeCount = 0;
-            spriteRenderer.enabled = true; // 最後は表示状態に戻す
-            isDamage = false;
-        }
     }
 }
 
