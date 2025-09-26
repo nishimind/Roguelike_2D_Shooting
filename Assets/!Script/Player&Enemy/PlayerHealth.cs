@@ -3,91 +3,85 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
-{ 
-    
-    // Start is called before the first frame update
+{
     [Header("(PlayerStatusから設定)")]
-        public int maxHP = 10;
-        public int currentHP;
+    public int maxHP = 10;
+    public int currentHP;
     public bool isPlayer;
 
     public PlayerStatus status;
 
-    [SerializeField,Header("死亡時effect")]
+    [SerializeField, Header("死亡時effect")]
     private GameObject deadEffect;
     private GameManager gameManager;
-    //死亡時カメラを揺らす
-    private Cinemachine.CinemachineImpulseSource  shaker;
-    /*
-    //ダメージを受けた際点滅する
-    [SerializeField, Header("点滅時間")]
-    private float damageTime;
-    [SerializeField, Header("点滅周期")]
-    private float damageCyvle;
+    private Cinemachine.CinemachineImpulseSource shaker;
+
+    [Header("ダメージ演出")]
+    [SerializeField, Header("点滅時間(秒)")]
+    private float damageTime = 0.5f;
+    [SerializeField, Header("点滅周期(秒)")]
+    private float damageCycle = 0.1f;
 
     private SpriteRenderer spriteRenderer;
     private float damageTimeCount;
     private bool isDamage;
-    */
-
 
     void Start()
-        {
-            currentHP = maxHP;
-       if(isPlayer) status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
-        
+    {
+        currentHP = maxHP;
+
+        if (isPlayer)
+            status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+
         gameManager = FindObjectOfType<GameManager>();
         shaker = FindObjectOfType<Cinemachine.CinemachineImpulseSource>();
-        /*
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         damageTimeCount = 0;
         isDamage = false;
-        */
-
     }
-    　　
-        /*
-        void Update()
-        {
-        Damage();
-        }
-        */
-        public void TakeDamage(int damage)
-        {
-        //int realDamage = Mathf.Max(0, damage - status.defencePower);
-        //status.damageText.text ="damage:"+damage;
-      //  status.actualDamageText.text= "ActualDamage:"+damage+"-"+status.defencePower+"="+realDamage;
-        currentHP -= damage;
-            if (currentHP <= 0)
-            {
-                currentHP = 0; 
-                Die();
-             if(deadEffect!=null)  Instantiate(deadEffect, transform.position, Quaternion.identity);
-             if(!isPlayer) return;
-               gameManager.DeadEffect();
-               shaker.GenerateImpulse();
 
-        }
-        }
-    /*
-    //ダメージを受けた際の点滅処理
-    private void Damage()
+    void Update()
     {
-        if (!isDamage) return;
-       
-        damageTimeCount += Time.deltaTime; //点滅時間のカウント
+        DamageBlink();
+    }
 
-        float value = Mathf.Repeat(damageTimeCount, damageCyvle);　//点滅周期で繰り返す
-        spriteRenderer.enabled = value >= damageCyvle * 0.5f;
+    public void TakeDamage(int damage)
+    {
+        currentHP -= damage;
 
-        if (damageTimeCount >= damageTime)
+        if (currentHP <= 0)
         {
+            currentHP = 0;
+            Die();
+        }
+        else
+        {
+            // 点滅開始
+            isDamage = true;
             damageTimeCount = 0;
-            spriteRenderer.enabled = true;
-            isDamage = false;
         }
     }
-    */
+
+    void Die()
+    {
+        if (deadEffect != null)
+            Instantiate(deadEffect, transform.position, Quaternion.identity);
+
+        if (shaker != null)
+            shaker.GenerateImpulse();
+
+        if (isPlayer)
+        {
+            Debug.Log("Player Dead!");
+            gameManager.DeadEffect();
+            // Destroy(gameObject); ← プレイヤーはすぐ消さない
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // HPを回復する処理
     public void Heal(int amount)
@@ -96,17 +90,23 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("HP回復: " + amount + " 現在HP: " + currentHP);
     }
 
-    void Die()
+   
+    // ダメージ点滅処理
+    private void DamageBlink()
+    {
+        if (!isDamage) return;
+
+        damageTimeCount += Time.deltaTime; // 経過時間を加算
+
+        float value = Mathf.Repeat(damageTimeCount, damageCycle);
+        spriteRenderer.enabled = value >= damageCycle * 0.5f;
+
+        if (damageTimeCount >= damageTime)
         {
-        // ゲームオーバー処理など
-        if (isPlayer)
-        {
-            Debug.Log("Player Dead!");
+            damageTimeCount = 0;
+            spriteRenderer.enabled = true; // 最後は表示状態に戻す
+            isDamage = false;
         }
-        else {
-            //敵の処理
-            Destroy(gameObject); 
-        }
-        }
-    
+    }
 }
+
