@@ -1,58 +1,46 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
-    public static BulletPool Instance { get; private set; }
-
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int poolSize = 20;
 
-    private Queue<GameObject> pool = new Queue<GameObject>();
+    private readonly Queue<GameObject> pool = new Queue<GameObject>();
 
-    private void Awake()
+    void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-
-        // あらかじめ生成して非アクティブにしておく
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject obj = Instantiate(bulletPrefab);
-            obj.SetActive(false);
-            pool.Enqueue(obj);
-            Camera_Chacker bulletScript = obj.GetComponent<Camera_Chacker>();
-            if (bulletScript != null)
-            {
-                bulletScript.Init(this);
-            }
-
+            var bullet = CreateNewBullet();
+            pool.Enqueue(bullet);
         }
     }
 
-    // 弾を取得
-    public GameObject Get(Vector3 position, Quaternion rotation)
+    private GameObject CreateNewBullet()
     {
-        GameObject obj;
-        if (pool.Count > 0 && !pool.Peek().activeInHierarchy)
-        {
-            obj = pool.Dequeue();
-        }
-        else
-        {
-            obj = Instantiate(bulletPrefab); // 足りなければ追加生成
-        }
-     
+        var obj = Instantiate(bulletPrefab, transform);
+        obj.SetActive(false);
 
-        obj.transform.position = position;
-        obj.transform.rotation = rotation;
-        obj.SetActive(true);
-        pool.Enqueue(obj);
+        // CameraChecker を初期化
+        if (obj.TryGetComponent(out CameraChecker checker))
+            checker.Init(this);
+
         return obj;
     }
-    public void Release(GameObject bullet)
+
+    public GameObject Get(Vector3 position, Quaternion rotation)
     {
-        bullet.SetActive(false);
-        pool.Enqueue(bullet);
+        GameObject obj = pool.Count > 0 ? pool.Dequeue() : CreateNewBullet();
+
+        obj.transform.SetPositionAndRotation(position, rotation);
+        obj.SetActive(true);
+        return obj;
+    }
+
+    public void Release(GameObject obj)
+    {
+        obj.SetActive(false);
+        pool.Enqueue(obj);
     }
 }

@@ -1,25 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-   [SerializeField] private PlayerHealth playerHealth;
-
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        playerHealth = GetComponent<PlayerHealth>();
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
+        var bullet = collision.GetComponent<BulletDamage>();
+        if (bullet != null)
         {
-            BulletDamage bullet = collision.GetComponent<BulletDamage>();
-            if (bullet != null)
+            // É_ÉÅÅ[ÉWèàóù
+            var health = GetComponent<PlayerHealth>();
+            if (health != null)
+                health.TakeDamage(bullet.damage);
+
+            // íeÇè¡Ç∑
+            if (bullet.destroyOnHit)
             {
-                playerHealth.TakeDamage(bullet.damage);
-                if (bullet.ifdestroied) collision.GetComponent<Camera_Chacker>()._pool.Release(bullet.gameObject); // íeÇè¡Ç∑
+                var checker = collision.GetComponent<CameraChecker>();
+                if (checker != null && checker._pool != null)
+                {
+                    checker._pool.Release(collision.gameObject);
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                }
             }
         }
     }

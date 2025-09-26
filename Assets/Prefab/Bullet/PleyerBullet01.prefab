@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1459353640853701225}
   - component: {fileID: 3104467182495172400}
   - component: {fileID: 479878481504877377}
-  - component: {fileID: -5519603930434180693}
   - component: {fileID: 8413936359076726092}
+  - component: {fileID: 9048895880302074606}
   m_Layer: 6
   m_Name: PleyerBullet01
   m_TagString: Bullet
@@ -164,21 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
---- !u!114 &-5519603930434180693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9099611059377426971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d685013a39fad75449646f71f6b5fd0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderer: {fileID: 0}
-  _mainCam: {fileID: 0}
-  _pool: {fileID: 0}
 --- !u!114 &8413936359076726092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,3 +178,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   ifdestroied: 1
+--- !u!114 &9048895880302074606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9099611059377426971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d231c05cd91f4cc47a384c85b671dc87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCam: {fileID: 0}
+  _pool: {fileID: 0}
+  offScreenBuffer: 0.5
