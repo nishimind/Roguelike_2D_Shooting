@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8260571204170313249}
   - component: {fileID: 2567678452020569295}
   - component: {fileID: -1716536376996531578}
-  - component: {fileID: 6428268631132922554}
   - component: {fileID: 9008764417004708373}
   - component: {fileID: 5448860891489335015}
   m_Layer: 7
@@ -164,31 +163,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e46a4da799ce774d976c3eeac43cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPattern: {fileID: 0}
   _shootTime: 0.5
   _bulletPooler: {fileID: 0}
   _moveSpeed: 1
-  _shootTime: 0
-  _bulletPooler: {fileID: 0}
-  _moveSpeed: 1
-  _limitPosY: 3
-  _normalAttackCount: 2
---- !u!114 &6428268631132922554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4980828594183270744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02d5e53d6c7f1384bae1ca6426cab89a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 10
-  currentHP: 0
-  isPlayer: 0
-  status: {fileID: 0}
-  deadEffect: {fileID: 0}
+  initialPattern: {fileID: 0}
+  stopPosY: 2
 --- !u!114 &9008764417004708373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f967bc49da923547b642f7bba1ae5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 6428268631132922554}
 --- !u!114 &5448860891489335015
 MonoBehaviour:
   m_ObjectHideFlags: 0
