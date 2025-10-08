@@ -19,14 +19,14 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
     private string[] stageOrder =
  {
     "Stage2", "Stage3",
-    "MidlleBoss",   // ← 中ボスステージ
+    "MiddleBoss",   // ← 中ボスステージ
     "Stage4", "Stage5", "Stage6",
     "Boss"       // ← 最終ボスステージ
 };
 
     // 現在のステージ番号を保持する変数
     // static にしているのでシーンを跨いでも値が保持される（アプリ終了までは残る）
-    public static int currentStageIndex = 0;
+    public static int currentStageIndex = 1;
 
     void Update()
     {

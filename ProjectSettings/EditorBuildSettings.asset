@@ -16,7 +16,7 @@ EditorBuildSettings:
     guid: 46864ed4f245d264481d9af8c72f0eee
   - enabled: 1
     path: Assets/!Scenes/MainShooting/stage2.unity
-    guid: 7cb0511355c8ea8438a1993616be8dc2
+    guid: 8f37421ef8f87174ab67d57bae8b51d6
   - enabled: 1
     path: Assets/!Scenes/MainShooting/stage1.unity
     guid: b554b1028b0635242802b393faf84589
@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/!Scenes/MainShooting/Boss.unity
     guid: 257b40f4fc86dfc4987ac0d8677c97bb
   - enabled: 1
-    path: Assets/!Scenes/MainShooting/MIdlleBoss.unity
+    path: Assets/!Scenes/MainShooting/MiddleBoss.unity
     guid: 1c8e06e8b0d66b04e813d4529bcabced
   - enabled: 1
     path: Assets/!Scenes/MainShooting/stage4.unity
