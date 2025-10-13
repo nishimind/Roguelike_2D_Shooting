@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6688321107845221927}
+  - component: {fileID: 368448495112270761}
   - component: {fileID: 6475212642131050739}
   - component: {fileID: 1356442575620932766}
   - component: {fileID: 5433436687446089958}
@@ -38,6 +39,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &368448495112270761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3188175799175850438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da6a5b83a0e5f74c8319c8dce085b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItems:
+  - {fileID: 5937261705830432063, guid: 276c6c4edbd68b2459504be9090ee0c8, type: 3}
+  dropCount: 3
+  dropPattern: 0
+  dropForce: 1.68
+  spreadAngle: 29.8
 --- !u!212 &6475212642131050739
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -164,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7f3845940816146a8dd540f7f72d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPattern: {fileID: 0}
   _shootTime: 0.5
   _bulletPooler: {fileID: 0}
   _moveSpeed: 1
@@ -183,6 +203,9 @@ MonoBehaviour:
   currentHP: 0
   isPlayer: 0
   status: {fileID: 0}
+  deadEffect: {fileID: 0}
+  damageTime: 0.5
+  damageCycle: 0.1
 --- !u!114 &5431218344307120865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,7 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f967bc49da923547b642f7bba1ae5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1067333217014179383}
 --- !u!114 &7763788997135959282
 MonoBehaviour:
   m_ObjectHideFlags: 0

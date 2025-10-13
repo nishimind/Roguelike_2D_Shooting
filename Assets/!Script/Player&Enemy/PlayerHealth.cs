@@ -25,9 +25,9 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float damageTimeCount;
     private bool isDamage;
-
+    private EnemyDropper enemyDropper;
     void Start()
-    {
+    { enemyDropper = gameObject.GetComponent<EnemyDropper>();
         currentHP = maxHP;
 
         if (isPlayer)
@@ -79,6 +79,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
+            enemyDropper.DropItems();
             Destroy(gameObject);
         }
     }
