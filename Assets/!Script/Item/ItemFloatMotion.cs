@@ -21,7 +21,7 @@ public class ItemFloatMotion : MonoBehaviour
     public float finalYOffset = 0f;
 
     [Header("吸い込みスピード")]
-    public float moveSpeed = 6f;
+    public float moveSpeed = 10f;
 
     [Header("回収時の消滅までの遅延")]
     public float destroyDelay = 0.05f;

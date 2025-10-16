@@ -102,12 +102,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatHeight: 1.93
   floatUpDuration: 0.97
+  upOffset: 0
   fallDistance: 11.4
   fallDuration: 4.07
   finalYOffset: -8.19
-  moveSpeed: 6
+  moveSpeed: 10.96
   destroyDelay: 0.05
   easeInDuration: 0.2
+  targetPlayer: {fileID: 0}
 --- !u!50 &-8826481992522992082
 Rigidbody2D:
   serializedVersion: 4

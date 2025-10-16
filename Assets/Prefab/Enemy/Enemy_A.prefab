@@ -203,7 +203,7 @@ MonoBehaviour:
   currentHP: 0
   isPlayer: 0
   status: {fileID: 0}
-  deadEffect: {fileID: 8807638285694981379, guid: 610e17a383f8f784282cf32ac75ce8ea, type: 3}
+  deadEffect: {fileID: 0}
   damageTime: 0.5
   damageCycle: 0.1
 --- !u!114 &5431218344307120865
