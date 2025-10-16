@@ -68,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
         if (deadEffect != null)
             Instantiate(deadEffect, transform.position, Quaternion.identity);
 
-        if (shaker != null)
+        if (shaker != null&&isPlayer)
             shaker.GenerateImpulse();
 
         if (isPlayer)

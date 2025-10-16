@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using static UnityEditor.Progress;
 
 public class EnemyDropper : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class EnemyDropper : MonoBehaviour
     public float randomRange = 1f;
 
     [Header("円形配置の半径（Circle用）")]
-    public float circleRadius = 2f;
+    public float circleRadius = 1.3f;
 
     public void DropItems()
     {
@@ -53,8 +54,18 @@ public class EnemyDropper : MonoBehaviour
             );
 
             Vector2 spawnPos = (Vector2)transform.position + offset;
+             
+     var   item =    Instantiate(itemPrefab, spawnPos, Quaternion.identity);
+            switch (dropPattern)
+            {
+                case DropPattern.RandomOffset:
+                    item.GetComponent<ItemFloatMotion>().upOffset = 0.3f;
+                    break;
 
-            Instantiate(itemPrefab, spawnPos, Quaternion.identity);
+                case DropPattern.Circle:
+                    item.GetComponent<ItemFloatMotion>().upOffset = 0;
+                    break;
+            }
         }
     }
 

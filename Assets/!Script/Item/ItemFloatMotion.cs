@@ -6,8 +6,10 @@ public class ItemFloatMotion : MonoBehaviour
     [Header("ふわっと浮く高さ")]
     public float floatHeight = 0.5f;
 
+
     [Header("ふわっと浮く時間")]
     public float floatUpDuration = 0.3f;
+    public float upOffset = 0f;
 
     [Header("落下距離")]
     public float fallDistance = 1.0f;
@@ -51,7 +53,7 @@ public class ItemFloatMotion : MonoBehaviour
             .SetEase(Ease.OutQuad));
 
         // ゆっくり落下
-        fallSequence.Append(transform.DOMoveY(startPos.y - fallDistance + finalYOffset, fallDuration)
+        fallSequence.Append(transform.DOMoveY(startPos.y - fallDistance + finalYOffset, fallDuration + Random.Range(0, upOffset))
             .SetEase(Ease.InQuad));
     }
 
