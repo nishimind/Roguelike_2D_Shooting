@@ -49,11 +49,12 @@ public class ItemFloatMotion : MonoBehaviour
         fallSequence = DOTween.Sequence();
 
         // ふわっと浮く
-        fallSequence.Append(transform.DOMoveY(startPos.y + floatHeight, floatUpDuration)
+        float random = Random.Range(0, upOffset);
+        fallSequence.Append(transform.DOMoveY(startPos.y + floatHeight +random, floatUpDuration-random)
             .SetEase(Ease.OutQuad));
 
         // ゆっくり落下
-        fallSequence.Append(transform.DOMoveY(startPos.y - fallDistance + finalYOffset, fallDuration + Random.Range(0, upOffset))
+        fallSequence.Append(transform.DOMoveY(startPos.y - fallDistance + finalYOffset, fallDuration )
             .SetEase(Ease.InQuad));
     }
 

@@ -1803,6 +1803,14 @@ PrefabInstance:
       propertyPath: initialPattern
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1607433421190515985, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
+      propertyPath: dropCount
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1607433421190515985, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
+      propertyPath: randomRange
+      value: 0.79
+      objectReference: {fileID: 0}
     - target: {fileID: 4980828594183270744, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: m_Name
       value: enemy_C
