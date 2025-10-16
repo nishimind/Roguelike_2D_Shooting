@@ -28,7 +28,7 @@ public class ItemFloatMotion : MonoBehaviour
     public float easeInDuration = 0.2f;
 
     private bool isCollected = false;
-    private Transform targetPlayer;
+    public Transform targetPlayer;
     private Tweener scaleTween;
     private Sequence fallSequence; // ← 追加：アニメーションを保持する変数
     private PlayerStatus status;
@@ -67,7 +67,10 @@ public class ItemFloatMotion : MonoBehaviour
         // 一定距離まで近づいたら吸収完了
         if (Vector2.Distance(transform.position, targetPlayer.position) < 0.2f)
         {
-           if(!isFinished) status.Money += 1;
+            if (!isFinished) { status.Money += 1; 
+                status.collector.PlaySound();
+                status.UpdateMoneyText();
+            }
            isFinished = true;
             Destroy(gameObject, destroyDelay);
         }
@@ -75,6 +78,7 @@ public class ItemFloatMotion : MonoBehaviour
 
     public void Collect(Transform player)
     {
+        Debug.Log("回収");
         if (isCollected) return;
         isCollected = true;
         targetPlayer = player;

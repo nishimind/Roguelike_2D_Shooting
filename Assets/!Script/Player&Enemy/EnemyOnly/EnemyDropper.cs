@@ -25,8 +25,7 @@ public class EnemyDropper : MonoBehaviour
 
     public void DropItems()
     {
-        if (dropItems.Count == 0 || dropCount <= 0)
-            return;
+        if (dropItems.Count == 0 || dropCount <= 0 ) return;
 
         switch (dropPattern)
         {

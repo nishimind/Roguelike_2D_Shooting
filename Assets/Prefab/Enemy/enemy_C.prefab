@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 9008764417004708373}
   - component: {fileID: 4453972334913029329}
   - component: {fileID: 5448860891489335015}
+  - component: {fileID: 1607433421190515985}
   m_Layer: 7
   m_Name: enemy_C
   m_TagString: Enemy
@@ -213,3 +214,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8682a369da0a394fa5d2d2734d2f99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1607433421190515985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980828594183270744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da6a5b83a0e5f74c8319c8dce085b9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropItems:
+  - {fileID: 5937261705830432063, guid: 276c6c4edbd68b2459504be9090ee0c8, type: 3}
+  dropCount: 1
+  dropPattern: 0
+  randomRange: 1
+  circleRadius: 2

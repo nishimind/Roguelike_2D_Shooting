@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -44,7 +45,13 @@ public class PlayerStatus : MonoBehaviour
     public PlayerHealth health;
     public PlayerMovement playerMovement;
     public Dictionary<ItemType, bool> itemFlags = new Dictionary<ItemType, bool>();
+    public ItemCollector collector;
 
+    [Header("アイテム取得時の文字演出")]
+    [SerializeField] private float scaleUpAmount = 1.3f;   // 拡大倍率
+    [SerializeField] private float duration = 0.2f;        // 拡大・縮小にかける時間
+
+    private Vector3 originalScale;
     public void Awake()
     {
         // イベントにイベントハンドラーを追加
@@ -54,6 +61,8 @@ public class PlayerStatus : MonoBehaviour
             Destroy(gameObject); // 既に存在するなら自分を破棄
             return;
         }
+        if (moneyText != null)
+            originalScale = moneyText.rectTransform.localScale;
 
         Instance = this;
         DontDestroyOnLoad(gameObject); // 永続化
@@ -75,7 +84,7 @@ public class PlayerStatus : MonoBehaviour
         //UI表示
         hpText.text = "HP: " + health.currentHP + "/" + health.maxHP;
         powerText.text="Power:"+attackPower;
-        moneyText.text="Money:"+Money;
+        moneyText.text= Money.ToString();
         defenceText.text= "Defence:" + defencePower;
         shootTimeText.text="shootTime:"+shootTime;
         speedText.text = "speed:" + speed;
@@ -105,6 +114,7 @@ public class PlayerStatus : MonoBehaviour
         {
             health = player.GetComponent<PlayerHealth>();
             playerMovement = player.GetComponent<PlayerMovement>();
+         collector = player.GetComponentInChildren<ItemCollector>();
 
             health.maxHP = maxHp;
 
@@ -117,6 +127,23 @@ public class PlayerStatus : MonoBehaviour
 
         }
     }
-    
-   
+
+    public void UpdateMoneyText()
+    {
+      
+
+        // 既にアニメーション中なら一旦リセット
+        moneyText.rectTransform.DOKill();
+
+        // DOTweenで「拡大 → 戻る」アニメーション
+        moneyText.rectTransform
+            .DOScale(originalScale * scaleUpAmount, duration)
+            .SetEase(Ease.OutQuad)
+            .OnComplete(() =>
+            {
+                moneyText.rectTransform
+                    .DOScale(originalScale, duration)
+                    .SetEase(Ease.InQuad);
+            });
+    }
 }

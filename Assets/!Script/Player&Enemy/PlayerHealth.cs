@@ -79,7 +79,7 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            enemyDropper.DropItems();
+            enemyDropper?.DropItems();
             Destroy(gameObject);
         }
     }
