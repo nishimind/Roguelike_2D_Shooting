@@ -81,7 +81,7 @@ public class ItemFloatMotion : MonoBehaviour
 
     public void Collect(Transform player)
     {
-        Debug.Log("回収");
+     //   Debug.Log("回収");
         if (isCollected) return;
         isCollected = true;
         targetPlayer = player;
