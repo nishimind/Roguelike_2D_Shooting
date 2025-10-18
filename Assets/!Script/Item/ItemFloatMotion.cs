@@ -3,6 +3,8 @@ using DG.Tweening;
 
 public class ItemFloatMotion : MonoBehaviour
 {
+    [Header("お金の額")]
+    public int value=1;
     [Header("ふわっと浮く高さ")]
     public float floatHeight = 0.5f;
 
@@ -70,7 +72,7 @@ public class ItemFloatMotion : MonoBehaviour
         // 一定距離まで近づいたら吸収完了
         if (Vector2.Distance(transform.position, targetPlayer.position) < 0.2f)
         {
-            if (!isFinished) { status.Money += 1; 
+            if (!isFinished) { status.Money += value; 
                 status.collector.PlaySound();
                 status.UpdateMoneyText();
             }
