@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using static UnityEditor.Progress;
 
 public class EnemyDropper : MonoBehaviour
 {
@@ -9,11 +8,16 @@ public class EnemyDropper : MonoBehaviour
         RandomOffset, // 少しランダムにずらして配置
         Circle         // 円形に均等配置
     }
-    [Header("ドロップするアイテム一覧")]
-    public List<GameObject> dropItems = new List<GameObject>();
 
-    [Header("ドロップ数")]
-    public int dropCount = 3;
+    [System.Serializable]
+    public class DropItemInfo
+    {
+        public GameObject prefab; // ドロップするプレハブ
+        public int count = 1;     // ドロップする数
+    }
+
+    [Header("ドロップするアイテムと数")]
+    public List<DropItemInfo> dropItems = new List<DropItemInfo>();
 
     [Header("ドロップ配置パターン")]
     public DropPattern dropPattern = DropPattern.RandomOffset;
@@ -26,58 +30,51 @@ public class EnemyDropper : MonoBehaviour
 
     public void DropItems()
     {
-        if (dropItems.Count == 0 || dropCount <= 0 ) return;
+        if (dropItems.Count == 0) return;
 
-        switch (dropPattern)
+        foreach (var drop in dropItems)
         {
-            case DropPattern.RandomOffset:
-                DropRandomOffset();
-                break;
+            if (drop.prefab == null || drop.count <= 0) continue;
 
-            case DropPattern.Circle:
-                DropCircle();
-                break;
-        }
-    }
-
-    // ランダムに少しずらして配置
-    private void DropRandomOffset()
-    {
-        for (int i = 0; i < dropCount; i++)
-        {
-            GameObject itemPrefab = dropItems[Random.Range(0, dropItems.Count)];
-
-            // ランダムなずれ位置を計算
-            Vector2 offset = new Vector2(
-                Random.Range(-randomRange, randomRange),
-                Random.Range(-randomRange/3, randomRange/3)
-            );
-
-            Vector2 spawnPos = (Vector2)transform.position + offset;
-             
-     var   item =    Instantiate(itemPrefab, spawnPos, Quaternion.identity);
             switch (dropPattern)
             {
                 case DropPattern.RandomOffset:
-                    item.GetComponent<ItemFloatMotion>().upOffset = 0.3f;
+                    DropRandomOffset(drop);
                     break;
 
                 case DropPattern.Circle:
-                    item.GetComponent<ItemFloatMotion>().upOffset = 0;
+                    DropCircle(drop);
                     break;
             }
         }
     }
 
-    // 円形に均等配置
-    private void DropCircle()
+    // ランダムに少しずらして配置
+    private void DropRandomOffset(DropItemInfo drop)
     {
-        for (int i = 0; i < dropCount; i++)
+        for (int i = 0; i < drop.count; i++)
         {
-            GameObject itemPrefab = dropItems[Random.Range(0, dropItems.Count)];
+            Vector2 offset = new Vector2(
+                Random.Range(-randomRange, randomRange),
+                Random.Range(-randomRange / 3, randomRange / 3)
+            );
 
-            // 円形配置の角度を計算（均等に分布）
-            float angle = (360f / dropCount) * i;
+            Vector2 spawnPos = (Vector2)transform.position + offset;
+
+            var item = Instantiate(drop.prefab, spawnPos, Quaternion.identity);
+
+            var floatMotion = item.GetComponent<ItemFloatMotion>();
+            if (floatMotion != null)
+                floatMotion.upOffset = 0.3f;
+        }
+    }
+
+    // 円形に均等配置
+    private void DropCircle(DropItemInfo drop)
+    {
+        for (int i = 0; i < drop.count; i++)
+        {
+            float angle = (360f / drop.count) * i;
             float rad = angle * Mathf.Deg2Rad;
 
             Vector2 offset = new Vector2(
@@ -87,7 +84,11 @@ public class EnemyDropper : MonoBehaviour
 
             Vector2 spawnPos = (Vector2)transform.position + offset;
 
-            Instantiate(itemPrefab, spawnPos, Quaternion.identity);
+            var item = Instantiate(drop.prefab, spawnPos, Quaternion.identity);
+
+            var floatMotion = item.GetComponent<ItemFloatMotion>();
+            if (floatMotion != null)
+                floatMotion.upOffset = 0;
         }
     }
 }

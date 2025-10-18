@@ -227,8 +227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItems:
-  - {fileID: 5937261705830432063, guid: 276c6c4edbd68b2459504be9090ee0c8, type: 3}
-  dropCount: 1
+  - prefab: {fileID: 5937261705830432063, guid: 276c6c4edbd68b2459504be9090ee0c8, type: 3}
+    count: 5
   dropPattern: 0
-  randomRange: 1
+  randomRange: 0.79
   circleRadius: 2
