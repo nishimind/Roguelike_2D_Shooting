@@ -77,6 +77,7 @@ public class ItemFloatMotion : MonoBehaviour
            isFinished = true;
             Destroy(gameObject, destroyDelay);
         }
+        if(transform.position.y < -5) Destroy(gameObject);
     }
 
     public void Collect(Transform player)
