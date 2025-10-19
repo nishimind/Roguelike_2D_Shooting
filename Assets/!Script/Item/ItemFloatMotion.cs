@@ -62,6 +62,7 @@ public class ItemFloatMotion : MonoBehaviour
 
     private void Update()
     {
+        if (transform.position.y < -7.5f) Destroy(gameObject);
         if (!isCollected || targetPlayer == null)
             return;
 
@@ -79,7 +80,7 @@ public class ItemFloatMotion : MonoBehaviour
            isFinished = true;
             Destroy(gameObject, destroyDelay);
         }
-        if(transform.position.y < -5) Destroy(gameObject);
+      
     }
 
     public void Collect(Transform player)

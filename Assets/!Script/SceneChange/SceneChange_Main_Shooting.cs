@@ -6,6 +6,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
 {
     // 敵を格納する配列（毎フレーム GameObject.Find で更新される）
     private GameObject[] enemyBox;
+    private GameObject[] itemBox;
 
     // プレイヤーを格納する配列
     private GameObject[] player;
@@ -35,12 +36,12 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
 
         // タグ "Enemy" のついた全オブジェクトを取得
         enemyBox = GameObject.FindGameObjectsWithTag("Enemy");
-
+        itemBox = GameObject.FindGameObjectsWithTag("Item");
         // タグ "Player" のついた全オブジェクトを取得
         player = GameObject.FindGameObjectsWithTag("Player");
 
         // 敵が全滅した場合
-        if (enemyBox.Length == 0)
+        if (enemyBox.Length == 0&&itemBox.Length==0)
         {
             // 2秒後に Shop へ移動
             // 第3引数 true → 「このあと次のステージに進む」ことを示す

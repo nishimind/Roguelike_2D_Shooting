@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: -8602174912329193211}
   - component: {fileID: -6329329225570887016}
   - component: {fileID: 3878503168958206743}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "\u304A\u91D1"
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75d31e807df3fa4292f872f80e1a1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  value: 1
   floatHeight: 1.93
   floatUpDuration: 0.97
   upOffset: 0
