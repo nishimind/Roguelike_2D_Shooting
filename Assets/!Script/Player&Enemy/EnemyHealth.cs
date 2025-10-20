@@ -1,41 +1,21 @@
 using UnityEngine;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : HealthBase
 {
-    [Header("敵のHP設定")]
-    public int maxHP = 5;
+    [Header("最大HP")]
+    public int maxHP = 10;
+
+    [Header("現在HP")]
     public int currentHP;
+    private EnemyDropper enemyDropper;
 
-    [SerializeField, Header("死亡時effect")]
-    private GameObject deadEffect;
-
-    [Header("ダメージ演出")]
-    [SerializeField, Tooltip("点滅時間(秒)")]
-    private float damageTime = 0.3f;
-    [SerializeField, Tooltip("点滅周期(秒)")]
-    private float damageCycle = 0.1f;
-
-    private SpriteRenderer spriteRenderer;
-    private float damageTimeCount;
-    private bool isDamage;
-
-    private Color originalColor;
-
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         currentHP = maxHP;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color; // 元の色を保存
-        damageTimeCount = 0;
-        isDamage = false;
+        enemyDropper = GetComponent<EnemyDropper>();
     }
-
-    void Update()
-    {
-        DamageBlink();
-    }
-
-    public void TakeDamage(int damage)
+   protected override void TakeDamage(int damage)
     {
         currentHP -= damage;
 
@@ -46,37 +26,16 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            // 点滅開始
-            isDamage = true;
-            damageTimeCount = 0;
+            StartBlink();
         }
     }
-
-    private void Die()
+    protected override void Die()
     {
         if (deadEffect != null)
             Instantiate(deadEffect, transform.position, Quaternion.identity);
 
-        Destroy(gameObject); // 敵はそのまま消す
-    }
+        enemyDropper?.DropItems();
 
-    // ダメージ点滅処理（赤点滅）
-    private void DamageBlink()
-    {
-        if (!isDamage) return;
-
-        damageTimeCount += Time.deltaTime;
-
-        float value = Mathf.Repeat(damageTimeCount, damageCycle);
-
-        // 点滅中は赤く → そうでなければ元の色
-        spriteRenderer.color = (value < damageCycle * 0.5f) ? Color.red : originalColor;
-
-        if (damageTimeCount >= damageTime)
-        {
-            damageTimeCount = 0;
-            spriteRenderer.color = originalColor; // 元に戻す
-            isDamage = false;
-        }
+        Destroy(gameObject);
     }
 }

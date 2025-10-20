@@ -37,7 +37,7 @@ public class CardData : ScriptableObject
                 break;
 
             case CardEffectType.Heal:
-                player.health.currentHP = Mathf.Min(player.maxHp, player.health.currentHP + Mathf.CeilToInt(effectValue));
+                player.currentHP = Mathf.Min(player.maxHP, player.currentHP + Mathf.CeilToInt(effectValue));
                 break;
 
             case CardEffectType.Defence:

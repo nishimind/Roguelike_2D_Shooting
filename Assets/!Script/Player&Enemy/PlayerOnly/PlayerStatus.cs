@@ -12,7 +12,8 @@ public class PlayerStatus : MonoBehaviour
 
 
     [Header("ステータス")]
-    public int maxHp = 100;
+    public int maxHP = 100;
+public int currentHP = 100;
     public int Money = 200;
     public int attackPower = 10;
     public int defencePower = 0;
@@ -79,15 +80,14 @@ public class PlayerStatus : MonoBehaviour
     }
     private void Update()
     {
-       if(health!=null) health.maxHP = maxHp;
-        //Updateで合わせてもいいのか？
+      
 
         playerMovement.bullletPower = attackPower;
         playerMovement._shootTime = shootTime;
         playerMovement.moveSpeed=speed;
 
         //UI表示
-        hpText.text = "HP: " + health.currentHP + "/" + health.maxHP;
+        hpText.text = "HP: " +currentHP + "/" + maxHP;
         powerText.text="Power:"+attackPower;
         moneyText.text= Money.ToString();
         defenceText.text= "Defence:" + defencePower;
@@ -121,8 +121,7 @@ public class PlayerStatus : MonoBehaviour
             playerMovement = player.GetComponent<PlayerMovement>();
          collector = player.GetComponentInChildren<ItemCollector>();
 
-            health.maxHP = maxHp;
-
+        
             playerMovement.bullletPower = attackPower;
             playerMovement._shootTime = shootTime;
         }

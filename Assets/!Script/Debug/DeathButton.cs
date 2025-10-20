@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeathButton : MonoBehaviour
 {
-    public PlayerHealth health;
+    public HealthBase health;
     // Start is called before the first frame update
-  public void Death() { health.currentHP = 0; }
+ // public void Death() { health.currentHP = 0; }
 }
