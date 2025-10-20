@@ -2,11 +2,7 @@ using UnityEngine;
 
 public abstract class HealthBase : MonoBehaviour
 {
-    [Header("最大HP")]
-    public int maxHP = 10;
-
-    [Header("現在HP")]
-    protected int currentHP;
+  
 
     [SerializeField, Header("死亡時effect")]
     protected GameObject deadEffect;
@@ -23,7 +19,7 @@ public abstract class HealthBase : MonoBehaviour
 
     protected virtual void Start()
     {
-        currentHP = maxHP;
+       
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -32,19 +28,9 @@ public abstract class HealthBase : MonoBehaviour
         DamageBlink();
     }
 
-    public virtual void TakeDamage(int damage)
+    protected virtual void TakeDamage(int damage)
     {
-        currentHP -= damage;
-
-        if (currentHP <= 0)
-        {
-            currentHP = 0;
-            Die();
-        }
-        else
-        {
-            StartBlink();
-        }
+      
     }
 
     protected void StartBlink()
@@ -71,11 +57,7 @@ public abstract class HealthBase : MonoBehaviour
     }
 
     // 共通：回復処理
-    public virtual void Heal(int amount)
-    {
-        currentHP = Mathf.Min(maxHP, currentHP + amount);
-        Debug.Log($"{gameObject.name} が {amount} 回復。現在HP: {currentHP}");
-    }
+  
 
     // 派生クラスで具体的な死の挙動を定義する
     protected abstract void Die();

@@ -2,15 +2,33 @@ using UnityEngine;
 
 public class EnemyHealth : HealthBase
 {
-    private EnemyDropper enemyDropper;
+    [Header("Å‘åHP")]
+    public int maxHP = 10;
 
+    [Header("Œ»İHP")]
+    public int currentHP;
+    private EnemyDropper enemyDropper;
 
     protected override void Start()
     {
-        base.Start(); // HealthBase.Start() ‚ÌŒÄ‚Ño‚µ
+        base.Start();
+        currentHP = maxHP;
         enemyDropper = GetComponent<EnemyDropper>();
     }
+   protected override void TakeDamage(int damage)
+    {
+        currentHP -= damage;
 
+        if (currentHP <= 0)
+        {
+            currentHP = 0;
+            Die();
+        }
+        else
+        {
+            StartBlink();
+        }
+    }
     protected override void Die()
     {
         if (deadEffect != null)
