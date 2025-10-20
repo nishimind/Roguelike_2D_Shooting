@@ -28,7 +28,7 @@ public abstract class HealthBase : MonoBehaviour
         DamageBlink();
     }
 
-    protected virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
       
     }

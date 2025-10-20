@@ -15,7 +15,7 @@ public class EnemyHealth : HealthBase
         currentHP = maxHP;
         enemyDropper = GetComponent<EnemyDropper>();
     }
-   protected override void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         currentHP -= damage;
 

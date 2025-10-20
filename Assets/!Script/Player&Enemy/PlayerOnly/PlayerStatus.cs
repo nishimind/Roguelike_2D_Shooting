@@ -70,7 +70,7 @@ public int currentHP = 100;
 
         Instance = this;
         DontDestroyOnLoad(gameObject); // ‰i‘±‰»
-
+        currentHP=maxHP;
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2567678452020569295}
   - component: {fileID: -1716536376996531578}
   - component: {fileID: 9008764417004708373}
-  - component: {fileID: 4453972334913029329}
+  - component: {fileID: 3813029002301012428}
   - component: {fileID: 5448860891489335015}
   - component: {fileID: 1607433421190515985}
   m_Layer: 7
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f967bc49da923547b642f7bba1ae5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4453972334913029329
+--- !u!114 &3813029002301012428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,16 +192,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4980828594183270744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02d5e53d6c7f1384bae1ca6426cab89a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b603f5761eb64c41932e47239c67850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 5
-  currentHP: 0
-  isPlayer: 0
-  status: {fileID: 0}
   deadEffect: {fileID: 8807638285694981379, guid: 610e17a383f8f784282cf32ac75ce8ea, type: 3}
   damageTime: 0.5
   damageCycle: 0.1
+  maxHP: 10
+  currentHP: 0
 --- !u!114 &5448860891489335015
 MonoBehaviour:
   m_ObjectHideFlags: 0

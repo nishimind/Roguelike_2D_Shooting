@@ -1,14 +1,15 @@
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
-{
+{public HealthBase health;
+    void Start() { health = GetComponent<HealthBase>(); }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var bullet = collision.GetComponent<BulletDamage>();
         if (bullet != null)
         {
             // É_ÉÅÅ[ÉWèàóù
-            var health = GetComponent<PlayerHealth>();
+           
             if (health != null)
                 health.TakeDamage(bullet.damage);
 
