@@ -153,7 +153,7 @@ public class PlayerStatus : MonoBehaviour
     }
 public void GenerateOption()
     {
-      if(option1)  Instantiate(option1prefab, player.transform.position+new Vector3(0.5f,0,0), Quaternion.identity, player.transform);
+     // if(option1)  Instantiate(option1prefab, player.transform.position+new Vector3(0.5f,0,0), Quaternion.identity, player.transform);
 
     }
 }

@@ -4,10 +4,9 @@ public class EnemyHealth : HealthBase
 {
     private EnemyDropper enemyDropper;
 
-
     protected override void Start()
     {
-        base.Start(); // HealthBase.Start() ‚ÌŒÄ‚Ño‚µ
+        base.Start();
         enemyDropper = GetComponent<EnemyDropper>();
     }
 
