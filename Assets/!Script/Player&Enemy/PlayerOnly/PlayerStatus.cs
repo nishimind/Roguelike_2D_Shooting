@@ -52,6 +52,9 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] private float duration = 0.2f;        // 拡大・縮小にかける時間
 
     private Vector3 originalScale;
+    [Header("オプション関係")]
+    public bool option1;
+    public GameObject option1prefab;
     public void Awake()
     {
         // イベントにイベントハンドラーを追加
@@ -71,6 +74,8 @@ public class PlayerStatus : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         FindPlayer();
+        //オプション
+        GenerateOption();
     }
     private void Update()
     {
@@ -145,5 +150,10 @@ public class PlayerStatus : MonoBehaviour
                     .DOScale(originalScale, duration)
                     .SetEase(Ease.InQuad);
             });
+    }
+public void GenerateOption()
+    {
+      if(option1)  Instantiate(option1prefab, player.transform.position+new Vector3(0.5f,0,0), Quaternion.identity, player.transform);
+
     }
 }
