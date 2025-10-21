@@ -32,7 +32,7 @@ public class BulletPool : MonoBehaviour
     public GameObject Get(Vector3 position, Quaternion rotation)
     {
         GameObject obj = pool.Count > 0 ? pool.Dequeue() : CreateNewBullet();
-
+        obj.GetComponent<BulletDamage>().grazed = false;
         obj.transform.SetPositionAndRotation(position, rotation);
         obj.SetActive(true);
         return obj;

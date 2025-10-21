@@ -18,9 +18,11 @@ public class GrazeCollision : CollisionBase
   
         protected override void TakeDamage(Collider2D collision)
     {
+        var bullet = collision.GetComponent<BulletDamage>();
+        if (bullet.grazed) return;
         if (grazeClip != null)
             audio.PlayOneShot(grazeClip, 0.3f);
-
+        bullet.grazed = true;
         // パーティクルをプールから取得
         if (GrazeEffectPool != null)
             GrazeEffectPool.GetEffect(transform.position);
