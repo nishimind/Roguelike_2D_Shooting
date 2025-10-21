@@ -8,9 +8,11 @@ public class GrazeCollision : CollisionBase
     public AudioClip grazeClip;
     public AudioSource audio;
     public GrazeEffectPool GrazeEffectPool;
+    public PlayerStatus status;
     // Start is called before the first frame update
    protected override void Start()
     {
+        status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
         
     }
 
@@ -20,6 +22,8 @@ public class GrazeCollision : CollisionBase
     {
         var bullet = collision.GetComponent<BulletDamage>();
         if (bullet.grazed) return;
+
+        status.grazeCount++;
         if (grazeClip != null)
             audio.PlayOneShot(grazeClip, 0.3f);
         bullet.grazed = true;

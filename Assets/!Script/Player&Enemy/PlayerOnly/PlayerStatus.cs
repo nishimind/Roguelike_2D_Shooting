@@ -19,7 +19,7 @@ public int currentHP = 100;
     public int defencePower = 0;
     public float speed = 5;
     public float shootTime = 0.5f;
-
+    public int grazeCount=0;
     public enum ItemType
     {
         Key,
@@ -37,6 +37,7 @@ public int currentHP = 100;
     [SerializeField] public TextMeshProUGUI actualDamageText;
     [SerializeField] public TextMeshProUGUI speedText;
     [SerializeField] public TextMeshProUGUI shootTimeText;
+    [SerializeField] public TextMeshProUGUI grazeCountText;
 
     [Header("ショット設定")]
     public List<GameObject> availableShots = new List<GameObject>(); // 使用可能なショットのプレハブ
@@ -93,6 +94,7 @@ public int currentHP = 100;
         defenceText.text= "Defence:" + defencePower;
         shootTimeText.text="shootTime:"+shootTime;
         speedText.text = "speed:" + speed;
+        grazeCountText.text="graze:"+grazeCount;
 
     }
     // 新しいショットを追加する処理
