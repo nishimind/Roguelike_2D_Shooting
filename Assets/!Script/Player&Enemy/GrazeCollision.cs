@@ -21,6 +21,8 @@ public class GrazeCollision : CollisionBase
         protected override void TakeDamage(Collider2D collision)
     {
         var bullet = collision.GetComponent<BulletDamage>();
+        // BulletDamage ‚ª‚Â‚¢‚Ä‚¢‚È‚¯‚ê‚Îˆ—‚ğ’†’f
+        if (bullet == null) return;
         if (bullet.grazed) return;
 
         status.grazeCount++;
