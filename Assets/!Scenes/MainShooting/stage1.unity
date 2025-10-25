@@ -1416,6 +1416,9 @@ MonoBehaviour:
   preSpecialWait: 1
   postSpecialWait: 2
   stopPosY: 2
+  firstFallSpeed: 3
+  stopDuration: 10
+  secondFallSpeed: 2
 --- !u!1 &985279114
 GameObject:
   m_ObjectHideFlags: 0
