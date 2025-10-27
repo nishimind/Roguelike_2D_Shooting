@@ -5,7 +5,9 @@ using UnityEngine;
 public class CollisionBase : MonoBehaviour
 {
     public HealthBase health;
- 
+    private Dictionary<Collider2D, float> nextDamageTime = new();
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
        TakeDamage(collision);
@@ -34,5 +36,28 @@ public class CollisionBase : MonoBehaviour
                 }
             }
         }
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        var bullet = collision.GetComponent<BulletDamage>();
+        if (bullet == null) return;
+
+        // destroyOnHit=false（つまりレーザーなど）の場合だけ継続処理
+        if (bullet.destroyOnHit) return;
+
+        if (!nextDamageTime.ContainsKey(collision))
+            nextDamageTime[collision] = 0f;
+
+        if (Time.time >= nextDamageTime[collision])
+        {
+            TakeDamage(collision);
+            nextDamageTime[collision] = Time.time + bullet.damageInterval;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (nextDamageTime.ContainsKey(collision))
+            nextDamageTime.Remove(collision);
     }
 }
