@@ -10,7 +10,7 @@ public class GrazeCollision : CollisionBase
     public GrazeEffectPool GrazeEffectPool;
     public PlayerStatus status;
     // Start is called before the first frame update
-   protected override void Start()
+     void Start()
     {
         status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
         

@@ -46,6 +46,7 @@ public int currentHP = 100;
     public GameObject player;
     public PlayerHealth health;
     public PlayerMovement playerMovement;
+    public int x;
     public Dictionary<ItemType, bool> itemFlags = new Dictionary<ItemType, bool>();
     public ItemCollector collector;
 
@@ -68,7 +69,7 @@ public int currentHP = 100;
         }
         if (moneyText != null)
             originalScale = moneyText.rectTransform.localScale;
-
+        
         Instance = this;
         DontDestroyOnLoad(gameObject); // ‰i‘±‰»
         currentHP=maxHP;
@@ -83,9 +84,8 @@ public int currentHP = 100;
     {
       
 
-        playerMovement.bullletPower = attackPower;
-        playerMovement._shootTime = shootTime;
-        playerMovement.moveSpeed=speed;
+      
+      
 
         //UI•\Ž¦
         hpText.text = "HP: " +currentHP + "/" + maxHP;
@@ -124,8 +124,7 @@ public int currentHP = 100;
          collector = player.GetComponentInChildren<ItemCollector>();
 
         
-            playerMovement.bullletPower = attackPower;
-            playerMovement._shootTime = shootTime;
+        
         }
         else
         {

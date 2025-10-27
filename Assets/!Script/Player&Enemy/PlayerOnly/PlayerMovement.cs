@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     //sampleコメントいいいいいいい
     //a
     [Header("移動速度(PlayerStatusから設定)")]
-    public float moveSpeed = 5f;
+
     public float slowMultiplier = 0.3f;
 
     [Header("移動範囲")]
@@ -21,11 +21,10 @@ public class PlayerMovement : MonoBehaviour
     //private GameObject _bullet;
     [Header("弾のプーラー")]
     public BulletPool _bulletPooler;
-    [Header("弾の威力(PlayerStatusから設定)")]
-    public int bullletPower=1;
+ 
     [SerializeField, Header("発射する時間(PlayerStatusから設定)")]
-    public float _shootTime;
-
+   
+    public PlayerStatus playerStatus;
 
     private Vector2 moveInput;            // スティック入力
     private bool isSlow;                  // 減速状態
@@ -42,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     private LastDir lastHorizontal = LastDir.None;
 
     private void Awake()
-    {
+    {playerStatus = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
         rb = GetComponent<Rigidbody2D>();
         shootCount = 0f;
     }
@@ -109,12 +108,12 @@ public class PlayerMovement : MonoBehaviour
 
         //弾を撃つ処理を移動させました, 弾発射処理を軽い方式に修正
         shootCount += Time.deltaTime;
-        if (shotPressed && shootCount >= _shootTime)
+        if (shotPressed && shootCount >= playerStatus.shootTime)
         {
           if(_bulletPooler!=null)
             {
                 GameObject bullet=_bulletPooler.Get(transform.position, transform.rotation);
-            bullet.GetComponent<BulletDamage>().damage=bullletPower;
+            bullet.GetComponent<BulletDamage>().damage=playerStatus.attackPower;
             shootCount = 0f;
              }
         }
@@ -136,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         finalInput = Vector2.ClampMagnitude(finalInput, 1f);
 
         // 速度適用
-        float currentSpeed = isSlow ? moveSpeed * slowMultiplier : moveSpeed;
+        float currentSpeed = isSlow ? playerStatus.speed * slowMultiplier : playerStatus.speed;
         rb.velocity = finalInput * currentSpeed;
     }
 

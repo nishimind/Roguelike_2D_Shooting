@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollisionBase : MonoBehaviour
 {
     public HealthBase health;
-    protected virtual void Start() { health = GetComponent<HealthBase>(); }
+ 
     private void OnTriggerEnter2D(Collider2D collision)
     {
        TakeDamage(collision);
