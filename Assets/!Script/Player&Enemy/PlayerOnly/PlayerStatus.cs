@@ -58,6 +58,12 @@ public int currentHP = 100;
     [Header("オプション関係")]
     public bool option1;
     public GameObject option1prefab;
+    [SerializeField] private OptionTable optionTable; // 設定ファイル参照
+    [SerializeField] private float radius = 2f;       // プレイヤーからの距離
+    [SerializeField] private float spacing = 1.5f;    // 横並びの間隔
+
+
+
     public void Awake()
     {
         // イベントにイベントハンドラーを追加
@@ -151,9 +157,59 @@ public int currentHP = 100;
                     .SetEase(Ease.InQuad);
             });
     }
-public void GenerateOption()
+    public void GenerateOption()
     {
-      if(option1)  Instantiate(option1prefab, player.transform.position+new Vector3(0.5f,0,0), Quaternion.identity, player.transform);
+        foreach (var option in optionTable.options)
+        {
+            switch (option.optionName)
+            {
+                case "Option1": // 円形配置
+                    GenerateCircle(option);
+                    break;
 
+                case "Option2": // 横並び
+                    GenerateLine(option);
+                    break;
+
+                default:
+                    Debug.LogWarning("未定義の配置方法: " + option.optionName);
+                    break;
+            }
+        }
+    }
+
+    // 円形配置
+    private void GenerateCircle(OptionData option)
+    {
+        int count = option.count;
+        for (int i = 0; i < count; i++)
+        {
+            // 角度を均等に割り振る
+            float angle = i * Mathf.PI * 2f / count;
+
+            // x,z座標計算（Yはプレイヤーと同じ高さ）
+            Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f) * radius;
+
+            GameObject opt = Instantiate(option.optionPrefab, player.transform.position + offset, Quaternion.identity);
+
+            // プレイヤーを中心に向ける場合
+            // opt.transform.LookAt(player.position);
+
+            // プレイヤーの子にして追従
+            opt.transform.SetParent(player.transform);
+        }
+    }
+
+    // 横並び配置
+    private void GenerateLine(OptionData option)
+    {
+        int count = option.count;
+        float startX = -(count - 1) * spacing / 2f; // 中心揃え
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 offset = new Vector3(startX + i * spacing, 0f, 0f);
+            GameObject opt = Instantiate(option.optionPrefab, player.transform.position + offset, Quaternion.identity);
+            opt.transform.SetParent(player.transform);
+        }
     }
 }
