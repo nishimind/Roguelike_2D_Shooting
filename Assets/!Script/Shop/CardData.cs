@@ -16,6 +16,7 @@ public class CardData : ScriptableObject
         Defence,
         Speed,
         ShootTime,
+        AddOption
 
     }
     public CardEffectType effectType;
@@ -52,6 +53,8 @@ public class CardData : ScriptableObject
                 player.shootTime -= effectValue;
                 break;
 
+                case CardEffectType.AddOption:  
+                break;
         }
     }
 }

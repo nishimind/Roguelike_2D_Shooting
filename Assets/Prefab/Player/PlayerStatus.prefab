@@ -950,11 +950,15 @@ MonoBehaviour:
   player: {fileID: 0}
   health: {fileID: 0}
   playerMovement: {fileID: 0}
+  x: 0
   collector: {fileID: 0}
   scaleUpAmount: 1.1
   duration: 0.2
   option1: 0
   option1prefab: {fileID: 0}
+  optionTable: {fileID: 11400000, guid: fdc1572df4a0eae49aa87b87ea62bfc6, type: 2}
+  radius: 0.5
+  spacing: 0.5
 --- !u!1 &6045805930156839172
 GameObject:
   m_ObjectHideFlags: 0
