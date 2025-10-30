@@ -33,21 +33,21 @@ public abstract class HealthBase : MonoBehaviour
       
     }
 
-    protected void StartBlink()
+    protected virtual void StartBlink()
     {
         isDamage = true;
         damageTimeCount = 0;
     }
 
     // ‹¤’ÊF“_–Åˆ—
-    private void DamageBlink()
+    protected virtual void DamageBlink()
     {
         if (!isDamage) return;
-
+       
         damageTimeCount += Time.deltaTime;
         float value = Mathf.Repeat(damageTimeCount, damageCycle);
         spriteRenderer.enabled = value >= damageCycle * 0.5f;
-
+        Debug.Log("Blink");
         if (damageTimeCount >= damageTime)
         {
             damageTimeCount = 0;

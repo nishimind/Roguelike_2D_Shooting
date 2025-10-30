@@ -24,7 +24,10 @@ public class EnemyHealth : HealthBase
             currentHP = 0;
             Die();
         }
-     
+      /*  else
+        {
+            StartBlink();
+        }*/
     }
     protected override void Die()
     {
@@ -32,7 +35,7 @@ public class EnemyHealth : HealthBase
             Instantiate(deadEffect, transform.position, Quaternion.identity);
 
         enemyDropper?.DropItems();
-
+      //  Debug.Log("EnemyŽ€–S");
         Destroy(gameObject);
     }
 }
