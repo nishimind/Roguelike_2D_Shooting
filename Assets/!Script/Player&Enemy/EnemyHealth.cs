@@ -24,10 +24,7 @@ public class EnemyHealth : HealthBase
             currentHP = 0;
             Die();
         }
-        else
-        {
-            StartBlink();
-        }
+     
     }
     protected override void Die()
     {

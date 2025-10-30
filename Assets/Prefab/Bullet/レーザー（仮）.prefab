@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8540954798949859441}
   - component: {fileID: 8580814733248287030}
   - component: {fileID: 2375468255801100077}
+  - component: {fileID: -9032053937076234221}
   m_Layer: 7
   m_Name: "\u30EC\u30FC\u30B6\u30FC\uFF08\u4EEE\uFF09"
   m_TagString: Bullet
@@ -147,3 +148,30 @@ MonoBehaviour:
   destroyOnHit: 0
   grazed: 0
   damageInterval: 0.2
+--- !u!50 &-9032053937076234221
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6018181850388617149}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0.001
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
