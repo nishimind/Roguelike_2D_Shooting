@@ -6,6 +6,7 @@ public class PlayerHealth : HealthBase
     private PlayerStatus status;
     private GameManager gameManager;
     private CinemachineImpulseSource shaker;
+    private bool isDead = false;
 
     protected override void Start()
     {
@@ -24,9 +25,10 @@ public class PlayerHealth : HealthBase
     {
         status.currentHP -= damage;
 
-        if (status.currentHP <= 0)
+        if (status.currentHP <= 0 && isDead == false)
         {
             status.currentHP = 0;
+            isDead = true;
             Die();
         }
         else
