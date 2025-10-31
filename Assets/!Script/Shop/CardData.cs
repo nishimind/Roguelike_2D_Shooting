@@ -1,13 +1,22 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CardData", menuName = "Shop/Card")]
 public class CardData : ScriptableObject
 {
+    [Header("表示される名前")]
     public string cardName;
+    [Header("表示される説明文")]
     public string description;
+    [Header("価格")]
     public int price;
+    [Header("アイコン画像")]
     public Sprite icon;
-
+    [Header("カード効果の種類")]
+    public CardEffectType effectType;
+    [Header("オプションの種類（AddOption用）")]
+    public OptionType optionType;
+ 
     public enum CardEffectType
     {
         AttackUp,
@@ -19,7 +28,7 @@ public class CardData : ScriptableObject
         AddOption
 
     }
-    public CardEffectType effectType;
+   
 
     public float effectValue; // 攻撃力アップ値や回復量など
 
@@ -54,7 +63,28 @@ public class CardData : ScriptableObject
                 break;
 
                 case CardEffectType.AddOption:  
+              AddOptionCount(player.optionTable, optionType, Mathf.CeilToInt(effectValue));
                 break;
         }
+    }
+    public void AddOptionCount(OptionData[] optionTable, OptionType optionName, int amount = 1 )
+    {
+        if (optionTable == null || optionTable == null)
+        {
+            Debug.LogWarning("OptionTable が設定されていません。");
+            return;
+        }
+
+        foreach (var option in optionTable)
+        {
+            if (option.optionType == optionName)
+            {
+                option.count += amount;
+                Debug.Log($"{optionName} の count を {amount} 増やしました。新しい値: {option.count}");
+                return;
+            }
+        }
+
+        Debug.LogWarning($"{optionName} という名前のオプションが見つかりません。");
     }
 }

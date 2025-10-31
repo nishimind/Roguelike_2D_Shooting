@@ -48,7 +48,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f6afba08ef161eb4d8f463a21e4f3978, type: 2}
   - {fileID: 11400000, guid: 098ec6617b109e44fa9aff186799e16e, type: 2}
   - {fileID: 11400000, guid: c187f7923d5b5314baa59525ca714b78, type: 2}
-  - {fileID: 11400000, guid: 0a0750b432227e9459b7ca37ab9937de, type: 2}
+  - {fileID: 11400000, guid: 79d6a64c70e406349a8b4d96673b0a96, type: 2}
+  - {fileID: 11400000, guid: 8d604778cfd8b654282afad1f30efbda, type: 2}
+  cardCount: 3
   cardParent: {fileID: 8252034128997123868}
   cardPrefab: {fileID: 2231951934719845878, guid: d1d5512f74be06946a45119d84cb32b1, type: 3}
-  cardCount: 3
+  shopRoot: {fileID: 0}
+  confirmPanel: {fileID: 0}
+  yesText: {fileID: 0}
+  noText: {fileID: 0}
+  playerStatus: {fileID: 0}

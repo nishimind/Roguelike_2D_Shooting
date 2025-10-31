@@ -1,9 +1,11 @@
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 
 public class PlayerStatus : MonoBehaviour
@@ -58,16 +60,15 @@ public int currentHP = 100;
     [Header("オプション関係")]
     public bool option1;
     public GameObject option1prefab;
-    [SerializeField] private OptionTable optionTable; // 設定ファイル参照
+  //  [SerializeField] public OptionTable optionTable; // 設定ファイル参照
     [SerializeField] private float radius = 2f;       // プレイヤーからの距離
     [SerializeField] private float spacing = 1.5f;    // 横並びの間隔
-
+    public OptionData[] optionTable; // オプションの一覧
 
 
     public void Awake()
     {
-        // イベントにイベントハンドラーを追加
-        SceneManager.sceneLoaded += OnSceneLoaded;
+     
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject); // 既に存在するなら自分を破棄
@@ -79,13 +80,20 @@ public int currentHP = 100;
         Instance = this;
         DontDestroyOnLoad(gameObject); // 永続化
         currentHP=maxHP;
+        // イベントにイベントハンドラーを追加
+        SceneManager.sceneLoaded -= OnSceneLoaded; // 念のため重複を解除
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    private async void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log($"[PlayerStatus] OnSceneLoaded called in scene: {scene.name}");
+        await UniTask.WaitUntil(() => GameObject.FindWithTag("Player") != null);
+
         FindPlayer();
         //オプション
         GenerateOption();
     }
+
     private void Update()
     {
       
@@ -159,36 +167,36 @@ public int currentHP = 100;
     }
     public void GenerateOption()
     {
-        foreach (var option in optionTable.options)
+        foreach (var option in optionTable)
         {
-            switch (option.optionName)
+            switch (option.optionType)
             {
-                case "Option1": // 円形配置
+                case OptionType.Option1: // 円形配置
                     GenerateCircle(option);
                     break;
 
-                case "Option2": // 横並び
+                case OptionType.Option2: // 横並び
                     GenerateLine(option);
                     break;
 
                 default:
-                    Debug.LogWarning("未定義の配置方法: " + option.optionName);
+                    Debug.LogWarning("未定義の配置方法: " + option.optionType);
                     break;
             }
         }
     }
 
     // 円形配置
-    private void GenerateCircle(OptionData option)
+    private async void GenerateCircle(OptionData option)
     {
         int count = option.count;
         for (int i = 0; i < count; i++)
-        {
+        {await UniTask.Delay(TimeSpan.FromSeconds(0.2f)); 
             // 角度を均等に割り振る
-            float angle = i * Mathf.PI * 2f / count;
+            float angle = (i) * Mathf.PI * 2f / count;
 
-            // x,z座標計算（Yはプレイヤーと同じ高さ）
-            Vector3 offset = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f) * radius;
+            // x,z座標計算（Yはプレイヤーと同じ高さ）a
+            Vector3 offset = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle), 0f) * radius;
 
             GameObject opt = Instantiate(option.optionPrefab, player.transform.position + offset, Quaternion.identity);
 

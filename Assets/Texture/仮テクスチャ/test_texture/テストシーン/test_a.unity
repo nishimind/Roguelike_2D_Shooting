@@ -140,10 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d5e53d6c7f1384bae1ca6426cab89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
-  currentHP: 0
-  isPlayer: 0
-  status: {fileID: 0}
   deadEffect: {fileID: 0}
   damageTime: 0.5
   damageCycle: 0.1
@@ -726,10 +722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d5e53d6c7f1384bae1ca6426cab89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
-  currentHP: 0
-  isPlayer: 0
-  status: {fileID: 0}
   deadEffect: {fileID: 0}
   damageTime: 0.5
   damageCycle: 0.1
@@ -1052,6 +1044,34 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 18290612677331605, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 719890190068436175, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 719890190068436175, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 719890190068436175, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 719890190068436175, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 719890190068436175, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 719890190068436175, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 719890190068436175, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -3687,10 +3707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d5e53d6c7f1384bae1ca6426cab89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
-  currentHP: 0
-  isPlayer: 0
-  status: {fileID: 0}
   deadEffect: {fileID: 0}
   damageTime: 0.5
   damageCycle: 0.1
@@ -3809,10 +3825,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d5e53d6c7f1384bae1ca6426cab89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
-  currentHP: 0
-  isPlayer: 0
-  status: {fileID: 0}
   deadEffect: {fileID: 0}
   damageTime: 0.5
   damageCycle: 0.1
