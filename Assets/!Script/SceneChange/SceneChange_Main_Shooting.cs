@@ -18,7 +18,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
     // → 1度切り替え処理が始まったら、二重に呼ばれないようにする
     private bool isChangingScene = false;
 
-    public float fadeSpeed=0.2f;
+    public float fadeSpeed = 0.2f;
     public float alpha = 1f;
     public Image image;
     [SerializeField]
@@ -48,7 +48,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         player = GameObject.FindGameObjectsWithTag("Player");
 
         // 敵が全滅した場合
-        if (enemyBox.Length == 0&&itemBox.Length==0)
+        if (enemyBox.Length == 0 && itemBox.Length == 0)
         {
             // 2秒後に Shop へ移動
             // 第3引数 true → 「このあと次のステージに進む」ことを示す
@@ -82,6 +82,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         if (goNextStage && sceneName == "Shop")
         {
             // まず Shop シーンをロード
+           
             SceneManager.LoadScene(sceneName);
 
             // 次のステージに進む処理自体は Shop シーン内で
@@ -107,6 +108,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
             string nextStage = Instance.stageOrder[currentStageIndex];
 
             // ステージへ移動
+           
             SceneManager.LoadScene(nextStage);
 
             // インデックスを進める（次呼ばれたときは次のステージ）
@@ -115,6 +117,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         else
         {
             // 全てのステージをクリアしたら GameClear シーンへ
+         
             SceneManager.LoadScene("GameClear");
         }
     }
@@ -138,7 +141,18 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
             image.color = new Color(0, 0, 0, alpha);
             await UniTask.Yield();
         }
+        await UniTask.WaitUntil(() =>isChangingScene==true);
+        FadeOut();
 
-
+    }
+    private async void FadeOut()
+    {
+        alpha = 0f;
+        while (alpha < 1)
+        {
+            alpha += Time.deltaTime / fadeSpeed;
+            image.color = new Color(0, 0, 0, alpha);
+            await UniTask.Yield();
+        }
     }
 }
