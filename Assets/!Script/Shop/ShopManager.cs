@@ -27,28 +27,24 @@ public class ShopManager : MonoBehaviour
     private bool isConfirmOpen = false;
     private int confirmIndex = 0; // 0 = Yes, 1 = No
 
-    [Header("参照")]
-   public PlayerStatus playerStatus;        // 可能ならインスペクターで割り当て
+  
+   private PlayerStatus playerStatus;        // 可能ならインスペクターで割り当て
 
     private readonly List<CardUI> shopCards = new List<CardUI>();
     private int cursorIndex = 0;
 
     private void Start()
     {
-        FindPlayerDelay();
+        FindPlayer();
         SceneManager.sceneLoaded += OnSceneLoaded;
       
         SetupShop();
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {//いろいろ試したけどここでFindできない
-        FindPlayerDelay();
-    }
-    private IEnumerator FindPlayerDelay()
     {
-        yield return null; // 1フレーム待つ
         FindPlayer();
-                            }
+    }
+ 
         public void FindPlayer()
     { 
         // playerStatus 未設定なら捜索（なければ警告して以降の操作は止める）
@@ -233,6 +229,8 @@ public class ShopManager : MonoBehaviour
         if (confirmIndex == 0)
         {
             // Yes → 次のステージへ
+            Siene_Change_Main_Shooting.Instance.isShop = false;
+            Siene_Change_Main_Shooting.Instance.isChangingScene = true;
             Siene_Change_Main_Shooting.GoToNextStage();
         }
         else
