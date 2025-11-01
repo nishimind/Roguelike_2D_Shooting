@@ -58,8 +58,7 @@ public int currentHP = 100;
 
     private Vector3 originalScale;
     [Header("オプション関係")]
-    public bool option1;
-    public GameObject option1prefab;
+  
   //  [SerializeField] public OptionTable optionTable; // 設定ファイル参照
     [SerializeField] private float radius = 2f;       // プレイヤーからの距離
     [SerializeField] private float spacing = 1.5f;    // 横並びの間隔
@@ -91,6 +90,7 @@ public int currentHP = 100;
 
         FindPlayer();
         //オプション
+        await UniTask.Delay(TimeSpan.FromSeconds(1f));
         GenerateOption();
     }
 
