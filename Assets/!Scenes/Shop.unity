@@ -1188,7 +1188,7 @@ PrefabInstance:
       objectReference: {fileID: 914037518}
     - target: {fileID: 7696922949029234628, guid: 10d9ad2d062f01f47bc4e373a433fd36, type: 3}
       propertyPath: cardCount
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7696922949029234628, guid: 10d9ad2d062f01f47bc4e373a433fd36, type: 3}
       propertyPath: moneyText
