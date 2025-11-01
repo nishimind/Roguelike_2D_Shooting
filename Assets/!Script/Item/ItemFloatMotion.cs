@@ -42,8 +42,8 @@ public class ItemFloatMotion : MonoBehaviour
     private void Start()
     {
       
-            status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
-     
+            status = PlayerStatus.Instance;
+
         // 最初の位置を保存
         Vector3 startPos = transform.position;
 

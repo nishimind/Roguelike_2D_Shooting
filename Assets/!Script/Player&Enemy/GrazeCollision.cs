@@ -12,7 +12,7 @@ public class GrazeCollision : CollisionBase
     // Start is called before the first frame update
      void Start()
     {
-        status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        status = PlayerStatus.Instance;
         
     }
 

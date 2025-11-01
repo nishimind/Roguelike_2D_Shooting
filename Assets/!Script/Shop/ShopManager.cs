@@ -54,8 +54,8 @@ public class ShopManager : MonoBehaviour
         // playerStatus 未設定なら捜索（なければ警告して以降の操作は止める）
         if (playerStatus == null)
         {
-            playerStatus = FindObjectOfType<PlayerStatus>().GetComponent<PlayerStatus>();
-            Debug.Log(FindObjectOfType<PlayerStatus>().GetComponent<PlayerStatus>());
+            playerStatus = PlayerStatus.Instance;
+           // Debug.Log(FindObjectOfType<PlayerStatus>().GetComponent<PlayerStatus>());
             if (playerStatus == null)
             {
                 Debug.LogWarning("[ShopManager] PlayerStatus が見つかりません。インスペクターで割り当ててください。");

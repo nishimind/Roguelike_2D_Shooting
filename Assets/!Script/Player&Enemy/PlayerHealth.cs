@@ -13,7 +13,7 @@ public class PlayerHealth : HealthBase
         base.Start();
 
         // PlayerStatus‚ğQÆ
-        status = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+        status = PlayerStatus.Instance;
         gameManager = FindObjectOfType<GameManager>();
         shaker = FindObjectOfType<CinemachineImpulseSource>();
 
