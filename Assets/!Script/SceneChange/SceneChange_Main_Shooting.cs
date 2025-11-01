@@ -1,6 +1,9 @@
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Siene_Change_Main_Shooting : MonoBehaviour
 {
@@ -15,7 +18,9 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
     // → 1度切り替え処理が始まったら、二重に呼ばれないようにする
     private bool isChangingScene = false;
 
- 
+    public float fadeSpeed=0.2f;
+    public float alpha = 1f;
+    public Image image;
     [SerializeField]
     private string[] stageOrder =
  {
@@ -33,6 +38,8 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
     {
         // すでにシーン切り替え中なら処理しない
         if (isChangingScene) return;
+
+        //  ここの処理重くない？
 
         // タグ "Enemy" のついた全オブジェクトを取得
         enemyBox = GameObject.FindGameObjectsWithTag("Enemy");
@@ -95,7 +102,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
     {
         // まだ未消化のステージが残っている場合
         if (currentStageIndex < Instance.stageOrder.Length)
-        {
+        {//暗転処理
             // 次のステージを取得
             string nextStage = Instance.stageOrder[currentStageIndex];
 
@@ -118,7 +125,20 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
 
     void Awake()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
         // シーンが切り替わっても参照できるように static 変数に代入
         Instance = this;
+    }
+    private async void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        alpha = 1f;
+        while (alpha > 0)
+        {
+            alpha -= Time.deltaTime / fadeSpeed;
+            image.color = new Color(0, 0, 0, alpha);
+            await UniTask.Yield();
+        }
+
+
     }
 }
