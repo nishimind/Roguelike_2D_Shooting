@@ -8,7 +8,8 @@ using Cysharp.Threading.Tasks;
 
 public class SceneEffect : MonoBehaviour
 {
-    public float fadeSpeed = 0.2f;
+    public float startFadeSpeed = 0.2f;
+    public float finishFadeSpeed = 0.5f;
     public float alpha = 1f;
     public Image image;
     // Start is called before the first frame update
@@ -31,7 +32,7 @@ public class SceneEffect : MonoBehaviour
         alpha = 0f;
         while (alpha < 1)
         {
-            alpha += Time.deltaTime / fadeSpeed;
+            alpha += Time.deltaTime / finishFadeSpeed;
             image.color = new Color(0, 0, 0, alpha);
             await UniTask.Yield();
         }
@@ -41,7 +42,7 @@ public class SceneEffect : MonoBehaviour
         alpha = 1f;
         while (alpha > 0)
         {
-            alpha -= Time.deltaTime / fadeSpeed;
+            alpha -= Time.deltaTime / startFadeSpeed;
             image.color = new Color(0, 0, 0, alpha);
             await UniTask.Yield();
         }
