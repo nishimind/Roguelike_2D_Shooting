@@ -82,7 +82,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         // 指定時間待つ
         yield return new WaitForSeconds(delay);
      
-       // yield return new WaitForSeconds(SceneEffect.Instance.finishFadeSpeed);
+      if(SceneEffect.Instance!=null) yield return new WaitForSeconds(SceneEffect.Instance.finishFadeSpeed);
 
         // Shopに行く場合（goNextStage が true のときのみ）
         if (goNextStage && sceneName == "Shop")
@@ -115,7 +115,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
 
             // ステージへ移動
             //暗転処理
-         await    SceneEffect.Instance.FadeOut();
+       if(SceneEffect.Instance!=null)  await    SceneEffect.Instance.FadeOut();
             SceneManager.LoadScene(nextStage);
 
             // インデックスを進める（次呼ばれたときは次のステージ）

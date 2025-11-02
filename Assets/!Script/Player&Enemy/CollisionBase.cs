@@ -7,7 +7,7 @@ public class CollisionBase : MonoBehaviour
     private readonly Dictionary<Collider2D, float> nextDamageTime = new();
     private readonly HashSet<Collider2D> stayingColliders = new();
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         TakeDamage(collision);
         stayingColliders.Add(collision); // Stay�Ώۂɒǉ�
