@@ -16,12 +16,9 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
 
     // シーン切り替え中かどうかのフラグ
     // → 1度切り替え処理が始まったら、二重に呼ばれないようにする
-    private bool isChangingScene = false;
+    public bool isChangingScene = false;
 
-    public float fadeSpeed = 0.2f;
-    public float alpha = 1f;
-    public Image image;
-    [SerializeField]
+[SerializeField]
     private string[] stageOrder =
  {
     "Stage2", "Stage3",
@@ -33,6 +30,13 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
     // 現在のステージ番号を保持する変数
     // static にしているのでシーンを跨いでも値が保持される（アプリ終了までは残る）
     public static int currentStageIndex = 1;
+    public static Siene_Change_Main_Shooting Instance { get; private set; }
+
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Update()
     {
@@ -77,12 +81,14 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
 
         // 指定時間待つ
         yield return new WaitForSeconds(delay);
+     
+        yield return new WaitForSeconds(SceneEffect.Instance.fadeSpeed);
 
         // Shopに行く場合（goNextStage が true のときのみ）
         if (goNextStage && sceneName == "Shop")
         {
             // まず Shop シーンをロード
-           
+
             SceneManager.LoadScene(sceneName);
 
             // 次のステージに進む処理自体は Shop シーン内で
@@ -99,16 +105,17 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
     /// Shopシーン内から呼び出して、次のステージに進むための関数
     /// （UIボタンの OnClick に設定する想定）
     /// </summary>
-    public static void GoToNextStage()
+    public async static void GoToNextStage()
     {
         // まだ未消化のステージが残っている場合
         if (currentStageIndex < Instance.stageOrder.Length)
-        {//暗転処理
+        {
             // 次のステージを取得
             string nextStage = Instance.stageOrder[currentStageIndex];
 
             // ステージへ移動
-           
+            //暗転処理
+         await    SceneEffect.Instance.FadeOut();
             SceneManager.LoadScene(nextStage);
 
             // インデックスを進める（次呼ばれたときは次のステージ）
@@ -124,35 +131,6 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
 
 
     // シングルトン的に利用するためのインスタンス保持
-    private static Siene_Change_Main_Shooting Instance;
+   
 
-    void Awake()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        // シーンが切り替わっても参照できるように static 変数に代入
-        Instance = this;
-    }
-    private async void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        alpha = 1f;
-        while (alpha > 0)
-        {
-            alpha -= Time.deltaTime / fadeSpeed;
-            image.color = new Color(0, 0, 0, alpha);
-            await UniTask.Yield();
-        }
-        await UniTask.WaitUntil(() =>isChangingScene==true);
-        FadeOut();
-
-    }
-    private async void FadeOut()
-    {
-        alpha = 0f;
-        while (alpha < 1)
-        {
-            alpha += Time.deltaTime / fadeSpeed;
-            image.color = new Color(0, 0, 0, alpha);
-            await UniTask.Yield();
-        }
-    }
 }
