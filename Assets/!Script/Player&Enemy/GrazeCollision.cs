@@ -28,7 +28,7 @@ public class GrazeCollision : CollisionBase
         status.grazeCount++;
         if (grazeClip != null)
             audio.PlayOneShot(grazeClip, 0.3f);
-        bullet.grazed = true;
+       if(bullet.onlyGraze) bullet.grazed = true;
         // パーティクルをプールから取得
         if (GrazeEffectPool != null)
             GrazeEffectPool.GetEffect(transform.position);

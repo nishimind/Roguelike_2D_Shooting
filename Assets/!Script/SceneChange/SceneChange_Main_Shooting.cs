@@ -56,7 +56,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         {
             // 2秒後に Shop へ移動
             // 第3引数 true → 「このあと次のステージに進む」ことを示す
-            StartCoroutine(ChangeSceneWithDelay("Shop", 1f, true));
+            StartCoroutine(ChangeSceneWithDelay("Shop", 2f, true));
         }
 
         // プレイヤーが全滅した場合
@@ -82,7 +82,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         // 指定時間待つ
         yield return new WaitForSeconds(delay);
      
-        yield return new WaitForSeconds(SceneEffect.Instance.finishFadeSpeed);
+       // yield return new WaitForSeconds(SceneEffect.Instance.finishFadeSpeed);
 
         // Shopに行く場合（goNextStage が true のときのみ）
         if (goNextStage && sceneName == "Shop")
