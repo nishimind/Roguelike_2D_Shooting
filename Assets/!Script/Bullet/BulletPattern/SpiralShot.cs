@@ -9,7 +9,7 @@ public class SpiralShot : AttackPatternSO
     public override void Shoot(Enemy enemy, GameObject bulletPrefab)
     {
         Quaternion rot = Quaternion.Euler(0, 0, currentAngle) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
-        GameObject bullet = enemy.GetPool().Get(bulletPrefab, enemy.transform.position, rot);
+        GameObject bullet = BulletPool.Instance.Get(bulletPrefab, enemy.transform.position, rot);
         bullet.transform.position = enemy.transform.position;
         bullet.transform.rotation = rot;
 

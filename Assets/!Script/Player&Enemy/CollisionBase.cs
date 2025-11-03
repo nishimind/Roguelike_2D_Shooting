@@ -24,6 +24,12 @@ public class CollisionBase : MonoBehaviour
         // 現在接触中のColliderに対してダメージ間隔チェック
         foreach (var collision in stayingColliders)
         {
+            if (collision == null)
+            {
+                stayingColliders.Remove(collision);
+                nextDamageTime.Remove(collision);
+                continue;
+            }
             var bullet = collision.GetComponent<BulletDamage>();
             if (bullet == null) continue;
             if (bullet.destroyOnHit) continue; // レーザー等のみ継続

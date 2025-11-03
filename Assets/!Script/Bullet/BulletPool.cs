@@ -79,4 +79,20 @@ public class BulletPool : MonoBehaviour
 
         poolDictionary[bulletPrefab].Enqueue(obj);
     }
+    public void ClearPool()
+    {
+        foreach (var kvp in poolDictionary)
+        {
+            var pool = kvp.Value;
+            while (pool.Count > 0)
+            {
+                var bullet = pool.Dequeue();
+                if (bullet != null)
+                    Destroy(bullet);
+            }
+        }
+
+        poolDictionary.Clear();
+
+    }
 }

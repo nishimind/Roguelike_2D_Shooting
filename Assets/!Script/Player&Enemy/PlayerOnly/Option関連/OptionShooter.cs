@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class OptionShooter : MonoBehaviour
 {
+    public ShotType shotType;
     // Start is called before the first frame update
     void Start()
     {

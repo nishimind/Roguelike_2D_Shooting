@@ -98,13 +98,7 @@ public int currentHP = 100;
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
         GenerateOption();
         //’e‚ÌPool“o˜^
-        foreach (var set in availableShots)
-        {
-
-
-            if (set.bulletPrefab != null)
-                BulletPool.Instance.RegisterBulletPrefab(set.bulletPrefab);
-        }
+    
     }
 
     private void Update()

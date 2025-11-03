@@ -21,9 +21,9 @@ public class PlayerMovement : MonoBehaviour
     //private GameObject _bullet;
   
  
-    [SerializeField, Header("発射する時間(PlayerStatusから設定)")]
+  
    
-    public PlayerStatus playerStatus;
+ 
 
     private Vector2 moveInput;            // スティック入力
     private bool isSlow;                  // 減速状態
@@ -40,12 +40,18 @@ public class PlayerMovement : MonoBehaviour
     private LastDir lastHorizontal = LastDir.None;
 
     private void Awake()
-    {playerStatus = PlayerStatus.Instance;
+    {
 
         rb = GetComponent<Rigidbody2D>();
         
     }
-    
+    private void Start()
+    {
+        foreach (var bu in PlayerStatus.Instance.availableShots)
+        {
+            bu.shootCount = 0; // 最初は撃てない状態にしておく
+        }
+    }
     private void Update()
     {
         //弾を撃つ処理を下に移動させました
@@ -114,16 +120,18 @@ public class PlayerMovement : MonoBehaviour
                 //Listにしたい
                 foreach(var bu in PlayerStatus.Instance.availableShots)
             
-            {bu.shootCount += Time.deltaTime;
+            {
+                bu.shootCount += Time.deltaTime;
                 if ( bu.shootCount >= bu.shootInterval)
                 {
                     
                     GameObject bullet=BulletPool.Instance.Get(bu.bulletPrefab, transform.position, transform.rotation);
-                    bullet.GetComponent<BulletDamage>().damage=playerStatus.attackPower;
+                    bullet.GetComponent<BulletDamage>().damage= PlayerStatus.Instance.attackPower;
                   bu.shootCount = 0f;
 
 
-             }
+           
+                }
             }
         }
 
@@ -144,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
         finalInput = Vector2.ClampMagnitude(finalInput, 1f);
 
         // 速度適用
-        float currentSpeed = isSlow ? playerStatus.speed * slowMultiplier : playerStatus.speed;
+        float currentSpeed = isSlow ? PlayerStatus.Instance.speed * slowMultiplier : PlayerStatus.Instance.speed;
         rb.velocity = finalInput * currentSpeed;
     }
 

@@ -519,19 +519,9 @@ MonoBehaviour:
   _bulletPooler: {fileID: 1642472387}
   _moveSpeed: 0.5
   attackSets:
-  - attackPattern: {fileID: 11400000, guid: 7661a41b9da0b864087e717d8cd31960, type: 2}
-    shootInterval: 1
-    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-    initialDelay: 0
-    shootTimer: 0
-  - attackPattern: {fileID: 11400000, guid: 7989a913d301a5a41b68139c8ba1b38d, type: 2}
-    shootInterval: 3
+  - attackPattern: {fileID: 11400000, guid: 72701338ba6d4c141883c3cc547b3785, type: 2}
+    shootInterval: 0.5
     bulletPrefab: {fileID: 525268806911035309, guid: 20c07c6179a97e548b2373bc53d501ba, type: 3}
-    initialDelay: 0
-    shootTimer: 0
-  - attackPattern: {fileID: 11400000, guid: 1221b6635d115e94bb944528fe6ed673, type: 2}
-    shootInterval: 4
-    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
     initialDelay: 0
     shootTimer: 0
   specialAttack:
@@ -1869,11 +1859,11 @@ PrefabInstance:
       objectReference: {fileID: 14700504195148514, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
     - target: {fileID: 1100105198108132972, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
       propertyPath: availableShots.Array.data[0].shootInterval
-      value: 0.1
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 1100105198108132972, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
       propertyPath: availableShots.Array.data[1].shootInterval
-      value: 0.5
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 1750683216934273137, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
       propertyPath: m_AnchorMax.y

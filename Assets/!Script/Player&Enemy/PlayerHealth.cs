@@ -3,7 +3,7 @@ using Cinemachine;
 
 public class PlayerHealth : HealthBase
 {
-    public PlayerStatus status;
+    private PlayerStatus status;
     private GameManager gameManager;
     private CinemachineImpulseSource shaker;
     private bool isDead = false;

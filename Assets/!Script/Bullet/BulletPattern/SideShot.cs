@@ -14,7 +14,7 @@ public class SideShot : AttackPatternSO
 
         foreach (var pos in new Vector3[] { left, right })
         {
-            GameObject bullet = enemy.GetPool().Get(bulletPrefab, pos, rot);
+            GameObject bullet = BulletPool.Instance.Get(bulletPrefab, pos, rot);
             bullet.transform.position = pos;
             bullet.transform.rotation = rot;
         }

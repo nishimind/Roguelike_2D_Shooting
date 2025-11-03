@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
     private void OnBecameInvisible() { _bAttack = false; }
 
     // --- 外部から参照するための公開メソッド ---
-    public BulletPool GetPool() => _bulletPooler;
+   
     public GameObject GetPlayer() => _player;
 
     // ランタイムでパターンを差し替える用

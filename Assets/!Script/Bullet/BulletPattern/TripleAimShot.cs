@@ -17,7 +17,7 @@ public class TripleAimShot : AttackPatternSO
         foreach (var a in angles)
         {
             Quaternion rot = Quaternion.Euler(0, 0, a) * baseRot;
-            GameObject bullet = enemy.GetPool().Get(bulletPrefab,enemy.transform.position, rot);
+            GameObject bullet = BulletPool.Instance.Get(bulletPrefab,enemy.transform.position, rot);
             bullet.transform.position = enemy.transform.position;
             bullet.transform.rotation = rot;
         }

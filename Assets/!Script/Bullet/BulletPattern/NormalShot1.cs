@@ -11,7 +11,7 @@ public class NormalShot: AttackPatternSO
             return;
         }
 
-        GameObject bullet = enemy.GetPool().Get(bulletPrefab, enemy.transform.position, enemy.transform.rotation);
+        GameObject bullet = BulletPool.Instance.Get(bulletPrefab, enemy.transform.position, enemy.transform.rotation);
         bullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, Vector3.down);
     }
 }

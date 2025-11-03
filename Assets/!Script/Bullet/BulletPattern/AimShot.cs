@@ -11,7 +11,7 @@ public class AimShot : AttackPatternSO
         Vector3 dir = enemy.GetPlayer().transform.position - enemy.transform.position;
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, dir);
 
-        GameObject bullet = enemy.GetPool().Get(bulletPrefab,enemy.transform.position, rot);
+        GameObject bullet = BulletPool.Instance.Get(bulletPrefab,enemy.transform.position, rot);
         bullet.transform.position = enemy.transform.position;
         bullet.transform.rotation = rot;
     }
