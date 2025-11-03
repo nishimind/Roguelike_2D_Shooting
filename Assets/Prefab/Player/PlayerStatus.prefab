@@ -945,7 +945,11 @@ MonoBehaviour:
   speedText: {fileID: 6005251971553634433}
   shootTimeText: {fileID: 4057151799402361312}
   grazeCountText: {fileID: 7959514326045879854}
-  availableShots: []
+  availableShots:
+  - attackPattern: {fileID: 0}
+    bulletPrefab: {fileID: 9099611059377426971, guid: 55872efa8ebd07942b0eda0f3bc99e0b, type: 3}
+    shootInterval: 0.27
+    shootCount: 0
   player: {fileID: 0}
   health: {fileID: 0}
   playerMovement: {fileID: 0}
