@@ -19,8 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // 弾関連
     //[SerializeField,Header("弾オブジェクト")]
     //private GameObject _bullet;
-    [Header("弾のプーラー")]
-    public BulletPool _bulletPooler;
+  
  
     [SerializeField, Header("発射する時間(PlayerStatusから設定)")]
    
@@ -30,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isSlow;                  // 減速状態
 
     private Rigidbody2D rb;
-    private float shootCount;
+
 
     // ボタン入力状態
     private bool upPressed, downPressed, leftPressed, rightPressed,shotPressed;
@@ -44,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {playerStatus = PlayerStatus.Instance;
 
         rb = GetComponent<Rigidbody2D>();
-        shootCount = 0f;
+        
     }
     
     private void Update()
@@ -108,16 +107,22 @@ public class PlayerMovement : MonoBehaviour
         ClampPosition();
 
         //弾を撃つ処理を移動させました, 弾発射処理を軽い方式に修正
-        shootCount += Time.deltaTime;
-        if (shotPressed && shootCount >= playerStatus.shootTime)
-        {
-          if(_bulletPooler!=null)
+      
+       
+          if(BulletPool.Instance!=null&&shotPressed)
             {
                 //Listにしたい
-                foreach(var bu in PlayerStatus.Instance.availableShots) { 
-                GameObject bullet=_bulletPooler.Get(bu,transform.position, transform.rotation);
-            bullet.GetComponent<BulletDamage>().damage=playerStatus.attackPower;
-            shootCount = 0f;
+                foreach(var bu in PlayerStatus.Instance.availableShots)
+            
+            {bu.shootCount += Time.deltaTime;
+                if ( bu.shootCount >= bu.shootInterval)
+                {
+                    
+                    GameObject bullet=BulletPool.Instance.Get(bu.bulletPrefab, transform.position, transform.rotation);
+                    bullet.GetComponent<BulletDamage>().damage=playerStatus.attackPower;
+                  bu.shootCount = 0f;
+
+
              }
             }
         }

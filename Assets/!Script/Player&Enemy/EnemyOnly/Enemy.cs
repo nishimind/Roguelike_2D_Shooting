@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Enemy;
+using Cysharp.Threading.Tasks;
 
 public class Enemy : MonoBehaviour
 {
@@ -44,21 +45,24 @@ public class Enemy : MonoBehaviour
     protected bool _bAttack;
 
     // Start は最初に一度だけ呼ばれる
-    void Start()
+    private async void Start()
     {
-        // プレイヤーを探す（存在チェック）
-        PlayerMovement pm = FindAnyObjectByType<PlayerMovement>();
-        if (pm != null)
-        {
-            _player = pm.gameObject;
-        }
-
-        _shootCount = 0f;
-        _bAttack = false;
+        _player = FindAnyObjectByType<PlayerMovement>()?.gameObject;
         _rb = GetComponent<Rigidbody2D>();
+        _bAttack = false;
+
+        // BulletPool初期化を待機
+        await Cysharp.Threading.Tasks.UniTask.WaitUntil(() => BulletPool.Instance != null);
 
         _Initialize();
+        if (attackSet.bulletPrefab == null)
+        {
+            Debug.LogError($"{name} の attackSet.bulletPrefab が設定されていません！");
+            return;
+        }
+        BulletPool.Instance.RegisterBulletPrefab(attackSet.bulletPrefab);
     }
+
 
     // 派生クラスで初期化を追加できる
     protected virtual void _Initialize() { }

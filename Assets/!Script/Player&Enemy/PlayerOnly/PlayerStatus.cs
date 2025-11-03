@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using static Enemy;
 
 
 public class PlayerStatus : MonoBehaviour
@@ -41,9 +42,11 @@ public int currentHP = 100;
     [SerializeField] public TextMeshProUGUI shootTimeText;
     [SerializeField] public TextMeshProUGUI grazeCountText;
 
+
     [Header("ショット設定")]
-    public List<GameObject> availableShots = new List<GameObject>(); // 使用可能なショットのプレハブ
-    public Transform shotSpawn; // 弾を発射する位置
+
+    public List<ShotType> availableShots = new List<ShotType>(); // 使用可能なショットのプレハブ
+
 
     public GameObject player;
     public PlayerHealth health;
@@ -79,6 +82,8 @@ public int currentHP = 100;
         Instance = this;
         DontDestroyOnLoad(gameObject); // 永続化
         currentHP=maxHP;
+
+     
         // イベントにイベントハンドラーを追加
         SceneManager.sceneLoaded -= OnSceneLoaded; // 念のため重複を解除
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -92,6 +97,14 @@ public int currentHP = 100;
         //オプション
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
         GenerateOption();
+        //弾のPool登録
+        foreach (var set in availableShots)
+        {
+
+
+            if (set.bulletPrefab != null)
+                BulletPool.Instance.RegisterBulletPrefab(set.bulletPrefab);
+        }
     }
 
     private void Update()

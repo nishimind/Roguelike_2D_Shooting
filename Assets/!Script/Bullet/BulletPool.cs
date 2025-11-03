@@ -7,7 +7,20 @@ public class BulletPool : MonoBehaviour
 
     // 各プレハブごとにプールを分ける
     private readonly Dictionary<GameObject, Queue<GameObject>> poolDictionary = new();
+    public static BulletPool Instance { get; private set; }
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // 敵の出現時などに呼び出して、弾プレハブを登録しておく
     public void RegisterBulletPrefab(GameObject bulletPrefab)
     {
