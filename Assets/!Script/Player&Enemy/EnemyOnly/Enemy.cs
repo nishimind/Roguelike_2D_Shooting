@@ -1,15 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Enemy;
 
 public class Enemy : MonoBehaviour
 {
-    // 攻撃パターンを ScriptableObject で差し替え可能にする
-    [SerializeField, Header("攻撃パターン（ScriptableObject を指定）")]
-    protected AttackPatternSO attackPattern;
+    [System.Serializable]
+    public class AttackSet
+    {
+        [Header("攻撃パターン（ScriptableObject）")]
+        public AttackPatternSO attackPattern;
 
-    [SerializeField, Header("弾の発射間隔(秒)")]
-    protected float _shootTime;
+        [Header("発射間隔(秒)")]
+        public float shootInterval = 1f;
+        [Header("使用する弾プレハブ")]
+        public GameObject bulletPrefab;
+
+        [Header("最初の発射までの遅延(秒)")]
+        public float initialDelay = 0f;
+
+        [HideInInspector] public float shootTimer = 0f;
+    }
+    public AttackSet attackSet;
+    // 攻撃パターンを ScriptableObject で差し替え可能にする
+
 
     [SerializeField, Header("弾のプーラー")]
     protected BulletPool _bulletPooler;
@@ -59,23 +73,20 @@ public class Enemy : MonoBehaviour
     // 攻撃の管理
     protected virtual void _Attack()
     {
-        if (!_bAttack || attackPattern == null)
-        {
-            Debug.LogWarning($"{name} cannot shoot: bAttack={_bAttack}, attackPattern={attackPattern}");
-            return;
+     
+
+       
+            if (attackSet.attackPattern == null || attackSet.bulletPrefab == null) return;
+
+            attackSet.shootTimer += Time.deltaTime;
+
+            if (attackSet.shootTimer >= Mathf.Max(0.05f, attackSet.shootInterval))
+            {
+            attackSet.attackPattern.Shoot(this, attackSet.bulletPrefab);
+                attackSet.shootTimer = 0f;
+            }
         }
-        
-
-        _shootCount += Time.deltaTime;
-        if (_shootCount >= _shootTime)
-        {
-            Debug.Log($"{name} shooting!");
-
-            attackPattern.Shoot(this);  // ScriptableObject の Shoot 実行
-            _shootCount = 0f;
-        }
-    }
-
+    
     // 下方向に移動
     protected virtual void _Move()
     {
@@ -108,6 +119,6 @@ public class Enemy : MonoBehaviour
     // ランタイムでパターンを差し替える用
     public void SetAttackPattern(AttackPatternSO pattern)
     {
-        attackPattern = pattern;
+        attackSet.attackPattern = pattern;
     }
 }

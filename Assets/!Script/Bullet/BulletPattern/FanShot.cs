@@ -7,7 +7,7 @@ public class FanShot : AttackPatternSO
     [SerializeField] private int bulletCount = 5;       // íeÇÃêî
     [SerializeField] private float spreadAngle = 45f;   // çLÇ™ÇÈäpìx
 
-    public override void Shoot(Enemy enemy)
+    public override void Shoot(Enemy enemy, GameObject bulletPrefab)
     {
         float startAngle = -spreadAngle / 2f;
         float angleStep = spreadAngle / (bulletCount - 1);
@@ -17,7 +17,7 @@ public class FanShot : AttackPatternSO
             float angle = startAngle + angleStep * i;
             Quaternion rot = Quaternion.Euler(0, 0, angle) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
 
-            GameObject bullet = enemy.GetPool().Get(enemy.transform.position, rot);
+            GameObject bullet = enemy.GetPool().Get(bulletPrefab, enemy.transform.position, rot);
             bullet.transform.position = enemy.transform.position;
             bullet.transform.rotation = rot;
         }

@@ -53,7 +53,7 @@ public class CollisionBase : MonoBehaviour
         {
             var checker = collision.GetComponent<CameraChecker>();
             if (checker != null && checker._pool != null)
-                checker._pool.Release(collision.gameObject);
+                checker._pool.Release(collision.gameObject,collision.gameObject);
             else
                 Destroy(collision.gameObject);
         }

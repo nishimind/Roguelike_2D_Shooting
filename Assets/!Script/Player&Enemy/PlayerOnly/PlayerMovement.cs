@@ -41,7 +41,8 @@ public class PlayerMovement : MonoBehaviour
     private LastDir lastHorizontal = LastDir.None;
 
     private void Awake()
-    {playerStatus = GameObject.FindWithTag("PlayerStatus").GetComponent<PlayerStatus>();
+    {playerStatus = PlayerStatus.Instance;
+
         rb = GetComponent<Rigidbody2D>();
         shootCount = 0f;
     }
@@ -112,10 +113,13 @@ public class PlayerMovement : MonoBehaviour
         {
           if(_bulletPooler!=null)
             {
-                GameObject bullet=_bulletPooler.Get(transform.position, transform.rotation);
+                //List‚É‚µ‚½‚¢
+                foreach(var bu in PlayerStatus.Instance.availableShots) { 
+                GameObject bullet=_bulletPooler.Get(bu,transform.position, transform.rotation);
             bullet.GetComponent<BulletDamage>().damage=playerStatus.attackPower;
             shootCount = 0f;
              }
+            }
         }
 
     }

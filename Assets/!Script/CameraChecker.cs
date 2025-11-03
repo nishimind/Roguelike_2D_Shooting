@@ -23,7 +23,7 @@ public class CameraChecker : MonoBehaviour
         if (vp.x < -offScreenBuffer || vp.x > 1 + offScreenBuffer ||
             vp.y < -offScreenBuffer || vp.y > 1 + offScreenBuffer)
         {
-            _pool.Release(gameObject);
+            _pool.Release(gameObject, gameObject);
         }
     }
 

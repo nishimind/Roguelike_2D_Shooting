@@ -4,26 +4,14 @@ using UnityEngine;
 
 public class EnemyAdvanced_Special_MoveCycle : Enemy
 {
-    [System.Serializable]
-    public class AttackSet
-    {
-        [Header("攻撃パターン（ScriptableObject）")]
-        public AttackPatternSO attackPattern;
-
-        [Header("発射間隔(秒)")]
-        public float shootInterval = 1f;
-
-        [Header("最初の発射までの遅延(秒)")]
-        public float initialDelay = 0f;
-
-        [HideInInspector] public float shootTimer = 0f;
-    }
+ 
+   
 
     [Header("複数の攻撃パターンを同時使用")]
     [SerializeField] private List<AttackSet> attackSets = new List<AttackSet>();
 
     [Header("特殊攻撃パターン（HP半分以下で1回だけ）")]
-    [SerializeField] private AttackPatternSO specialAttack;
+    [SerializeField] private AttackSet specialAttack;
 
     [Header("特殊攻撃の前後待機(秒)")]
     [SerializeField] private float preSpecialWait = 1.0f;
@@ -61,10 +49,13 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
             Debug.LogError($"{name} に EnemyHealth がアタッチされていません！");
         }
 
-        // 攻撃タイマー初期化
+        // 攻撃タイマー初期化 & 弾プレハブ登録
         foreach (var set in attackSets)
         {
             set.shootTimer = set.initialDelay;
+
+            if (set.bulletPrefab != null)
+                GetPool().RegisterBulletPrefab(set.bulletPrefab);
         }
 
         // 最初はゆっくり降下
@@ -117,18 +108,18 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
 
         foreach (var set in attackSets)
         {
-            if (set.attackPattern == null) continue;
+            if (set.attackPattern == null || set.bulletPrefab == null) continue;
 
             set.shootTimer += Time.deltaTime;
 
             if (set.shootTimer >= Mathf.Max(0.05f, set.shootInterval))
             {
-                set.attackPattern.Shoot(this);
+                set.attackPattern.Shoot(this, set.bulletPrefab);
                 set.shootTimer = 0f;
-                // Debug.Log($"{name}：{set.attackPattern.name} 発射");
             }
         }
     }
+
 
     // =========================================================
     // 特殊攻撃監視（HP50%未満で1度だけ）
@@ -171,7 +162,7 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
         if (specialAttack != null)
         {
             Debug.Log($"{name}：特殊攻撃発動！！！");
-            specialAttack.Shoot(this);
+            specialAttack.attackPattern. Shoot(this, specialAttack.bulletPrefab);
         }
 
         yield return new WaitForSeconds(postSpecialWait);

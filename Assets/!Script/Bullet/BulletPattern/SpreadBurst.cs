@@ -6,14 +6,14 @@ public class SpreadBurst : AttackPatternSO
     [SerializeField] private int bulletsPerBurst = 3;
     [SerializeField] private float spreadAngle = 20f;
 
-    public override void Shoot(Enemy enemy)
+    public override void Shoot(Enemy enemy, GameObject bulletPrefab)
     {
         for (int i = 0; i < bulletsPerBurst; i++)
         {
             float offset = (i - (bulletsPerBurst - 1) / 2f) * spreadAngle;
             Quaternion rot = Quaternion.Euler(0, 0, offset) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
 
-            GameObject bullet = enemy.GetPool().Get(enemy.transform.position, rot);
+            GameObject bullet = enemy.GetPool().Get(bulletPrefab,enemy.transform.position, rot);
             bullet.transform.position = enemy.transform.position;
             bullet.transform.rotation = rot;
         }

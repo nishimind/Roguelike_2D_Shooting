@@ -5,7 +5,7 @@ public class SideShot : AttackPatternSO
 {
     [SerializeField] private float offsetX = 1f;
 
-    public override void Shoot(Enemy enemy)
+    public override void Shoot(Enemy enemy, GameObject bulletPrefab)
     {
         Vector3 left = enemy.transform.position + new Vector3(-offsetX, 0, 0);
         Vector3 right = enemy.transform.position + new Vector3(offsetX, 0, 0);
@@ -14,7 +14,7 @@ public class SideShot : AttackPatternSO
 
         foreach (var pos in new Vector3[] { left, right })
         {
-            GameObject bullet = enemy.GetPool().Get(pos, rot);
+            GameObject bullet = enemy.GetPool().Get(bulletPrefab, pos, rot);
             bullet.transform.position = pos;
             bullet.transform.rotation = rot;
         }

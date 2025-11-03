@@ -1012,21 +1012,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa1784b311fa3943981c0b9f3e80eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPattern: {fileID: 0}
-  _shootTime: 1.87
+  attackSet:
+    attackPattern: {fileID: 0}
+    shootInterval: 1
+    bulletPrefab: {fileID: 0}
+    initialDelay: 0
+    shootTimer: 0
   _bulletPooler: {fileID: 1642472387}
   _moveSpeed: 0.5
   attackSets:
   - attackPattern: {fileID: 11400000, guid: 7661a41b9da0b864087e717d8cd31960, type: 2}
     shootInterval: 1
+    bulletPrefab: {fileID: 0}
     initialDelay: 0
     shootTimer: 0
   - attackPattern: {fileID: 11400000, guid: 7989a913d301a5a41b68139c8ba1b38d, type: 2}
     shootInterval: 1.5
+    bulletPrefab: {fileID: 0}
     initialDelay: 0
     shootTimer: 0
   - attackPattern: {fileID: 11400000, guid: 1221b6635d115e94bb944528fe6ed673, type: 2}
     shootInterval: 4
+    bulletPrefab: {fileID: 0}
     initialDelay: 0
     shootTimer: 0
   specialAttack: {fileID: 0}
