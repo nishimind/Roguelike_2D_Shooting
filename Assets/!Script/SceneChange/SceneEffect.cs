@@ -50,6 +50,7 @@ public class SceneEffect : MonoBehaviour
         await UniTask.WaitUntil(() => Siene_Change_Main_Shooting.Instance != null);
 
         await UniTask.WaitUntil(() => Siene_Change_Main_Shooting.Instance.isChangingScene == true);
+        BulletPool.Instance.ClearPool(); //弾プールクリア
         FadeOut();
 
     }

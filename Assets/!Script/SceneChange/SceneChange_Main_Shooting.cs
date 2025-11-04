@@ -64,6 +64,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         {
             // 2秒後に GameOver へ移動
             // 第3引数 false → 「次のステージには進まない（GameOver固定）」
+            BulletPool.Instance.ClearPool(); //弾プールクリア
             StartCoroutine(ChangeSceneWithDelay("GameOver", 2f, false));
         }
     }
@@ -88,7 +89,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         if (goNextStage && sceneName == "Shop")
         {
             // まず Shop シーンをロード
-            BulletPool.Instance.ClearPool(); //弾プールクリア
+          
             SceneManager.LoadScene(sceneName);
 
             // 次のステージに進む処理自体は Shop シーン内で

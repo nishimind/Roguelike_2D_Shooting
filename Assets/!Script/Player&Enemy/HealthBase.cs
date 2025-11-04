@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public abstract class HealthBase : MonoBehaviour
@@ -57,8 +58,8 @@ public abstract class HealthBase : MonoBehaviour
     }
 
     // 共通：回復処理
-  
+
 
     // 派生クラスで具体的な死の挙動を定義する
-    protected abstract void Die();
+    protected abstract  void Die();
 }

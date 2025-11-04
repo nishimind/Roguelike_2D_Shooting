@@ -1,5 +1,7 @@
 using UnityEngine;
 using Cinemachine;
+using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 
 public class PlayerHealth : HealthBase
 {
@@ -37,7 +39,7 @@ public class PlayerHealth : HealthBase
         }
     }
 
-    protected override void Die()
+    protected override async void Die()
     {
         if (deadEffect != null)
             Instantiate(deadEffect, transform.position, Quaternion.identity);
@@ -47,6 +49,7 @@ public class PlayerHealth : HealthBase
 
         Debug.Log("Player Dead!");
         gameManager.DeadEffect();
-        // Destroy(gameObject); // プレイヤーは即削除しない
+        await UniTask.Delay(2000);
+        Destroy(gameObject); // プレイヤーは即削除しない
     }
 }

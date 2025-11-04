@@ -48,10 +48,10 @@ public int currentHP = 100;
     public List<ShotType> availableShots = new List<ShotType>(); // 使用可能なショットのプレハブ
 
 
-    public GameObject player;
-    public PlayerHealth health;
-    public PlayerMovement playerMovement;
-    public int x;
+    [HideInInspector] public GameObject player;
+    [HideInInspector] public PlayerHealth health;
+   [HideInInspector] public PlayerMovement playerMovement=PlayerMovement.Instance;
+    [HideInInspector] public int x;
     public Dictionary<ItemType, bool> itemFlags = new Dictionary<ItemType, bool>();
     public ItemCollector collector;
 
