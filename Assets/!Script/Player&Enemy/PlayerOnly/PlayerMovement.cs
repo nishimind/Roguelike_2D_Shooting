@@ -112,9 +112,11 @@ public class PlayerMovement : MonoBehaviour
                 bu.shootCount += Time.deltaTime;
                 if ( bu.shootCount >= bu.shootInterval)
                 {
-                    
-                    GameObject bullet=BulletPool.Instance.Get(bu.bulletPrefab, transform.position, transform.rotation);
-                    bullet.GetComponent<BulletDamage>().damage= PlayerStatus.Instance.attackPower;
+
+                    // GameObject bullet=
+                    Debug.Log(bu.damage);
+                        bu.attackPattern.Shoot(this.gameObject,bu.bulletPrefab,bu.damage);
+                   // bullet.GetComponent<BulletDamage>().damage= PlayerStatus.Instance.attackPower;
                   bu.shootCount = 0f;
 
 

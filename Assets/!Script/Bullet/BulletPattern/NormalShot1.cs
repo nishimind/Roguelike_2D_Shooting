@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AttackPattern/StraightDown")]
 public class NormalShot: AttackPatternSO
 {
-    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab)
+    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab, int damage)
     {
         if (bulletPrefab == null)
         {
@@ -12,6 +12,12 @@ public class NormalShot: AttackPatternSO
         }
 
         GameObject bullet = BulletPool.Instance.Get(bulletPrefab, shootPotision.transform.position, shootPotision.transform.rotation);
+
+        // çUåÇóÕÇÉZÉbÉg
+        var bulletDamage = bullet.GetComponent<BulletDamage>();
+        bulletDamage.damage = damage;
+        if (isPlyerBullet) bulletDamage.damage *= PlayerStatus.Instance.attackPower;
+
         bullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, Vector3.down);
     }
 }

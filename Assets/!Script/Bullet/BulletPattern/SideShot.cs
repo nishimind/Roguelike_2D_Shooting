@@ -5,7 +5,7 @@ public class SideShot : AttackPatternSO
 {
     [SerializeField] private float offsetX = 1f;
 
-    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab)
+    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab, int damage)
     {
         Vector3 left = shootPotision.transform.position + new Vector3(-offsetX, 0, 0);
         Vector3 right = shootPotision.transform.position + new Vector3(offsetX, 0, 0);
@@ -15,6 +15,12 @@ public class SideShot : AttackPatternSO
         foreach (var pos in new Vector3[] { left, right })
         {
             GameObject bullet = BulletPool.Instance.Get(bulletPrefab, pos, rot);
+            // çUåÇóÕÇÉZÉbÉg
+            var bulletDamage = bullet.GetComponent<BulletDamage>();
+            bulletDamage.damage = damage;
+            if (isPlyerBullet) bulletDamage.damage *= PlayerStatus.Instance.attackPower;
+
+
             bullet.transform.position = pos;
             bullet.transform.rotation = rot;
         }

@@ -931,7 +931,7 @@ MonoBehaviour:
   maxHP: 100
   currentHP: 100
   Money: 10
-  attackPower: 120
+  attackPower: 2
   defencePower: 0
   speed: 5
   shootTime: 0.5
@@ -946,9 +946,17 @@ MonoBehaviour:
   shootTimeText: {fileID: 4057151799402361312}
   grazeCountText: {fileID: 7959514326045879854}
   availableShots:
-  - attackPattern: {fileID: 0}
+  - attackPattern: {fileID: 11400000, guid: 1221b6635d115e94bb944528fe6ed673, type: 2}
     bulletPrefab: {fileID: 9099611059377426971, guid: 55872efa8ebd07942b0eda0f3bc99e0b, type: 3}
-    shootInterval: 0.27
+    shootInterval: 0.19
+    poolSize: 30
+    damage: 1
+    shootCount: 0
+  - attackPattern: {fileID: 11400000, guid: d092369fa5c2f7646bb223b2b5387999, type: 2}
+    bulletPrefab: {fileID: 14700504195148514, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
+    shootInterval: 0.61
+    poolSize: 30
+    damage: 1
     shootCount: 0
   player: {fileID: 0}
   health: {fileID: 0}

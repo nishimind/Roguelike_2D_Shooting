@@ -18,9 +18,12 @@ public class Enemy : MonoBehaviour
         public GameObject bulletPrefab;
 
         [Header("Å‰‚Ì”­ŽË‚Ü‚Å‚Ì’x‰„(•b)")]
-        public float initialDelay = 0f;
+        public int initialDelay = 0;
+        [Header("ƒ_ƒ[ƒW")]
+        public int damage = 1;
         [Header("Pool‚·‚é—Ê")]
         public int poolSize=30;
+
         [HideInInspector] public float shootTimer = 0f;
     }
     public AttackSet attackSet;
@@ -87,7 +90,7 @@ public class Enemy : MonoBehaviour
 
             if (attackSet.shootTimer >= Mathf.Max(0.05f, attackSet.shootInterval))
             {
-            attackSet.attackPattern.Shoot(this.gameObject, attackSet.bulletPrefab);
+            attackSet.attackPattern.Shoot(this.gameObject, attackSet.bulletPrefab,attackSet.damage);
                 attackSet.shootTimer = 0f;
             }
         }

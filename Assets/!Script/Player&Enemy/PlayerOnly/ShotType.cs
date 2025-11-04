@@ -8,5 +8,7 @@ public class ShotType
     public float shootInterval;
     [Header("Pool‚·‚é—Ê")]
     public int poolSize = 30;
+    [Header("ƒ_ƒ[ƒW")]
+    public int damage = 1;
     [HideInInspector] public float shootCount;
 }

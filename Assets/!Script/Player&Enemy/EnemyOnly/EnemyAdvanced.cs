@@ -12,6 +12,7 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
 
     [Header("特殊攻撃パターン（HP半分以下で1回だけ）")]
     [SerializeField] private AttackSet specialAttack;
+    public int specialAttackDamage = 3;
 
     [Header("特殊攻撃の前後待機(秒)")]
     [SerializeField] private float preSpecialWait = 1.0f;
@@ -114,7 +115,7 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
 
             if (set.shootTimer >= Mathf.Max(0.05f, set.shootInterval))
             {
-                set.attackPattern.Shoot(this.gameObject, set.bulletPrefab);
+                set.attackPattern.Shoot(this.gameObject, set.bulletPrefab,set.damage);
                 set.shootTimer = 0f;
             }
         }
@@ -162,7 +163,7 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
         if (specialAttack != null)
         {
             Debug.Log($"{name}：特殊攻撃発動！！！");
-            specialAttack.attackPattern. Shoot(this.gameObject, specialAttack.bulletPrefab);
+            specialAttack.attackPattern. Shoot(this.gameObject, specialAttack.bulletPrefab,specialAttackDamage);
         }
 
         yield return new WaitForSeconds(postSpecialWait);
