@@ -5,11 +5,11 @@ public class TripleAimShot : AttackPatternSO
 {
     [SerializeField] private float sideAngle = 15f;
 
-    public override void Shoot(Enemy enemy   , GameObject bulletPrefab)
+    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab)
     {
-        if (enemy.GetPlayer() == null) return;
+        if (shootPotision== null) return;
 
-        Vector3 dir = enemy.GetPlayer().transform.position - enemy.transform.position;
+        Vector3 dir = PlayerMovement.Instance.transform.position - shootPotision.transform.position;
         Quaternion baseRot = Quaternion.FromToRotation(Vector3.up, dir);
 
         float[] angles = { -sideAngle, 0, sideAngle };
@@ -17,8 +17,8 @@ public class TripleAimShot : AttackPatternSO
         foreach (var a in angles)
         {
             Quaternion rot = Quaternion.Euler(0, 0, a) * baseRot;
-            GameObject bullet = BulletPool.Instance.Get(bulletPrefab,enemy.transform.position, rot);
-            bullet.transform.position = enemy.transform.position;
+            GameObject bullet = BulletPool.Instance.Get(bulletPrefab,shootPotision.transform.position, rot);
+            bullet.transform.position = shootPotision.transform.position;
             bullet.transform.rotation = rot;
         }
     }

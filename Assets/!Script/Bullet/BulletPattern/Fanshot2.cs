@@ -8,7 +8,7 @@ public class FanShot2 : AttackPatternSO
     [SerializeField] private float spreadAngle = 45f;   // 広がる角度
     [SerializeField] private float offset = 1f;         // 弾の発射位置のオフセット（左右に配置する距離）
 
-    public override void Shoot(Enemy enemy, GameObject bulletPrefab)
+    public override void Shoot (GameObject shootPotision, GameObject bulletPrefab)
     {
         float startAngle = -spreadAngle / 2f;
         float angleStep = spreadAngle / (bulletCount - 1);
@@ -21,7 +21,7 @@ public class FanShot2 : AttackPatternSO
 
             // 発射位置を敵の両サイドに設定
             Vector3 sideOffset = new Vector3(i % 2 == 0 ? -offset : offset, 0, 0); // iが偶数なら左、奇数なら右
-            Vector3 spawnPosition = enemy.transform.position + sideOffset;
+            Vector3 spawnPosition = shootPotision.transform.position + sideOffset;
 
             // 弾の生成
             GameObject bullet = BulletPool.Instance.Get(bulletPrefab, spawnPosition, rot);

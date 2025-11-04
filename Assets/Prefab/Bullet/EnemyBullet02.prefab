@@ -94,5 +94,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initialSpeed: 13.75
-  _slowSpeed: 0.5
+  _slowSpeed: 1.32
   _changeDelay: 0.2

@@ -4,15 +4,15 @@ using UnityEngine;
 public class AimShot : AttackPatternSO
 {
     // プレイヤーの方向に弾を撃つパターン
-    public override void Shoot(Enemy enemy, GameObject bulletPrefab)
+    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab)
     {
-        if (enemy.GetPlayer() == null) return;
+        if (PlayerMovement.Instance == null) return;
 
-        Vector3 dir = enemy.GetPlayer().transform.position - enemy.transform.position;
+        Vector3 dir =PlayerMovement.Instance.transform.position - shootPotision.transform.position;
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, dir);
 
-        GameObject bullet = BulletPool.Instance.Get(bulletPrefab,enemy.transform.position, rot);
-        bullet.transform.position = enemy.transform.position;
+        GameObject bullet = BulletPool.Instance.Get(bulletPrefab,shootPotision.transform.position, rot);
+        bullet.transform.position = shootPotision.transform.position;
         bullet.transform.rotation = rot;
     }
 }

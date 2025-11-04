@@ -5,10 +5,10 @@ public class SideShot : AttackPatternSO
 {
     [SerializeField] private float offsetX = 1f;
 
-    public override void Shoot(Enemy enemy, GameObject bulletPrefab)
+    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab)
     {
-        Vector3 left = enemy.transform.position + new Vector3(-offsetX, 0, 0);
-        Vector3 right = enemy.transform.position + new Vector3(offsetX, 0, 0);
+        Vector3 left = shootPotision.transform.position + new Vector3(-offsetX, 0, 0);
+        Vector3 right = shootPotision.transform.position + new Vector3(offsetX, 0, 0);
 
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, Vector3.down);
 

@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
 
             if (attackSet.shootTimer >= Mathf.Max(0.05f, attackSet.shootInterval))
             {
-            attackSet.attackPattern.Shoot(this, attackSet.bulletPrefab);
+            attackSet.attackPattern.Shoot(this.gameObject, attackSet.bulletPrefab);
                 attackSet.shootTimer = 0f;
             }
         }
@@ -117,9 +117,7 @@ public class Enemy : MonoBehaviour
     private void OnBecameVisible() { _bAttack = true; }
     private void OnBecameInvisible() { _bAttack = false; }
 
-    // --- 外部から参照するための公開メソッド ---
-   
-    public GameObject GetPlayer() => _player;
+  
 
     // ランタイムでパターンを差し替える用
     public void SetAttackPattern(AttackPatternSO pattern)

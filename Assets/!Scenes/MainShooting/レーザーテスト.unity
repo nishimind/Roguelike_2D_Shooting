@@ -515,6 +515,7 @@ MonoBehaviour:
     shootInterval: 1
     bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
     initialDelay: 0
+    poolSize: 30
     shootTimer: 0
   _bulletPooler: {fileID: 1642472387}
   _moveSpeed: 0.5
@@ -523,12 +524,20 @@ MonoBehaviour:
     shootInterval: 0.5
     bulletPrefab: {fileID: 525268806911035309, guid: 20c07c6179a97e548b2373bc53d501ba, type: 3}
     initialDelay: 0
+    poolSize: 30
+    shootTimer: 0
+  - attackPattern: {fileID: 11400000, guid: beec4a14371f6f9439544136ca993dba, type: 2}
+    shootInterval: 0.5
+    bulletPrefab: {fileID: 525268806911035309, guid: 20c07c6179a97e548b2373bc53d501ba, type: 3}
+    initialDelay: 0
+    poolSize: 30
     shootTimer: 0
   specialAttack:
     attackPattern: {fileID: 0}
     shootInterval: 1
     bulletPrefab: {fileID: 0}
     initialDelay: 0
+    poolSize: 30
     shootTimer: 0
   preSpecialWait: 1
   postSpecialWait: 2
