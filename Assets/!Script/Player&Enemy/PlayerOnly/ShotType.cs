@@ -10,5 +10,7 @@ public class ShotType
     public int poolSize = 30;
     [Header("ダメージ")]
     public int damage = 1;
+    [Header("発射角度")]
+    public int shootAngle ;
     [HideInInspector] public float shootCount;
 }

@@ -4,14 +4,14 @@ using UnityEngine;
 public class AlternateShot : AttackPatternSO
 {
     private bool toggle = false;
-
-    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab, int damage)
+    //左右交互　角度どうすればいい？？
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
     {
         float angle = toggle ? -15f : 15f;
         toggle = !toggle;
 
         Quaternion rot = Quaternion.Euler(0, 0, angle) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
-        GameObject bullet = BulletPool.Instance.Get(bulletPrefab, shootPotision.transform.position, rot);
+        GameObject bullet = BulletPool.Instance.Get(bulletPrefab, position, rot);
 
         // 攻撃力をセット
         var bulletDamage = bullet.GetComponent<BulletDamage>();
@@ -19,7 +19,7 @@ public class AlternateShot : AttackPatternSO
         if (isPlyerBullet) bulletDamage.damage *= PlayerStatus.Instance.attackPower;
 
 
-        bullet.transform.position = shootPotision.transform.position;
+        bullet.transform.position = position;
         bullet.transform.rotation = rot;
     }
 }

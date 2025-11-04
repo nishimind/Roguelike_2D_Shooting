@@ -3,19 +3,19 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AttackPattern/RandomShot")]
 public class RandomShot : AttackPatternSO
 {
-    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int angle, GameObject bulletPrefab, int damage)
     {
-        float angle = Random.Range(-90f, 90f);
-        Quaternion rot = Quaternion.Euler(0, 0, angle) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
+        float rotation = Random.Range(-90f, 90f);
+        Quaternion rot = Quaternion.Euler(0, 0, rotation) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
 
-        GameObject bullet = BulletPool.Instance.Get(bulletPrefab, shootPotision.transform.position, rot);
+        GameObject bullet = BulletPool.Instance.Get(bulletPrefab, position, rot);
 
         // çUåÇóÕÇÉZÉbÉg
         var bulletDamage = bullet.GetComponent<BulletDamage>();
         bulletDamage.damage = damage;
         if (isPlyerBullet) bulletDamage.damage *= PlayerStatus.Instance.attackPower;
 
-        bullet.transform.position = shootPotision.transform.position;
+        bullet.transform.position = position;
         bullet.transform.rotation = rot;
     }
 }

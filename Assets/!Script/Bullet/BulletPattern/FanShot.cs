@@ -7,7 +7,7 @@ public class FanShot : AttackPatternSO
     [SerializeField] private int bulletCount = 5;       // íeÇÃêî
     [SerializeField] private float spreadAngle = 45f;   // çLÇ™ÇÈäpìx
 
-    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
     {
         float startAngle = -spreadAngle / 2f;
         float angleStep = spreadAngle / (bulletCount - 1);
@@ -15,19 +15,20 @@ public class FanShot : AttackPatternSO
         for (int i = 0; i < bulletCount; i++)
         {
             float angle = startAngle + angleStep * i;
-            Quaternion rot = Quaternion.Euler(0, 0, angle) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
 
-            GameObject bullet = BulletPool.Instance.Get(bulletPrefab,shootPotision.transform.position, rot);
+            // rotationÇíÜêSÇ…ÅAZé≤âÒì]Çí«â¡Ç∑ÇÈ
+            Quaternion rot = Quaternion.Euler(0, 0, rotation) * Quaternion.Euler(0, 0, angle);
 
-            // çUåÇóÕÇÉZÉbÉg
+            // íeê∂ê¨
+            GameObject bullet = BulletPool.Instance.Get(bulletPrefab, position, rot);
+
+            // É_ÉÅÅ[ÉWê›íË
             var bulletDamage = bullet.GetComponent<BulletDamage>();
             bulletDamage.damage = damage;
-           
-            if (isPlyerBullet) bulletDamage.damage *= PlayerStatus.Instance.attackPower;
-            Debug.Log("FanShot damage: " + damage);
 
-            bullet.transform.position = shootPotision   .transform.position;
-            bullet.transform.rotation = rot;
+            if (isPlyerBullet) bulletDamage.damage *= PlayerStatus.Instance.attackPower;
+
+            Debug.Log($"FanShot damage: {bulletDamage.damage}  angle: {angle}");
         }
     }
 }

@@ -8,7 +8,7 @@ public class ChargeBurst : AttackPatternSO
 
     private int charge = 0;
 
-    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab,int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
     {
         charge++;
         if (charge < 3) return; // 3‰ñ—­‚ß‚Ä‚©‚ç”­ŽË
@@ -17,16 +17,16 @@ public class ChargeBurst : AttackPatternSO
         for (int i = 0; i < bulletCount; i++)
         {
             float angle = -spreadAngle / 2f + i * angleStep;
-            Quaternion rot = Quaternion.Euler(0, 0, angle) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
+            Quaternion rot = Quaternion.Euler(0, 0, angle)* Quaternion.Euler(0, 0, angle) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
 
-            GameObject bullet = BulletPool.Instance.Get(bulletPrefab, shootPotision.transform.position, rot);
+            GameObject bullet = BulletPool.Instance.Get(bulletPrefab, position, rot);
 
             // UŒ‚—Í‚ðƒZƒbƒg
             var bulletDamage = bullet.GetComponent<BulletDamage>();
             bulletDamage.damage = damage;
             if (isPlyerBullet) bulletDamage.damage *= PlayerStatus.Instance.attackPower;
 
-            bullet.transform.position = shootPotision.transform.position;
+            bullet.transform.position = position;
             bullet.transform.rotation = rot;
         }
 

@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
                     // GameObject bullet=
                     Debug.Log(bu.damage);
-                        bu.attackPattern.Shoot(this.gameObject,bu.bulletPrefab,bu.damage);
+                        bu.attackPattern.Shoot(this.gameObject.transform.position,bu.shootAngle,bu.bulletPrefab,bu.damage);
                    // bullet.GetComponent<BulletDamage>().damage= PlayerStatus.Instance.attackPower;
                   bu.shootCount = 0f;
 

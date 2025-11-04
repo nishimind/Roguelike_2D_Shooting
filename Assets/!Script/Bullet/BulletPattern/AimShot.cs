@@ -4,14 +4,15 @@ using UnityEngine;
 public class AimShot : AttackPatternSO
 {
     // プレイヤーの方向に弾を撃つパターン
-    public override void Shoot(GameObject shootPotision, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int angle, GameObject bulletPrefab, int damage)
+
     {
         if (PlayerMovement.Instance == null) return;
 
-        Vector3 dir =PlayerMovement.Instance.transform.position - shootPotision.transform.position;
+        Vector3 dir =PlayerMovement.Instance.transform.position - position;
         Quaternion rot = Quaternion.FromToRotation(Vector3.up, dir);
 
-        GameObject bullet = BulletPool.Instance.Get(bulletPrefab,shootPotision.transform.position, rot);
+        GameObject bullet = BulletPool.Instance.Get(bulletPrefab,position, rot);
 
         // 攻撃力をセット
         var bulletDamage = bullet.GetComponent<BulletDamage>();
@@ -19,7 +20,7 @@ public class AimShot : AttackPatternSO
         bulletDamage.damage = damage;
         if (isPlyerBullet)  bulletDamage.damage *= PlayerStatus.Instance.attackPower;
       
-        bullet.transform.position = shootPotision.transform.position;
+        bullet.transform.position = position;
         bullet.transform.rotation = rot;
     }
 }

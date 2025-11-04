@@ -6,26 +6,8 @@ using Cysharp.Threading.Tasks;
 
 public class Enemy : MonoBehaviour
 {
-    [System.Serializable]
-    public class AttackSet
-    {
-        [Header("攻撃パターン（ScriptableObject）")]
-        public AttackPatternSO attackPattern;
 
-        [Header("発射間隔(秒)")]
-        public float shootInterval = 1f;
-        [Header("使用する弾プレハブ")]
-        public GameObject bulletPrefab;
-
-        [Header("最初の発射までの遅延(秒)")]
-        public int initialDelay = 0;
-        [Header("ダメージ")]
-        public int damage = 1;
-        [Header("Poolする量")]
-        public int poolSize=30;
-
-        [HideInInspector] public float shootTimer = 0f;
-    }
+ 
     public AttackSet attackSet;
     // 攻撃パターンを ScriptableObject で差し替え可能にする
 
@@ -90,7 +72,7 @@ public class Enemy : MonoBehaviour
 
             if (attackSet.shootTimer >= Mathf.Max(0.05f, attackSet.shootInterval))
             {
-            attackSet.attackPattern.Shoot(this.gameObject, attackSet.bulletPrefab,attackSet.damage);
+            attackSet.attackPattern.Shoot(this.gameObject.transform.position,attackSet.shootAngle, attackSet.bulletPrefab,attackSet.damage);
                 attackSet.shootTimer = 0f;
             }
         }

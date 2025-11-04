@@ -115,7 +115,7 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
 
             if (set.shootTimer >= Mathf.Max(0.05f, set.shootInterval))
             {
-                set.attackPattern.Shoot(this.gameObject, set.bulletPrefab,set.damage);
+                set.attackPattern.Shoot(this.gameObject.transform.position,set.shootAngle, set.bulletPrefab,set.damage);
                 set.shootTimer = 0f;
             }
         }
@@ -163,7 +163,7 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
         if (specialAttack != null)
         {
             Debug.Log($"{name}：特殊攻撃発動！！！");
-            specialAttack.attackPattern. Shoot(this.gameObject, specialAttack.bulletPrefab,specialAttackDamage);
+            specialAttack.attackPattern. Shoot(this.gameObject.transform.position,attackSet.shootAngle, specialAttack.bulletPrefab,specialAttackDamage);
         }
 
         yield return new WaitForSeconds(postSpecialWait);
