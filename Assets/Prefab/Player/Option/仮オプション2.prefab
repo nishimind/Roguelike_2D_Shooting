@@ -16,6 +16,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+    - target: {fileID: 4726235037891198497, guid: 0fd608676c5c56c4081e28f85fddf26a, type: 3}
+      propertyPath: shotType.shootAngle
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726235037891198497, guid: 0fd608676c5c56c4081e28f85fddf26a, type: 3}
+      propertyPath: shotType.bulletPrefab
+      value: 
+      objectReference: {fileID: 5589964471131066169, guid: cd4665ce30b75d04593c0d6237aeabb6, type: 3}
+    - target: {fileID: 4726235037891198497, guid: 0fd608676c5c56c4081e28f85fddf26a, type: 3}
+      propertyPath: shotType.attackPattern
+      value: 
+      objectReference: {fileID: 11400000, guid: b0a5b3d6053a0b542bef89d86d32a424, type: 2}
+    - target: {fileID: 4726235037891198497, guid: 0fd608676c5c56c4081e28f85fddf26a, type: 3}
+      propertyPath: shotType.shootInterval
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 4899000119521833670, guid: 0fd608676c5c56c4081e28f85fddf26a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

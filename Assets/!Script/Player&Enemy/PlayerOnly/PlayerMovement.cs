@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     // ƒ{ƒ^ƒ““ü—Íó‘Ô
-    private bool upPressed, downPressed, leftPressed, rightPressed,shotPressed;
+   [HideInInspector] public bool upPressed, downPressed, leftPressed, rightPressed,shotPressed;
 
     // ÅŒã‚É‰Ÿ‚µ‚½•ûŒü
     private enum LastDir { None, Up, Down, Left, Right }

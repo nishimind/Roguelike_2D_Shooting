@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5298b0443d32f446974e655a24f60cd, type: 3}
-  m_Name: "\u6247\u72B6"
+  m_Script: {fileID: 11500000, guid: 2d651cf63fbdab140934bb1b5d3a51ff, type: 3}
+  m_Name: "\u5186\u5F62\u306E\u5F3E"
   m_EditorClassIdentifier: 
   isPlyerBullet: 1
-  bulletCount: 3
-  spreadAngle: 17.5
+  bulletCount: 12

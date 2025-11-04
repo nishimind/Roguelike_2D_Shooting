@@ -99,9 +99,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotType:
-    attackPattern: {fileID: 0}
-    bulletPrefab: {fileID: 0}
-    shootInterval: 0
+    attackPattern: {fileID: 11400000, guid: 7bb43a8648dabe94c93aa4b2f418b1a9, type: 2}
+    bulletPrefab: {fileID: 9099611059377426971, guid: 55872efa8ebd07942b0eda0f3bc99e0b, type: 3}
+    shootInterval: 0.8
+    poolSize: 30
+    damage: 1
+    shootAngle: 180
     shootCount: 0
 --- !u!114 &-2671943221656165681
 MonoBehaviour:

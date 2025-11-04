@@ -17,7 +17,7 @@ public class ChargeBurst : AttackPatternSO
         for (int i = 0; i < bulletCount; i++)
         {
             float angle = -spreadAngle / 2f + i * angleStep;
-            Quaternion rot = Quaternion.Euler(0, 0, angle)* Quaternion.Euler(0, 0, angle) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
+            Quaternion rot = Quaternion.Euler(0, 0, rotation)* Quaternion.Euler(0, 0, angle) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
 
             GameObject bullet = BulletPool.Instance.Get(bulletPrefab, position, rot);
 
