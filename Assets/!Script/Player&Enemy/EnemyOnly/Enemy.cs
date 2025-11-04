@@ -19,7 +19,8 @@ public class Enemy : MonoBehaviour
 
         [Header("Å‰‚Ì”­Ë‚Ü‚Å‚Ì’x‰„(•b)")]
         public float initialDelay = 0f;
-
+        [Header("Pool‚·‚é—Ê")]
+        public int poolSize=30;
         [HideInInspector] public float shootTimer = 0f;
     }
     public AttackSet attackSet;
@@ -60,7 +61,7 @@ public class Enemy : MonoBehaviour
             Debug.LogError($"{name} ‚Ì attackSet.bulletPrefab ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
             return;
         }
-        BulletPool.Instance.RegisterBulletPrefab(attackSet.bulletPrefab);
+        BulletPool.Instance.RegisterBulletPrefab(attackSet.bulletPrefab,attackSet.poolSize);
     }
 
 

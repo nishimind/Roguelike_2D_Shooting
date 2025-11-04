@@ -55,7 +55,7 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
             set.shootTimer = set.initialDelay;
 
             if (set.bulletPrefab != null)
-              BulletPool.Instance.RegisterBulletPrefab(set.bulletPrefab);
+              BulletPool.Instance.RegisterBulletPrefab(set.bulletPrefab,set.poolSize);
         }
 
         // ç≈èâÇÕÇ‰Ç¡Ç≠ÇËç~â∫

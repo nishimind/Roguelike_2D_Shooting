@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
-    [SerializeField] private int poolSize = 20;
-
+   
     // 各プレハブごとにプールを分ける
     private readonly Dictionary<GameObject, Queue<GameObject>> poolDictionary = new();
     public static BulletPool Instance { get; private set; }
@@ -22,7 +21,7 @@ public class BulletPool : MonoBehaviour
         }
     }
     // 敵の出現時などに呼び出して、弾プレハブを登録しておく
-    public void RegisterBulletPrefab(GameObject bulletPrefab)
+    public void RegisterBulletPrefab(GameObject bulletPrefab,int poolSize)
     {
         if (poolDictionary.ContainsKey(bulletPrefab))
             return;
@@ -55,7 +54,7 @@ public class BulletPool : MonoBehaviour
         if (!poolDictionary.TryGetValue(bulletPrefab, out var pool))
         {
             // 登録されていなければ新規登録
-            RegisterBulletPrefab(bulletPrefab);
+            RegisterBulletPrefab(bulletPrefab,1);
             pool = poolDictionary[bulletPrefab];
         }
 
@@ -93,6 +92,10 @@ public class BulletPool : MonoBehaviour
         }
 
         poolDictionary.Clear();
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
 
     }
 }

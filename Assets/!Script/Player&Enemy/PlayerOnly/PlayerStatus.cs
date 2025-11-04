@@ -88,6 +88,7 @@ public int currentHP = 100;
         SceneManager.sceneLoaded -= OnSceneLoaded; // 念のため重複を解除
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+   
     private async void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log($"[PlayerStatus] OnSceneLoaded called in scene: {scene.name}");
@@ -98,7 +99,13 @@ public int currentHP = 100;
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
         GenerateOption();
         //弾のPool登録
-    
+        foreach (var set in availableShots)
+        {
+            set.shootCount = 0;
+
+            if (set.bulletPrefab != null)
+                BulletPool.Instance.RegisterBulletPrefab(set.bulletPrefab, set.poolSize);
+        }
     }
 
     private void Update()
@@ -118,22 +125,7 @@ public int currentHP = 100;
         grazeCountText.text="graze:"+grazeCount;
 
     }
-    // 新しいショットを追加する処理
-    /*
-    public void AddShotType(int typeId)
-    {
-        // 仮に typeId = 0,1,2 に対応するショットプレハブを追加する例
-        if (typeId >= 0 && typeId < availableShots.Count)
-        {
-            Debug.Log("新しいショットを追加: " + availableShots[typeId].name);
-            // ここで実際にショットの切り替えや追加処理を書く
-            // 例えばショットリストに追加するだけでもOK
-        }
-        else
-        {
-            Debug.LogWarning("AddShotType: typeIdが範囲外です。");
-        }
-    }*/
+   
     public void FindPlayer()
     {
         player = GameObject.FindWithTag("Player");
