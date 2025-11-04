@@ -1,13 +1,11 @@
-using UnityEngine;
-
+ï»¿using UnityEngine;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 public class HomingBullet : MonoBehaviour
 {
-    [SerializeField, Header("’e‚Ì‘¬“x")]
-    public float _speed = 5f;
-
-    [SerializeField, Header("‰ñ“ª‘¬“xi‚Ç‚ê‚­‚ç‚¢‹È‚ª‚é‚©j")]
-     float _rotateSpeed = 200f;
-
+    [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _rotateSpeed = 200f;
+    [SerializeField] private float _maxRotateAngle = 30f; // æœ€å¤§å›è»¢è§’åº¦ï¼ˆåº¦ï¼‰
     private Rigidbody2D _rb;
     private Transform _target;
 
@@ -16,54 +14,49 @@ public class HomingBullet : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
+    async void Start()
     {
-        // Å‚à‹ß‚¢Enemy‚ğ’T‚·
+        // ç™ºå°„æ™‚ç‚¹ã§æœ€ã‚‚è¿‘ã„Enemyã‚¿ã‚°ã®ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’æ¢ã™
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        float minDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-
-        foreach (GameObject enemy in enemies)
+        if (enemies.Length > 0)
         {
-            float distance = Vector2.Distance(transform.position, enemy.transform.position);
-            if (distance < minDistance)
+            float minDist = Mathf.Infinity;
+            foreach (var e in enemies)
             {
-                minDistance = distance;
-                nearestEnemy = enemy;
+                float dist = Vector2.Distance(transform.position, e.transform.position);
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    _target = e.transform;
+                }
             }
         }
-
-        if (nearestEnemy != null)
+       await UniTask.Delay(3000).ContinueWith(() =>
         {
-            _target = nearestEnemy.transform;
-        }
+            // 10ç§’å¾Œã«å¼¾ã‚’æ¶ˆã™
+            _target = null;
+        });
     }
 
     void FixedUpdate()
     {
         if (_rb == null) return;
 
-        // ’Ç”ö‘ÎÛ‚ª‚¢‚È‚¢ê‡‚Í‚»‚Ì‚Ü‚Ü’¼i
         if (_target == null)
         {
+            // ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãŒã„ãªã‘ã‚Œã°ç›´é€²
             _rb.velocity = transform.up * _speed;
             return;
         }
 
-        // “G‚Ì•ûŒüƒxƒNƒgƒ‹‚ğæ“¾
-        Vector2 direction = ((Vector2)_target.position - _rb.position).normalized;
 
-        // Œ»İ‚Ìis•ûŒü‚Æƒ^[ƒQƒbƒg•ûŒü‚ÌŠp“x·‚ğ‹‚ß‚é
-        float rotateAmount = Vector3.Cross(direction, transform.up).z;
-
-        // ­‚µ‚¸‚Â“G•ûŒü‚Ö‰ñ“ª
-        
-        
-            _rb.angularVelocity = -rotateAmount * _rotateSpeed;
-        if (5 >= rotateAmount && rotateAmount >= -5) { _rb.angularVelocity =0; }
-
-        // ‘Oi
+        // å‰é€²
         _rb.velocity = transform.up * _speed;
+        Vector2 dir = (_target.position - transform.position).normalized;
+        _rb.AddForce(dir * _rotateSpeed * Time.fixedDeltaTime);
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+        Quaternion target = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target,
+        _rotateSpeed * Time.fixedDeltaTime);
     }
 }

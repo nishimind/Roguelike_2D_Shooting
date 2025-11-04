@@ -28,7 +28,7 @@ public class FanShot : AttackPatternSO
 
             if (isPlyerBullet) bulletDamage.damage *= PlayerStatus.Instance.attackPower;
 
-            Debug.Log($"FanShot damage: {bulletDamage.damage}  angle: {angle}");
+           // Debug.Log($"FanShot damage: {bulletDamage.damage}  angle: {angle}");
         }
     }
 }

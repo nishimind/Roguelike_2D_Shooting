@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2853999573246418763, guid: cd4665ce30b75d04593c0d6237aeabb6, type: 3}
       propertyPath: m_Constraints
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4362581848289255184, guid: cd4665ce30b75d04593c0d6237aeabb6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90,5 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122f06960dad1ac4b977b3125100e032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 4
-  _rotateSpeed: 0.5
+  _speed: 7.47
+  _rotateSpeed: 4.97
+  _maxRotateAngle: 22.3
