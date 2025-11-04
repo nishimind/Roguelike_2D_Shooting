@@ -955,6 +955,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6208253672395549789, guid: a38e081246d16c244a078282bb14c2f8, type: 3}
+      propertyPath: startFadeSpeed
+      value: 0.88
+      objectReference: {fileID: 0}
     - target: {fileID: 6390020018348975233, guid: a38e081246d16c244a078282bb14c2f8, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1757,10 +1761,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1100105198108132972, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
-      propertyPath: maxHP
-      value: 166
-      objectReference: {fileID: 0}
-    - target: {fileID: 1100105198108132972, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
       propertyPath: optionTable.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -2323,7 +2323,7 @@ PrefabInstance:
       objectReference: {fileID: 8663812190033320805, guid: 9b4251d12f7bb4145bf3f9a960e109dd, type: 3}
     - target: {fileID: 3813029002301012428, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: maxHP
-      value: 1
+      value: 203
       objectReference: {fileID: 0}
     - target: {fileID: 3813029002301012428, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: currentHP
@@ -3044,7 +3044,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 652123596754573895, guid: 2aeef98f0154ece439b5e7beca36b6ed, type: 3}
       propertyPath: m_Name
-      value: BulletPool_for_Enemy
+      value: BulletPool
       objectReference: {fileID: 0}
     - target: {fileID: 752602518034027716, guid: 2aeef98f0154ece439b5e7beca36b6ed, type: 3}
       propertyPath: m_LocalPosition.x

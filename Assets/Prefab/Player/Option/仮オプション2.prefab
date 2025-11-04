@@ -23,7 +23,7 @@ PrefabInstance:
     - target: {fileID: 4726235037891198497, guid: 0fd608676c5c56c4081e28f85fddf26a, type: 3}
       propertyPath: shotType.bulletPrefab
       value: 
-      objectReference: {fileID: 5589964471131066169, guid: cd4665ce30b75d04593c0d6237aeabb6, type: 3}
+      objectReference: {fileID: 6839667995328933483, guid: 25853654231f9c64fbfa0160cbd67277, type: 3}
     - target: {fileID: 4726235037891198497, guid: 0fd608676c5c56c4081e28f85fddf26a, type: 3}
       propertyPath: shotType.attackPattern
       value: 
