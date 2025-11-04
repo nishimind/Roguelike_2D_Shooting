@@ -16,19 +16,14 @@ public class PlayerMovement : MonoBehaviour
     public float minY = -4.5f;
     public float maxY = 4.5f;
 
-    // 弾関連
-    //[SerializeField,Header("弾オブジェクト")]
-    //private GameObject _bullet;
-  
- 
-  
-   
- 
+
 
     private Vector2 moveInput;            // スティック入力
     private bool isSlow;                  // 減速状態
 
     private Rigidbody2D rb;
+
+    public static PlayerMovement Instance { get; private set; }
 
 
     // ボタン入力状態
@@ -47,16 +42,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Start()
     {
-        foreach (var bu in PlayerStatus.Instance.availableShots)
-        {
-            bu.shootCount = 0; // 最初は撃てない状態にしておく
-        }
+       Instance = this;
     }
-    private void Update()
-    {
-        //弾を撃つ処理を下に移動させました
-
-    }
+    
     public void OnShot(InputAction.CallbackContext context)
     {
         shotPressed = context.ReadValue<float>() > 0.5f;
