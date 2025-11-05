@@ -530,7 +530,7 @@ MonoBehaviour:
     initialDelay: 0
     startHP: 100
     endHP: 50
-    damage: 123
+    damage: 1
     poolSize: 10
     shootTimer: 0
   - attackPattern: {fileID: 11400000, guid: 01ed94bb2c81d904abfc12e02da1267d, type: 2}
@@ -1779,11 +1779,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1100105198108132972, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
       propertyPath: optionTable.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1100105198108132972, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
       propertyPath: availableShots.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1100105198108132972, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
       propertyPath: availableShots.Array.data[0]

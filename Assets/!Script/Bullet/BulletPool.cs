@@ -43,8 +43,11 @@ public class BulletPool : MonoBehaviour
         obj.SetActive(false);
 
         // 🔸ここでPrefab情報を明示的にセット！
-        if (obj.TryGetComponent(out BulletDamage bullet))
+        var bullet = obj.GetComponentInChildren<BulletDamage>();
+        if (bullet != null)
+        {
             bullet.originPrefab = prefab;
+        }
 
         if (obj.TryGetComponent(out CameraChecker checker))
             checker.Init(this);

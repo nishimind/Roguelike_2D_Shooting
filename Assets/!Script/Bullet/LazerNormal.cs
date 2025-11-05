@@ -49,7 +49,8 @@ public class LaserNormal : BulletBase
 
         laserLine.transform.DOScaleX(0f, scaleDuration).SetEase(Ease.InQuad);
         await UniTask.Delay((int)(scaleDuration * 1000));
-        laserLine.SetActive(false);
+        Debug.Log("[Laser] Releasing laser bullet back to pool.");
+        BulletPool.Instance.Release(this.gameObject.GetComponentInChildren<BulletDamage>().originPrefab,this.gameObject);
     }
 
     protected override void Update() { }
