@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     // 攻撃パターンを ScriptableObject で差し替え可能にする
 
 
-    [SerializeField, Header("弾のプーラー")]
+   
     protected BulletPool _bulletPooler;
 
     [SerializeField, Header("移動速度")]
@@ -97,7 +97,8 @@ public class Enemy : MonoBehaviour
           }
       }
     */
-
+    
+       
     // 確実に動作する方法
     private void OnBecameVisible() { _bAttack = true; }
     private void OnBecameInvisible() { _bAttack = false; }

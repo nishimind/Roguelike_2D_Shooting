@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletSlowFast : MonoBehaviour
+public class BulletSlowFast : BulletBase
 {
     [SerializeField, Header("ç≈èâÇÃë¨ìx")]
     private float _initialSpeed = 10f;
@@ -11,16 +11,13 @@ public class BulletSlowFast : MonoBehaviour
     [SerializeField, Header("íxÇ≠Ç»ÇÈÇ‹Ç≈ÇÃïbêî")]
     private float _changeDelay = 1.5f;
 
-    private Rigidbody2D _rb;
+    
     private bool _isSlowed = false;
     private float _timer = 0f;
 
-    void Awake()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-    }
+   
 
-    void Update()
+    protected override void Update()
     {
         if (_rb == null) return;
 

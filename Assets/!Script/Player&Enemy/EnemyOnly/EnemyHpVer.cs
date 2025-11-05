@@ -109,7 +109,7 @@ public class EnemyHpVer : Enemy
             }
 
             float hpPercent = (_health.currentHP * 100f) / _health.maxHP;
-            Debug.Log($"{name} ‚ÌŒ»İHP%: {hpPercent}% {_health.currentHP}/{_health.maxHP}");
+        //    Debug.Log($"{name} ‚ÌŒ»İHP%: {hpPercent}% {_health.currentHP}/{_health.maxHP}");
             // ŠeAttackSet‚ğ“Æ—§‚µ‚Ä•]‰¿
             foreach (var set in attackSets)
             {
