@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotType:
-    attackPattern: {fileID: 11400000, guid: d092369fa5c2f7646bb223b2b5387999, type: 2}
+    attackPattern: {fileID: 11400000, guid: b0a5b3d6053a0b542bef89d86d32a424, type: 2}
     bulletPrefab: {fileID: 5589964471131066169, guid: cd4665ce30b75d04593c0d6237aeabb6, type: 3}
     shootInterval: 1
     poolSize: 30

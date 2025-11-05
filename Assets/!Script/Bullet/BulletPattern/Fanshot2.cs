@@ -17,7 +17,7 @@ public class FanShot2 : AttackPatternSO
         {
             // 弾の角度を決める
             float angle = startAngle + angleStep * i;
-            Quaternion rot = Quaternion.Euler(0, 0, angle) * Quaternion.Euler(0, 0, angle);
+            Quaternion rot = Quaternion.Euler(0, 0, angle) * Quaternion.Euler(0, 0, rotation);
 
             // 発射位置を敵の両サイドに設定
             Vector3 sideOffset = new Vector3(i % 2 == 0 ? -offset : offset, 0, 0); // iが偶数なら左、奇数なら右

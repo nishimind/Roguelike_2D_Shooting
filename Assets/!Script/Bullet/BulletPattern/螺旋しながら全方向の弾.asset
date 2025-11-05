@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bb19f8e8691bd46bf1a382d8e06632, type: 3}
   m_Name: "\u87BA\u65CB\u3057\u306A\u304C\u3089\u5168\u65B9\u5411\u306E\u5F3E"
   m_EditorClassIdentifier: 
+  isPlyerBullet: 0
   bulletCount: 8
-  rotationStep: 10
+  rotationStep: 3.62
