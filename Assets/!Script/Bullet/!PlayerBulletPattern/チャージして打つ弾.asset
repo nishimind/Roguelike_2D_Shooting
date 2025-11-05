@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: "\u30C1\u30E3\u30FC\u30B8\u3057\u3066\u6253\u3064\u5F3E"
   m_EditorClassIdentifier: 
   isPlyerBullet: 1
-  bulletCount: 3
-  spreadAngle: 90
+  bulletCount: 5
+  spreadAngle: 33.3

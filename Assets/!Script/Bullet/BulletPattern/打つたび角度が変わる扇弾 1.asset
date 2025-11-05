@@ -14,6 +14,6 @@ MonoBehaviour:
     1"
   m_EditorClassIdentifier: 
   isPlyerBullet: 0
-  bulletCount: 5
-  spreadAngle: 60
+  bulletCount: 31
+  spreadAngle: 360
   rotationStep: 10

@@ -48,7 +48,7 @@ public abstract class HealthBase : MonoBehaviour
         damageTimeCount += Time.deltaTime;
         float value = Mathf.Repeat(damageTimeCount, damageCycle);
         spriteRenderer.enabled = value >= damageCycle * 0.5f;
-        Debug.Log("Blink");
+       // Debug.Log("Blink");
         if (damageTimeCount >= damageTime)
         {
             damageTimeCount = 0;

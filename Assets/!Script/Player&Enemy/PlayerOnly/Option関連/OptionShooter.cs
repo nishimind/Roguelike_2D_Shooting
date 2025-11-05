@@ -7,7 +7,11 @@ public class OptionShooter : MonoBehaviour
     public ShotType shotType;
     // Start is called before the first frame update
 
-
+    private void Start()
+    {
+        if (shotType.bulletPrefab != null)
+            BulletPool.Instance.RegisterBulletPrefab(shotType.bulletPrefab, shotType.poolSize);
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -20,7 +24,7 @@ public class OptionShooter : MonoBehaviour
                 {
 
                     // GameObject bullet=
-                    Debug.Log(shotType.damage);
+                   // Debug.Log(shotType.damage);
                     shotType.attackPattern.Shoot(this.gameObject.transform.position, shotType.shootAngle, shotType.bulletPrefab, shotType.damage);
                     // bullet.GetComponent<BulletDamage>().damage= PlayerStatus.Instance.attackPower;
                     shotType.shootCount = 0f;

@@ -1,12 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class EnemyAdvanced_Special_MoveCycle : Enemy
 {
- 
-   
-
     [Header("複数の攻撃パターンを同時使用")]
     [SerializeField] private List<AttackSet> attackSets = new List<AttackSet>();
 
@@ -37,6 +35,8 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
     private bool hasRestarted = false;
     private bool _initialized = false;
 
+    private CancellationTokenSource _cts = new CancellationTokenSource();
+
     // =========================================================
     // 初期化
     // =========================================================
@@ -50,20 +50,24 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
             Debug.LogError($"{name} に EnemyHealth がアタッチされていません！");
         }
 
-        // 攻撃タイマー初期化 & 弾プレハブ登録
         foreach (var set in attackSets)
         {
             set.shootTimer = set.initialDelay;
 
             if (set.bulletPrefab != null)
-              BulletPool.Instance.RegisterBulletPrefab(set.bulletPrefab,set.poolSize);
+                BulletPool.Instance.RegisterBulletPrefab(set.bulletPrefab, set.poolSize);
         }
 
-        // 最初はゆっくり降下
         _rb.velocity = Vector2.down * firstFallSpeed;
 
-        StartCoroutine(HealthWatcher());
+        // 非同期処理を起動
+        HealthWatcherAsync(_cts.Token).Forget();
         _initialized = true;
+    }
+
+    private void OnDestroy()
+    {
+        _cts?.Cancel();
     }
 
     // =========================================================
@@ -72,27 +76,24 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
     protected override void _Move()
     {
         if (!_initialized) return;
-
-        // 一度停止したあとに再降下していれば、_Move制御はしない（velocity手動制御）
         if (hasRestarted) return;
 
-        // stopPosY 到達で停止
         if (!hasStopped && transform.position.y <= stopPosY)
         {
             hasStopped = true;
             _rb.velocity = Vector2.zero;
             Debug.Log($"{name}：停止位置に到達（Y={stopPosY}）");
 
-            // 一定時間後に再降下開始
-            StartCoroutine(RestartMoveAfterDelay());
+            RestartMoveAfterDelayAsync(_cts.Token).Forget();
         }
     }
 
-    // 一定時間後に再降下を開始
-    private IEnumerator RestartMoveAfterDelay()
+    private async UniTaskVoid RestartMoveAfterDelayAsync(CancellationToken token)
     {
         Debug.Log($"{name}：{stopDuration}秒間停止中...");
-        yield return new WaitForSeconds(stopDuration);
+        await UniTask.Delay(System.TimeSpan.FromSeconds(stopDuration), cancellationToken: token);
+
+        if (token.IsCancellationRequested) return;
 
         hasRestarted = true;
         _rb.velocity = Vector2.down * secondFallSpeed;
@@ -100,7 +101,7 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
     }
 
     // =========================================================
-    // 攻撃処理（移動中も撃つ）
+    // 攻撃処理
     // =========================================================
     protected override void _Attack()
     {
@@ -115,25 +116,29 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
 
             if (set.shootTimer >= Mathf.Max(0.05f, set.shootInterval))
             {
-                set.attackPattern.Shoot(this.gameObject.transform.position,set.shootAngle, set.bulletPrefab,set.damage);
+                set.attackPattern.Shoot(
+                    this.gameObject.transform.position,
+                    set.shootAngle,
+                    set.bulletPrefab,
+                    set.damage
+                );
                 set.shootTimer = 0f;
             }
         }
     }
 
-
     // =========================================================
-    // 特殊攻撃監視（HP50%未満で1度だけ）
+    // HP監視処理（UniTask版）
     // =========================================================
-    private IEnumerator HealthWatcher()
+    private async UniTaskVoid HealthWatcherAsync(CancellationToken token)
     {
-        yield return new WaitForSeconds(0.3f);
+        await UniTask.Delay(System.TimeSpan.FromSeconds(0.3f), cancellationToken: token);
 
-        while (true)
+        while (!token.IsCancellationRequested)
         {
             if (_health == null || _health.maxHP <= 0)
             {
-                yield return null;
+                await UniTask.Yield(token);
                 continue;
             }
 
@@ -142,35 +147,39 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
             if (hpPercent < 0.5f && !didSpecial)
             {
                 didSpecial = true;
-                StartCoroutine(SpecialAttackRoutine());
+                await SpecialAttackRoutineAsync(token);
             }
 
-            yield return new WaitForSeconds(0.2f);
+            await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f), cancellationToken: token);
         }
     }
 
     // =========================================================
-    // 特殊攻撃（HP50%未満時に1度だけ発動）
+    // 特殊攻撃（UniTask版）
     // =========================================================
-    private IEnumerator SpecialAttackRoutine()
+    private async UniTask SpecialAttackRoutineAsync(CancellationToken token)
     {
         inSpecial = true;
         _rb.velocity = Vector2.zero;
         Debug.Log($"{name}：特殊攻撃準備中...");
 
-        yield return new WaitForSeconds(preSpecialWait);
+        await UniTask.Delay(System.TimeSpan.FromSeconds(preSpecialWait), cancellationToken: token);
 
         if (specialAttack != null)
         {
             Debug.Log($"{name}：特殊攻撃発動！！！");
-            specialAttack.attackPattern. Shoot(this.gameObject.transform.position,attackSet.shootAngle, specialAttack.bulletPrefab,specialAttackDamage);
+            specialAttack.attackPattern.Shoot(
+                this.gameObject.transform.position,
+                specialAttack.shootAngle,
+                specialAttack.bulletPrefab,
+                specialAttackDamage
+            );
         }
 
-        yield return new WaitForSeconds(postSpecialWait);
+        await UniTask.Delay(System.TimeSpan.FromSeconds(postSpecialWait), cancellationToken: token);
 
         Debug.Log($"{name}：特殊攻撃終了、通常攻撃再開");
 
-        // 特殊攻撃が終わったら、再降下してるなら再び動かす
         if (hasRestarted)
             _rb.velocity = Vector2.down * secondFallSpeed;
 
