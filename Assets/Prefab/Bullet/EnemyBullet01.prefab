@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _rb: {fileID: 0}
 --- !u!114 &-8127679502214970949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +143,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  ifdestroied: 1
+  destroyOnHit: 1
+  grazed: 0
+  onlyGraze: 0
+  damageInterval: 0.2
+  originPrefab: {fileID: 2718853384716826557}
 --- !u!61 &7366847416962317767
 BoxCollider2D:
   m_ObjectHideFlags: 0

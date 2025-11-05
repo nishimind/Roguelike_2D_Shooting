@@ -8,4 +8,6 @@ public class BulletDamage : MonoBehaviour
     public bool onlyGraze = false;
     [Header("連続ヒット間隔（レーザー用）")]
     public float damageInterval = 0.2f;
+    public GameObject originPrefab; // ← これで元のPrefabを記憶
+
 }

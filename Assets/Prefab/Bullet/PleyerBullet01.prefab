@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 6.94
+  _rb: {fileID: 0}
 --- !u!114 &8413936359076726092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,6 +147,7 @@ MonoBehaviour:
   grazed: 0
   onlyGraze: 0
   damageInterval: 0.2
+  originPrefab: {fileID: 9099611059377426971}
 --- !u!114 &9048895880302074606
 MonoBehaviour:
   m_ObjectHideFlags: 0

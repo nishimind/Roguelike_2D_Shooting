@@ -57,11 +57,10 @@ public class CollisionBase : MonoBehaviour
         // íeÇÃè¡ãé
         if (bullet.destroyOnHit)
         {
-            var checker = collision.GetComponent<CameraChecker>();
-            if (checker != null && checker._pool != null)
-                checker._pool.Release(collision.gameObject,collision.gameObject);
-            else
-                Destroy(collision.gameObject);
+           
+          
+               BulletPool.Instance.Release(bullet.originPrefab,collision.gameObject);
+          
         }
     }
 }

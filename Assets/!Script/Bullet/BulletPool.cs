@@ -1,10 +1,10 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
    
-    // ŠeƒvƒŒƒnƒu‚²‚Æ‚Éƒv[ƒ‹‚ğ•ª‚¯‚é
+    // å„ãƒ—ãƒ¬ãƒãƒ–ã”ã¨ã«ãƒ—ãƒ¼ãƒ«ã‚’åˆ†ã‘ã‚‹
     private readonly Dictionary<GameObject, Queue<GameObject>> poolDictionary = new();
     public static BulletPool Instance { get; private set; }
 
@@ -20,7 +20,7 @@ public class BulletPool : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // “G‚ÌoŒ»‚È‚Ç‚ÉŒÄ‚Ño‚µ‚ÄA’eƒvƒŒƒnƒu‚ğ“o˜^‚µ‚Ä‚¨‚­
+    // æ•µã®å‡ºç¾æ™‚ãªã©ã«å‘¼ã³å‡ºã—ã¦ã€å¼¾ãƒ—ãƒ¬ãƒãƒ–ã‚’ç™»éŒ²ã—ã¦ãŠã
     public void RegisterBulletPrefab(GameObject bulletPrefab,int poolSize)
     {
         if (poolDictionary.ContainsKey(bulletPrefab))
@@ -36,11 +36,15 @@ public class BulletPool : MonoBehaviour
         poolDictionary.Add(bulletPrefab, newPool);
     }
 
-    // ’e‚ğ¶¬‚µ‚Ä”ñƒAƒNƒeƒBƒu‰»
+    // å¼¾ã‚’ç”Ÿæˆã—ã¦éã‚¢ã‚¯ãƒ†ã‚£ãƒ–åŒ–
     private GameObject CreateNewBullet(GameObject prefab)
     {
         var obj = Instantiate(prefab, transform);
         obj.SetActive(false);
+
+        // ğŸ”¸ã“ã“ã§Prefabæƒ…å ±ã‚’æ˜ç¤ºçš„ã«ã‚»ãƒƒãƒˆï¼
+        if (obj.TryGetComponent(out BulletDamage bullet))
+            bullet.originPrefab = prefab;
 
         if (obj.TryGetComponent(out CameraChecker checker))
             checker.Init(this);
@@ -48,12 +52,12 @@ public class BulletPool : MonoBehaviour
         return obj;
     }
 
-    // ’e‚ğæ“¾‚·‚é
+    // å¼¾ã‚’å–å¾—ã™ã‚‹
     public GameObject Get(GameObject bulletPrefab, Vector3 position, Quaternion rotation)
     {
         if (!poolDictionary.TryGetValue(bulletPrefab, out var pool))
         {
-            // “o˜^‚³‚ê‚Ä‚¢‚È‚¯‚ê‚ÎV‹K“o˜^
+            // ç™»éŒ²ã•ã‚Œã¦ã„ãªã‘ã‚Œã°æ–°è¦ç™»éŒ²
             RegisterBulletPrefab(bulletPrefab,1);
             pool = poolDictionary[bulletPrefab];
         }
@@ -68,7 +72,7 @@ public class BulletPool : MonoBehaviour
         return obj;
     }
 
-    // ’e‚ğ•Ô‹p‚·‚é
+    // å¼¾ã‚’è¿”å´ã™ã‚‹
     public void Release(GameObject bulletPrefab, GameObject obj)
     {
         obj.SetActive(false);
@@ -77,6 +81,7 @@ public class BulletPool : MonoBehaviour
             poolDictionary.Add(bulletPrefab, new Queue<GameObject>());
 
         poolDictionary[bulletPrefab].Enqueue(obj);
+        
     }
     public void ClearPool()
     {
