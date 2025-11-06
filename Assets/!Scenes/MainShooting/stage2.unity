@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: secondFallSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
+      propertyPath: attackSets.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4980828594183270744, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: m_Name
       value: enemy_C (1)
@@ -564,6 +568,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: secondFallSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
+      propertyPath: attackSets.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4980828594183270744, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
@@ -1114,20 +1122,6 @@ MonoBehaviour:
     damage: 0
     poolSize: 100
     shootTimer: 0
-  specialAttack:
-    attackPattern: {fileID: 0}
-    shootInterval: 1
-    bulletPrefab: {fileID: 0}
-    shootAngle: 0
-    initialDelay: 0
-    startHP: 0
-    endHP: 0
-    damage: 1
-    poolSize: 30
-    shootTimer: 0
-  specialAttackDamage: 3
-  preSpecialWait: 1
-  postSpecialWait: 2
   stopPosY: 5
   firstFallSpeed: 1
   stopDuration: 30
@@ -2230,6 +2224,10 @@ PrefabInstance:
       propertyPath: secondFallSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
+      propertyPath: attackSets.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4980828594183270744, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: m_Name
       value: enemy_C (3)
@@ -2626,6 +2624,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: secondFallSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
+      propertyPath: attackSets.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4980828594183270744, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}

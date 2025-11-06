@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\u30D4\u30A2\u30CE2"
   m_EditorClassIdentifier: 
   isPlyerBullet: 0
-  laneOffset: 0.2
+  laneOffset: 0.3
   startY: 6
   noteXPositions:
   - 3.5

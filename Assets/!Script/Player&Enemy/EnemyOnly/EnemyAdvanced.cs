@@ -8,14 +8,14 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
     [Header("複数の攻撃パターンを同時使用")]
     [SerializeField] private List<AttackSet> attackSets = new List<AttackSet>();
 
-    [Header("特殊攻撃パターン（HP半分以下で1回だけ）")]
+ /*   [Header("特殊攻撃パターン（HP半分以下で1回だけ）")]
     [SerializeField] private AttackSet specialAttack;
     public int specialAttackDamage = 3;
 
     [Header("特殊攻撃の前後待機(秒)")]
     [SerializeField] private float preSpecialWait = 1.0f;
     [SerializeField] private float postSpecialWait = 2.0f;
-
+ */
     [Header("停止するY座標（これ以下で停止）")]
     [SerializeField] private float stopPosY = 2f;
 
@@ -144,12 +144,12 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
 
             float hpPercent = (float)_health.currentHP / _health.maxHP;
 
-            if (hpPercent < 0.5f && !didSpecial)
+          /*  if (hpPercent < 0.5f && !didSpecial)
             {
                 didSpecial = true;
                 await SpecialAttackRoutineAsync(token);
             }
-
+         */
             await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f), cancellationToken: token);
         }
     }
@@ -157,7 +157,7 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
     // =========================================================
     // 特殊攻撃（UniTask版）
     // =========================================================
-    private async UniTask SpecialAttackRoutineAsync(CancellationToken token)
+  /*  private async UniTask SpecialAttackRoutineAsync(CancellationToken token)
     {
         inSpecial = true;
         _rb.velocity = Vector2.zero;
@@ -184,5 +184,5 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
             _rb.velocity = Vector2.down * secondFallSpeed;
 
         inSpecial = false;
-    }
+    }*/
 }
