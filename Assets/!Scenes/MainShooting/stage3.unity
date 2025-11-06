@@ -1242,8 +1242,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: attackSets.Array.data[0].shootAngle
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
+      propertyPath: attackSets.Array.data[0].bulletPrefab
+      value: 
+      objectReference: {fileID: 2718853384716826557, guid: d205ce3276ec6804fb278c44b1aa4f98, type: 3}
     - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: attackSets.Array.data[1].bulletPrefab
       value: 
@@ -1251,7 +1255,7 @@ PrefabInstance:
     - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: attackSets.Array.data[0].attackPattern
       value: 
-      objectReference: {fileID: 11400000, guid: abf13ca1942632e4d9dbad8f745f1e1e, type: 2}
+      objectReference: {fileID: 11400000, guid: b0a5b3d6053a0b542bef89d86d32a424, type: 2}
     - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: attackSets.Array.data[1].attackPattern
       value: 
