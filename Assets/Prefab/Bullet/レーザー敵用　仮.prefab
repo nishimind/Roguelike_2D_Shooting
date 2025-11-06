@@ -148,7 +148,7 @@ MonoBehaviour:
   destroyOnHit: 0
   grazed: 0
   onlyGraze: 0
-  damageInterval: 0.2
+  damageInterval: 0.17
   originPrefab: {fileID: 8648382497275221827}
 --- !u!50 &4781677703012821626
 Rigidbody2D:
