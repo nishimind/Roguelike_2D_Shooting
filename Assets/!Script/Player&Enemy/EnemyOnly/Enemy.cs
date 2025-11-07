@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
         _Initialize();
         if (attackSet.bulletPrefab == null)
         {
-            Debug.LogError($"{name} ‚Ì attackSet.bulletPrefab ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
+          //  Debug.LogError($"{name} ‚Ì attackSet.bulletPrefab ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
             return;
         }
         BulletPool.Instance.RegisterBulletPrefab(attackSet.bulletPrefab,attackSet.poolSize);

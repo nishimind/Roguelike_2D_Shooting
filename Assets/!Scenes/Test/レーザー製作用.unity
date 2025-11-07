@@ -523,7 +523,7 @@ MonoBehaviour:
     shootTimer: 0
   _moveSpeed: 0
   attackSets:
-  - attackPattern: {fileID: 11400000, guid: 78be276f4e6414541a88516630f7c182, type: 2}
+  - attackPattern: {fileID: 11400000, guid: 109a03c4c8ced1a4d8abb31db8a6236a, type: 2}
     shootInterval: 1.01
     bulletPrefab: {fileID: 8648382497275221827, guid: b07417703f62b1a45bf97f7d2bbcc954, type: 3}
     shootAngle: 0
