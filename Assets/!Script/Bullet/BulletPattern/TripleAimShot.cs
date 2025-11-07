@@ -5,7 +5,7 @@ public class TripleAimShot : AttackPatternSO
 {
     [SerializeField] private float sideAngle = 15f;
 
-    public override void Shoot(Vector3 position, int angle, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int angle, GameObject bulletPrefab, float damage)
     {
         if (position== null) return;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AttackPattern/StraightDown")]
 public class NormalShot: AttackPatternSO
 {
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
       
 

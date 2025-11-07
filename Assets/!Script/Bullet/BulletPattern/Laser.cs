@@ -14,7 +14,7 @@ public class LaserStraightShot_WorldPosition : AttackPatternSO
     [SerializeField] private Vector3 firePosition = Vector3.zero;
     // 👆 ここに「ワールド座標 (x,y,z)」を直接入力する
 
-    public override async void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override async void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         // 🔸 Inspectorに入力されたワールド座標を使用
         Vector3 spawnPos = firePosition;

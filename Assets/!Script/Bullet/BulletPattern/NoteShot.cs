@@ -13,14 +13,14 @@ public class NoteShot : AttackPatternSO
 [Header("落下するX位置（複数レーン用）")]
 [SerializeField] private float[] noteXPositions = { -3f, -1f, 1f, 3f };
 
-public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
 {
 // 1回のShoot呼び出しで「1セット（全レーン分）」だけ発射する
 var helper = new GameObject("NoteShooter").AddComponent<MonoBehaviourHelper>();
 helper.StartCoroutine(SpawnOneCycle(bulletPrefab, damage, rotation));
 }
 
-private System.Collections.IEnumerator SpawnOneCycle(GameObject bulletPrefab, int damage, int rotation)
+private System.Collections.IEnumerator SpawnOneCycle(GameObject bulletPrefab, float damage, int rotation)
 {
 for (int i = 0; i < noteXPositions.Length; i++)
 {

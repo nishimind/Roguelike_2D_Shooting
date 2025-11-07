@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AttackPattern/RandomShot")]
 public class RandomShot : AttackPatternSO
 {
-    public override void Shoot(Vector3 position, int angle, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int angle, GameObject bulletPrefab, float damage)
     {
         float rotation = Random.Range(-90f, 90f);
         Quaternion rot = Quaternion.Euler(0, 0, rotation) * Quaternion.FromToRotation(Vector3.up, Vector3.down);

@@ -6,7 +6,7 @@ public class SpreadBurst : AttackPatternSO
     [SerializeField] private int bulletsPerBurst = 3;
     [SerializeField] private float spreadAngle = 20f;
 
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         for (int i = 0; i < bulletsPerBurst; i++)
         {

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BulletDamage : MonoBehaviour
 {
-   [HideInInspector] public int damage = 1; // ’e‚ÌˆĞ—Í
+   [HideInInspector] public float damage = 1; // ’e‚ÌˆĞ—Í
     public bool destroyOnHit = true; // “–‚½‚Á‚½‚çÁ‚¦‚é‚©‚Ç‚¤‚©
     public bool grazed=false;
     public bool onlyGraze = false;

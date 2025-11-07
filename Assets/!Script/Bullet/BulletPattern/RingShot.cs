@@ -5,7 +5,7 @@ public class RingShot : AttackPatternSO
 {
     [SerializeField] private int bulletCount = 12;
 
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         for (int i = 0; i < bulletCount; i++)
         {

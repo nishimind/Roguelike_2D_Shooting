@@ -8,7 +8,7 @@ public class ChargeBurst : AttackPatternSO
 
     private int charge = 0;
 
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         charge++;
         if (charge < 3) return; // 3‰ñ—­‚ß‚Ä‚©‚ç”­ŽË

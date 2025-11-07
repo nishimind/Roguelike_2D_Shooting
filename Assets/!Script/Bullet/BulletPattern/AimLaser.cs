@@ -7,7 +7,7 @@ public class AimLaser : AttackPatternSO
     public float preLaserDuration = 0.5f;
     public float laserDuration = 1f;
 
-    public override async void Shoot(Vector3 position, int angle, GameObject bulletPrefab, int damage)
+    public override async void Shoot(Vector3 position, int angle, GameObject bulletPrefab, float damage)
     {
         if (PlayerMovement.Instance == null) return;
 

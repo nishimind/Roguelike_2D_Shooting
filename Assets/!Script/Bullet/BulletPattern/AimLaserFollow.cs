@@ -9,7 +9,7 @@ public class AimLaserFollow : AttackPatternSO
     public float laserDuration = 1f;
     public float rotateSpeed = 360f; // 1秒あたりの回転速度（度）
 
-    public override async void Shoot(Vector3 position, int angle, GameObject bulletPrefab, int damage)
+    public override async void Shoot(Vector3 position, int angle, GameObject bulletPrefab, float damage)
     {
         if (PlayerMovement.Instance == null) return;
 

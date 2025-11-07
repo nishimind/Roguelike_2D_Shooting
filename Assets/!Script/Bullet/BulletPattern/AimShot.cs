@@ -4,7 +4,7 @@ using UnityEngine;
 public class AimShot : AttackPatternSO
 {
     // プレイヤーの方向に弾を撃つパターン
-    public override void Shoot(Vector3 position, int angle, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int angle, GameObject bulletPrefab, float damage)
 
     {
         if (PlayerMovement.Instance == null) return;

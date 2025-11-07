@@ -7,7 +7,7 @@ public class WaveShot : AttackPatternSO
     [SerializeField] private float waveAmplitude = 30f;
     [SerializeField] private float waveSpeed = 5f;
 
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         time += Time.deltaTime * waveSpeed;
         float angle = Mathf.Sin(time) * waveAmplitude;

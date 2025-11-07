@@ -15,8 +15,8 @@ public class PlayerStatus : MonoBehaviour
 
 
     [Header("ステータス")]
-    public int maxHP = 100;
-public int currentHP = 100;
+    public float maxHP = 100;
+public float currentHP = 100;
     public int Money = 200;
     public int attackPower = 10;
     public int defencePower = 0;

@@ -23,7 +23,7 @@ public class PlayerHealth : HealthBase
         status.currentHP = status.maxHP;
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         status.currentHP -= damage;
 

@@ -6,7 +6,7 @@ public class EnemyHealth : HealthBase
     public int maxHP = 10;
 
     [Header("åªç›HP")]
-    public int currentHP;
+    public float currentHP;
     private EnemyDropper enemyDropper;
 
     protected override void Start()
@@ -15,7 +15,7 @@ public class EnemyHealth : HealthBase
         currentHP = maxHP;
         enemyDropper = GetComponent<EnemyDropper>();
     }
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         currentHP -= damage;
 

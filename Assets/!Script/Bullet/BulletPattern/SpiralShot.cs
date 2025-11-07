@@ -6,7 +6,7 @@ public class SpiralShot : AttackPatternSO
     private float currentAngle = 0f;
     [SerializeField] private float angleStep = 15f;
 
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         Quaternion rot = Quaternion.Euler(0, 0, currentAngle) * Quaternion.FromToRotation(Vector3.up, Vector3.down);
 

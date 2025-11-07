@@ -7,7 +7,7 @@ public class SpiralRingShot : AttackPatternSO
     [SerializeField] private float rotationStep = 10f;
     private float currentRotation = 0f;
 
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         for (int i = 0; i < bulletCount; i++)
         {

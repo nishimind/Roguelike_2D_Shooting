@@ -7,7 +7,7 @@ public class FanShot : AttackPatternSO
     [SerializeField] private int bulletCount = 5;       // ’e‚Ì”
     [SerializeField] private float spreadAngle = 45f;   // L‚ª‚éŠp“x
 
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         float startAngle = -spreadAngle / 2f;
         float angleStep = spreadAngle / (bulletCount - 1);

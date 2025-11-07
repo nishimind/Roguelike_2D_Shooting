@@ -8,7 +8,7 @@ public class FanShot2 : AttackPatternSO
     [SerializeField] private float spreadAngle = 45f;   // 広がる角度
     [SerializeField] private float offset = 1f;         // 弾の発射位置のオフセット（左右に配置する距離）
 
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         float startAngle = -spreadAngle / 2f;
         float angleStep = spreadAngle / (bulletCount - 1);

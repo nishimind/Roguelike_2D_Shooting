@@ -9,7 +9,7 @@ public class RotatingFanShot : AttackPatternSO
 
     private float currentRotation = 0f;
 
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         float startAngle = -spreadAngle / 2f + currentRotation;
         float angleStep = spreadAngle / (bulletCount - 1);

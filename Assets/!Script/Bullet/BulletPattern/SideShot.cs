@@ -5,7 +5,7 @@ public class SideShot : AttackPatternSO
 {
     [SerializeField] private float offsetX = 1f;
 
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         Vector3 left = position + new Vector3(-offsetX, 0, 0);
         Vector3 right = position + new Vector3(offsetX, 0, 0);

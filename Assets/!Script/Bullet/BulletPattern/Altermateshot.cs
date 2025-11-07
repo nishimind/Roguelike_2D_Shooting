@@ -5,7 +5,7 @@ public class AlternateShot : AttackPatternSO
 {
     private bool toggle = false;
     //左右交互　角度どうすればいい？？
-    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, int damage)
+    public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab,  float damage)
     {
         float angle = toggle ? -15f : 15f;
         toggle = !toggle;
