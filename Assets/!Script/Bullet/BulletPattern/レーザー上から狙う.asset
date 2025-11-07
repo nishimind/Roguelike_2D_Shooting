@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: "\u30EC\u30FC\u30B6\u30FC\u4E0A\u304B\u3089\u72D9\u3046"
   m_EditorClassIdentifier: 
   isPlyerBullet: 1
-  preLaserDuration: 0.5
-  laserDuration: 1
-  rotateSpeed: 360
+  preLaserDuration: 1
+  laserDuration: 0.5
+  rotateSpeed: 180

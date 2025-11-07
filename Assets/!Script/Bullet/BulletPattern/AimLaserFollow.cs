@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 public class AimLaserFollow : AttackPatternSO
 {
     public float preLaserDuration = 0.5f;
+    public float timeForEscape = 0.1f;
     public float laserDuration = 1f;
     public float rotateSpeed = 360f; // 1秒あたりの回転速度（度）
 
@@ -37,7 +38,7 @@ public class AimLaserFollow : AttackPatternSO
         laser.laserTime = laserDuration;
         laser.LaserSequenceAsync();
         // --- プレイヤーを追尾して照準 ---
-        float elapsed = 0f;
+        float elapsed = timeForEscape;
         while (elapsed < preLaserDuration)
         {
             if (PlayerMovement.Instance == null) break;
@@ -49,7 +50,8 @@ public class AimLaserFollow : AttackPatternSO
             bullet.transform.rotation = Quaternion.RotateTowards(
                 bullet.transform.rotation,
                 targetRot,
-                rotateSpeed * Time.deltaTime
+                rotateSpeed 
+                //int i
             );
 
             elapsed += Time.deltaTime;
