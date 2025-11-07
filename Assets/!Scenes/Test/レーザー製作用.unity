@@ -523,45 +523,15 @@ MonoBehaviour:
     shootTimer: 0
   _moveSpeed: 0
   attackSets:
-  - attackPattern: {fileID: 11400000, guid: 89f1a450deca91640acbdcdf4e4d225e, type: 2}
-    shootInterval: 0.5
-    bulletPrefab: {fileID: 8648382497275221827, guid: b07417703f62b1a45bf97f7d2bbcc954, type: 3}
+  - attackPattern: {fileID: 11400000, guid: 8408ac9ec8a99604fabb7b90aac2242b, type: 2}
+    shootInterval: 5
+    bulletPrefab: {fileID: 6427737649100563659, guid: 91dfafd81e05f9147a179ff7d094e88e, type: 3}
     shootAngle: 0
     initialDelay: 0
     startHP: 100
-    endHP: 50
-    damage: 1
-    poolSize: 10
-    shootTimer: 0
-  - attackPattern: {fileID: 11400000, guid: 01ed94bb2c81d904abfc12e02da1267d, type: 2}
-    shootInterval: 0.56
-    bulletPrefab: {fileID: 8648382497275221827, guid: b07417703f62b1a45bf97f7d2bbcc954, type: 3}
-    shootAngle: 0
-    initialDelay: 0
-    startHP: 50
     endHP: 0
     damage: 1
-    poolSize: 13
-    shootTimer: 0
-  - attackPattern: {fileID: 11400000, guid: a47720a6ce389304b90dac9353984e07, type: 2}
-    shootInterval: 0.26
-    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-    shootAngle: 0
-    initialDelay: 0
-    startHP: 50
-    endHP: 0
-    damage: 1
-    poolSize: 10
-    shootTimer: 0
-  - attackPattern: {fileID: 11400000, guid: 72701338ba6d4c141883c3cc547b3785, type: 2}
-    shootInterval: 0.26
-    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-    shootAngle: 0
-    initialDelay: 0
-    startHP: 50
-    endHP: 0
-    damage: 1
-    poolSize: 10
+    poolSize: 0
     shootTimer: 0
   stopPosY: 2
   firstFallSpeed: 2
