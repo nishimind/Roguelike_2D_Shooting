@@ -69,7 +69,7 @@ public class BulletPool : MonoBehaviour
 
         if (obj.TryGetComponent(out BulletDamage damage))
             damage.grazed = false;
-
+        obj.transform.localScale = bulletPrefab.transform.localScale;
         obj.transform.SetPositionAndRotation(position, rotation);
         obj.SetActive(true);
         return obj;
