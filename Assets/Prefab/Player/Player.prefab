@@ -104,6 +104,7 @@ MonoBehaviour:
   audio: {fileID: 5908985805908674725}
   GrazeEffectPool: {fileID: 0}
   status: {fileID: 0}
+  mainCollision: {fileID: 607502427400051621}
 --- !u!82 &5908985805908674725
 AudioSource:
   m_ObjectHideFlags: 0
@@ -516,8 +517,11 @@ MonoBehaviour:
   maxX: 8
   minY: -4.5
   maxY: 4.5
-  _bulletPooler: {fileID: 0}
-  playerStatus: {fileID: 0}
+  upPressed: 0
+  downPressed: 0
+  leftPressed: 0
+  rightPressed: 0
+  shotPressed: 0
 --- !u!50 &3224314622474335138
 Rigidbody2D:
   serializedVersion: 4
