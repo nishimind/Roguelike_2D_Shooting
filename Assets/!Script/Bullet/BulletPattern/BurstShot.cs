@@ -1,36 +1,49 @@
-using System.Collections;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 [CreateAssetMenu(menuName = "AttackPattern/CircularRotatingBurstShot")]
 public class BurstShot : AttackPatternSO
 {
-    [Header("‰~Œ`’e–‹İ’è")]
-    public int bulletCount = 12;          // ’e‚Ì”
-    public float radius = 1.5f;           // ’e‚Ì”z’u”¼Œa
-    public float delayBeforeFire = 2f;    // ”­Ë‚Ü‚Å‚Ì‘Ò‹@ŠÔ
-    public float rotationSpeed = 120f;    // ‰ñ“]‘¬“xi“x/•bj
+    [Header("å††å½¢å¼¾å¹•è¨­å®š")]
+    public int bulletCount = 12;          // å¼¾ã®æ•°
+    public float radius = 1.5f;           // å¼¾ã®é…ç½®åŠå¾„
+    public float delayBeforeFire = 2f;    // ç™ºå°„ã¾ã§ã®å¾…æ©Ÿæ™‚é–“
+    public float rotationSpeed = 120f;    // å›è»¢é€Ÿåº¦ï¼ˆåº¦/ç§’ï¼‰
 
     public override void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
-        // Coroutine‚ÍMonoBehaviour‚Å“®‚©‚·•K—v‚ ‚è
-        BulletPatternRunner.Instance.StartCoroutine(FireRoutine(position, bulletPrefab, damage));
+        // ç™ºå°„æ™‚ã®å‘¼ã³å‡ºã—å´ãŒæ•µãªã®ã§ã€æ•µTransformã‚’æ¸¡ã™
+        // positionã ã‘ã ã¨å¾Œã§è¿½å¾“ã§ããªã„
+        GameObject enemy = GameObject.FindWithTag("Enemy");
+        if (enemy != null)
+        {
+            FireAsync(enemy.transform, bulletPrefab, damage).Forget();
+        }
+        else
+        {
+            // ãƒ•ã‚©ãƒ¼ãƒ«ãƒãƒƒã‚¯ï¼ˆæ•µãŒè¦‹ã¤ã‹ã‚‰ãªã„å ´åˆï¼‰
+            FireAsync(null, bulletPrefab, damage).Forget();
+        }
     }
 
-    private IEnumerator FireRoutine(Vector3 position, GameObject bulletPrefab, float damage)
+    private async UniTaskVoid FireAsync(Transform enemy, GameObject bulletPrefab, float damage)
     {
         GameObject[] bullets = new GameObject[bulletCount];
         float[] angles = new float[bulletCount];
 
-        // ’e‚ğ‰~Œ`‚É”z’u
+        Vector3 centerPos = enemy != null ? enemy.position : Vector3.zero;
+
+        // å¼¾ã‚’å††å½¢ã«é…ç½®
         for (int i = 0; i < bulletCount; i++)
         {
             float angle = (360f / bulletCount) * i;
             angles[i] = angle;
             Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0) * radius;
-            Vector3 spawnPos = position + offset;
+            Vector3 spawnPos = centerPos + offset;
 
             GameObject bullet = BulletPool.Instance.Get(bulletPrefab, spawnPos, Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().velocity = Vector2.zero; // Ã~ó‘Ô
+            bullet.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
             var bulletDamage = bullet.GetComponent<BulletDamage>();
             bulletDamage.damage = damage;
@@ -42,36 +55,39 @@ public class BurstShot : AttackPatternSO
 
         float elapsed = 0f;
 
-        //  ‰ñ“]’†idelayBeforeFire•bŠÔj
+        // ğŸŒ€ å›è»¢ï¼†è¿½å¾“ä¸­ï¼ˆdelayBeforeFireç§’é–“ï¼‰
         while (elapsed < delayBeforeFire)
         {
             elapsed += Time.deltaTime;
             float rotateAmount = rotationSpeed * Time.deltaTime;
 
-            // Še’e‚ğ’†S‚ğ²‚É‰ñ“]‚³‚¹‚é
+            // ä¸­å¿ƒã‚’è¿½å¾“ï¼ˆæ•µãŒç”Ÿãã¦ã„ã‚‹å ´åˆï¼‰
+            if (enemy != null)
+                centerPos = enemy.position;
+
             for (int i = 0; i < bulletCount; i++)
             {
                 if (bullets[i] == null) continue;
                 angles[i] += rotateAmount;
 
                 Vector3 offset = new Vector3(Mathf.Cos(angles[i] * Mathf.Deg2Rad), Mathf.Sin(angles[i] * Mathf.Deg2Rad), 0) * radius;
-                bullets[i].transform.position = position + offset;
+                bullets[i].transform.position = centerPos + offset;
             }
 
-            yield return null;
+            await UniTask.Yield(PlayerLoopTiming.Update);
         }
 
-        // ”­ËI
+        // ğŸ¯ ä¸€æ–‰ç™ºå°„
         GameObject player = GameObject.FindWithTag("Player");
-        if (player == null) yield break;
+        if (player == null) return;
 
         Vector3 playerPos = player.transform.position;
 
         foreach (GameObject bullet in bullets)
         {
             if (bullet == null) continue;
-            Vector2 dir = (playerPos - bullet.transform.position).normalized;
 
+            Vector2 dir = (playerPos - bullet.transform.position).normalized;
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.velocity = dir * bullet.GetComponent<BulletBase>()._speed;
 
