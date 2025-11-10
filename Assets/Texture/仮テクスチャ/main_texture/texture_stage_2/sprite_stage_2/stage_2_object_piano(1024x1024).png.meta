@@ -1,0 +1,2239 @@
+fileFormatVersion: 2
+guid: c25bb43c48a198445a718a2f8dda0033
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d07ce2fd331f934a89cc96511327846
+      internalID: 807490005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a28519b32fba3a74c8ab080c7c5c4b26
+      internalID: -1029501781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1728aa8190da8047bf2869e8f6878f3
+      internalID: 1483530388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_3
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48fd7f3ec4c20d34f93906bd087cdab4
+      internalID: -1460045477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_4
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c0a7ea76e8858343b723f8c80f8363d
+      internalID: -809937948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_5
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6af1d6e6080d9864dae80174265ff2f9
+      internalID: -2092276323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_6
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9267887fe3fa135489cae4bcaf78a0a8
+      internalID: 1685023025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_7
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cc18acd19e010b4c8823bb875bbee9b
+      internalID: 1971865057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_8
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 811
+        width: 31
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71a0395fa2f8d6744bd1a5b884f3a837
+      internalID: 2003310253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_9
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d73657f945b272e4f981a16925160de5
+      internalID: -322463252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_10
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a968835a5572bb349af505fd5449ec9f
+      internalID: -2008347121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_11
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c9e61170a425a54ba9d655a0189377b
+      internalID: -1502506923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_12
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 812ab22eaf3e0ea419f9a7806d1286e0
+      internalID: -29307239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_13
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a1e7b92749f65946a632a8b2ba19db6
+      internalID: -944140134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_14
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9853e9bc8cfefe4a8b2174c8b3b8688
+      internalID: 1757195876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_15
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ed4dde4c52b5894f87c7b67fb919d2d
+      internalID: -8913695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_16
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9349df4afad58b241aad1f2f8aa8e7f5
+      internalID: 593479343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_17
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b8879f365029604093ef507ef5c631e
+      internalID: 482090520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_18
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca40e9866683a144691f0cf2f2047d75
+      internalID: -1489491557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_19
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eac83d3c371bed49ba8a62ac2195c29
+      internalID: 1590726690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_20
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef699503c388a9843b4979629478aa6e
+      internalID: 922264036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_21
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8201efeb43b87747bbd3c32af00063a
+      internalID: -1737128106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_22
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3afc925c421860e458128028057cd7b8
+      internalID: -814824502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_23
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a735299e56258e844bdb59db68bd9dbb
+      internalID: -1072000043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_24
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc7a4d311aac7444ca6e345e0ca647a0
+      internalID: -1337183244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_25
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62120c341f7644f45a8c97c4a4d87b51
+      internalID: -633585804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_26
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 811
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e944ee865dc684382be2580d0b32f4
+      internalID: 7416719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_27
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 811
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 637ab4551865518438422b09e82c9fdc
+      internalID: 1368826366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_28
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b05e0a1027a4d409cb00fc4e56c9f5
+      internalID: -1082952398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_29
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e5243e75b09b48408545305a341a2f0
+      internalID: 1982681203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_30
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0347493e7817ff949b2bcf15f75b892b
+      internalID: -1923858059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_31
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5636424f96c33344aea7d9735c178c3
+      internalID: 879577105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_32
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 157880a5507cb6e4688e832bae60515b
+      internalID: 1527347404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_33
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecfc02e87c369b1408130a234e3ced0e
+      internalID: -1473184323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_34
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6584eb6e6dd7bd642be2e256b04ba7f9
+      internalID: 452023193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_35
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 266a4eae1556caa4ca05ea1d4b88213d
+      internalID: 1587951763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_36
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b47f42de2fb6a3d49909eadc306d81d4
+      internalID: 1529249155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_37
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3acc453473f7a6144a08c193e766624f
+      internalID: 1069248250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_38
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 605119925735c194fae4a97e454cc778
+      internalID: 1455082692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_39
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca0fe44a35342484eadc7b884037534c
+      internalID: -163162835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_40
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8769e2fcb8b0c2448adbe703f03782b
+      internalID: -456646140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_41
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d729c5462c7180844ac88da6205f75de
+      internalID: 1520981693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_42
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeb7c1bffad913842a4d3152dedc87e9
+      internalID: -1957007326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_43
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47318322b85792442a487d0b3dfbf89b
+      internalID: -793560866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_44
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 421bccbb8f98e174e97472ebf39f99ab
+      internalID: -853724155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_45
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bf044e38c1e1614ea2f4fcaeb617040
+      internalID: 1434754279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_46
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d94b783cd87d814db4a98dbf8def6af
+      internalID: 1819125352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_47
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3073743100e73747825c399333da6e0
+      internalID: -1743786018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_48
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 663e4af1ed271a146ac49a2681905a42
+      internalID: 222811782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_49
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 574ec7798bdf45e408f7942f2c6d46b1
+      internalID: -1136922381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_50
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d14e16d79708d2c4c8e1aab1c9704a43
+      internalID: -2099884800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_51
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c7de46055e7d194da2d2e8373795cd8
+      internalID: -1890544197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_52
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d659ed60083620459f06f112c88612c
+      internalID: -161895445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_53
+      rect:
+        serializedVersion: 2
+        x: 913
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f38b48901e4ce1b4f9449eb6af4af9c3
+      internalID: -1040768949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_54
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 555
+        width: 29
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fcf4e32b0c6daf44b67bf901883d479
+      internalID: -945258460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_55
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 555
+        width: 30
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08c0e4a93a5ad7c4eb4c5cc2696a11dd
+      internalID: 1070249395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_56
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b47a145bd18b6ef4a8a31fcdb6a61e99
+      internalID: -887823797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_57
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 367
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76a6b8b0de85c304b90192802ad693a7
+      internalID: -306811357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_58
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87958302fc3673d409508dd95e601b37
+      internalID: -1652172838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_59
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 367
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9359adfe84f7e9340b84d6023ee1546b
+      internalID: -596216762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_60
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cc17b242cec158409f3e3831a466b2d
+      internalID: 1404669693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_61
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 172261a4938a5b5469e9c11ebe7cfeac
+      internalID: -1018158127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_62
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 367
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a34d2ea558279b42ba8d896f7d50560
+      internalID: -881524368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_63
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d35c3c51b326ac54ab55651b0e00e331
+      internalID: -1433562272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_64
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 367
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5b4f3f6e8955924891f1663978f9234
+      internalID: 548602744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_65
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20ddb7feb2051f24196c169da8baa2be
+      internalID: 610607094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_66
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3754316c4319d2244b96734537999fc9
+      internalID: -312158108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_67
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 367
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 419d3e3f571f8bb4ab58b1377bd9c243
+      internalID: 1983385580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_68
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3805c2edf99f1a469e4703215112216
+      internalID: 990032817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_69
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 367
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a04bcaf75e04ea04e97d300267588522
+      internalID: 1497621271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_70
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 834e914540ee7e5459c45dc774082923
+      internalID: 1739399074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_71
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc9f9c50da56f454d94dddd8be29992a
+      internalID: 199006283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_72
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 367
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 608782594bbccb44fbc6ee0ea2b64ab2
+      internalID: 1606312451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_73
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffa5a3e2e1709374e85a45dacc5b4c5f
+      internalID: -2067258729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_74
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 367
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 400f00713ddb4044aafa3e3304c1444e
+      internalID: 1128230557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_75
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 367
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 724706f4ec0da9d499cd6d09642eebb6
+      internalID: -897572786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_76
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faa11f395f77c0546b355e7858ff33d9
+      internalID: 735572109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_77
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 111
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 945b5d6d30fbc5e41b3facd3a9d9f2dd
+      internalID: -1810933799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_78
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4cc07fdfc9dce47bf2ab7de6c99340
+      internalID: 413788919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_79
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 111
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3644ecc09e59a2a4188a50cbd2cad333
+      internalID: 1104529798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_80
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c67f3c8779d0594b8622a41252922b5
+      internalID: 1888069283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_81
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48ee9d098dde3e7479616d793d9c4209
+      internalID: 1506472380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_82
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 111
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e5a195330444a94dabe713ed3a3c820
+      internalID: -344649303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_83
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 632f8ec8b84f5544792761f1062678ae
+      internalID: 1283239950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_84
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 111
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c8ac11561dee0c45bbdc530b9991f28
+      internalID: -1799554445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_85
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 777b1128143dac74e93473e278382b16
+      internalID: 1306875051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_86
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa38b56c78e1af94c941a520a9eb002d
+      internalID: -1815127054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_87
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 111
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf0d8b7943dce8d4baab515a650b393e
+      internalID: 1169260609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_88
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e60303a37a1b13845bf8cb1bd96e1980
+      internalID: -1747548619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_89
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 111
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcb6a961d38c36a4789eeb0b43468746
+      internalID: 1877947033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_90
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8c8adb0d54b1c4eb4286c7aad17a2b
+      internalID: 1678308864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_91
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb154c8894dc0847a70e1d04d0ed0b5
+      internalID: -1014754788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_92
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 111
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7ab30ad13440e94cac09093c010df4c
+      internalID: 1980976094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_93
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f001b76e521d314d9092e21825c70e5
+      internalID: 1613593639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_94
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 111
+        width: 16
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b3d72128c464b54fbbcf03d8675122f
+      internalID: 366652115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stage_2_object_piano(1024x1024)_95
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 111
+        width: 17
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf996097e296eab4285dd634958a4b9c
+      internalID: 2094290314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      stage_2_object_piano(1024x1024)_0: 807490005
+      stage_2_object_piano(1024x1024)_1: -1029501781
+      stage_2_object_piano(1024x1024)_10: -2008347121
+      stage_2_object_piano(1024x1024)_11: -1502506923
+      stage_2_object_piano(1024x1024)_12: -29307239
+      stage_2_object_piano(1024x1024)_13: -944140134
+      stage_2_object_piano(1024x1024)_14: 1757195876
+      stage_2_object_piano(1024x1024)_15: -8913695
+      stage_2_object_piano(1024x1024)_16: 593479343
+      stage_2_object_piano(1024x1024)_17: 482090520
+      stage_2_object_piano(1024x1024)_18: -1489491557
+      stage_2_object_piano(1024x1024)_19: 1590726690
+      stage_2_object_piano(1024x1024)_2: 1483530388
+      stage_2_object_piano(1024x1024)_20: 922264036
+      stage_2_object_piano(1024x1024)_21: -1737128106
+      stage_2_object_piano(1024x1024)_22: -814824502
+      stage_2_object_piano(1024x1024)_23: -1072000043
+      stage_2_object_piano(1024x1024)_24: -1337183244
+      stage_2_object_piano(1024x1024)_25: -633585804
+      stage_2_object_piano(1024x1024)_26: 7416719
+      stage_2_object_piano(1024x1024)_27: 1368826366
+      stage_2_object_piano(1024x1024)_28: -1082952398
+      stage_2_object_piano(1024x1024)_29: 1982681203
+      stage_2_object_piano(1024x1024)_3: -1460045477
+      stage_2_object_piano(1024x1024)_30: -1923858059
+      stage_2_object_piano(1024x1024)_31: 879577105
+      stage_2_object_piano(1024x1024)_32: 1527347404
+      stage_2_object_piano(1024x1024)_33: -1473184323
+      stage_2_object_piano(1024x1024)_34: 452023193
+      stage_2_object_piano(1024x1024)_35: 1587951763
+      stage_2_object_piano(1024x1024)_36: 1529249155
+      stage_2_object_piano(1024x1024)_37: 1069248250
+      stage_2_object_piano(1024x1024)_38: 1455082692
+      stage_2_object_piano(1024x1024)_39: -163162835
+      stage_2_object_piano(1024x1024)_4: -809937948
+      stage_2_object_piano(1024x1024)_40: -456646140
+      stage_2_object_piano(1024x1024)_41: 1520981693
+      stage_2_object_piano(1024x1024)_42: -1957007326
+      stage_2_object_piano(1024x1024)_43: -793560866
+      stage_2_object_piano(1024x1024)_44: -853724155
+      stage_2_object_piano(1024x1024)_45: 1434754279
+      stage_2_object_piano(1024x1024)_46: 1819125352
+      stage_2_object_piano(1024x1024)_47: -1743786018
+      stage_2_object_piano(1024x1024)_48: 222811782
+      stage_2_object_piano(1024x1024)_49: -1136922381
+      stage_2_object_piano(1024x1024)_5: -2092276323
+      stage_2_object_piano(1024x1024)_50: -2099884800
+      stage_2_object_piano(1024x1024)_51: -1890544197
+      stage_2_object_piano(1024x1024)_52: -161895445
+      stage_2_object_piano(1024x1024)_53: -1040768949
+      stage_2_object_piano(1024x1024)_54: -945258460
+      stage_2_object_piano(1024x1024)_55: 1070249395
+      stage_2_object_piano(1024x1024)_56: -887823797
+      stage_2_object_piano(1024x1024)_57: -306811357
+      stage_2_object_piano(1024x1024)_58: -1652172838
+      stage_2_object_piano(1024x1024)_59: -596216762
+      stage_2_object_piano(1024x1024)_6: 1685023025
+      stage_2_object_piano(1024x1024)_60: 1404669693
+      stage_2_object_piano(1024x1024)_61: -1018158127
+      stage_2_object_piano(1024x1024)_62: -881524368
+      stage_2_object_piano(1024x1024)_63: -1433562272
+      stage_2_object_piano(1024x1024)_64: 548602744
+      stage_2_object_piano(1024x1024)_65: 610607094
+      stage_2_object_piano(1024x1024)_66: -312158108
+      stage_2_object_piano(1024x1024)_67: 1983385580
+      stage_2_object_piano(1024x1024)_68: 990032817
+      stage_2_object_piano(1024x1024)_69: 1497621271
+      stage_2_object_piano(1024x1024)_7: 1971865057
+      stage_2_object_piano(1024x1024)_70: 1739399074
+      stage_2_object_piano(1024x1024)_71: 199006283
+      stage_2_object_piano(1024x1024)_72: 1606312451
+      stage_2_object_piano(1024x1024)_73: -2067258729
+      stage_2_object_piano(1024x1024)_74: 1128230557
+      stage_2_object_piano(1024x1024)_75: -897572786
+      stage_2_object_piano(1024x1024)_76: 735572109
+      stage_2_object_piano(1024x1024)_77: -1810933799
+      stage_2_object_piano(1024x1024)_78: 413788919
+      stage_2_object_piano(1024x1024)_79: 1104529798
+      stage_2_object_piano(1024x1024)_8: 2003310253
+      stage_2_object_piano(1024x1024)_80: 1888069283
+      stage_2_object_piano(1024x1024)_81: 1506472380
+      stage_2_object_piano(1024x1024)_82: -344649303
+      stage_2_object_piano(1024x1024)_83: 1283239950
+      stage_2_object_piano(1024x1024)_84: -1799554445
+      stage_2_object_piano(1024x1024)_85: 1306875051
+      stage_2_object_piano(1024x1024)_86: -1815127054
+      stage_2_object_piano(1024x1024)_87: 1169260609
+      stage_2_object_piano(1024x1024)_88: -1747548619
+      stage_2_object_piano(1024x1024)_89: 1877947033
+      stage_2_object_piano(1024x1024)_9: -322463252
+      stage_2_object_piano(1024x1024)_90: 1678308864
+      stage_2_object_piano(1024x1024)_91: -1014754788
+      stage_2_object_piano(1024x1024)_92: 1980976094
+      stage_2_object_piano(1024x1024)_93: 1613593639
+      stage_2_object_piano(1024x1024)_94: 366652115
+      stage_2_object_piano(1024x1024)_95: 2094290314
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
