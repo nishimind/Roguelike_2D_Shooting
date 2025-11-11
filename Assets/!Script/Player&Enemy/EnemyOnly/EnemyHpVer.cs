@@ -44,7 +44,7 @@ public class EnemyHpVer : Enemy
         // Šeƒpƒ^[ƒ“‚Ì‰Šúİ’è‚Æ’e“o˜^
         foreach (var set in attackSets)
         {
-            set.shootTimer = set.initialDelay;
+            set.shootTimer = -set.initialDelay;
             if (set.bulletPrefab != null)
                 BulletPool.Instance.RegisterBulletPrefab(set.bulletPrefab, set.poolSize);
         }
