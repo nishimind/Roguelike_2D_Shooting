@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f0885c8c2cef340bfa6d3331505568, type: 3}
-  m_Name: "\u30EC\u30FC\u30B6\u30FC\u4E0A\u304B\u3089\u72D9\u3046"
+  m_Script: {fileID: 11500000, guid: 76f109de49e6fbe4482e7e93e46b0d83, type: 3}
+  m_Name: "\u4E0B-3"
   m_EditorClassIdentifier: 
-  isPlyerBullet: 1
-  preLaserDuration: 2
-  timeForEscape: 1.48
-  laserDuration: 0.5
-  rotateSpeed: 3
+  isPlyerBullet: 0
+  preLaserDuration: 1
+  laserDuration: 1
+  firePosition: {x: -3, y: -6, z: 0}

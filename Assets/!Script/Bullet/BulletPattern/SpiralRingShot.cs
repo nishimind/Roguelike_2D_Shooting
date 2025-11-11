@@ -11,7 +11,7 @@ public class SpiralRingShot : AttackPatternSO
     {
         for (int i = 0; i < bulletCount; i++)
         {
-            float angle = 360f / bulletCount * i + currentRotation;
+            float angle = 360f / bulletCount * i + currentRotation+rotation;
             Quaternion rot = Quaternion.Euler(0, 0, angle);
 
             GameObject bullet = BulletPool.Instance.Get(bulletPrefab, position, rot);
