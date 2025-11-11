@@ -10,13 +10,13 @@ public class BulletSlowEffect : MonoBehaviour
     {
 
         // プレイヤーに当たったかチェック
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("PlayerLifeCollider"))
         {
-            Debug.Log("タグチェッククリア");
+           
             var playerStatus = PlayerStatus.Instance;
             if (playerStatus != null)
             {
-                Debug.Log("nullチェッククリア");
+               
                 playerStatus.ApplySlow(slowAmount, slowDuration);
             }
 

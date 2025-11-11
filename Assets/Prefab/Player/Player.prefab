@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 2548301424770197911}
   m_Layer: 6
   m_Name: "\u5F53\u305F\u308A\u5224\u5B9A"
-  m_TagString: Player
+  m_TagString: PlayerLifeCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
