@@ -120,10 +120,11 @@ MonoBehaviour:
   value: 1
   floatHeight: 1.93
   floatUpDuration: 0.97
-  upOffset: 0
+  upOffset: 0.1
   fallDistance: 11.4
   fallDuration: 5.12
   finalYOffset: -8.19
+  rotationDuration: 0.15
   moveSpeed: 10.96
   destroyDelay: 0.05
   easeInDuration: 0.2

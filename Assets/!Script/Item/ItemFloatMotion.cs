@@ -21,6 +21,8 @@ public class ItemFloatMotion : MonoBehaviour
 
     [Header("落下後に止まる高さ調整（0で地面に着地）")]
     public float finalYOffset = 0f;
+    [Header("長上での回転にかかる時間")]
+  public  float rotationDuration = 0.25f; // 回転時間（速さ調整）
 
     [Header("吸い込みスピード")]
     public float moveSpeed = 10f;
@@ -52,7 +54,7 @@ public class ItemFloatMotion : MonoBehaviour
             .SetEase(Ease.OutQuad));
 
         // 浮くアニメーションが終わる直前に素早く一回転
-        float rotationDuration = 0.1f; // 回転時間（速さ調整）
+     
         fallSequence.Insert(floatUpDuration - random - rotationDuration,
             transform.DORotate(new Vector3(0, 0, 360), rotationDuration, RotateMode.FastBeyond360)
                 .SetEase(Ease.InOutQuad));
