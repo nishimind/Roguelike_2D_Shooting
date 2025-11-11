@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("ˆÚ“®”ÍˆÍ")]
     public float minX = -8f;
     public float maxX = 8f;
-    public float minY = -4.5f;
-    public float maxY = 4.5f;
+    public float minY = -5.8f;
+    public float maxY = 5.9f;
 
 
 

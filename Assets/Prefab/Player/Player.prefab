@@ -515,8 +515,8 @@ MonoBehaviour:
   slowMultiplier: 0.3
   minX: -8
   maxX: 8
-  minY: -4.5
-  maxY: 4.5
+  minY: -5.8
+  maxY: 5.9
   upPressed: 0
   downPressed: 0
   leftPressed: 0
