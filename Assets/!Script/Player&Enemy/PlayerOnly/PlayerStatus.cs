@@ -21,6 +21,7 @@ public float currentHP = 100;
     public int attackPower = 10;
     public int defencePower = 0;
     public float speed = 5;
+    private bool isSlowed = false;
     public float shootTime = 0.5f;
     public int grazeCount=0;
     public enum ItemType
@@ -164,7 +165,30 @@ public float currentHP = 100;
                     .SetEase(Ease.InQuad);
             });
     }
-    public void GenerateOption()
+
+    
+
+    public void ApplySlow(float amount, float duration)
+    {
+        Debug.Log("スロー呼ばれたぜ");
+        if (isSlowed) return; // 二重適用防止
+
+        isSlowed = true;
+        float originalSpeed = speed;
+        speed *= amount; // スピードを低下
+
+        // 一定時間後に戻す（UniTask使用）
+        RestoreSpeed(duration, originalSpeed).Forget();
+    }
+
+    private async UniTaskVoid RestoreSpeed(float duration, float originalSpeed)
+    {
+        await UniTask.Delay(System.TimeSpan.FromSeconds(duration));
+        speed = originalSpeed;
+        isSlowed = false;
+    }
+
+public void GenerateOption()
     {
         foreach (var option in optionTable)
         {

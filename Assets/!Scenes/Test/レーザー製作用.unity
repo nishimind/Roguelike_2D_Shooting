@@ -523,9 +523,9 @@ MonoBehaviour:
     shootTimer: 0
   _moveSpeed: 0
   attackSets:
-  - attackPattern: {fileID: 11400000, guid: 3552f8b9f2bce8d4e820601143351835, type: 2}
+  - attackPattern: {fileID: 11400000, guid: 72701338ba6d4c141883c3cc547b3785, type: 2}
     shootInterval: 1.01
-    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
+    bulletPrefab: {fileID: 4473147736358773592, guid: 8489e709a9a3bb44586da5376ac857f1, type: 3}
     shootAngle: 0
     initialDelay: 0
     startHP: 102
@@ -2311,7 +2311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3813029002301012428, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: currentHP
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: m_Enabled

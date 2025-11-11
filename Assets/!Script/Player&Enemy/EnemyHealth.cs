@@ -15,15 +15,20 @@ public class EnemyHealth : HealthBase
         currentHP = maxHP;
         enemyDropper = GetComponent<EnemyDropper>();
     }
-    public override void TakeDamage(float damage)
-    {
-        currentHP -= damage;
 
+    protected override void Update()
+    {
         if (currentHP <= 0)
         {
             currentHP = 0;
             Die();
         }
+    }
+    public override void TakeDamage(float damage)
+    {
+        currentHP -= damage;
+
+
       /*  else
         {
             StartBlink();
