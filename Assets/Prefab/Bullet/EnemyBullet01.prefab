@@ -145,7 +145,7 @@ MonoBehaviour:
   damage: 1
   destroyOnHit: 1
   grazed: 0
-  onlyGraze: 0
+  onlyGraze: 1
   damageInterval: 0.2
   originPrefab: {fileID: 2718853384716826557}
 --- !u!61 &7366847416962317767

@@ -9,6 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8db7ed7253561bf44a9706b5d4356aae, type: 3}
-  m_Name: "\u4E0B\u65B9\u5411\u306B\u6253\u3064\u5F3E"
+  m_Script: {fileID: 11500000, guid: 6c27c04ae42924748b2e3bb4bc824ff6, type: 3}
+  m_Name: "\u72D9\u3063\u3066\u56FA\u5B9A\u3057\u3066\u9023\u5C04"
   m_EditorClassIdentifier: 
+  isPlyerBullet: 0
+  burstAmount: 3
+  interval: 0.2
