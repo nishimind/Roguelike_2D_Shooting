@@ -41,24 +41,27 @@ public class ItemFloatMotion : MonoBehaviour
 
     private void Start()
     {
-      
-            status = PlayerStatus.Instance;
+        status = PlayerStatus.Instance;
 
-        // 最初の位置を保存
         Vector3 startPos = transform.position;
-
-        // シーケンスを保持しておく
         fallSequence = DOTween.Sequence();
 
         // ふわっと浮く
         float random = Random.Range(0, upOffset);
-        fallSequence.Append(transform.DOMoveY(startPos.y + floatHeight +random, floatUpDuration-random)
+        fallSequence.Append(transform.DOMoveY(startPos.y + floatHeight + random, floatUpDuration - random)
             .SetEase(Ease.OutQuad));
 
+        // 浮くアニメーションが終わる直前に素早く一回転
+        float rotationDuration = 0.1f; // 回転時間（速さ調整）
+        fallSequence.Insert(floatUpDuration - random - rotationDuration,
+            transform.DORotate(new Vector3(0, 0, 360), rotationDuration, RotateMode.FastBeyond360)
+                .SetEase(Ease.InOutQuad));
+
         // ゆっくり落下
-        fallSequence.Append(transform.DOMoveY(startPos.y - fallDistance + finalYOffset, fallDuration )
+        fallSequence.Append(transform.DOMoveY(startPos.y - fallDistance + finalYOffset, fallDuration)
             .SetEase(Ease.InQuad));
     }
+
 
     private void Update()
     {
