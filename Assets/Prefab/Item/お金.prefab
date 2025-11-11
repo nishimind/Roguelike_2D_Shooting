@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 476727924430986061}
   - component: {fileID: 543657370195493940}
+  - component: {fileID: -7474207557450634424}
   - component: {fileID: -8602174912329193211}
   - component: {fileID: -6329329225570887016}
   - component: {fileID: 3878503168958206743}
@@ -87,6 +88,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-7474207557450634424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5937261705830432063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2078537e8894cc4488e31c4ca93c424c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinSprites:
+  - {fileID: -1545255881, guid: 88be3716b64f7b84d9d6ebe13cd8e217, type: 3}
+  - {fileID: -1152807218, guid: 88be3716b64f7b84d9d6ebe13cd8e217, type: 3}
+  - {fileID: 1280261151, guid: 88be3716b64f7b84d9d6ebe13cd8e217, type: 3}
+  spriteRenderer: {fileID: 543657370195493940}
 --- !u!114 &-8602174912329193211
 MonoBehaviour:
   m_ObjectHideFlags: 0

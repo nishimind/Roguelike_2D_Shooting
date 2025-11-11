@@ -523,31 +523,11 @@ MonoBehaviour:
     shootTimer: 0
   _moveSpeed: 0
   attackSets:
-  - attackPattern: {fileID: 11400000, guid: c045000158735184191f8273f0a449ae, type: 2}
-    shootInterval: 3
-    bulletPrefab: {fileID: 8648382497275221827, guid: b07417703f62b1a45bf97f7d2bbcc954, type: 3}
+  - attackPattern: {fileID: 11400000, guid: beec4a14371f6f9439544136ca993dba, type: 2}
+    shootInterval: 2
+    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
     shootAngle: 0
-    initialDelay: 0
-    startHP: 100
-    endHP: 0
-    damage: 1
-    poolSize: 10
-    shootTimer: 0
-  - attackPattern: {fileID: 11400000, guid: 11fa38c891c02ce47b9763548b3faa38, type: 2}
-    shootInterval: 3
-    bulletPrefab: {fileID: 8648382497275221827, guid: b07417703f62b1a45bf97f7d2bbcc954, type: 3}
-    shootAngle: 0
-    initialDelay: 0
-    startHP: 100
-    endHP: 0
-    damage: 1
-    poolSize: 1
-    shootTimer: 0
-  - attackPattern: {fileID: 11400000, guid: f1c2b4d0c9de898409dbe7da8d47b41a, type: 2}
-    shootInterval: 1
-    bulletPrefab: {fileID: 8648382497275221827, guid: b07417703f62b1a45bf97f7d2bbcc954, type: 3}
-    shootAngle: 0
-    initialDelay: 0
+    initialDelay: 5
     startHP: 100
     endHP: 0
     damage: 1

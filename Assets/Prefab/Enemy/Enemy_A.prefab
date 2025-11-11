@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItems:
-  - prefab: {fileID: 0}
+  - prefab: {fileID: 5937261705830432063, guid: 276c6c4edbd68b2459504be9090ee0c8, type: 3}
     count: 1
   dropPattern: 0
   randomRange: 0.27
@@ -187,7 +187,9 @@ MonoBehaviour:
   damage: 1
   destroyOnHit: 0
   grazed: 1
+  onlyGraze: 0
   damageInterval: 0.2
+  originPrefab: {fileID: 0}
 --- !u!114 &4215292350305892138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,9 +202,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7f3845940816146a8dd540f7f72d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPattern: {fileID: 0}
-  _shootTime: 0.5
-  _bulletPooler: {fileID: 0}
+  attackSet:
+    attackPattern: {fileID: 0}
+    shootInterval: 1
+    bulletPrefab: {fileID: 0}
+    shootAngle: 0
+    initialDelay: 0
+    startHP: 0
+    endHP: 0
+    damage: 1
+    poolSize: 30
+    shootTimer: 0
   _moveSpeed: 1
 --- !u!114 &-4501527674544006583
 MonoBehaviour:
@@ -234,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
+  hasAppeared: 0
 --- !u!114 &7763788997135959282
 MonoBehaviour:
   m_ObjectHideFlags: 0
