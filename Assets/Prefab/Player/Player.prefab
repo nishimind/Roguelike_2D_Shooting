@@ -480,6 +480,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 29c4599f-dc28-4a0a-9a46-b35b4cfc6670
     m_ActionName: Player/Bomb[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 90301fd3-d7af-4525-9ee8-c67d2c9f1817
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
