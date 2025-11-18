@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyHealth : HealthBase
@@ -16,8 +17,12 @@ public class EnemyHealth : HealthBase
         base.Start();
         currentHP = maxHP;
         enemyDropper = GetComponent<EnemyDropper>();
+
+        // “GƒXƒ|[ƒ“‚É“o˜^
+        Siene_Change_Main_Shooting.Instance.RegisterEnemy(this.gameObject);
     }
 
+ 
     protected override void Update()
     {
         if (currentHP <= 0)
@@ -38,14 +43,17 @@ public class EnemyHealth : HealthBase
     }
     protected override void Die()
     {
-        if (isLastEnemy) 
-            Siene_Change_Main_Shooting.Instance.lastEnemyDead = true; 
+        if (isLastEnemy)
+            Siene_Change_Main_Shooting.Instance.lastEnemyDead = true;
 
         if (deadEffect != null)
             Instantiate(deadEffect, transform.position, Quaternion.identity);
 
         enemyDropper?.DropItems();
-      //  Debug.Log("Enemy€–S");
+
+        // “G€–S‚ÉƒŠƒXƒg‚©‚çíœ
+        Siene_Change_Main_Shooting.Instance.UnregisterEnemy(this.gameObject);
+
         Destroy(gameObject);
     }
 }

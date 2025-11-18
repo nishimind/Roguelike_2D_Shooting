@@ -16,6 +16,8 @@ public class EnemyoutDestroy : MonoBehaviour
     {
         if(hasAppeared)
         {if(GetComponent<EnemyHealth>().isLastEnemy == true) Siene_Change_Main_Shooting.Instance.lastEnemyDead = true;
+            Siene_Change_Main_Shooting.Instance.UnregisterEnemy(this.gameObject);
+
             Destroy(gameObject);
         }
     }

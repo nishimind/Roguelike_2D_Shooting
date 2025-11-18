@@ -1155,6 +1155,7 @@ MonoBehaviour:
   damageCycle: 0.1
   maxHP: 200
   currentHP: 0
+  isLastEnemy: 0
 --- !u!114 &671470494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2220,6 +2221,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3813029002301012428, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
+      propertyPath: isLastEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: secondFallSpeed
       value: 1

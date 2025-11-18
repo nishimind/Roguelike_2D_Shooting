@@ -5323,6 +5323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemypiano02
       objectReference: {fileID: 0}
+    - target: {fileID: 2235490102667889795, guid: 0785d559413ba6140afac3b70e0c1607, type: 3}
+      propertyPath: isLastEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3961160915538482005, guid: 0785d559413ba6140afac3b70e0c1607, type: 3}
       propertyPath: attackSets.Array.size
       value: 13

@@ -12,7 +12,7 @@ public class DestroyButton : MonoBehaviour
         // 全ての敵を破壊
         foreach (GameObject enemy in enemies)
         {
-            Destroy(enemy);
+           enemy.GetComponent<EnemyHealth>()?.TakeDamage(9999); // 敵の体力スクリプトに大ダメージを与える
         }
     }
 }

@@ -1232,6 +1232,10 @@ PrefabInstance:
       propertyPath: currentHP
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3813029002301012428, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
+      propertyPath: isLastEnemy
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4067689945177221204, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: _bulletPooler
       value: 

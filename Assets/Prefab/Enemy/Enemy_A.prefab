@@ -229,7 +229,7 @@ MonoBehaviour:
   deadEffect: {fileID: 8807638285694981379, guid: 610e17a383f8f784282cf32ac75ce8ea, type: 3}
   damageTime: 0.5
   damageCycle: 0.1
-  maxHP: 10
+  maxHP: 1
   currentHP: 0
   isLastEnemy: 0
 --- !u!114 &5431218344307120865

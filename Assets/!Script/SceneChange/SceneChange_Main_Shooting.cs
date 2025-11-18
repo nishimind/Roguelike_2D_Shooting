@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,11 +9,11 @@ using UnityEngine.UI;
 public class Siene_Change_Main_Shooting : MonoBehaviour
 {
     // 敵を格納する配列（毎フレーム GameObject.Find で更新される）
-    private GameObject[] enemyBox;
-    private GameObject[] itemBox;
+    [HideInInspector] public List<GameObject> enemyBox = new List<GameObject>();
 
-    // プレイヤーを格納する配列
-    private GameObject[] player;
+    [HideInInspector] public GameObject[] itemBox;
+
+
 
     // シーン切り替え中かどうかのフラグ
     // → 1度切り替え処理が始まったら、二重に呼ばれないようにする
@@ -48,7 +49,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
 
         //  ここの処理重くない？
         // タグ "Enemy" のついた全オブジェクトを取得
-        enemyBox = GameObject.FindGameObjectsWithTag("Enemy");
+     //   enemyBox = GameObject.FindGameObjectsWithTag("Enemy");
 
 
         itemBox = GameObject.FindGameObjectsWithTag("Item");
@@ -56,7 +57,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
        // player = GameObject.FindGameObjectsWithTag("Player");
 
         // 敵が全滅した場合
-        if (lastEnemyDead == true && itemBox.Length == 0&& enemyBox.Length==0)
+        if (lastEnemyDead == true && itemBox.Length == 0&& enemyBox.Count==0)
         {
             // 2秒後に Shop へ移動
             // 第3引数 true → 「このあと次のステージに進む」ことを示す
@@ -138,8 +139,18 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         }
     }
 
+    //敵の登録
+    public void RegisterEnemy(GameObject enemy)
+    {
+        if (!enemyBox.Contains(enemy))
+            enemyBox.Add(enemy);
+    }
 
-    // シングルトン的に利用するためのインスタンス保持
-   
+    // 削除用
+    public void UnregisterEnemy(GameObject enemy)
+    {
+        enemyBox.Remove(enemy);
+    }
+
 
 }
