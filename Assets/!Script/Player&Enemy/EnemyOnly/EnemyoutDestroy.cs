@@ -15,7 +15,7 @@ public class EnemyoutDestroy : MonoBehaviour
     private void OnBecameInvisible()
     {
         if(hasAppeared)
-        {
+        {if(GetComponent<EnemyHealth>().isLastEnemy == true) Siene_Change_Main_Shooting.Instance.lastEnemyDead = true;
             Destroy(gameObject);
         }
     }

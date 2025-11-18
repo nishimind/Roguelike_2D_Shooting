@@ -17,8 +17,10 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
     // シーン切り替え中かどうかのフラグ
     // → 1度切り替え処理が始まったら、二重に呼ばれないようにする
     public bool isChangingScene = false;
+    public bool lastEnemyDead = false;
+    public bool playerDead = false;
 
-[SerializeField]
+    [SerializeField]
     private string[] stageOrder =
  {
     "Stage2", "Stage3",
@@ -36,6 +38,7 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        lastEnemyDead = false;
     }
 
     void Update()
@@ -44,23 +47,27 @@ public class Siene_Change_Main_Shooting : MonoBehaviour
         if (isChangingScene) return;
 
         //  ここの処理重くない？
-
         // タグ "Enemy" のついた全オブジェクトを取得
         enemyBox = GameObject.FindGameObjectsWithTag("Enemy");
+
+
         itemBox = GameObject.FindGameObjectsWithTag("Item");
         // タグ "Player" のついた全オブジェクトを取得
-        player = GameObject.FindGameObjectsWithTag("Player");
+       // player = GameObject.FindGameObjectsWithTag("Player");
 
         // 敵が全滅した場合
-        if (enemyBox.Length == 0 && itemBox.Length == 0)
+        if (lastEnemyDead == true && itemBox.Length == 0&& enemyBox.Length==0)
         {
             // 2秒後に Shop へ移動
             // 第3引数 true → 「このあと次のステージに進む」ことを示す
             StartCoroutine(ChangeSceneWithDelay("Shop", 2f, true));
         }
 
+      
+
+
         // プレイヤーが全滅した場合
-        if (player.Length == 0)
+        if (playerDead==true)
         {
             // 2秒後に GameOver へ移動
             // 第3引数 false → 「次のステージには進まない（GameOver固定）」

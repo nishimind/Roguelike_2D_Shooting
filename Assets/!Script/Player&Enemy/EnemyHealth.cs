@@ -8,6 +8,8 @@ public class EnemyHealth : HealthBase
     [Header("Œ»İHP")]
     public float currentHP;
     private EnemyDropper enemyDropper;
+    [Header("‚±‚Ì“G‚ª€–S‚µ‚½‚çƒV[ƒ“‘JˆÚ‚©H")]
+    public bool isLastEnemy = false;
 
     protected override void Start()
     {
@@ -36,6 +38,9 @@ public class EnemyHealth : HealthBase
     }
     protected override void Die()
     {
+        if (isLastEnemy) 
+            Siene_Change_Main_Shooting.Instance.lastEnemyDead = true; 
+
         if (deadEffect != null)
             Instantiate(deadEffect, transform.position, Quaternion.identity);
 

@@ -31,6 +31,7 @@ public class PlayerHealth : HealthBase
         {
             status.currentHP = 0;
             isDead = true;
+            Siene_Change_Main_Shooting.Instance.playerDead = true;
             Die();
         }
         else

@@ -203,9 +203,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSet:
-    attackPattern: {fileID: 0}
-    shootInterval: 1
-    bulletPrefab: {fileID: 0}
+    attackPattern: {fileID: 11400000, guid: b0a5b3d6053a0b542bef89d86d32a424, type: 2}
+    shootInterval: 0.3
+    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
     shootAngle: 0
     initialDelay: 0
     startHP: 0
@@ -231,6 +231,7 @@ MonoBehaviour:
   damageCycle: 0.1
   maxHP: 10
   currentHP: 0
+  isLastEnemy: 0
 --- !u!114 &5431218344307120865
 MonoBehaviour:
   m_ObjectHideFlags: 0
