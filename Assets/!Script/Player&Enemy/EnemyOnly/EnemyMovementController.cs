@@ -1,27 +1,43 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 public class EnemyMovementController : MonoBehaviour
 {
     private EnemyPhaseAttack _phaseAttack;
-    protected Rigidbody2D _rb;
+    public MovePatternSO[] phaseMovePatterns;
+
+  
+
+   [HideInInspector] public Rigidbody2D _rb;
+    public Transform Player => _player;
     protected Transform _player;
+
     protected virtual void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _phaseAttack = GetComponent<EnemyPhaseAttack>();
+
         if (_phaseAttack != null)
-        {
             _phaseAttack.OnPhaseChanged += HandlePhaseChange;
-        }
-     FindPlayer();
+
+        FindPlayer().Forget();
+
+        // 最初のフェーズを開始
+        StartFirstPhase();
     }
 
-  private async UniTaskVoid FindPlayer() {   
+    private void StartFirstPhase()
+    {
+        if (phaseMovePatterns.Length > 0)
+            phaseMovePatterns[0]?.Execute(this).Forget();
+    }
+
+
+    private async UniTaskVoid FindPlayer()
+    {
         await UniTask.WaitUntil(() => PlayerMovement.Instance != null);
         _player = PlayerMovement.Instance.transform;
     }
-   
 
     private void OnDestroy()
     {
@@ -33,21 +49,9 @@ public class EnemyMovementController : MonoBehaviour
     {
         Debug.Log($"移動パターン変更：Phase {newPhaseIndex}");
 
-        switch (newPhaseIndex)
-        {
-            case 1:
-                StartMovePattern1();
-                break;
-            case 2:
-                StartMovePattern2();
-                break;
-            case 3:
-                StartMovePattern3();
-                break;
-        }
-    }
+        if (newPhaseIndex < 0 || newPhaseIndex >= phaseMovePatterns.Length) return;
 
-    private void StartMovePattern1() { /* 移動パターン1開始 */ }
-    private void StartMovePattern2() { /* 移動パターン2開始 */ }
-    private void StartMovePattern3() { /* 移動パターン3開始 */ }
+        var pattern = phaseMovePatterns[newPhaseIndex];
+        pattern?.Execute(this).Forget();
+    }
 }

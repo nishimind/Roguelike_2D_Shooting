@@ -143,7 +143,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4980828594183270744, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       insertIndex: 8
-      addedObject: {fileID: 4648430250051030622}
+      addedObject: {fileID: 8141273289793428893}
     - targetCorrespondingSourceObject: {fileID: 4980828594183270744, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       insertIndex: 9
       addedObject: {fileID: 2887272055964065191}
@@ -153,7 +153,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4980828594183270744, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
   m_PrefabInstance: {fileID: 2265815602410677861}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4648430250051030622
+--- !u!114 &8141273289793428893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,13 +162,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6516355161900652349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d046af362a663374e83c1e7ed36ec538, type: 3}
+  m_Script: {fileID: 11500000, guid: 77454c485dd6d3a43861c2f78c36f095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
-  zigzagAmplitude: 1.5
-  zigzagSpeed: 3
-  homingPower: 2
+  phaseMovePatterns:
+  - {fileID: 11400000, guid: 65f2097ebd9343249805217a036feb3e, type: 2}
+  - {fileID: 11400000, guid: 1a6b318baf593c5489fe3108e14a587d, type: 2}
+  - {fileID: 11400000, guid: d541f4e5dfc29074faa25d666b076b87, type: 2}
+  _rb: {fileID: 0}
 --- !u!114 &2887272055964065191
 MonoBehaviour:
   m_ObjectHideFlags: 0
