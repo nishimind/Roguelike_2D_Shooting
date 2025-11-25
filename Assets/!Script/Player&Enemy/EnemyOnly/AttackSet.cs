@@ -15,7 +15,7 @@ public class AttackSet
     public int shootAngle ;
     [Header("Å‰‚Ì”­Ë‚Ü‚Å‚Ì’x‰„(•b)")]
     public int initialDelay = 0;
-    public int startHP = (int)0f;
+    public int startHP = (int)100f;
     public int endHP = (int)0f;
     public float damage = 1;
     [Header("Pool‚·‚é—Ê")]
