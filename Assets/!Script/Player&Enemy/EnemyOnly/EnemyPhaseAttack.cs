@@ -3,7 +3,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
 
-public class EnemyPhaseAttack : Enemy
+public class EnemyPhaseAttack : MonoBehaviour
 {
     [Header("攻撃フェーズのリスト")]
     [SerializeField] private List<AttackPhase> phases = new();
@@ -12,14 +12,13 @@ public class EnemyPhaseAttack : Enemy
     private CancellationTokenSource _cts = new CancellationTokenSource();
     private int currentPhaseIndex = 0;
     private bool _initialized = false;
+    public event System.Action<int> OnPhaseChanged;
 
-    // -------------------------------------------------------------
-    // 初期化
-    // -------------------------------------------------------------
-    protected override async void _Initialize()
+    // 攻撃してよいか（画面内フラグ）
+    protected bool _bAttack;
+
+    private void Start()
     {
-        base._Initialize();
-
         _health = GetComponent<EnemyHealth>();
         if (_health == null)
         {
@@ -46,16 +45,18 @@ public class EnemyPhaseAttack : Enemy
         MultiPhaseAttackLoopAsync(_cts.Token).Forget();
     }
 
+
+    // -------------------------------------------------------------
+    // 初期化
+    // -------------------------------------------------------------
+
+
     private void OnDestroy()
     {
         _cts?.Cancel();
     }
 
-    // -------------------------------------------------------------
-    // Enemy 基底クラスの攻撃は無効化（フェーズ管理に任せる）
-    // -------------------------------------------------------------
-    protected override void _Attack() { }
-
+  
     // -------------------------------------------------------------
     // フェーズ管理ループ
     // -------------------------------------------------------------
@@ -87,6 +88,10 @@ public class EnemyPhaseAttack : Enemy
             if (timeCondition || hpCondition)
             {
                 currentPhaseIndex++;
+
+                //イベントを起こしている
+                OnPhaseChanged?.Invoke(currentPhaseIndex);
+
                 continue;
             }
 
@@ -116,4 +121,8 @@ public class EnemyPhaseAttack : Enemy
             set.shootTimer = 0f;
         }
     }
+    // 確実に動作する方法
+    private void OnBecameVisible() { _bAttack = true; }
+    private void OnBecameInvisible() { _bAttack = false; }
+
 }
