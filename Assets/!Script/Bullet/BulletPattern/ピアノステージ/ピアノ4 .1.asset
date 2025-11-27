@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16edd853070aa694abbf3df1abc29fd9, type: 3}
-  m_Name: "\u30D4\u30A2\u30CE\uFF13"
+  m_Name: "\u30D4\u30A2\u30CE4 .1"
   m_EditorClassIdentifier: 
   isPlyerBullet: 0
-  laneOffset: 0.15
+  laneOffset: 0.1
   startY: 6
   noteXPositions:
   - -3
-  - -1
-  - 1
-  - 3
+  - -1.8
+  - -0.6
+  - 0
+  - 1.2
+  - -0.6

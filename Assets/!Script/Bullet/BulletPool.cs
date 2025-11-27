@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
-   
     // 各プレハブごとにプールを分ける
     private readonly Dictionary<GameObject, Queue<GameObject>> poolDictionary = new();
     public static BulletPool Instance { get; private set; }
@@ -20,8 +19,9 @@ public class BulletPool : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     // 敵の出現時などに呼び出して、弾プレハブを登録しておく
-    public void RegisterBulletPrefab(GameObject bulletPrefab,int poolSize)
+    public void RegisterBulletPrefab(GameObject bulletPrefab, int poolSize)
     {
         if (poolDictionary.ContainsKey(bulletPrefab))
             return;
@@ -42,7 +42,7 @@ public class BulletPool : MonoBehaviour
         var obj = Instantiate(prefab, transform);
         obj.SetActive(false);
 
-        // 🔸ここでPrefab情報を明示的にセット！
+        // Prefab情報を明示的にセット
         var bullet = obj.GetComponentInChildren<BulletDamage>();
         if (bullet != null)
         {
@@ -61,14 +61,22 @@ public class BulletPool : MonoBehaviour
         if (!poolDictionary.TryGetValue(bulletPrefab, out var pool))
         {
             // 登録されていなければ新規登録
-            RegisterBulletPrefab(bulletPrefab,1);
+            RegisterBulletPrefab(bulletPrefab, 1);
             pool = poolDictionary[bulletPrefab];
         }
 
         GameObject obj = pool.Count > 0 ? pool.Dequeue() : CreateNewBullet(bulletPrefab);
 
+        // ★ ExplodeBullet だけ、再利用時に状態リセット（他の弾には影響なし）
+        var explode = obj.GetComponent<ExplodeBullet>();
+        if (explode != null)
+        {
+            explode.ResetState();
+        }
+
         if (obj.TryGetComponent(out BulletDamage damage))
             damage.grazed = false;
+
         obj.transform.localScale = bulletPrefab.transform.localScale;
         obj.transform.SetPositionAndRotation(position, rotation);
         obj.SetActive(true);
@@ -84,8 +92,8 @@ public class BulletPool : MonoBehaviour
             poolDictionary.Add(bulletPrefab, new Queue<GameObject>());
 
         poolDictionary[bulletPrefab].Enqueue(obj);
-        
     }
+
     public void ClearPool()
     {
         foreach (var kvp in poolDictionary)
@@ -100,10 +108,10 @@ public class BulletPool : MonoBehaviour
         }
 
         poolDictionary.Clear();
+
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
         }
-
     }
 }
