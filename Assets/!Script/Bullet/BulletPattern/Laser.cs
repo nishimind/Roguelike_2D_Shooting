@@ -11,13 +11,18 @@ public class LaserStraightShot_WorldPosition : AttackPatternSO
     [SerializeField] private int angle = 180; // 0=上, 90=右, 180=下, 270=左
 
     [Header("発射位置（ワールド座標）")]
+ 
     [SerializeField] private Vector3 firePosition = Vector3.zero;
+    public bool objectPosition = false;
+    public string positionObjectName;
     // 👆 ここに「ワールド座標 (x,y,z)」を直接入力する
 
     public override async void Shoot(Vector3 position, int rotation, GameObject bulletPrefab, float damage)
     {
         // 🔸 Inspectorに入力されたワールド座標を使用
         Vector3 spawnPos = firePosition;
+        if (objectPosition)  spawnPos = GameObject.Find(positionObjectName).transform.position;
+
 
         // 🔸 Inspectorで指定した角度で撃つ
         Quaternion rot = Quaternion.Euler(0, 0, angle);
