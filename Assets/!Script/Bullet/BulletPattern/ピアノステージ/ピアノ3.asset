@@ -16,9 +16,9 @@ MonoBehaviour:
   laneOffset: 0.1
   startY: 6
   noteXPositions:
-  - -3.6
-  - -1.2
-  - 0
-  - 1.2
-  - 2.4
-  - 1
+  - -4.29
+  - -1.17
+  - 0.39
+  - 1.95
+  - 2.73
+  - 1.95
