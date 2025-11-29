@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1459353640853701225}
   - component: {fileID: 479878481504877377}
   - component: {fileID: 8413936359076726092}
-  - component: {fileID: 9048895880302074606}
   - component: {fileID: 1505486199352257439}
+  - component: {fileID: 9048895880302074606}
   m_Layer: 6
   m_Name: PleyerBullet01
   m_TagString: Bullet
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3f15d3cebf332e641abf1199da0910e4, type: 3}
+  m_Sprite: {fileID: -1731355414, guid: dab416423e19c5842a55df1968bb1328, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,21 +148,6 @@ MonoBehaviour:
   onlyGraze: 0
   damageInterval: 0.2
   originPrefab: {fileID: 9099611059377426971}
---- !u!114 &9048895880302074606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9099611059377426971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d231c05cd91f4cc47a384c85b671dc87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mainCam: {fileID: 0}
-  _pool: {fileID: 0}
-  offScreenBuffer: 0.5
 --- !u!61 &1505486199352257439
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -208,3 +193,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.06, y: 1.26}
   m_EdgeRadius: 0
+--- !u!114 &9048895880302074606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9099611059377426971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d231c05cd91f4cc47a384c85b671dc87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCam: {fileID: 0}
+  _pool: {fileID: 0}
+  offScreenBuffer: 0.5

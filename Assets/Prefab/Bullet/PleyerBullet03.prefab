@@ -13,28 +13,32 @@ PrefabInstance:
       value: PleyerBullet03
       objectReference: {fileID: 0}
     - target: {fileID: 6659623120890224599, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1623043759, guid: 662900fd53725ea478dfdaa19c471f66, type: 3}
+    - target: {fileID: 6659623120890224599, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6659623120890224599, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
       propertyPath: m_Color.g
-      value: 0.86321306
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6659623120890224599, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
       propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8155086563745299147, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
-      propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8155086563745299147, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155086563745299147, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.26
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8155086563745299147, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.26
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8155086563745299147, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -74,6 +78,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8155086563745299147, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155086563745299147, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8706782869206975416, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}

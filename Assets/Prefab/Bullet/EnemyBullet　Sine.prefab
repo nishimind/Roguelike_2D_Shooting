@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "EnemyBullet\u3000Sine"
       objectReference: {fileID: 0}
+    - target: {fileID: 5401534588874918443, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 551000797, guid: 6c556f97559b399409e59f61926ce4c3, type: 3}
     - target: {fileID: 7807949038326080934, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
