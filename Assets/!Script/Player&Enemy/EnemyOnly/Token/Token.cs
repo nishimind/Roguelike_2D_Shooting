@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyHealth : HealthBase
+public class TokenHealth : HealthBase
 {
     [Header("最大HP")]
     public int maxHP = 10;
@@ -10,18 +10,26 @@ public class EnemyHealth : HealthBase
 
     private EnemyDropper enemyDropper;
 
-    [Header("この敵が死亡したらシーン遷移か？")]
+    [Header("このトークンが死亡したらシーン遷移フラグを立てる？")]
     public bool isLastEnemy = false;
 
-    [Header("ダメージ時の点滅設定")]
-    [SerializeField] private Color blinkColor = Color.red; // 点滅時の色
-    [SerializeField] private float blinkDuration = 0.08f;   // 1回の色反転の時間
-    [SerializeField] private int blinkCount = 3;            // 何回点滅するか
+    [Header("復活時の色（通常時）")]
+    [SerializeField] private Color activeColor = Color.white;
+
+    [Header("死亡時の薄い色")]
+    [SerializeField] private Color inactiveColor = new Color(1f, 1f, 1f, 0.3f);
+
+    [Header("点滅設定")]
+    [SerializeField] private Color blinkColor = Color.red;
+    [SerializeField] private float blinkDuration = 0.08f;
+    [SerializeField] private int blinkCount = 3;
 
     private SpriteRenderer[] _renderers;
     private Color[] _originalColors;
+    private Collider2D[] _colliders;
+
     private bool _isBlinking = false;
-    private bool _isDead = false;
+    private bool _isDown = false;
 
     protected override void Start()
     {
@@ -30,9 +38,10 @@ public class EnemyHealth : HealthBase
         currentHP = maxHP;
         enemyDropper = GetComponent<EnemyDropper>();
 
-        // 見た目キャッシュ（子オブジェクト含め全部）
         _renderers = GetComponentsInChildren<SpriteRenderer>();
-        if (_renderers != null && _renderers.Length > 0)
+
+        // 元の色を保存
+        if (_renderers != null)
         {
             _originalColors = new Color[_renderers.Length];
             for (int i = 0; i < _renderers.Length; i++)
@@ -41,14 +50,17 @@ public class EnemyHealth : HealthBase
             }
         }
 
-        // 敵スポーン時に登録
+        _colliders = GetComponentsInChildren<Collider2D>();
+
+        // スポーン時に敵として登録
         Siene_Change_Main_Shooting.Instance.RegisterEnemy(this.gameObject);
+
+        ApplyState(true); // アクティブ状態スタート
     }
 
     protected override void Update()
     {
-        // すでに死んでたら何もしない
-        if (_isDead) return;
+        if (_isDown) return;
 
         if (currentHP <= 0)
         {
@@ -59,13 +71,11 @@ public class EnemyHealth : HealthBase
 
     public override void TakeDamage(float damage)
     {
-        if (_isDead) return;
+        if (_isDown) return;
 
         currentHP -= damage;
-
         if (currentHP > 0)
         {
-            // 生きてるときだけ点滅
             StartBlink();
         }
         else
@@ -77,8 +87,8 @@ public class EnemyHealth : HealthBase
 
     protected override void Die()
     {
-        if (_isDead) return;   // 二重呼び出し防止
-        _isDead = true;
+        if (_isDown) return;
+        _isDown = true;
 
         if (isLastEnemy)
             Siene_Change_Main_Shooting.Instance.lastEnemyDead = true;
@@ -88,21 +98,64 @@ public class EnemyHealth : HealthBase
 
         enemyDropper?.DropItems();
 
-        // 敵死亡時にリストから削除
+        // 敵リストから削除する（死んでる扱いになる）
         Siene_Change_Main_Shooting.Instance.UnregisterEnemy(this.gameObject);
 
-        Destroy(gameObject);
+        // Destroy せずに「薄く」「当たり判定OFF」にする
+        ApplyState(false);
     }
 
-    // ==========================
-    // ここから点滅処理
-    // ==========================
+    // =========================================================
+    //   復活
+    // =========================================================
+    public void Revive()
+    {
+        if (!_isDown) return;
 
+        _isDown = false;
+        currentHP = maxHP;
+
+        ApplyState(true);
+
+        // 敵リストに再び追加
+        Siene_Change_Main_Shooting.Instance.RegisterEnemy(this.gameObject);
+    }
+
+    // =========================================================
+    //   有効/無効状態の適用（色と当たり判定の変更）
+    // =========================================================
+    private void ApplyState(bool active)
+    {
+        // 色変更
+        if (_renderers != null)
+        {
+            Color newColor = active ? activeColor : inactiveColor;
+
+            foreach (var r in _renderers)
+                r.color = newColor;
+        }
+
+        // 当たり判定
+        if (_colliders != null)
+        {
+            foreach (var col in _colliders)
+                col.enabled = active;
+        }
+
+        // 色を元に戻す（アクティブ時）
+        if (active)
+        {
+            ResetColors();
+        }
+    }
+
+    // =========================================================
+    //   点滅処理
+    // =========================================================
     private void StartBlink()
     {
-        if (_renderers == null || _renderers.Length == 0) return;
+        if (_renderers == null) return;
 
-        // すでに点滅中なら一旦止めてリスタート
         if (_isBlinking)
         {
             StopAllCoroutines();
@@ -118,11 +171,9 @@ public class EnemyHealth : HealthBase
 
         for (int i = 0; i < blinkCount; i++)
         {
-            // 色をblinkColorへ
             SetRenderersColor(blinkColor);
             yield return new WaitForSeconds(blinkDuration);
 
-            // 元の色に戻す
             ResetColors();
             yield return new WaitForSeconds(blinkDuration);
         }

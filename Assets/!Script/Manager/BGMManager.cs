@@ -32,7 +32,7 @@ public class BGMManager_DSP : MonoBehaviour
         double dspNow = AudioSettings.dspTime;
 
         // ちょっとだけ先の時間から再生開始（余裕を持たせる）
-        double introStartTime = dspNow + 0.2f;
+        double introStartTime = dspNow + 0.1f;
 
         // イントロを予約再生
         introSource.PlayScheduled(introStartTime);

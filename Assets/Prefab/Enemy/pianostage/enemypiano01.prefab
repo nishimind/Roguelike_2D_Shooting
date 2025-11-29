@@ -18,9 +18,8 @@ GameObject:
   - component: {fileID: 7830148134660644520}
   - component: {fileID: 3961160915538482005}
   - component: {fileID: 3057992833251815551}
-  - component: {fileID: 4193459275881502299}
   m_Layer: 7
-  m_Name: enemypiano02
+  m_Name: enemypiano01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 334073290, guid: 3987d08c956c54a4b83bee5a4ef47aab, type: 3}
+  m_Sprite: {fileID: -1902365664, guid: 5b072d3ca5bc31d4a89689993b49ed50, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -204,7 +203,6 @@ MonoBehaviour:
   damageCycle: 0.1
   maxHP: 40
   currentHP: 0
-  isLastEnemy: 1
 --- !u!114 &7830148134660644520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,83 +237,23 @@ MonoBehaviour:
     endHP: 0
     damage: 1
     poolSize: 30
-    burstCount: 0
-    burstInterval: 0
     shootTimer: 0
-    firstShotDone: 0
-    currentShotCount: 0
-    inBurstCooldown: 0
-    burstTimer: 0
   _moveSpeed: 0.5
   attackSets:
-  - attackPattern: {fileID: 11400000, guid: b64d45b7d4ba7f043b13e0d650819600, type: 2}
-    shootInterval: 1.05
-    bulletPrefab: {fileID: 8832096940634454008, guid: a15b9d9377120464cb3361d448c8e52f, type: 3}
-    shootAngle: 0
-    initialDelay: 1.2
+  - attackPattern: {fileID: 11400000, guid: eb0d3b727f7e1dc44bf2a39040f88b7d, type: 2}
+    shootInterval: 1
+    bulletPrefab: {fileID: 8648382497275221827, guid: b07417703f62b1a45bf97f7d2bbcc954, type: 3}
+    shootAngle: 180
+    initialDelay: 0
     startHP: 0
     endHP: 0
     damage: 1
     poolSize: 30
-    burstCount: 2
-    burstInterval: 6.3
     shootTimer: 0
-    firstShotDone: 0
-    currentShotCount: 0
-    inBurstCooldown: 0
-    burstTimer: 0
-  - attackPattern: {fileID: 11400000, guid: 098673760f47c9e438939d4253ac4ea3, type: 2}
-    shootInterval: 1.05
-    bulletPrefab: {fileID: 8832096940634454008, guid: 8c8de5f98c412754da3fbd3f86f37309, type: 3}
-    shootAngle: 0
-    initialDelay: 3.3
-    startHP: 0
-    endHP: 0
-    damage: 1
-    poolSize: 30
-    burstCount: 2
-    burstInterval: 6.3
-    shootTimer: 0
-    firstShotDone: 0
-    currentShotCount: 0
-    inBurstCooldown: 0
-    burstTimer: 0
-  - attackPattern: {fileID: 11400000, guid: 77f8cae04b20bb541a74365c248d4804, type: 2}
-    shootInterval: 1.05
-    bulletPrefab: {fileID: 8832096940634454008, guid: a15b9d9377120464cb3361d448c8e52f, type: 3}
-    shootAngle: 0
-    initialDelay: 5.4
-    startHP: 0
-    endHP: 0
-    damage: 1
-    poolSize: 30
-    burstCount: 2
-    burstInterval: 6.3
-    shootTimer: 0
-    firstShotDone: 0
-    currentShotCount: 0
-    inBurstCooldown: 0
-    burstTimer: 0
-  - attackPattern: {fileID: 11400000, guid: 95f7ae3eb2e9bf84dba26c51876ee3a4, type: 2}
-    shootInterval: 1.05
-    bulletPrefab: {fileID: 8832096940634454008, guid: 8c8de5f98c412754da3fbd3f86f37309, type: 3}
-    shootAngle: 0
-    initialDelay: 7.5
-    startHP: 0
-    endHP: 0
-    damage: 1
-    poolSize: 30
-    burstCount: 2
-    burstInterval: 6.3
-    shootTimer: 0
-    firstShotDone: 0
-    currentShotCount: 0
-    inBurstCooldown: 0
-    burstTimer: 0
-  stopPosY: 4
-  firstFallSpeed: 1.2
-  stopDuration: 50
-  secondFallSpeed: 1
+  stopPosY: 2
+  firstFallSpeed: 1
+  stopDuration: 0
+  secondFallSpeed: 0
 --- !u!114 &3057992833251815551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,24 +274,3 @@ MonoBehaviour:
   dropPattern: 0
   randomRange: 0.79
   circleRadius: 2
---- !u!95 &4193459275881502299
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99147269602352544}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aaf15c12213c0b14e9684257167c0b2c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

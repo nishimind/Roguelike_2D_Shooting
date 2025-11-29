@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - PlayerStatus
   - Item
+  - PlayerLifeCollider
+  - Token
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Enemy
   - ItemCollector
   - Item
-  - 
+  - Token
   - 
   - 
   - 
