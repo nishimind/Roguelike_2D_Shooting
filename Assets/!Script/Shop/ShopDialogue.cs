@@ -13,24 +13,27 @@ public class ShopDialogue : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip typeSE;
 
-    [Header("Start Message")]
-    [SerializeField] private string startMessage = "そろそろブラックフライデーおわりますよ";
+    [Header("Messages")]
+    [SerializeField] [TextArea] private List<string> messages = new();
 
-    // シーン開始時に自動で喋る
     IEnumerator Start()
     {
-        yield return new WaitForSeconds(1.0f);  // 少し待つ演出
-        StartTyping(startMessage);
+        yield return new WaitForSeconds(1.0f);
+
+        // ランダムに1つ選ぶ
+        if (messages.Count > 0)
+        {
+            string msg = messages[Random.Range(0, messages.Count)];
+            StartTyping(msg);
+        }
     }
 
-    // 外からも呼び出せる
     public void StartTyping(string message)
     {
         StopAllCoroutines();
         StartCoroutine(TypeRoutine(message));
     }
 
-    // タイピング処理
     private IEnumerator TypeRoutine(string message)
     {
         dialogueText.text = "";

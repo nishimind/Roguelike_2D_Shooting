@@ -15,6 +15,7 @@ MonoBehaviour:
   cardName: "\u653B\u6483\u30A2\u30C3\u30D7"
   description: "\u653B\u6483\u304C\u30A2\u30C3\u30D7\u3059\u308B\u3088"
   price: 5
-  icon: {fileID: 21300000, guid: c6e6f3d0ae1898d48a505cd6e41bae47, type: 3}
+  icon: {fileID: 21300000, guid: 1115e1543220a3948ad73f485e3a20c4, type: 3}
   effectType: 0
+  optionType: 0
   effectValue: 5

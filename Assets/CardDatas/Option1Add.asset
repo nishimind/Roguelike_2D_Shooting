@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: "Option1\u8FFD\u52A0"
   description: 
   price: 5
-  icon: {fileID: 21300000, guid: c6e6f3d0ae1898d48a505cd6e41bae47, type: 3}
+  icon: {fileID: 21300000, guid: b82a2dc35a80c2c46914d0d2c2ca5604, type: 3}
   effectType: 6
   optionType: 0
   effectValue: 1
