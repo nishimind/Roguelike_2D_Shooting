@@ -21,18 +21,20 @@ public class CollisionBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // 現在接触中のColliderに対してダメージ間隔チェック
+        var removeList = new List<Collider2D>();
+
         foreach (var collision in stayingColliders)
         {
+            // 無効になったコライダーは後で削除
             if (collision == null)
             {
-                stayingColliders.Remove(collision);
-                nextDamageTime.Remove(collision);
+                removeList.Add(collision);
                 continue;
             }
+
             var bullet = collision.GetComponent<BulletDamage>();
             if (bullet == null) continue;
-            if (bullet.destroyOnHit) continue; // レーザー等のみ継続
+            if (bullet.destroyOnHit) continue;
 
             if (!nextDamageTime.ContainsKey(collision))
                 nextDamageTime[collision] = 0f;
@@ -43,7 +45,15 @@ public class CollisionBase : MonoBehaviour
                 nextDamageTime[collision] = Time.time + bullet.damageInterval;
             }
         }
+
+        // ★ まとめて消す
+        foreach (var col in removeList)
+        {
+            stayingColliders.Remove(col);
+            nextDamageTime.Remove(col);
+        }
     }
+
 
     protected virtual void TakeDamage(Collider2D collision)
     {
