@@ -28,8 +28,15 @@ public class ExplodeBullet : BulletBase
     [Header("出現範囲（X,Y）（爆心地からの±方向）")]
     [SerializeField] private Vector2 downAreaSize = new Vector2(4f, 2f);
 
-    [Header("下に落ちる弾のスピード")]
+    [Header("下に落ちる弾のベーススピード")]
     [SerializeField] private float downBulletSpeed = 5f;
+
+    [Header("下弾のふんわり散らばり")]
+    [SerializeField] private float downSideDriftRange = 0.6f; // 横方向のばらつき
+
+    [Header("下弾のゆらゆら設定")]
+    [SerializeField] private float downWobbleAmplitude = 0.3f;
+    [SerializeField] private float downWobbleFrequency = 2f;
 
     private float _time;
     private float _traveled;
@@ -39,14 +46,11 @@ public class ExplodeBullet : BulletBase
 
     protected override void Initialize()
     {
-        // 初回生成時
         ResetState();
         _damage = GetComponent<BulletDamage>();
     }
 
-    /// <summary>
-    /// プール再利用時にも呼べるようにしたリセット処理
-    /// </summary>
+    /// <summary>プール再利用時のリセット</summary>
     public void ResetState()
     {
         _time = 0f;
@@ -67,8 +71,8 @@ public class ExplodeBullet : BulletBase
 
         // 左右ゆらゆら
         float wobble = Mathf.Sin(_time * wobbleFrequency) * wobbleAmplitude;
-        Vector3 forward = transform.up;              // 弾の向いている方向
-        Vector3 side = transform.right * wobble;  // 右方向に揺らす
+        Vector3 forward = transform.up;
+        Vector3 side = transform.right * wobble;
 
         Vector3 dir = (forward + side).normalized;
 
@@ -91,7 +95,7 @@ public class ExplodeBullet : BulletBase
 
         Vector3 center = transform.position;
 
-        // ▼ランダムに「下に落ちる弾」を生成
+        // ▼ランダムに「下方向ふんわり弾」を生成
         if (downBulletPrefab != null && downBulletCount > 0)
         {
             SpawnDownRain(center);
@@ -110,7 +114,8 @@ public class ExplodeBullet : BulletBase
     }
 
     /// <summary>
-    /// 爆心地周辺にランダム配置して、真下に落ちる弾を生成
+    /// 爆心地周辺にランダム配置して、
+    /// 「下方向ベース＋ふんわりゆらゆら」で落ちる弾を生成
     /// </summary>
     private void SpawnDownRain(Vector3 center)
     {
@@ -125,17 +130,17 @@ public class ExplodeBullet : BulletBase
 
             Vector3 spawnPos = center + new Vector3(offsetX, offsetY, 0f);
 
-            // 向きを「下向き（180度）」にする
-            Quaternion downRot = Quaternion.Euler(0f, 0f, 180f);
+            // 回転はとりあえずそのまま（見た目優先なら調整してOK）
+            Quaternion rot = Quaternion.identity;
 
             GameObject bullet = BulletPool.Instance.Get(
                 downBulletPrefab,
                 spawnPos,
-                downRot
+                rot
             );
 
             bullet.transform.position = spawnPos;
-            bullet.transform.rotation = downRot;
+            bullet.transform.rotation = rot;
 
             // ダメージ（少し弱めに）
             var dmg = bullet.GetComponent<BulletDamage>();
@@ -144,11 +149,29 @@ public class ExplodeBullet : BulletBase
                 dmg.damage = _damage.damage * 0.5f;
             }
 
-            // 下方向に落下（transform.up は下向きになっている想定）
-            var rb = bullet.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            // ★ 横方向のベースドリフト（ふんわり散らばり）
+            float side = Random.Range(-downSideDriftRange, downSideDriftRange);
+
+            // ★ ゆらゆら付きの移動コンポーネントがあれば初期化
+            var mover = bullet.GetComponent<DownWobbleMover>();
+            if (mover != null)
             {
-                rb.velocity = bullet.transform.up * downBulletSpeed;
+                mover.Init(
+                    downBulletSpeed,
+                    downWobbleAmplitude,
+                    downWobbleFrequency,
+                    side
+                );
+            }
+            else
+            {
+                // 予備：コンポーネントが無い場合はただのふんわり下向き
+                var rb = bullet.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    Vector2 dir = new Vector2(side, -1f).normalized;
+                    rb.velocity = dir * downBulletSpeed;
+                }
             }
         }
     }
