@@ -1034,9 +1034,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2567678452020569295, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4980828594183270744, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: m_Name
       value: enemy_C
+      objectReference: {fileID: 0}
+    - target: {fileID: 4980828594183270744, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7597826540569389479, guid: f33c3990a06b2604dbf17956be2edb97, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2402,6 +2410,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1002330610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5826233006903858935, guid: 1119e727573886146914eefd0c41e7c2, type: 3}
+  m_PrefabInstance: {fileID: 3166929138407019777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1023250797
 GameObject:
   m_ObjectHideFlags: 0
@@ -6385,6 +6398,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 975574271332849213, guid: 85a4eca3d16eace4ebec777e29b7e914, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8705015777075189819}
+    - targetCorrespondingSourceObject: {fileID: 975574271332849213, guid: 85a4eca3d16eace4ebec777e29b7e914, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8705015777075189824}
   m_SourcePrefab: {fileID: 100100000, guid: 85a4eca3d16eace4ebec777e29b7e914, type: 3}
 --- !u!1001 &1842087557209250162
 PrefabInstance:
@@ -6793,6 +6809,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2405613580125786238, guid: 1119e727573886146914eefd0c41e7c2, type: 3}
   m_PrefabInstance: {fileID: 3166929138407019777}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2604349560033216747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002330610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43cc13e7a8b62f4f83af0468d43e881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phases:
+  - attackSets:
+    - attackPattern: {fileID: 11400000, guid: 60d1058aa15986447aec723bbd881973, type: 2}
+      shootInterval: 3
+      bulletPrefab: {fileID: 8648382497275221827, guid: b07417703f62b1a45bf97f7d2bbcc954, type: 3}
+      shootAngle: 0
+      initialDelay: 0
+      startHP: 100
+      endHP: 0
+      damage: 1
+      poolSize: 1
+      burstCount: 0
+      burstInterval: 0
+      shootTimer: 0
+      firstShotDone: 0
+      currentShotCount: 0
+      inBurstCooldown: 0
+      burstTimer: 0
+    durationSeconds: 60
+    nextPhaseHpPercent: -50
+    timer: 0
+  - attackSets:
+    - attackPattern: {fileID: 11400000, guid: 60d1058aa15986447aec723bbd881973, type: 2}
+      shootInterval: 3
+      bulletPrefab: {fileID: 8648382497275221827, guid: b07417703f62b1a45bf97f7d2bbcc954, type: 3}
+      shootAngle: 0
+      initialDelay: 0
+      startHP: 100
+      endHP: 0
+      damage: 1
+      poolSize: 1
+      burstCount: 0
+      burstInterval: 0
+      shootTimer: 0
+      firstShotDone: 0
+      currentShotCount: 0
+      inBurstCooldown: 0
+      burstTimer: 0
+    durationSeconds: 0
+    nextPhaseHpPercent: 0
+    timer: 0
+  LastAttacks: []
 --- !u!1 &2787944075446609789 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 790653337852904466, guid: 14caaae8a063bc74fb82d6a144e12dc0, type: 3}
@@ -6855,6 +6925,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 4442362464659505319, guid: 1119e727573886146914eefd0c41e7c2, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5777817916482586515, guid: 1119e727573886146914eefd0c41e7c2, type: 3}
       propertyPath: currentHP
       value: 0.15
@@ -6866,7 +6940,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5826233006903858935, guid: 1119e727573886146914eefd0c41e7c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2604349560033216747}
   m_SourcePrefab: {fileID: 100100000, guid: 1119e727573886146914eefd0c41e7c2, type: 3}
 --- !u!1 &3191376514799772547 stripped
 GameObject:
@@ -7832,6 +7909,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 0}
   hasAppeared: 0
+--- !u!114 &8705015777075189824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8016685007884708592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43cc13e7a8b62f4f83af0468d43e881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phases:
+  - attackSets:
+    - attackPattern: {fileID: 0}
+      shootInterval: 0
+      bulletPrefab: {fileID: 0}
+      shootAngle: 0
+      initialDelay: 0
+      startHP: 0
+      endHP: 0
+      damage: 0
+      poolSize: 0
+      burstCount: 0
+      burstInterval: 0
+      shootTimer: 0
+      firstShotDone: 0
+      currentShotCount: 0
+      inBurstCooldown: 0
+      burstTimer: 0
+    durationSeconds: 0
+    nextPhaseHpPercent: 0
+    timer: 0
+  LastAttacks: []
 --- !u!1001 &8966840149216457923
 PrefabInstance:
   m_ObjectHideFlags: 0
