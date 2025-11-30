@@ -13,7 +13,7 @@ public class TokenHealth : HealthBase
     [Header("このトークンが死亡したらシーン遷移フラグを立てる？")]
     public bool isLastEnemy = false;
 
-    [Header("復活時の色（通常時）")]
+    [Header("通常時の色")]
     [SerializeField] private Color activeColor = Color.white;
 
     [Header("死亡時の薄い色")]
@@ -39,9 +39,7 @@ public class TokenHealth : HealthBase
         enemyDropper = GetComponent<EnemyDropper>();
 
         _renderers = GetComponentsInChildren<SpriteRenderer>();
-
-        // 元の色を保存
-        if (_renderers != null)
+        if (_renderers != null && _renderers.Length > 0)
         {
             _originalColors = new Color[_renderers.Length];
             for (int i = 0; i < _renderers.Length; i++)
@@ -52,10 +50,11 @@ public class TokenHealth : HealthBase
 
         _colliders = GetComponentsInChildren<Collider2D>();
 
-        // スポーン時に敵として登録
+        // シーン管理に登録
         Siene_Change_Main_Shooting.Instance.RegisterEnemy(this.gameObject);
 
-        ApplyState(true); // アクティブ状態スタート
+        // 最初はアクティブ状態
+        ApplyState(true);
     }
 
     protected override void Update()
@@ -74,6 +73,7 @@ public class TokenHealth : HealthBase
         if (_isDown) return;
 
         currentHP -= damage;
+
         if (currentHP > 0)
         {
             StartBlink();
@@ -90,6 +90,13 @@ public class TokenHealth : HealthBase
         if (_isDown) return;
         _isDown = true;
 
+        // 点滅中なら止める（これをしないと元の色に戻されてしまうことがある）
+        if (_isBlinking)
+        {
+            StopAllCoroutines();
+            _isBlinking = false;
+        }
+
         if (isLastEnemy)
             Siene_Change_Main_Shooting.Instance.lastEnemyDead = true;
 
@@ -98,16 +105,14 @@ public class TokenHealth : HealthBase
 
         enemyDropper?.DropItems();
 
-        // 敵リストから削除する（死んでる扱いになる）
+        // 敵リストから削除
         Siene_Change_Main_Shooting.Instance.UnregisterEnemy(this.gameObject);
 
-        // Destroy せずに「薄く」「当たり判定OFF」にする
+        // Destroy はせずに、薄い色＋当たり判定OFFにする
         ApplyState(false);
     }
 
-    // =========================================================
-    //   復活
-    // =========================================================
+    // ==== 復活処理 ====
     public void Revive()
     {
         if (!_isDown) return;
@@ -115,46 +120,62 @@ public class TokenHealth : HealthBase
         _isDown = false;
         currentHP = maxHP;
 
+        // アクティブ状態へ戻す
         ApplyState(true);
 
-        // 敵リストに再び追加
+        // 敵リストに再登録
         Siene_Change_Main_Shooting.Instance.RegisterEnemy(this.gameObject);
     }
 
-    // =========================================================
-    //   有効/無効状態の適用（色と当たり判定の変更）
-    // =========================================================
+    /// <summary>
+    /// アクティブ/ダウン状態の切り替え
+    /// 色とコライダーをまとめて制御
+    /// </summary>
     private void ApplyState(bool active)
     {
-        // 色変更
-        if (_renderers != null)
-        {
-            Color newColor = active ? activeColor : inactiveColor;
-
-            foreach (var r in _renderers)
-                r.color = newColor;
-        }
-
-        // 当たり判定
+        // コライダーON/OFF
         if (_colliders != null)
         {
             foreach (var col in _colliders)
-                col.enabled = active;
+            {
+                if (col != null)
+                    col.enabled = active;
+            }
         }
 
-        // 色を元に戻す（アクティブ時）
-        if (active)
+        // 色変更
+        if (_renderers != null)
         {
-            ResetColors();
+            if (active)
+            {
+                // 復活時 or 初期状態 → 元の色 or activeColor に戻す
+                for (int i = 0; i < _renderers.Length; i++)
+                {
+                    if (_renderers[i] == null) continue;
+
+                    if (_originalColors != null && i < _originalColors.Length)
+                        _renderers[i].color = _originalColors[i];
+                    else
+                        _renderers[i].color = activeColor;
+                }
+            }
+            else
+            {
+                // ダウン時 → 全部 inactiveColor に
+                foreach (var r in _renderers)
+                {
+                    if (r != null)
+                        r.color = inactiveColor;
+                }
+            }
         }
     }
 
-    // =========================================================
-    //   点滅処理
-    // =========================================================
+    // ==== 点滅処理 ====
     private void StartBlink()
     {
-        if (_renderers == null) return;
+        if (_renderers == null || _renderers.Length == 0) return;
+        if (_isDown) return; // ダウン中は点滅させない
 
         if (_isBlinking)
         {
@@ -171,11 +192,21 @@ public class TokenHealth : HealthBase
 
         for (int i = 0; i < blinkCount; i++)
         {
+            if (_isDown) break; // 死亡してたら途中でやめる
+
             SetRenderersColor(blinkColor);
             yield return new WaitForSeconds(blinkDuration);
 
+            if (_isDown) break;
+
             ResetColors();
             yield return new WaitForSeconds(blinkDuration);
+        }
+
+        // 死んでなければ最終的に元の色へ
+        if (!_isDown)
+        {
+            ResetColors();
         }
 
         _isBlinking = false;
@@ -185,21 +216,34 @@ public class TokenHealth : HealthBase
     {
         if (_renderers == null) return;
 
-        for (int i = 0; i < _renderers.Length; i++)
+        foreach (var r in _renderers)
         {
-            if (_renderers[i] != null)
-                _renderers[i].color = c;
+            if (r != null)
+                r.color = c;
         }
     }
 
     private void ResetColors()
     {
-        if (_renderers == null || _originalColors == null) return;
+        if (_renderers == null) return;
 
-        for (int i = 0; i < _renderers.Length; i++)
+        // 元の色が保存されていればそれに戻す
+        if (_originalColors != null && _originalColors.Length == _renderers.Length)
         {
-            if (_renderers[i] != null)
-                _renderers[i].color = _originalColors[i];
+            for (int i = 0; i < _renderers.Length; i++)
+            {
+                if (_renderers[i] != null)
+                    _renderers[i].color = _originalColors[i];
+            }
+        }
+        else
+        {
+            // 念のためactiveColorで上書き
+            foreach (var r in _renderers)
+            {
+                if (r != null)
+                    r.color = activeColor;
+            }
         }
     }
 }
