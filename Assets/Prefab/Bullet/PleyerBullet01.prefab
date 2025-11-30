@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1459353640853701225}
   - component: {fileID: 479878481504877377}
   - component: {fileID: 8413936359076726092}
-  - component: {fileID: 1505486199352257439}
   - component: {fileID: 9048895880302074606}
+  - component: {fileID: 559123939847679664}
   m_Layer: 6
   m_Name: PleyerBullet01
   m_TagString: Bullet
@@ -148,7 +148,22 @@ MonoBehaviour:
   onlyGraze: 0
   damageInterval: 0.2
   originPrefab: {fileID: 9099611059377426971}
---- !u!61 &1505486199352257439
+--- !u!114 &9048895880302074606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9099611059377426971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d231c05cd91f4cc47a384c85b671dc87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCam: {fileID: 0}
+  _pool: {fileID: 0}
+  offScreenBuffer: 0.5
+--- !u!61 &559123939847679664
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,20 +206,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.06, y: 0.63}
+  m_Size: {x: 0.64, y: 0.64}
   m_EdgeRadius: 0
---- !u!114 &9048895880302074606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9099611059377426971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d231c05cd91f4cc47a384c85b671dc87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mainCam: {fileID: 0}
-  _pool: {fileID: 0}
-  offScreenBuffer: 0.5

@@ -17,3 +17,9 @@ MonoBehaviour:
   laserDuration: 1
   angle: 90
   firePosition: {x: 4, y: 1, z: 0}
+  useObjectPositions: 1
+  positionObjectNames:
+  - D1
+  - D2
+  - D3
+  - D4

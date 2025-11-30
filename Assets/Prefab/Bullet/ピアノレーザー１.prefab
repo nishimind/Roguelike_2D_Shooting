@@ -309,8 +309,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _rb: {fileID: 0}
-  preLaserTime: 4
-  laserTime: 5
+  preLaserTime: 20
+  laserTime: 10
   preLineTargetScaleX: 0.3
   laserTargetScaleX: 0.31
   scaleDuration: 0.3

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4381503496217330269}
   - component: {fileID: 5783591891404423631}
   - component: {fileID: -8127679502214970949}
-  - component: {fileID: 7366847416962317767}
   - component: {fileID: 1726117968803691826}
+  - component: {fileID: 4868211094811804480}
   m_Layer: 7
   m_Name: EnemyBullet01
   m_TagString: Bullet
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -897267266, guid: 6c556f97559b399409e59f61926ce4c3, type: 3}
+  m_Sprite: {fileID: 23813614, guid: 6c556f97559b399409e59f61926ce4c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -148,8 +148,23 @@ MonoBehaviour:
   onlyGraze: 1
   damageInterval: 0.2
   originPrefab: {fileID: 2718853384716826557}
---- !u!61 &7366847416962317767
-BoxCollider2D:
+--- !u!114 &1726117968803691826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718853384716826557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d231c05cd91f4cc47a384c85b671dc87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCam: {fileID: 0}
+  _pool: {fileID: 0}
+  offScreenBuffer: 0.5
+--- !u!58 &4868211094811804480
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -181,30 +196,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
-    newSize: {x: 0.64, y: 0.64}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.07, y: 1.26}
-  m_EdgeRadius: 0
---- !u!114 &1726117968803691826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2718853384716826557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d231c05cd91f4cc47a384c85b671dc87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mainCam: {fileID: 0}
-  _pool: {fileID: 0}
-  offScreenBuffer: 0.5
+  m_Radius: 0.32

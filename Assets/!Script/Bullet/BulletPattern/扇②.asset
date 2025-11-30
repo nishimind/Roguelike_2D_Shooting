@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea0fcb6bd429ab46b3a4c09889e4cd9, type: 3}
   m_Name: "\u6247\u2461"
   m_EditorClassIdentifier: 
-  bulletCount: 5
+  isPlyerBullet: 0
+  bulletCount: 8
   spreadAngle: 45
   offset: 1

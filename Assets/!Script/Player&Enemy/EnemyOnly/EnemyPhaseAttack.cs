@@ -9,13 +9,22 @@ public class EnemyPhaseAttack : MonoBehaviour
     [SerializeField] private List<AttackPhase> phases = new();
 
     private EnemyHealth _health;
+
+    // フェーズ管理用のキャンセルトークン
     private CancellationTokenSource _cts = new CancellationTokenSource();
+
+    // AttackPattern 側が「進行中攻撃のキャンセル」に使いたい場合用のトークン
+    public CancellationToken AttackToken => _cts.Token;
+
     private int currentPhaseIndex = 0;
     private bool _initialized = false;
+
     public event System.Action<int> OnPhaseChanged;
 
     // 攻撃してよいか（画面内フラグ）
     protected bool _bAttack;
+
+    // 最後に撃つ一発（死亡時攻撃）用
     public List<AttackSet> LastAttacks = new List<AttackSet>();
 
     private void Start()
@@ -26,17 +35,22 @@ public class EnemyPhaseAttack : MonoBehaviour
             Debug.LogError($"{name} に EnemyHealth がありません！");
             return;
         }
+
         // 死亡イベント購読
-        // ★ UnityEvent の購読は AddListener()
         _health.OnDeath.AddListener(OnEnemyDeath);
 
-
-        // AttackSet の BulletPool 登録
+        // AttackSet の BulletPool 登録 ＋ タイマー系の初期化
         foreach (var phase in phases)
         {
             foreach (var set in phase.attackSets)
             {
-                set.shootTimer = -set.initialDelay;
+                // ★ 初期化：タイマーとバースト状態
+                set.shootTimer = 0f;
+                set.firstShotDone = false;
+                set.currentShotCount = 0;
+                set.inBurstCooldown = false;
+                set.burstTimer = 0f;
+
                 if (set.bulletPrefab != null)
                 {
                     BulletPool.Instance.RegisterBulletPrefab(set.bulletPrefab, set.poolSize);
@@ -50,29 +64,36 @@ public class EnemyPhaseAttack : MonoBehaviour
         MultiPhaseAttackLoopAsync(_cts.Token).Forget();
     }
 
-
-    // -------------------------------------------------------------
-    // 初期化
-    // -------------------------------------------------------------
-
-
     private void OnDestroy()
     {
-        _cts?.Cancel();
+        if (!_cts.IsCancellationRequested)
+        {
+            _cts.Cancel();
+        }
     }
 
-  
     // -------------------------------------------------------------
     // フェーズ管理ループ
     // -------------------------------------------------------------
     private async UniTaskVoid MultiPhaseAttackLoopAsync(CancellationToken token)
     {
-        await UniTask.WaitUntil(() => _initialized && _bAttack && _health != null, cancellationToken: token);
+        // 初期化完了 & 画面内 & HPコンポーネントあり を待つ
+        await UniTask.WaitUntil(
+            () => _initialized && _bAttack && _health != null,
+            cancellationToken: token
+        );
 
         while (!token.IsCancellationRequested)
         {
             if (currentPhaseIndex >= phases.Count)
                 break; // すべてのフェーズが終了
+
+            // 画面外に出てる間は攻撃しない
+            if (!_bAttack)
+            {
+                await UniTask.Yield();
+                continue;
+            }
 
             var phase = phases[currentPhaseIndex];
 
@@ -94,7 +115,7 @@ public class EnemyPhaseAttack : MonoBehaviour
             {
                 currentPhaseIndex++;
 
-                //イベントを起こしている
+                // フェーズ変更イベント
                 OnPhaseChanged?.Invoke(currentPhaseIndex);
 
                 continue;
@@ -105,17 +126,44 @@ public class EnemyPhaseAttack : MonoBehaviour
     }
 
     // -------------------------------------------------------------
-    // AttackSet の処理（Enemy の物を流用）
+    // AttackSet の処理（初回遅延＋通常インターバル＋バースト対応）
     // -------------------------------------------------------------
     private void HandleAttackSet(AttackSet set)
     {
         if (set.attackPattern == null || set.bulletPrefab == null)
             return;
 
+        // ---- ① バーストインターバル中なら、タイマー進めるだけ ----
+        if (set.inBurstCooldown)
+        {
+            set.burstTimer += Time.deltaTime;
+
+            if (set.burstTimer >= set.burstInterval)
+            {
+                // インターバル終了 → 通常状態に戻す
+                set.inBurstCooldown = false;
+                set.burstTimer = 0f;
+                set.currentShotCount = 0;
+            }
+
+            return; // インターバル中は撃たない
+        }
+
+        // ---- ② 通常の発射タイマー ----
         set.shootTimer += Time.deltaTime;
 
-        if (set.shootTimer >= Mathf.Max(0.05f, set.shootInterval))
+        // 初回のみ initialDelay、それ以降は shootInterval
+        float targetInterval = set.firstShotDone
+            ? set.shootInterval
+            : set.initialDelay;
+
+        targetInterval = Mathf.Max(0.05f, targetInterval);
+
+        if (set.shootTimer >= targetInterval)
         {
+            // ---- 弾発射 ----
+            // ★ ここで AttackPattern 側が AttackToken を使いたい場合は
+            //    AttackPatternSO に SetToken(AttackToken) を持たせて事前に渡す、などの拡張が可能。
             set.attackPattern.Shoot(
                 transform.position,
                 set.shootAngle,
@@ -124,18 +172,34 @@ public class EnemyPhaseAttack : MonoBehaviour
             );
 
             set.shootTimer = 0f;
+            set.firstShotDone = true;
+            set.currentShotCount++;
+
+            // ---- ③ バースト回数チェック ----
+            if (set.burstCount > 0 && set.currentShotCount >= set.burstCount)
+            {
+                // バースト上限に達したのでインターバル開始
+                set.inBurstCooldown = true;
+                set.burstTimer = 0f;
+            }
         }
     }
+
+    // -------------------------------------------------------------
+    // 死亡時のラストアタック
+    // -------------------------------------------------------------
     private void OnEnemyDeath()
     {
         Debug.Log($"{name} が死んだので LastAttack 発動！");
 
-        // すでにメイン攻撃ループを止める
-        _cts.Cancel();
+        // メイン攻撃ループを止める
+        if (!_cts.IsCancellationRequested)
+            _cts.Cancel();
 
         // 即時、LastAttacks を撃つ
         FireLastAttacksAsync().Forget();
     }
+
     private async UniTaskVoid FireLastAttacksAsync()
     {
         foreach (var set in LastAttacks)
@@ -150,14 +214,27 @@ public class EnemyPhaseAttack : MonoBehaviour
                 set.damage
             );
 
-            // 必要なら少し待つ
+            // ちょっとだけ間を空けたい場合
             await UniTask.Delay(50);
         }
     }
 
-
-    // 確実に動作する方法
+    // 画面内/外で攻撃許可を切り替え
     private void OnBecameVisible() { _bAttack = true; }
     private void OnBecameInvisible() { _bAttack = false; }
 
+    // =============================================================
+    //  トークンなどから「攻撃を完全停止」させるための入口
+    // =============================================================
+    public void ForceStopAttack()
+    {
+        // 新しく撃たせない
+        _bAttack = false;
+
+        // フェーズ管理ループ & AttackToken をキャンセル
+        if (!_cts.IsCancellationRequested)
+        {
+            _cts.Cancel();
+        }
+    }
 }

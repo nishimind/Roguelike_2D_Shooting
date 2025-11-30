@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: "\u30D4\u30A2\u30CE\u308C\u30FC\u3056\u30FC 1"
   m_EditorClassIdentifier: 
   isPlyerBullet: 0
-  preLaserDuration: 0.5
-  laserDuration: 1
+  preLaserDuration: 5
+  laserDuration: 5
   angle: 90
-  firePosition: {x: 4, y: 0.5, z: 0}
-  objectPosition: 0
-  positionObjectName: left
+  firePosition: {x: 4, y: 0.3, z: 0}
+  useObjectPositions: 1
+  positionObjectNames:
+  - C1
+  - C2
+  - C3
+  - C4

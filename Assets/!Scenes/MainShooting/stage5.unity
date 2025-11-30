@@ -1679,6 +1679,26 @@ MonoBehaviour:
     durationSeconds: 0
     nextPhaseHpPercent: 0
     timer: 0
+  - attackSets:
+    - attackPattern: {fileID: 11400000, guid: 68ac05e0fb41d604a9bbdc7462c65d21, type: 2}
+      shootInterval: 7
+      bulletPrefab: {fileID: 2718853384716826557, guid: 7cb840a6bd220584d9ea20fef62d4afb, type: 3}
+      shootAngle: 180
+      initialDelay: 2
+      startHP: 0
+      endHP: 0
+      damage: 1
+      poolSize: 0
+      burstCount: 0
+      burstInterval: 0
+      shootTimer: 0
+      firstShotDone: 0
+      currentShotCount: 0
+      inBurstCooldown: 0
+      burstTimer: 0
+    durationSeconds: 0
+    nextPhaseHpPercent: 0
+    timer: 0
   LastAttacks: []
 --- !u!1001 &1550082879
 PrefabInstance:

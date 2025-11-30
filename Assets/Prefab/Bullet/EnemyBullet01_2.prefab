@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7807949038326080934}
   - component: {fileID: 5401534588874918443}
   - component: {fileID: 4381503496217330269}
+  - component: {fileID: 5783591891404423631}
   - component: {fileID: -8127679502214970949}
   - component: {fileID: 1726117968803691826}
-  - component: {fileID: 6333032710292275461}
-  - component: {fileID: 1582969528062595535}
+  - component: {fileID: 7427969044266242667}
   m_Layer: 7
-  m_Name: EnemyExplodeBulet
+  m_Name: EnemyBullet01_2
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 38773306, guid: 6c556f97559b399409e59f61926ce4c3, type: 3}
+  m_Sprite: {fileID: -897267266, guid: 6c556f97559b399409e59f61926ce4c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.06, y: 1.26}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -116,6 +116,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5783591891404423631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718853384716826557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cfccff93b441949b98b12048682c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 2
+  _rb: {fileID: 0}
 --- !u!114 &-8127679502214970949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,34 +163,7 @@ MonoBehaviour:
   _mainCam: {fileID: 0}
   _pool: {fileID: 0}
   offScreenBuffer: 0.5
---- !u!114 &6333032710292275461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2718853384716826557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 478fafa96b16c8f448c9c5847a504acb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 2
-  _rb: {fileID: 0}
-  moveSpeed: 3
-  deceleration: 2
-  wobbleAmplitude: 0.7
-  wobbleFrequency: 10
-  explodeDistance: 4
-  maxLifeTime: 2
-  downBulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-  downBulletCount: 12
-  downAreaSize: {x: 3, y: 2}
-  downBulletSpeed: 2
-  downSideDriftRange: 0.6
-  downWobbleAmplitude: 0.3
-  downWobbleFrequency: 2
---- !u!58 &1582969528062595535
+--- !u!58 &7427969044266242667
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 
 [CreateAssetMenu(menuName = "AttackPattern/LaserStraightShot_WorldPosition")]
@@ -26,30 +25,50 @@ public class LaserStraightShot_WorldPosition : AttackPatternSO
     {
         var spawnPositions = new System.Collections.Generic.List<Vector3>();
 
+        // 🔹 オブジェクト名から位置を取るパターン
         if (useObjectPositions && positionObjectNames != null && positionObjectNames.Length > 0)
         {
             foreach (var name in positionObjectNames)
             {
                 if (string.IsNullOrWhiteSpace(name)) continue;
+
                 GameObject obj = GameObject.Find(name);
-                if (obj != null) spawnPositions.Add(obj.transform.position);
+                if (obj != null)
+                {
+                    spawnPositions.Add(obj.transform.position);
+                }
+                else
+                {
+                    Debug.LogWarning($"[LaserStraightShot_WorldPosition] オブジェクト '{name}' が見つかりませんでした。");
+                }
             }
-            if (spawnPositions.Count == 0) spawnPositions.Add(firePosition);
+
+            // 1つも見つからなかったときの保険
+            if (spawnPositions.Count == 0)
+            {
+                spawnPositions.Add(firePosition);
+            }
         }
         else
         {
+            // 🔹 固定ワールド座標から撃つパターン
             spawnPositions.Add(firePosition);
         }
 
         Quaternion rot = Quaternion.Euler(0, 0, angle);
 
-        // 🔹 UniTask をまとめるリスト
+        // 🔹 すべてのレーザーの UniTask をまとめる
         var tasks = new System.Collections.Generic.List<UniTask>();
 
         foreach (var spawnPos in spawnPositions)
         {
             GameObject bullet = BulletPool.Instance.Get(bulletPrefab, spawnPos, rot);
 
+            // （BulletPool 側で position / rotation をセットしてるなら省略可）
+            bullet.transform.position = spawnPos;
+            bullet.transform.rotation = rot;
+
+            // ダメージ設定
             var bulletDamage = bullet.GetComponentInChildren<BulletDamage>();
             if (bulletDamage != null)
             {
@@ -68,11 +87,14 @@ public class LaserStraightShot_WorldPosition : AttackPatternSO
             laser.preLaserTime = preLaserDuration;
             laser.laserTime = laserDuration;
 
-            // 🔹 UniTask を溜める
+            // レーザー演出の UniTask をリストに追加
             tasks.Add(laser.LaserSequenceAsync());
         }
 
-        // 🔹 すべてのレーザーの演出を同時に開始し、全て終わるのを待つ
-        await UniTask.WhenAll(tasks);
+        // 🔹 全てのレーザー演出が終わるのを待つ（同時再生）
+        if (tasks.Count > 0)
+        {
+            await UniTask.WhenAll(tasks);
+        }
     }
 }

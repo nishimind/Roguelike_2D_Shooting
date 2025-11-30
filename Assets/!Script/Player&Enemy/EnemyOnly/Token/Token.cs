@@ -11,12 +11,18 @@ public class TokenHealth : EnemyHealth
     private Collider2D[] _colliders;
     private bool _isDown = false;
 
+    // ★ 追加：このトークンの攻撃フェーズ制御
+    private EnemyPhaseAttack _phaseAttack;
+
     protected override void Start()
     {
         base.Start();
 
         // Collider 初期化
         _colliders = GetComponentsInChildren<Collider2D>();
+
+        // ★ EnemyPhaseAttack 取得（付いてないトークンも想定して null 許容）
+        _phaseAttack = GetComponent<EnemyPhaseAttack>();
 
         // 最初はアクティブ
         ApplyState(true);
@@ -27,8 +33,14 @@ public class TokenHealth : EnemyHealth
         if (_isDown) return;
         _isDown = true;
 
-        // 点滅中を止める（EnemyHealth の _isBlinking を利用）
+        // 点滅中コルーチン停止（EnemyHealth 側の点滅対策）
         StopAllCoroutines();
+
+        // ★ 攻撃フェーズ停止（このトークンが撃つのをやめる）
+        if (_phaseAttack != null)
+        {
+            _phaseAttack.ForceStopAttack();
+        }
 
         // 最後の敵フラグ処理・ドロップ処理・イベント呼び出し
         if (isLastEnemy)
@@ -58,6 +70,10 @@ public class TokenHealth : EnemyHealth
 
         // 敵リストに再登録
         Siene_Change_Main_Shooting.Instance.RegisterEnemy(this.gameObject);
+
+        // ★ 今は「復活しても攻撃再開しない」仕様
+        //    ボスの復活技で“攻撃も再開したい”なら、
+        //    ここでフェーズ再スタート用メソッドを EnemyPhaseAttack に作って呼ぶ感じ。
     }
 
     // ====== 状態切り替え ======
@@ -73,12 +89,11 @@ public class TokenHealth : EnemyHealth
             }
         }
 
-        // 見た目の色変更
+        // 見た目の色変更（EnemyHealth が持ってる _renderers / _originalColors を利用）
         if (_renderers != null)
         {
             if (active)
             {
-                // EnemyHealth が保持してる original colors に戻す
                 for (int i = 0; i < _renderers.Length; i++)
                 {
                     if (_renderers[i] != null)
@@ -87,7 +102,6 @@ public class TokenHealth : EnemyHealth
             }
             else
             {
-                // 死亡状態 → 薄い色
                 foreach (var r in _renderers)
                 {
                     if (r != null)
@@ -98,7 +112,6 @@ public class TokenHealth : EnemyHealth
     }
 
     // TokenHealth は HP0 のとき Destroy しないため
-    // Update の死亡判定を無効化する
     protected override void Update()
     {
         if (_isDown) return;
@@ -107,6 +120,7 @@ public class TokenHealth : EnemyHealth
         {
             currentHP = 0;
             Die();
+
         }
     }
 }
