@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;   
 
 public class EnemyHealth : HealthBase
 {
@@ -22,6 +24,8 @@ public class EnemyHealth : HealthBase
     private Color[] _originalColors;
     private bool _isBlinking = false;
     private bool _isDead = false;
+
+    public UnityEvent OnDeath;
 
     protected override void Start()
     {
@@ -90,7 +94,7 @@ public class EnemyHealth : HealthBase
 
         // 敵死亡時にリストから削除
         Siene_Change_Main_Shooting.Instance.UnregisterEnemy(this.gameObject);
-
+        OnDeath?.Invoke();   // ← ★死亡イベント発火
         Destroy(gameObject);
     }
 

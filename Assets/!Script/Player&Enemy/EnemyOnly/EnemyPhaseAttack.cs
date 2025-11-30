@@ -16,6 +16,7 @@ public class EnemyPhaseAttack : MonoBehaviour
 
     // 攻撃してよいか（画面内フラグ）
     protected bool _bAttack;
+    public List<AttackSet> LastAttacks = new List<AttackSet>();
 
     private void Start()
     {
@@ -25,6 +26,10 @@ public class EnemyPhaseAttack : MonoBehaviour
             Debug.LogError($"{name} に EnemyHealth がありません！");
             return;
         }
+        // 死亡イベント購読
+        // ★ UnityEvent の購読は AddListener()
+        _health.OnDeath.AddListener(OnEnemyDeath);
+
 
         // AttackSet の BulletPool 登録
         foreach (var phase in phases)
@@ -121,6 +126,36 @@ public class EnemyPhaseAttack : MonoBehaviour
             set.shootTimer = 0f;
         }
     }
+    private void OnEnemyDeath()
+    {
+        Debug.Log($"{name} が死んだので LastAttack 発動！");
+
+        // すでにメイン攻撃ループを止める
+        _cts.Cancel();
+
+        // 即時、LastAttacks を撃つ
+        FireLastAttacksAsync().Forget();
+    }
+    private async UniTaskVoid FireLastAttacksAsync()
+    {
+        foreach (var set in LastAttacks)
+        {
+            if (set.attackPattern == null || set.bulletPrefab == null)
+                continue;
+
+            set.attackPattern.Shoot(
+                transform.position,
+                set.shootAngle,
+                set.bulletPrefab,
+                set.damage
+            );
+
+            // 必要なら少し待つ
+            await UniTask.Delay(50);
+        }
+    }
+
+
     // 確実に動作する方法
     private void OnBecameVisible() { _bAttack = true; }
     private void OnBecameInvisible() { _bAttack = false; }

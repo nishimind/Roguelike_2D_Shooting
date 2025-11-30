@@ -5,26 +5,50 @@ using Cysharp.Threading.Tasks;
 public class RightWaitLeftPattern : MovePatternSO
 {
     public float speed = 3f;
+    [Header("Še“®ì‚ÌŠÔ")]
     public float waitTime = 1f;
-    public float moveDuration = 2f;
+    public float moveDistance = 2f;
 
     public override async UniTaskVoid Execute(EnemyMovementController controller)
     {
         var rb = controller._rb;
+        var startPos = rb.position;
 
-        // ‡@ ‰E‚ÖˆÚ“®
-        rb.velocity = Vector2.right * speed;
-        await UniTask.Delay((int)(moveDuration * 1000));
+        // ‰Šú‚Í‰E•ûŒü‚Ö
+        int direction = 1;
+        var firsttime = true;
+        while (true)
+        {
+            // Šî€ˆÊ’u‚ğXV
+            startPos = rb.position;
 
-        // ‡A ­‚µ‘Ò‚Â
-        rb.velocity = Vector2.zero;
-        await UniTask.Delay((int)(waitTime * 1000));
+            // ‡@ w’è‹——£‚Ü‚ÅˆÚ“®
+            rb.velocity = Vector2.right * direction * speed;
+            if (firsttime)
+            {
+                firsttime = false;
+                while (Vector2.Distance(startPos, rb.position) < moveDistance)
+                {
+                    await UniTask.Yield();
+                }
+            }
+            else
+            {
+                // –ˆƒtƒŒ[ƒ€Šm”F‚µ‚ÄumoveDistancevˆÚ“®‚µ‚½‚ç~‚ß‚é
+                while (Vector2.Distance(startPos, rb.position) < moveDistance * 2)
+                {
+                    await UniTask.Yield();
+                }
+            }
 
-        // ‡B ¶‚ÖˆÚ“®
-        rb.velocity = Vector2.left * speed;
-        await UniTask.Delay((int)(moveDuration * 1000));
+            // “’B‚µ‚½‚Ì‚Å~‚ß‚é
+            rb.velocity = Vector2.zero;
 
-        // ‡C ÅŒã‚É’â~
-        rb.velocity = Vector2.zero;
+            // ‡A ­‚µ‘Ò‚Â
+            await UniTask.Delay((int)(waitTime * 1000));
+
+            // ¶‰E”½“]
+            direction *= -1;
+        }
     }
 }
