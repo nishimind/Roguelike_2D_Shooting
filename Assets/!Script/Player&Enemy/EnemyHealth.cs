@@ -10,7 +10,7 @@ public class EnemyHealth : HealthBase
     [Header("Œ»İHP")]
     public float currentHP;
 
-    private EnemyDropper enemyDropper;
+    protected EnemyDropper enemyDropper;
 
     [Header("‚±‚Ì“G‚ª€–S‚µ‚½‚çƒV[ƒ“‘JˆÚ‚©H")]
     public bool isLastEnemy = false;
@@ -20,8 +20,8 @@ public class EnemyHealth : HealthBase
     [SerializeField] private float blinkDuration = 0.08f;   // 1‰ñ‚ÌF”½“]‚ÌŠÔ
     [SerializeField] private int blinkCount = 3;            // ‰½‰ñ“_–Å‚·‚é‚©
 
-    private SpriteRenderer[] _renderers;
-    private Color[] _originalColors;
+    protected SpriteRenderer[] _renderers;
+    protected Color[] _originalColors;
     private bool _isBlinking = false;
     private bool _isDead = false;
 
