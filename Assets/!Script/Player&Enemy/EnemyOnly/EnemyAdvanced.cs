@@ -183,4 +183,11 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
             await UniTask.Delay(System.TimeSpan.FromSeconds(0.2f), cancellationToken: token);
         }
     }
+    public void ForceStopAttack()
+    {
+        _bAttack = false;          // UŒ‚ƒtƒ‰ƒO OFF
+        inSpecial = false;         // “ÁêUŒ‚’†‚È‚ç’â~
+        _cts.Cancel();             // UŒ‚ƒ‹[ƒv‚ğ’â~
+        Debug.Log($"{name} ‚ÌUŒ‚‚ª ForceStopAttack ‚É‚æ‚è’â~‚µ‚Ü‚µ‚½");
+    }
 }

@@ -8,11 +8,11 @@ public class TokenHealth : EnemyHealth
     [Header("死亡時の薄い色")]
     [SerializeField] private Color inactiveColor = new Color(1f, 1f, 1f, 0.3f);
 
+    [Header("HP0になったら攻撃停止させる砲台（複数可）")]
+    [SerializeField] private EnemyAdvanced_Special_MoveCycle[] controlledTowers;
+
     private Collider2D[] _colliders;
     private bool _isDown = false;
-
-    // ★ 追加：このトークンの攻撃フェーズ制御
-    private EnemyPhaseAttack _phaseAttack;
 
     protected override void Start()
     {
@@ -21,44 +21,70 @@ public class TokenHealth : EnemyHealth
         // Collider 初期化
         _colliders = GetComponentsInChildren<Collider2D>();
 
-        // ★ EnemyPhaseAttack 取得（付いてないトークンも想定して null 許容）
-        _phaseAttack = GetComponent<EnemyPhaseAttack>();
-
-        // 最初はアクティブ
+        // Token は基本攻撃しないので、外見だけセット
         ApplyState(true);
     }
 
+    // =============================
+    //     ダメージ処理
+    // =============================
+    protected override void Update()
+    {
+        if (_isDown) return;
+
+        if (currentHP <= 0)
+        {
+            currentHP = 0;
+            Die();
+        }
+    }
+
+    // =============================
+    //         死亡処理
+    // =============================
     protected override void Die()
     {
         if (_isDown) return;
         _isDown = true;
 
-        // 点滅中コルーチン停止（EnemyHealth 側の点滅対策）
+        // 点滅など EnemyHealth のコルーチンを全停止
         StopAllCoroutines();
 
-        // ★ 攻撃フェーズ停止（このトークンが撃つのをやめる）
-        if (_phaseAttack != null)
+        // ▼ 砲台の攻撃を止める ▼
+        if (controlledTowers != null && controlledTowers.Length > 0)
         {
-            _phaseAttack.ForceStopAttack();
+            foreach (var tower in controlledTowers)
+            {
+                if (tower != null)
+                {
+                    tower.ForceStopAttack();
+                    Debug.Log($"トークン: {tower.name} の攻撃を停止しました");
+                }
+            }
         }
 
-        // 最後の敵フラグ処理・ドロップ処理・イベント呼び出し
-        if (isLastEnemy)
-            Siene_Change_Main_Shooting.Instance.lastEnemyDead = true;
-
+        // ▼ アイテムドロップやイベント呼び出し（EnemyHealth の機能） ▼
         if (deadEffect != null)
             Instantiate(deadEffect, transform.position, Quaternion.identity);
 
         enemyDropper?.DropItems();
+
+        // ボス戦用：最後の敵処理
+        if (isLastEnemy)
+            Siene_Change_Main_Shooting.Instance.lastEnemyDead = true;
+
+        // 敵リストから削除（倒した扱い）
         Siene_Change_Main_Shooting.Instance.UnregisterEnemy(this.gameObject);
 
         OnDeath?.Invoke();
 
-        // Destroy せずに無力化
+        // ▼ Destroy せずに無力化 ▼
         ApplyState(false);
     }
 
-    // ====== 復活 ======
+    // =============================
+    //     トークン復活（任意）
+    // =============================
     public void Revive()
     {
         if (!_isDown) return;
@@ -66,20 +92,21 @@ public class TokenHealth : EnemyHealth
         _isDown = false;
         currentHP = maxHP;
 
+        // 元の状態に戻す
         ApplyState(true);
 
-        // 敵リストに再登録
+        // 敵リストへ再登録
         Siene_Change_Main_Shooting.Instance.RegisterEnemy(this.gameObject);
 
-        // ★ 今は「復活しても攻撃再開しない」仕様
-        //    ボスの復活技で“攻撃も再開したい”なら、
-        //    ここでフェーズ再スタート用メソッドを EnemyPhaseAttack に作って呼ぶ感じ。
+        // ★砲台の攻撃再開処理は必要ならここで追加する（今は停止したまま）
     }
 
-    // ====== 状態切り替え ======
+    // =============================
+    //    見た目 ＆ 当たり判定
+    // =============================
     private void ApplyState(bool active)
     {
-        // Collider の ON/OFF
+        // コライダー ON/OFF
         if (_colliders != null)
         {
             foreach (var col in _colliders)
@@ -89,11 +116,12 @@ public class TokenHealth : EnemyHealth
             }
         }
 
-        // 見た目の色変更（EnemyHealth が持ってる _renderers / _originalColors を利用）
+        // 色変更（EnemyHealth の機能利用）
         if (_renderers != null)
         {
             if (active)
             {
+                // 元の色へ
                 for (int i = 0; i < _renderers.Length; i++)
                 {
                     if (_renderers[i] != null)
@@ -102,25 +130,13 @@ public class TokenHealth : EnemyHealth
             }
             else
             {
+                // 無力化した薄い色へ
                 foreach (var r in _renderers)
                 {
                     if (r != null)
                         r.color = inactiveColor;
                 }
             }
-        }
-    }
-
-    // TokenHealth は HP0 のとき Destroy しないため
-    protected override void Update()
-    {
-        if (_isDown) return;
-
-        if (currentHP <= 0)
-        {
-            currentHP = 0;
-            Die();
-
         }
     }
 }
