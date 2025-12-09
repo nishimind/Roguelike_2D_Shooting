@@ -98,7 +98,7 @@ public float currentHP = 100;
         FindPlayer();
         //ƒIƒvƒVƒ‡ƒ“
         await UniTask.Delay(TimeSpan.FromSeconds(1f));
-        GenerateOption();
+        //GenerateOption();
         //’e‚ÌPool“o˜^
         foreach (var set in availableShots)
         {
@@ -188,26 +188,15 @@ public float currentHP = 100;
         isSlowed = false;
     }
 
-public void GenerateOption()
+    private void SpawnOption(GameObject prefab, Vector3 offset)
     {
-        foreach (var option in optionTable)
-        {
-            switch (option.optionType)
-            {
-                case OptionType.Option1: // ‰~Œ`”z’u
-                    GenerateCircle(option);
-                    break;
+        GameObject opt = Instantiate(prefab, player.transform);
+        opt.transform.localPosition = offset;
 
-                case OptionType.Option2: // ‰¡•À‚Ñ
-                    GenerateLine(option);
-                    break;
-
-                default:
-                    Debug.LogWarning("–¢’è‹`‚Ì”z’u•û–@: " + option.optionType);
-                    break;
-            }
-        }
+        // ‚±‚±‚Å Manager ‚É“o˜^
+        player.GetComponent<OptionManager>().options.Add(opt.transform);
     }
+
 
     // ‰~Œ`”z’u
     private async void GenerateCircle(OptionData option)
