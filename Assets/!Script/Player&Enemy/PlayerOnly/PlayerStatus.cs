@@ -188,14 +188,14 @@ public float currentHP = 100;
         isSlowed = false;
     }
 
-    private void SpawnOption(GameObject prefab, Vector3 offset)
+  /*  private void SpawnOption(GameObject prefab, Vector3 offset)
     {
         GameObject opt = Instantiate(prefab, player.transform);
         opt.transform.localPosition = offset;
 
         // ‚±‚±‚Å Manager ‚É“o˜^
         player.GetComponent<OptionManager>().options.Add(opt.transform);
-    }
+    }*/
 
 
     // ‰~Œ`”z’u

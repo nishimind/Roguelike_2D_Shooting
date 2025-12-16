@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Option/Formation")]
+[CreateAssetMenu(menuName = "Option/Formation/Base")]
 public class FormationSO : ScriptableObject
 {
-    public AnimationCurve xCurve;  // index 0 Å® 1 ÇÃà íu
-    public AnimationCurve yCurve;
-
-    public float size = 1f;
-
-   public virtual  Vector2 GetPosition(int index, int count)
+    public virtual Vector2 GetNormalPosition(int index, int count)
     {
-        return  Vector2.zero;
+        return Vector2.zero;
+    }
+
+    public virtual Vector2 GetSlowPosition(int index, int count)
+    {
+        return GetNormalPosition(index, count);
     }
 }

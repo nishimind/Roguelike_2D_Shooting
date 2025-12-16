@@ -1,61 +1,94 @@
 using UnityEngine;
 using System.Collections.Generic;
+[System.Serializable]
+public class OptionData
+{
+    public OptionType optionType;       // オプションの種類名
+    public GameObject optionPrefab; // プレハブ参照
+    public int count;               // 生成数
+    public List<Transform> generatedOptions = new List<Transform>(); // 生成されたオプションのインスタンスリスト
+    public FormationSO formation;
+}
+public enum OptionType
+{
+    Option1,
+    Option2,
+    Option3
+}
 
 public class OptionManager : MonoBehaviour
 {
-    public List<Transform> options = new List<Transform>();
+    private OptionData[] options = null;
 
     public float radius = 2f;
     public float rotateSpeed = 100f;
     public bool isGathering = false;
 
     private float angleOffset = 0f;
-    public FormationSO formation;
+    
+    void Start()
+    {
+        // OptionData を取得
+      options= PlayerStatus.Instance.optionTable;
+        // オプションのインスタンスを生成
+        foreach (var optData in options)
+        {
+            for (int i = 0; i < optData.count; i++)
+            {
+                GameObject optInstance = Instantiate(optData.optionPrefab, transform);
+                optData.generatedOptions.Add(optInstance.transform);
+            }
+        }
+    }
     void Update()
     {
         if (!isGathering)
         {
-            UpdateFormationSO();
+           OptionNormalFormation();
         }
         else
         {
-            UpdateGather();
+            OptionSlowFormation();
         }
     }
+    //通常時の配置　一回だけ呼ぶのでもいいか
 
-    private void UpdateFormationSO()
+    private void OptionNormalFormation()
     {
-        int n = options.Count;
-        for (int i = 0; i < n; i++)
+        foreach (var optData in options)
         {
-            float t = (float)i / (n - 1);
-            Vector2 pos = formation.GetPosition(1,n);
-            options[i].localPosition = pos;
+            int count = optData.generatedOptions.Count;
+
+            for (int i = 0; i < count; i++)
+            {
+                Vector2 pos =
+                    optData.formation.GetNormalPosition(i, count);
+
+                optData.generatedOptions[i].localPosition = pos;
+            }
         }
     }
 
-    // ▼ 集合（自機に寄る）
-    private void UpdateGather()
+
+    // 低速時の配置
+    private void OptionSlowFormation()
     {
-        foreach (var opt in options)
+        foreach (var optData in options)
         {
-            opt.localPosition = Vector3.MoveTowards(
-                opt.localPosition,
-                Vector3.zero,
-                Time.deltaTime * 3f
-            );
+            int count = optData.generatedOptions.Count;
+
+            for (int i = 0; i < count; i++)
+            {
+                Vector2 pos =
+                    optData.formation.GetSlowPosition(i, count);
+
+                optData.generatedOptions[i].localPosition = pos;
+            }
         }
     }
 
-    // ▼ ボタンで呼び出し: 集合モード切替
-    public void ToggleGather()
-    {
-        isGathering = !isGathering;
-    }
 
-    // ▼ ボタンで呼び出し: 角度変更
-    public void RotateFormation(float degrees)
-    {
-        angleOffset += degrees;
-    }
+
+
+
 }

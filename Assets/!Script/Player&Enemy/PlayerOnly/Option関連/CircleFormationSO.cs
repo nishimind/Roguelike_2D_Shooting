@@ -1,35 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 [CreateAssetMenu(menuName = "Option/Formation/Circle")]
 public class CircleFormationSO : FormationSO
 {
-    [Header("円形フォーメーション設定")]
-    public float radius = 2f;         // 半径
-    public float startAngle = 0f;     // 開始角度（度数）
-    public bool clockwise = false;    // 回転方向
+    public float radius = 2f;
+    public float startAngle;
 
-    /// <summary>
-    /// index と count をもとに円形フォーメーションの座標を返す
-    /// </summary>
-    public override Vector2 GetPosition(int index, int count)
+    public override Vector2 GetNormalPosition(int index, int count)
     {
-        if (count <= 0) return Vector2.zero;
+        float angle = startAngle + (360f / count) * index;
+        float rad = angle * Mathf.Deg2Rad;
 
-        // 1つだけなら真横に出す
-        if (count == 1)
-        {
-            float rad = startAngle * Mathf.Deg2Rad;
-            return new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * radius;
-        }
+        return new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * radius;
+    }
 
-        float anglePerUnit = 360f / count;
-        float angle = startAngle + anglePerUnit * index;
-
-        if (clockwise)
-            angle = -angle;
-
-        float radian = angle * Mathf.Deg2Rad;
-
-        return new Vector2(Mathf.Cos(radian), Mathf.Sin(radian)) * radius;
+    public override Vector2 GetSlowPosition(int index, int count)
+    {
+        // 低速時は寄せる
+        return GetNormalPosition(index, count) * 0.4f;
     }
 }
