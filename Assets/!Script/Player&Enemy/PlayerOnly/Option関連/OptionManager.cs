@@ -42,7 +42,7 @@ public class OptionManager : MonoBehaviour
     }
     void Update()
     {
-        if (!isGathering)
+        if (PlayerMovement.Instance.isSlow==true)
         {
            OptionNormalFormation();
         }

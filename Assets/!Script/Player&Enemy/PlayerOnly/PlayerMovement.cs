@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private Vector2 moveInput;            // スティック入力
-    private bool isSlow;                  // 減速状態
+    public bool isSlow;                  // 減速状態
 
     private Rigidbody2D rb;
 
