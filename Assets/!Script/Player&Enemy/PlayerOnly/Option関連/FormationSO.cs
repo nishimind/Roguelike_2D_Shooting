@@ -10,7 +10,7 @@ public class FormationSO : ScriptableObject
 
     public float size = 1f;
 
-   protected virtual  Vector2 GetPosition(int index, int count)
+   public virtual  Vector2 GetPosition(int index, int count)
     {
         return  Vector2.zero;
     }

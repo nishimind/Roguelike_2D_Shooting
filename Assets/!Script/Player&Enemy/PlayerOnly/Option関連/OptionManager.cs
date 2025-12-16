@@ -29,7 +29,7 @@ public class OptionManager : MonoBehaviour
         for (int i = 0; i < n; i++)
         {
             float t = (float)i / (n - 1);
-            Vector2 pos = formation.GetPosition(t);
+            Vector2 pos = formation.GetPosition(1,n);
             options[i].localPosition = pos;
         }
     }

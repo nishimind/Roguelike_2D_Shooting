@@ -11,7 +11,7 @@ public class CircleFormationSO : FormationSO
     /// <summary>
     /// index と count をもとに円形フォーメーションの座標を返す
     /// </summary>
-    protected override Vector2 GetPosition(int index, int count)
+    public override Vector2 GetPosition(int index, int count)
     {
         if (count <= 0) return Vector2.zero;
 
