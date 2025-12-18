@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Option/Formation/Base")]
+[CreateAssetMenu(menuName = "Option/Base")]
 public class FormationSO : ScriptableObject
 {
     public virtual Vector2 GetNormalPosition(int index, int count)

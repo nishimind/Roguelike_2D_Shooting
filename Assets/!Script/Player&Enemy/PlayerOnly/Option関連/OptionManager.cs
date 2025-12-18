@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using DG.Tweening;
 [System.Serializable]
 public class OptionData
 {
@@ -23,7 +24,7 @@ public class OptionManager : MonoBehaviour
     public float radius = 2f;
     public float rotateSpeed = 100f;
     public bool isGathering = false;
-
+    private bool _prevSlow=false;
     private float angleOffset = 0f;
     
     void Start()
@@ -39,17 +40,24 @@ public class OptionManager : MonoBehaviour
                 optData.generatedOptions.Add(optInstance.transform);
             }
         }
+
+        OptionNormalFormation();
     }
+  
+
     void Update()
     {
-        if (PlayerMovement.Instance.isSlow==true)
+        bool isSlow = PlayerMovement.Instance.isSlow;
+
+        if (isSlow != _prevSlow)
         {
-           OptionNormalFormation();
+            if (isSlow)
+                OptionSlowFormation();
+            else
+                OptionNormalFormation();
         }
-        else
-        {
-            OptionSlowFormation();
-        }
+
+        _prevSlow = isSlow;
     }
     //í èÌéûÇÃîzíuÅ@àÍâÒÇæÇØåƒÇ‘ÇÃÇ≈Ç‡Ç¢Ç¢Ç©
 
@@ -64,7 +72,10 @@ public class OptionManager : MonoBehaviour
                 Vector2 pos =
                     optData.formation.GetNormalPosition(i, count);
 
-                optData.generatedOptions[i].localPosition = pos;
+                optData.generatedOptions[i]
+       .DOLocalMove(pos, 0.2f)
+       .SetEase(Ease.OutQuad);
+
             }
         }
     }
@@ -82,7 +93,10 @@ public class OptionManager : MonoBehaviour
                 Vector2 pos =
                     optData.formation.GetSlowPosition(i, count);
 
-                optData.generatedOptions[i].localPosition = pos;
+                optData.generatedOptions[i]
+     .DOLocalMove(pos, 0.2f)
+     .SetEase(Ease.OutQuad);
+
             }
         }
     }

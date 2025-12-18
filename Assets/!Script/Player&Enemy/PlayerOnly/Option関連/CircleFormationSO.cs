@@ -1,15 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(menuName = "Option/Formation/Circle")]
+
+[CreateAssetMenu(menuName = "Option/円")]
 public class CircleFormationSO : FormationSO
 {
     public float radius = 2f;
-    public float startAngle;
+    [Range(0f, 1f)]
+    public float slowRate = 0.4f;
 
     public override Vector2 GetNormalPosition(int index, int count)
     {
-        float angle = startAngle + (360f / count) * index;
+        if (count <= 0) return Vector2.zero;
+
+        float angleStep = 360f / count;
+        float startAngle;
+
+        if (count % 2 == 1)
+        {
+            // 奇数個：中央が真上(90度)
+            int centerIndex = count / 2;
+            startAngle = 90f - angleStep * centerIndex;
+        }
+        else
+        {
+            // 偶数個：90度を中心に左右対称
+            startAngle = 90f - angleStep * (count / 2 - 0.5f);
+        }
+
+        float angle = startAngle + angleStep * index;
         float rad = angle * Mathf.Deg2Rad;
 
         return new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * radius;
@@ -17,7 +34,6 @@ public class CircleFormationSO : FormationSO
 
     public override Vector2 GetSlowPosition(int index, int count)
     {
-        // 低速時は寄せる
-        return GetNormalPosition(index, count) * 0.4f;
+        return GetNormalPosition(index, count) * slowRate;
     }
 }
