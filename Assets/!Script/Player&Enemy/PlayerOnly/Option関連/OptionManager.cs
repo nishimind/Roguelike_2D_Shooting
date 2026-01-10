@@ -21,7 +21,7 @@ public class OptionManager : MonoBehaviour
 {
     private OptionData[] options = null;
 
-    public float radius = 2f;
+   
     public float rotateSpeed = 100f;
     public bool isGathering = false;
     private bool _prevSlow=false;
