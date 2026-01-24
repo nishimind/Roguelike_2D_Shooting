@@ -285,7 +285,19 @@ MonoBehaviour:
   blinkCount: 3
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 333317}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!50 &333322
 Rigidbody2D:
   serializedVersion: 4
@@ -325,12 +337,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4583f40c8c7624b906dd8edcc3923a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 10
   blinkDuration: 5
-  flashDuration: 5
   blinkInterval: 0.1
   blinkColor: {r: 1, g: 0, b: 0, a: 1}
-  flashColor: {r: 1, g: 0.3, b: 0.3, a: 1}
 --- !u!1 &14884053
 GameObject:
   m_ObjectHideFlags: 0
@@ -5694,8 +5703,8 @@ Transform:
   - {fileID: 1429569547}
   - {fileID: 1876679723}
   - {fileID: 1358897467}
-  - {fileID: 1394203227}
   - {fileID: 1845163487}
+  - {fileID: 1394203227}
   - {fileID: 2025383028}
   - {fileID: 167849112}
   - {fileID: 539221957}
