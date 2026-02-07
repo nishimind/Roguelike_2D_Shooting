@@ -24,6 +24,7 @@ public float currentHP = 100;
     private bool isSlowed = false;
     public float shootTime = 0.5f;
     public int grazeCount=0;
+    public int score = 0;
     public enum ItemType
     {
         Key,
@@ -42,6 +43,7 @@ public float currentHP = 100;
     [SerializeField] public TextMeshProUGUI speedText;
     [SerializeField] public TextMeshProUGUI shootTimeText;
     [SerializeField] public TextMeshProUGUI grazeCountText;
+    [SerializeField] public TextMeshProUGUI scoreText;
 
 
     [Header("ÉVÉáÉbÉgê›íË")]
@@ -124,6 +126,7 @@ public float currentHP = 100;
         shootTimeText.text="shootTime:"+shootTime;
         speedText.text = "speed:" + speed;
         grazeCountText.text="graze:"+grazeCount;
+        scoreText.text = "score:" + score;
 
     }
    
@@ -146,7 +149,10 @@ public float currentHP = 100;
 
         }
     }
-
+    public void UpdateScore()
+    {
+        
+    }
     public void UpdateMoneyText()
     {
       

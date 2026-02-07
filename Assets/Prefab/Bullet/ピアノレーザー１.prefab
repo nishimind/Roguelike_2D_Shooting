@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 11.06, z: 0}
-  m_LocalScale: {x: 0.6, y: 20, z: 1}
+  m_LocalScale: {x: 0.3, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3065234843731114778}
@@ -258,8 +258,5 @@ MonoBehaviour:
   _rb: {fileID: 0}
   preLaserTime: 5
   laserTime: 5
-  preLineTargetScaleX: 0.3
-  laserTargetScaleX: 0.31
-  scaleDuration: 0.3
   preLine: {fileID: 7802548755678062568}
   laserLine: {fileID: 1309095803324749830}
