@@ -1,53 +1,43 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 
-[CreateAssetMenu(menuName = "MovePattern/突進してためる追尾")]
-public class DashChasePlayer : MovePatternSO
+[CreateAssetMenu(menuName = "MovePattern/プレイヤーに突進して止まる")]
+public class Charge : MovePatternSO
 {
-    [Header("突進設定")]
-    public float dashSpeed = 10f;
-    public float dashTime = 0.4f;
-
-    [Header("減速設定")]
-    public float brakeTime = 0.15f;
-
-    [Header("ため設定")]
-    public float chargeTime = 0.6f;
+    public float dashSpeed = 8f;        // 突進速度
+    public float dashTime = 1.0f;        // 突進時間
+    public float decelerationTime = 1.5f; // 減速にかかる時間
 
     public override async UniTaskVoid Execute(EnemyMovementController controller)
     {
+        if (controller == null || controller.Player == null) return;
+
         var rb = controller._rb;
 
-        while (controller != null && controller.Player != null)
+        // ===== 突進フェーズ =====
+        float timer = 0f;
+        while (timer < dashTime && controller.Player != null)
         {
-            /* ========= 突進 ========= */
-            float t = 0f;
-            while (t < dashTime && controller.Player != null)
-            {
-                Vector2 dir = (controller.Player.position - controller.transform.position).normalized;
-                rb.velocity = dir * dashSpeed;
+            Vector2 dir = (controller.Player.position - controller.transform.position).normalized;
+            rb.velocity = dir * dashSpeed;
 
-                t += Time.deltaTime;
-                await UniTask.Yield();
-            }
-
-            /* ========= 急減速 ========= */
-            t = 0f;
-            Vector2 startVelocity = rb.velocity;
-            while (t < brakeTime)
-            {
-                rb.velocity = Vector2.Lerp(startVelocity, Vector2.zero, t / brakeTime);
-                t += Time.deltaTime;
-                await UniTask.Yield();
-            }
-            rb.velocity = Vector2.zero;
-
-            /* ========= ため ========= */
-            await UniTask.Delay(System.TimeSpan.FromSeconds(chargeTime));
+            timer += Time.deltaTime;
+            await UniTask.Yield();
         }
 
-        // プレイヤー消失時は完全停止
-        if (rb != null)
-            rb.velocity = Vector2.zero;
+        // ===== 減速フェーズ =====
+        Vector2 startVelocity = rb.velocity;
+        timer = 0f;
+
+        while (timer < decelerationTime)
+        {
+            rb.velocity = Vector2.Lerp(startVelocity, Vector2.zero, timer / decelerationTime);
+
+            timer += Time.deltaTime;
+            await UniTask.Yield();
+        }
+
+        // ===== 完全停止 =====
+        rb.velocity = Vector2.zero;
     }
 }
