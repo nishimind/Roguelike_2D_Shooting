@@ -68,5 +68,29 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/!Scenes/Windows/Win_stage6.unity
     guid: d2b9d28bcd9addb4b9d2ad27f80edf07
+  - enabled: 1
+    path: Assets/!Scenes/DemoStage/Demo_stage1.unity
+    guid: ce550dfd1b1476f4d8c01319da1c855d
+  - enabled: 1
+    path: Assets/!Scenes/DemoStage/Demo_stage2.unity
+    guid: b29a5287cfb5c5049b99c6b089c9f970
+  - enabled: 1
+    path: Assets/!Scenes/DemoStage/Demo_stage3.unity
+    guid: 5ef9ddc34b522d84dad22692543a65ca
+  - enabled: 1
+    path: Assets/!Scenes/DemoStage/Demo_stage4.unity
+    guid: 96be580969a933a479b3b495590b18d1
+  - enabled: 1
+    path: Assets/!Scenes/DemoStage/Demo_stage5.unity
+    guid: 3069ae7e4c0a80643bf3b431b0362320
+  - enabled: 1
+    path: Assets/!Scenes/DemoStage/Demo_stage6.unity
+    guid: 85418b71c58b6324e9bedfaa47b77f8d
+  - enabled: 1
+    path: Assets/!Scenes/DemoStage/Demo_Boss.unity
+    guid: 5c27bbb661a3d2e42a5f92d4e8861ec9
+  - enabled: 1
+    path: Assets/!Scenes/DemoStage/Demo_MiddleBoss.unity
+    guid: 2c087490c3a86784bb16b295ff238e74
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2a39bad49a11c2b43a355172e1f60b2f, type: 2}

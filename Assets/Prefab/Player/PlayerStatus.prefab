@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687231687610457876}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -65,13 +65,6 @@ MonoBehaviour:
   grazeCountText: {fileID: 597252176004842231}
   scoreText: {fileID: 5860070050194616528}
   availableShots:
-  - attackPattern: {fileID: 11400000, guid: b0a5b3d6053a0b542bef89d86d32a424, type: 2}
-    bulletPrefab: {fileID: 9099611059377426971, guid: 55872efa8ebd07942b0eda0f3bc99e0b, type: 3}
-    shootInterval: 0.19
-    poolSize: 30
-    damage: 1
-    shootAngle: 180
-    shootCount: 0
   - attackPattern: {fileID: 11400000, guid: d092369fa5c2f7646bb223b2b5387999, type: 2}
     bulletPrefab: {fileID: 14700504195148514, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
     shootInterval: 0.61
@@ -90,10 +83,15 @@ MonoBehaviour:
   spacing: 0.5
   optionTable:
   - optionType: 1
-    optionPrefab: {fileID: 6659449636010748210, guid: ef89971104dff8243a36e7213d45f11e, type: 3}
-    count: 2
+    optionPrefab: {fileID: 412439447165227094, guid: 0fd608676c5c56c4081e28f85fddf26a, type: 3}
+    count: 3
     generatedOptions: []
-    formation: {fileID: 0}
+    formation: {fileID: 11400000, guid: 7b9ca1e925a80f64386a71be64aa9ff3, type: 2}
+  - optionType: 1
+    optionPrefab: {fileID: 6659449636010748210, guid: ef89971104dff8243a36e7213d45f11e, type: 3}
+    count: 5
+    generatedOptions: []
+    formation: {fileID: 11400000, guid: 13a05b2f3dafdd845babf85cc234088a, type: 2}
 --- !u!1 &861215839936721048
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,8 +318,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -388,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 1815153307659591650}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 540, y: 318, z: 0}
+  m_LocalPosition: {x: 540, y: 290, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -678,8 +676,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -946,8 +944,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1080,8 +1078,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1214,8 +1212,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1282,7 +1280,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4053933886846428980}
-  m_LocalRotation: {x: 0, y: 0, z: 0.07410845, w: 0.9972502}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1301,11 +1299,11 @@ RectTransform:
   - {fileID: 7857924100440488808}
   - {fileID: 3124050589022710355}
   m_Father: {fileID: 4569451025592796087}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 8.5}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 430, y: -0.5}
-  m_SizeDelta: {x: -860, y: -1}
+  m_AnchoredPosition: {x: 470, y: -12.5}
+  m_SizeDelta: {x: -940, y: -25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3375858870323902697
 CanvasRenderer:
@@ -1595,8 +1593,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1863,8 +1861,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1997,8 +1995,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2131,8 +2129,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
