@@ -1,80 +1,68 @@
-using UnityEngine;
+using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
-/// <summary>
-/// オブジェクトが「点滅 → 赤固定 → 元に戻る」を行う演出
-/// </summary>
 public class AttackEffect : MonoBehaviour
 {
-    [Header("点滅するまでの待機時間")]
-    public float startDelay = 0f;
-
-    [Header("点滅している時間")]
-    public float blinkDuration = 0.5f;
-
-    [Header("赤く光る時間")]
-    public float flashDuration = 0.5f;
-
-    [Header("点滅の間隔（秒）")]
-    public float blinkInterval = 0.1f;
-
-    [Header("点滅色")]
+    public float blinkDuration = 1.5f;
+    public float blinkInterval = 0.15f;
     public Color blinkColor = Color.red;
 
-    [Header("赤く光る色")]
-    public Color flashColor = new Color(1f, 0.3f, 0.3f);
-
-    SpriteRenderer[] renderers;
-    Color[] originalColors;
+    SpriteRenderer[] _renderers;
+    Color[] _original;
+    CancellationTokenSource _cts;
 
     void Awake()
     {
-        renderers = GetComponentsInChildren<SpriteRenderer>();
-        originalColors = new Color[renderers.Length];
+        _renderers = GetComponentsInChildren<SpriteRenderer>();
+        _original = new Color[_renderers.Length];
 
-        for (int i = 0; i < renderers.Length; i++)
-            originalColors[i] = renderers[i].color;
+        for (int i = 0; i < _renderers.Length; i++)
+            _original[i] = _renderers[i].color;
     }
 
-    /// <summary>
-    /// メイン演出を実行
-    /// </summary>
-    public async UniTask Play()
+    public async UniTask PlayAsync()
     {
-        // ① 開始待機
-        if (startDelay > 0)
-            await UniTask.Delay((int)(startDelay * 1000));
+        ForceStop();
+        _cts = new CancellationTokenSource();
 
-        // ② 点滅フェーズ
         float t = 0;
-        while (t < blinkDuration)
+        try
         {
-            SetColor(blinkColor);
-            await UniTask.Delay((int)(blinkInterval * 1000));
+            while (t < blinkDuration)
+            {
+                SetColor(blinkColor);
+                await UniTask.Delay((int)(blinkInterval * 1000), cancellationToken: _cts.Token);
 
-            RestoreColor();
-            await UniTask.Delay((int)(blinkInterval * 1000));
+                Restore();
+                await UniTask.Delay((int)(blinkInterval * 1000), cancellationToken: _cts.Token);
 
-            t += blinkInterval * 2;
+                t += blinkInterval * 2;
+            }
         }
-
-        // ③ 赤く光るフェーズ
-        SetColor(flashColor);
-        await UniTask.Delay((int)(flashDuration * 1000));
-
-        // ④ 元の色に戻す
-        RestoreColor();
+        catch (OperationCanceledException) { }
+        finally
+        {
+            Restore();
+        }
     }
 
-    private void SetColor(Color c)
+    public void ForceStop()
     {
-        foreach (var r in renderers)
+        _cts?.Cancel();
+        Restore();
+    }
+
+    void SetColor(Color c)
+    {
+        foreach (var r in _renderers)
             r.color = c;
     }
 
-    private void RestoreColor()
+    void Restore()
     {
-        for (int i = 0; i < renderers.Length; i++)
-            renderers[i].color = originalColors[i];
+        for (int i = 0; i < _renderers.Length; i++)
+            _renderers[i].color = _original[i];
     }
 }

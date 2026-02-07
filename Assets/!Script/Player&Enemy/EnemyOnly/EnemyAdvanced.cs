@@ -26,6 +26,7 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
     private bool hasStopped = false;
     private bool hasRestarted = false;
     private bool _initialized = false;
+    private AttackEffect _attackEffect;
 
     private CancellationTokenSource _cts = new CancellationTokenSource();
 
@@ -35,6 +36,8 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
     protected override void _Initialize()
     {
         base._Initialize();
+
+        _attackEffect = GetComponent<AttackEffect>();
 
         _health = GetComponent<EnemyHealth>();
         if (_health == null)
@@ -103,43 +106,27 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
     // =========================================================
     protected override void _Attack()
     {
-        if (!_bAttack || inSpecial || !_initialized) return;
-        if (attackSets == null || attackSets.Count == 0) return;
+        if (!_bAttack || !_initialized) return;
 
         foreach (var set in attackSets)
         {
-            if (set.attackPattern == null || set.bulletPrefab == null) continue;
+            if (set.attackPattern == null || set.bulletPrefab == null)
+                continue;
 
-            // ---- ① インターバル中なら待つ ----
-            if (set.inBurstCooldown)
-            {
-                set.burstTimer += Time.deltaTime;
-
-                if (set.burstTimer >= set.burstInterval)
-                {
-                    // インターバル終了
-                    set.inBurstCooldown = false;
-                    set.burstTimer = 0f;
-                    set.currentShotCount = 0; // 発射回数リセット
-                }
-
-                continue; // インターバル中は撃たない
-            }
-
-            // ---- ② 通常の発射タイマー加算 ----
             set.shootTimer += Time.deltaTime;
 
-            float targetInterval = set.firstShotDone
+            float interval = set.firstShotDone
                 ? set.shootInterval
                 : set.initialDelay;
 
-            targetInterval = Mathf.Max(0.05f, targetInterval);
-
-            if (set.shootTimer >= targetInterval)
+            if (set.shootTimer >= interval)
             {
-                // ---- 弾発射 ----
+                // ▼ 発射前：赤点滅演出 ▼
+                _attackEffect?.PlayAsync().Forget();
+
+                // ▼ レーザー発射 ▼
                 set.attackPattern.Shoot(
-                    this.gameObject.transform.position,
+                    transform.position,
                     set.shootAngle,
                     set.bulletPrefab,
                     (int)set.damage
@@ -147,15 +134,6 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
 
                 set.shootTimer = 0f;
                 set.firstShotDone = true;
-                set.currentShotCount++;
-
-                // ---- ③ バースト上限チェック ----
-                if (set.burstCount > 0 && set.currentShotCount >= set.burstCount)
-                {
-                    // インターバル開始
-                    set.inBurstCooldown = true;
-                    set.burstTimer = 0f;
-                }
             }
         }
     }
@@ -185,9 +163,28 @@ public class EnemyAdvanced_Special_MoveCycle : Enemy
     }
     public void ForceStopAttack()
     {
-        _bAttack = false;          // 攻撃フラグ OFF
-        inSpecial = false;         // 特殊攻撃中なら停止
-        _cts.Cancel();             // 攻撃ループを停止
-        Debug.Log($"{name} の攻撃が ForceStopAttack により停止しました");
+        _bAttack = false;
+
+        // 発射前演出も止める
+        _attackEffect?.ForceStop();
+
+        // 発射中レーザーを即停止
+        ForceStopAllLasers();
+
+        _cts?.Cancel();
+        _cts = new CancellationTokenSource();
+
+        Debug.Log($"{name}：攻撃とレーザーを完全停止");
+    }
+
+    public void ForceStopAllLasers()
+    {
+        var lasers = GetComponentsInChildren<LaserNormal>(true);
+
+        foreach (var laser in lasers)
+        {
+            if (laser != null)
+                laser.ForceStopLaser();
+        }
     }
 }
