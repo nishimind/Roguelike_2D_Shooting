@@ -25,6 +25,8 @@ public class EnemyHealth : HealthBase
     private bool _isBlinking = false;
     private bool _isDead = false;
 
+    public int scoreValue = 100; // この敵を倒したときに得られるスコア
+
     public UnityEvent OnDeath;
 
     protected override void Start()
@@ -91,7 +93,7 @@ public class EnemyHealth : HealthBase
             Instantiate(deadEffect, transform.position, Quaternion.identity);
 
         enemyDropper?.DropItems();
-
+        PlayerStatus.Instance.score += scoreValue; // スコア加算
         // 敵死亡時にリストから削除
         Siene_Change_Main_Shooting.Instance.UnregisterEnemy(this.gameObject);
         OnDeath?.Invoke();   // ← ★死亡イベント発火
