@@ -149,7 +149,10 @@ public float currentHP = 100;
 
         }
     }
-
+    public void UpdateScore()
+    {
+        
+    }
     public void UpdateMoneyText()
     {
       
