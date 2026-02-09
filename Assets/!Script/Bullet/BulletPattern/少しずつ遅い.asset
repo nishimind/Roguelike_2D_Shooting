@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef317525d3b1bba4c994367fa28a1190, type: 3}
+  m_Name: "\u5C11\u3057\u305A\u3064\u9045\u3044"
+  m_EditorClassIdentifier: 
+  isPlyerBullet: 0
+  initialSpeed: 5
+  acceleration: 5
+  maxSpeed: 10

@@ -14,6 +14,9 @@ public class NormalShot: AttackPatternSO
         bulletDamage.damage = damage;
         if (isPlyerBullet) bulletDamage.damage *= PlayerStatus.Instance.attackPower;
 
+        var bulletBase = bullet.GetComponent<BulletBase>();
+        bulletBase.angleDeg = rotation;
         bullet.transform.rotation = Quaternion.Euler(0,0,rotation)* Quaternion.FromToRotation(Vector3.up, Vector3.down);
+   
     }
 }

@@ -17,11 +17,13 @@ public class Bullet_Accele : BulletBase
         if (_rb == null) return;
 
         _currentSpeed += acceleration * Time.deltaTime;
-        _currentSpeed = Mathf.Min(_currentSpeed, maxSpeed);
-
+        if (maxSpeed >= _speed)
+            _currentSpeed = Mathf.Min(_currentSpeed, maxSpeed);
+        else
+            _currentSpeed = Mathf.Max(_currentSpeed, maxSpeed);
         Vector2 direction =
             Quaternion.Euler(0f, 0f, angleDeg) * Vector2.right;
 
-        _rb.velocity = direction * _currentSpeed;
+            _rb.velocity = transform.up * _currentSpeed;
     }
 }

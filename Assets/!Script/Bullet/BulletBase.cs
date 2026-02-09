@@ -24,10 +24,9 @@ public class BulletBase : MonoBehaviour
     }
     protected virtual void Update()
     {
-        if (_rb == null)return;
-            // 角度 → 方向ベクトル
-        Vector2 direction = Quaternion.Euler(0f, 0f, angleDeg) * Vector2.right;
-        _rb.velocity = direction * _speed;
+      
+        if (_rb != null)
+            _rb.velocity = transform.up * _speed;
     }
 }
 
