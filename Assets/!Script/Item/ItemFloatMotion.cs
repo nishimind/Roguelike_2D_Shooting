@@ -5,6 +5,8 @@ public class ItemFloatMotion : MonoBehaviour
 {
     [Header("お金の額")]
     public int value=1;
+    [Header("スコアの額")]
+    public int scoreValue = 10;
     [Header("ふわっと浮く高さ")]
     public float floatHeight = 0.5f;
 
@@ -79,6 +81,7 @@ public class ItemFloatMotion : MonoBehaviour
         if (Vector2.Distance(transform.position, targetPlayer.position) < 0.2f)
         {
             if (!isFinished) { status.Money += value; 
+                status.score += scoreValue;
                 status.collector.PlaySound();
                 status.UpdateMoneyText();
             }

@@ -25,6 +25,7 @@ public float currentHP = 100;
     public float shootTime = 0.5f;
     public int grazeCount=0;
     public int score = 0;
+
     public enum ItemType
     {
         Key,
@@ -44,7 +45,8 @@ public float currentHP = 100;
     [SerializeField] public TextMeshProUGUI shootTimeText;
     [SerializeField] public TextMeshProUGUI grazeCountText;
     [SerializeField] public TextMeshProUGUI scoreText;
-
+    private float displayScore; // 表示用の現在の値
+    public int countSpeed = 50; // 1秒間にどれくらい数値を増やすか
 
     [Header("ショット設定")]
 
@@ -126,7 +128,8 @@ public float currentHP = 100;
         shootTimeText.text="shootTime:"+shootTime;
         speedText.text = "speed:" + speed;
         grazeCountText.text="graze:"+grazeCount;
-        scoreText.text = "score:" + score;
+      UpdateScore();
+       
 
     }
    
@@ -151,7 +154,11 @@ public float currentHP = 100;
     }
     public void UpdateScore()
     {
-        
+       
+        displayScore = Mathf.MoveTowards(displayScore, score, countSpeed * Time.deltaTime);
+
+        // 小数点を切り捨ててUIに表示
+        scoreText.text = "スコア"+((int)displayScore).ToString();
     }
     public void UpdateMoneyText()
     {
