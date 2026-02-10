@@ -2373,6 +2373,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6129516371885645583, guid: b8bbb75edcea2064491472c1b941bcf0, type: 3}
+      propertyPath: phases.Array.data[0].attackSets.Array.data[0].bulletPrefab
+      value: 
+      objectReference: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
+    - target: {fileID: 6129516371885645583, guid: b8bbb75edcea2064491472c1b941bcf0, type: 3}
+      propertyPath: phases.Array.data[0].attackSets.Array.data[1].bulletPrefab
+      value: 
+      objectReference: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
+    - target: {fileID: 6129516371885645583, guid: b8bbb75edcea2064491472c1b941bcf0, type: 3}
+      propertyPath: phases.Array.data[0].attackSets.Array.data[0].attackPattern
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a4a3b9906528bb4e952b117797aac11, type: 2}
+    - target: {fileID: 6129516371885645583, guid: b8bbb75edcea2064491472c1b941bcf0, type: 3}
+      propertyPath: phases.Array.data[0].attackSets.Array.data[1].attackPattern
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a4a3b9906528bb4e952b117797aac11, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

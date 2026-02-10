@@ -21,10 +21,15 @@ public class NormalAccele :AttackPatternSO
 
         // ‰‘¬‚ðƒZƒbƒg
         _currentSpeed += acceleration * Time.deltaTime;
-        if(maxSpeed>=initialSpeed)
-        _currentSpeed = Mathf.Min(_currentSpeed, maxSpeed);
+        if (acceleration >= 0)
+        {
+            _currentSpeed = Mathf.Min(_currentSpeed, maxSpeed);
+        }
         else
+        {
             _currentSpeed = Mathf.Max(_currentSpeed, maxSpeed);
+        }
+
 
         var bulletBase = bullet.GetComponent<BulletBase>();
         bulletBase._speed = _currentSpeed;

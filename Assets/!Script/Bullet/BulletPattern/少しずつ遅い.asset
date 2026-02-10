@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: "\u5C11\u3057\u305A\u3064\u9045\u3044"
   m_EditorClassIdentifier: 
   isPlyerBullet: 0
-  initialSpeed: 5
-  acceleration: 5
-  maxSpeed: 10
+  initialSpeed: 10.14
+  acceleration: -0.37
+  maxSpeed: 0.06
