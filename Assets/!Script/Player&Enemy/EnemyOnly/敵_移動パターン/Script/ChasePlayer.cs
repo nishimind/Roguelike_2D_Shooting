@@ -10,6 +10,8 @@ public class ChasePlayer : MovePatternSO
     public override async UniTaskVoid Execute(EnemyMovementController controller)
     {
         var rb = controller._rb;
+        // ƒvƒŒƒCƒ„[‚ªŒ©‚Â‚©‚é‚Ü‚Å‘Ò‚Â
+        await UniTask.WaitUntil(() => controller.Player != null);
 
         while (controller != null && controller.Player != null)
         {

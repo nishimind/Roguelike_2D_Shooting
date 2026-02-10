@@ -21,8 +21,8 @@ public class AttackSet
     public float initialDelay = 0f;
 
     [Header("この攻撃を使用するHP範囲（％）")]
-    public int startHP = 0;
-    public int endHP = 100;
+    public int startHP = 100;
+    public int endHP = 0;
 
     [Header("ダメージ")]
     public float damage = 1f;
