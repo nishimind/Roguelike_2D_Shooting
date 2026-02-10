@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef317525d3b1bba4c994367fa28a1190, type: 3}
-  m_Name: "\u5C11\u3057\u305A\u3064\u9045\u3044"
+  m_Script: {fileID: 11500000, guid: f2de3bcb1f5462a468377490eb6cc9e8, type: 3}
+  m_Name: "\u2190"
   m_EditorClassIdentifier: 
-  isPlyerBullet: 0
-  initialSpeed: 0
-  acceleration: 2
-  maxSpeed: 5
+  angleDeg: -135
+  startSpeed: 8
+  acceleration: -2
+  maxSpeed: -3

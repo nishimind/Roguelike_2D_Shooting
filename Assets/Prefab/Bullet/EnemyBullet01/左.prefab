@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: angleDeg
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -1889795371444763936, guid: 09cf05861abf3ab469eaf4c1c56fb678, type: 3}
+      propertyPath: angularSpeed
+      value: -5.43
+      objectReference: {fileID: 0}
     - target: {fileID: 544754477959356790, guid: 09cf05861abf3ab469eaf4c1c56fb678, type: 3}
       propertyPath: angleDeg
       value: -90

@@ -3,6 +3,7 @@ using System.Threading;
 
 public abstract class AttackPatternSO : ScriptableObject
 {public bool isPlyerBullet = false;
+    public virtual void Initialize() { }
     public abstract void Shoot(Vector3 position, int angle, GameObject bulletPrefab, float damage);
    
     public CancellationToken token = CancellationToken.None;

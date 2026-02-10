@@ -9,7 +9,7 @@ public class NormalAccele :AttackPatternSO
     public float acceleration = 5f;
  public float maxSpeed = 10f;   
     private float _currentSpeed;
-    void Start()
+    public override void Initialize()
     {
         _currentSpeed = initialSpeed;
     }

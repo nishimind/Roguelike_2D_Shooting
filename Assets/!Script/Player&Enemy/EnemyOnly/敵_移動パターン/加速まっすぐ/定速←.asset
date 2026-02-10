@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f2de3bcb1f5462a468377490eb6cc9e8, type: 3}
-  m_Name: "\u5DE6\u4E0B"
+  m_Name: "\u5B9A\u901F\u2190"
   m_EditorClassIdentifier: 
-  angleDeg: 229
-  startSpeed: 0
-  acceleration: 1.5
-  maxSpeed: 26.6
+  angleDeg: -135
+  startSpeed: 8
+  acceleration: -2
+  maxSpeed: 8

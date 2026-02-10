@@ -50,6 +50,7 @@ public class EnemyPhaseAttack : MonoBehaviour
                 set.currentShotCount = 0;
                 set.inBurstCooldown = false;
                 set.burstTimer = 0f;
+                set.attackPattern?.Initialize();
 
                 if (set.bulletPrefab != null)
                 {

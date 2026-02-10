@@ -5,25 +5,31 @@ public class Bullet_Accele : BulletBase
     [Header("‰Á‘¬Ý’è")]
     [SerializeField] private float acceleration = 5f;
     [SerializeField] private float maxSpeed = 10f;
+
+    [Header("‹È‚°Ý’è")]
+    [SerializeField] private float angularSpeed = 0f; // ‹È‚°‚éŒü‚«‚Æ‹­‚³
+
     protected float _currentSpeed;
+    private float _currentAngle;
 
     protected override void Initialize()
     {
-        _currentSpeed = _speed; // BulletBase ‚Ì‰‘¬
+        _currentSpeed = _speed;
+        _currentAngle = angleDeg; // ‰ŠúŠp“x‚ð•ÛŽ
     }
 
     protected override void Update()
     {
         if (_rb == null) return;
 
+        // ‰Á‘¬
         _currentSpeed += acceleration * Time.deltaTime;
-        if (maxSpeed >= _speed)
-            _currentSpeed = Mathf.Min(_currentSpeed, maxSpeed);
-        else
-            _currentSpeed = Mathf.Max(_currentSpeed, maxSpeed);
-        Vector2 direction =
-            Quaternion.Euler(0f, 0f, angleDeg) * Vector2.right;
+        _currentSpeed = Mathf.Clamp(_currentSpeed, 0f, maxSpeed);
 
-            _rb.velocity = transform.up * _currentSpeed;
+        // Œü‚«‚ð‹È‚°‚é
+        _currentAngle += angularSpeed * Time.deltaTime;
+
+        Vector2 dir = Quaternion.Euler(0f, 0f, _currentAngle) * Vector2.right;
+        _rb.velocity = dir * _currentSpeed;
     }
 }

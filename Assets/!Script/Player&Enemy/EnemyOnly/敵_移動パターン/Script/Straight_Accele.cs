@@ -18,7 +18,7 @@ public class Straight_Accele : MovePatternSO
 
     [Header("Å‚‘¬")]
     public float maxSpeed = 8f;
-
+  
     public override async UniTaskVoid Execute(EnemyMovementController controller)
     {
         if (controller == null || controller._rb == null) return;
@@ -31,8 +31,17 @@ public class Straight_Accele : MovePatternSO
         while (controller != null)
         {
             // ‰Á‘¬
-            currentSpeed += acceleration*acceleration * Time.deltaTime;
-            currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
+
+            currentSpeed += acceleration * Time.deltaTime;
+            if (acceleration >= 0)
+            {
+                currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
+            }
+            else
+            {
+                currentSpeed = Mathf.Max(currentSpeed, maxSpeed);
+            }
+
 
             controller._rb.velocity = direction * currentSpeed;
 

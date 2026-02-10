@@ -89,5 +89,6 @@ MonoBehaviour:
   _speed: 0.26
   angleDeg: -90
   _rb: {fileID: 0}
-  acceleration: 0.68
-  maxSpeed: 1.95
+  acceleration: 1.52
+  maxSpeed: 2.9
+  angularSpeed: 5.19
