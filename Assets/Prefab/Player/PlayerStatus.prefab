@@ -64,10 +64,11 @@ MonoBehaviour:
   shootTimeText: {fileID: 8711732346667657850}
   grazeCountText: {fileID: 597252176004842231}
   scoreText: {fileID: 5860070050194616528}
+  countSpeed: 50
   availableShots:
   - attackPattern: {fileID: 11400000, guid: d092369fa5c2f7646bb223b2b5387999, type: 2}
     bulletPrefab: {fileID: 14700504195148514, guid: 209d3570ba4e078418bba7e46f8b4abf, type: 3}
-    shootInterval: 0.61
+    shootInterval: 2
     poolSize: 30
     damage: 1
     shootAngle: 0
