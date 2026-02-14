@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: "\u6247\u2461"
   m_EditorClassIdentifier: 
   isPlyerBullet: 0
-  bulletCount: 8
+  bulletCount: 6
   spreadAngle: 45
-  offset: 1
+  offset: 2

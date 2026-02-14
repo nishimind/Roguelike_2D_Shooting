@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4366392467519525407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3521299246632440078}
+  - component: {fileID: 8022695687685996903}
+  m_Layer: 0
+  m_Name: SakanaEnemySpawn01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3521299246632440078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4366392467519525407}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 383.33334, y: 171, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8022695687685996903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4366392467519525407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8faea6b776eba34aa04f2ccf8f1d5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnList:
+  - enemyPrefab: {fileID: 4869510333992208055, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
+    spawnPosition: {x: 4, y: 11}
+    spawnTime: 2
+  - enemyPrefab: {fileID: 4089460960799970260, guid: 48e20c431b11d1c4698ce9481c340bbd, type: 3}
+    spawnPosition: {x: -4, y: 11}
+    spawnTime: 2
+  - enemyPrefab: {fileID: 4869510333992208055, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
+    spawnPosition: {x: 4, y: 13}
+    spawnTime: 0
+  - enemyPrefab: {fileID: 4089460960799970260, guid: 48e20c431b11d1c4698ce9481c340bbd, type: 3}
+    spawnPosition: {x: -4, y: 13}
+    spawnTime: 2
+  - enemyPrefab: {fileID: 4089460960799970260, guid: 48e20c431b11d1c4698ce9481c340bbd, type: 3}
+    spawnPosition: {x: -10, y: 12}
+    spawnTime: 0
+  - enemyPrefab: {fileID: 4869510333992208055, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
+    spawnPosition: {x: 10, y: 12}
+    spawnTime: 2
+  - enemyPrefab: {fileID: 4089460960799970260, guid: 48e20c431b11d1c4698ce9481c340bbd, type: 3}
+    spawnPosition: {x: -2, y: 12}
+    spawnTime: 0
+  - enemyPrefab: {fileID: 4869510333992208055, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
+    spawnPosition: {x: 2, y: 12}
+    spawnTime: 2
