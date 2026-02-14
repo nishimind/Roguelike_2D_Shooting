@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 8979933461137058627}
   - component: {fileID: 4194343406058560898}
   m_Layer: 7
-  m_Name: "Mz\u9E75\u7372\u6A5F\u4F53\u96F6\u53F7"
+  m_Name: zako_typeSextans
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,9 +257,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phases:
   - attackSets:
-    - attackPattern: {fileID: 11400000, guid: 7989a913d301a5a41b68139c8ba1b38d, type: 2}
+    - attackPattern: {fileID: 11400000, guid: fd46d3353108f924f8175530b0a256f4, type: 2}
       shootInterval: 3
-      bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
+      bulletPrefab: {fileID: 2718853384716826557, guid: 7cb840a6bd220584d9ea20fef62d4afb, type: 3}
       shootAngle: 0
       initialDelay: 0
       startHP: 0
@@ -277,9 +277,9 @@ MonoBehaviour:
     nextPhaseHpPercent: 0
     timer: 0
   - attackSets:
-    - attackPattern: {fileID: 11400000, guid: 7989a913d301a5a41b68139c8ba1b38d, type: 2}
+    - attackPattern: {fileID: 11400000, guid: 72701338ba6d4c141883c3cc547b3785, type: 2}
       shootInterval: 3
-      bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
+      bulletPrefab: {fileID: 2718853384716826557, guid: 7cb840a6bd220584d9ea20fef62d4afb, type: 3}
       shootAngle: 0
       initialDelay: 0
       startHP: 0
@@ -310,8 +310,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phaseMovePatterns:
-  - {fileID: 11400000, guid: 69ac58d7b5464244faa1a6a07a4e7caf, type: 2}
-  - {fileID: 11400000, guid: 67e820263207a3145ac83731d1ce2b91, type: 2}
+  - {fileID: 11400000, guid: 44df418e593191a419c0ca3c56c93783, type: 2}
+  - {fileID: 11400000, guid: c9055fc8be9d3e741a0d67989d8e83ec, type: 2}
   _rb: {fileID: 0}
 --- !u!95 &4194343406058560898
 Animator:
@@ -323,7 +323,7 @@ Animator:
   m_GameObject: {fileID: 4869510333992208055}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1376b9c063ea1f046a5f9243ff6331b3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
