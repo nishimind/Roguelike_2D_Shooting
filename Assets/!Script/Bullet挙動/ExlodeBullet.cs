@@ -3,40 +3,40 @@
 public class ExplodeBullet : BulletBase
 {
     [Header("移動速度（初速）")]
-    [SerializeField] private float moveSpeed = 8f;
+    [SerializeField] public float moveSpeed = 8f;
 
     [Header("減速量(毎秒)")]
-    [SerializeField] private float deceleration = 2f;
+    [SerializeField] public float deceleration = 2f;
 
     [Header("左右ゆらゆら")]
-    [SerializeField] private float wobbleAmplitude = 0.3f;
-    [SerializeField] private float wobbleFrequency = 4f;
+    [SerializeField] public float wobbleAmplitude = 0.3f;
+    [SerializeField] public float wobbleFrequency = 4f;
 
     [Header("爆発までの距離")]
-    [SerializeField] private float explodeDistance = 5f;
+    [SerializeField] public float explodeDistance = 5f;
 
     [Header("最大寿命(秒) 保険用")]
-    [SerializeField] private float maxLifeTime = 3f;
+    [SerializeField] public float maxLifeTime = 3f;
 
     // ▼ 爆発後に生成される下向き弾 ▼
     [Header("爆発後に落ちる弾のプレハブ")]
-    [SerializeField] private GameObject downBulletPrefab;
+    [SerializeField] public GameObject downBulletPrefab;
 
     [Header("ランダムに生成する弾の数")]
-    [SerializeField] private int downBulletCount = 12;
+    [SerializeField] public int downBulletCount = 12;
 
     [Header("出現範囲（X,Y）（爆心地からの±方向）")]
-    [SerializeField] private Vector2 downAreaSize = new Vector2(4f, 2f);
+    [SerializeField] public Vector2 downAreaSize = new Vector2(4f, 2f);
 
     [Header("下に落ちる弾のベーススピード")]
-    [SerializeField] private float downBulletSpeed = 5f;
+    [SerializeField] public float downBulletSpeed = 5f;
 
     [Header("下弾のふんわり散らばり")]
-    [SerializeField] private float downSideDriftRange = 0.6f; // 横方向のばらつき
+    [SerializeField] public float downSideDriftRange = 0.6f; // 横方向のばらつき
 
     [Header("下弾のゆらゆら設定")]
-    [SerializeField] private float downWobbleAmplitude = 0.3f;
-    [SerializeField] private float downWobbleFrequency = 2f;
+    [SerializeField] public float downWobbleAmplitude = 0.3f;
+    [SerializeField] public float downWobbleFrequency = 2f;
 
     private float _time;
     private float _traveled;

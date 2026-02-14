@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -8127679502214970949}
   - component: {fileID: 1726117968803691826}
   - component: {fileID: 1582969528062595535}
+  - component: {fileID: 2410703488753948855}
   m_Layer: 7
   m_Name: Radial
   m_TagString: Bullet
@@ -183,3 +184,32 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.32
+--- !u!114 &2410703488753948855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2718853384716826557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 936e259887cb8b54497c488db74fb5eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 5
+  angleDeg: -90
+  _rb: {fileID: 0}
+  moveSpeed: 8
+  deceleration: 2
+  wobbleAmplitude: 0.3
+  wobbleFrequency: 4
+  explodeDistance: 5
+  maxLifeTime: 3
+  downBulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
+  downBulletCount: 12
+  downAreaSize: {x: 4, y: 2}
+  downBulletSpeed: 5
+  downSideDriftRange: 0.6
+  downWobbleAmplitude: 0.3
+  downWobbleFrequency: 2
+  randomAngleOffset: 0
