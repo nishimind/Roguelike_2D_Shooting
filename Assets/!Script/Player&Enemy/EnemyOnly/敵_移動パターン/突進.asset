@@ -15,3 +15,4 @@ MonoBehaviour:
   dashSpeed: 10
   dashTime: 1
   decelerationTime: 1
+  homingPower: 4.45

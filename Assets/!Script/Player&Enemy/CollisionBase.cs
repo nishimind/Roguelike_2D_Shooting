@@ -63,7 +63,8 @@ public class CollisionBase : MonoBehaviour
         // ダメージ処理
         if (health != null)
             health.TakeDamage(bullet.damage);
-
+        //与えたダメージだけスコア
+        　　PlayerStatus.Instance.score += Mathf.FloorToInt(bullet.damage);
         // 弾の消去
         if (bullet.destroyOnHit)
         {
