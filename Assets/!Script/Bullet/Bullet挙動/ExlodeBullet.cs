@@ -117,7 +117,8 @@ public class ExplodeBullet : BulletBase
     /// 爆心地周辺にランダム配置して、
     /// 「下方向ベース＋ふんわりゆらゆら」で落ちる弾を生成
     /// </summary>
-    private void SpawnDownRain(Vector3 center)
+    protected virtual void SpawnDownRain(Vector3 center)
+
     {
         float halfW = downAreaSize.x * 0.5f;
         float halfH = downAreaSize.y * 0.5f;

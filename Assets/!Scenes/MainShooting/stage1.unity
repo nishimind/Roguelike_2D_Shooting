@@ -662,11 +662,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &677653237 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5027096743351988784, guid: 239ca883cdf8d1e42a14f66bd2254105, type: 3}
-  m_PrefabInstance: {fileID: 1550082879}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1286670103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1923,16 +1918,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 252348769309708364, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
       propertyPath: phases.Array.data[0].attackSets.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 252348769309708364, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
+      propertyPath: phases.Array.data[0].attackSets.Array.data[0].damage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 252348769309708364, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
+      propertyPath: phases.Array.data[0].attackSets.Array.data[0].poolSize
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 252348769309708364, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
       propertyPath: phases.Array.data[0].attackSets.Array.data[0].bulletPrefab
       value: 
-      objectReference: {fileID: 677653237}
+      objectReference: {fileID: 2718853384716826557, guid: 7cb840a6bd220584d9ea20fef62d4afb, type: 3}
     - target: {fileID: 252348769309708364, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
       propertyPath: phases.Array.data[0].attackSets.Array.data[0].attackPattern
       value: 
-      objectReference: {fileID: 11400000, guid: 24ce032056aaf8f46aaffbb49fe42626, type: 2}
+      objectReference: {fileID: 11400000, guid: 68ac05e0fb41d604a9bbdc7462c65d21, type: 2}
+    - target: {fileID: 252348769309708364, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
+      propertyPath: phases.Array.data[0].attackSets.Array.data[0].shootInterval
+      value: 0.51
+      objectReference: {fileID: 0}
     - target: {fileID: 4869510333992208055, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
       propertyPath: m_Name
       value: DemoEnemy
