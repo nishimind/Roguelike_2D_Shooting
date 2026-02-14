@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 4869510333992208055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.98, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9c3533fd5f8329247b5d548adade7586, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.14838867, b: 0.3773585, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   deadEffect: {fileID: 8807638285694981379, guid: 610e17a383f8f784282cf32ac75ce8ea, type: 3}
   damageTime: 0.5
   damageCycle: 0.1
-  maxHP: 10
+  maxHP: 25
   currentHP: 0
   isLastEnemy: 0
   blinkColor: {r: 1, g: 0, b: 0, a: 1}
@@ -256,10 +256,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phases:
   - attackSets:
-    - attackPattern: {fileID: 11400000, guid: 7989a913d301a5a41b68139c8ba1b38d, type: 2}
+    - attackPattern: {fileID: 11400000, guid: e469c5ab110a4374ca8b5f55c45fb6a5, type: 2}
       shootInterval: 3
       bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-      shootAngle: 0
+      shootAngle: 180
       initialDelay: 0
       startHP: 0
       endHP: 0
@@ -272,14 +272,30 @@ MonoBehaviour:
       currentShotCount: 0
       inBurstCooldown: 0
       burstTimer: 0
-    durationSeconds: 7
+    - attackPattern: {fileID: 11400000, guid: e469c5ab110a4374ca8b5f55c45fb6a5, type: 2}
+      shootInterval: 3
+      bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
+      shootAngle: 180
+      initialDelay: 0
+      startHP: 0
+      endHP: 0
+      damage: 1
+      poolSize: 20
+      burstCount: 0
+      burstInterval: 0
+      shootTimer: 0
+      firstShotDone: 0
+      currentShotCount: 0
+      inBurstCooldown: 0
+      burstTimer: 0
+    durationSeconds: 15
     nextPhaseHpPercent: 0
     timer: 0
   - attackSets:
-    - attackPattern: {fileID: 11400000, guid: 7989a913d301a5a41b68139c8ba1b38d, type: 2}
+    - attackPattern: {fileID: 11400000, guid: e469c5ab110a4374ca8b5f55c45fb6a5, type: 2}
       shootInterval: 3
       bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-      shootAngle: 0
+      shootAngle: 180
       initialDelay: 0
       startHP: 0
       endHP: 0
@@ -292,7 +308,23 @@ MonoBehaviour:
       currentShotCount: 0
       inBurstCooldown: 0
       burstTimer: 0
-    durationSeconds: 7
+    - attackPattern: {fileID: 11400000, guid: e469c5ab110a4374ca8b5f55c45fb6a5, type: 2}
+      shootInterval: 3
+      bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
+      shootAngle: 180
+      initialDelay: 0
+      startHP: 0
+      endHP: 0
+      damage: 1
+      poolSize: 20
+      burstCount: 0
+      burstInterval: 0
+      shootTimer: 0
+      firstShotDone: 0
+      currentShotCount: 0
+      inBurstCooldown: 0
+      burstTimer: 0
+    durationSeconds: 15
     nextPhaseHpPercent: 0
     timer: 0
   LastAttacks: []
