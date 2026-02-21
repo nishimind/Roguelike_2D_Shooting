@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 252348769309708364, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
       propertyPath: phases.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 252348769309708364, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
       propertyPath: phases.Array.data[0].durationSeconds
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 252348769309708364, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
       propertyPath: phases.Array.data[1].durationSeconds
-      value: 3
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 252348769309708364, guid: 51c0e32c2c4f1594e86a533803ac2d55, type: 3}
       propertyPath: phases.Array.data[0].attackSets.Array.size

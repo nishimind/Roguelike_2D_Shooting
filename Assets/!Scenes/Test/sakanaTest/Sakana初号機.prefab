@@ -272,42 +272,10 @@ MonoBehaviour:
       currentShotCount: 0
       inBurstCooldown: 0
       burstTimer: 0
-    - attackPattern: {fileID: 11400000, guid: e469c5ab110a4374ca8b5f55c45fb6a5, type: 2}
-      shootInterval: 3
-      bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-      shootAngle: 180
-      initialDelay: 0
-      startHP: 0
-      endHP: 0
-      damage: 1
-      poolSize: 20
-      burstCount: 0
-      burstInterval: 0
-      shootTimer: 0
-      firstShotDone: 0
-      currentShotCount: 0
-      inBurstCooldown: 0
-      burstTimer: 0
     durationSeconds: 15
     nextPhaseHpPercent: 0
     timer: 0
   - attackSets:
-    - attackPattern: {fileID: 11400000, guid: e469c5ab110a4374ca8b5f55c45fb6a5, type: 2}
-      shootInterval: 3
-      bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-      shootAngle: 180
-      initialDelay: 0
-      startHP: 0
-      endHP: 0
-      damage: 1
-      poolSize: 20
-      burstCount: 0
-      burstInterval: 0
-      shootTimer: 0
-      firstShotDone: 0
-      currentShotCount: 0
-      inBurstCooldown: 0
-      burstTimer: 0
     - attackPattern: {fileID: 11400000, guid: e469c5ab110a4374ca8b5f55c45fb6a5, type: 2}
       shootInterval: 3
       bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}

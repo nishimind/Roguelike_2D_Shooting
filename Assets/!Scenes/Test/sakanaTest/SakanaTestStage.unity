@@ -771,6 +771,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: SakanaEnemySpawn01
       objectReference: {fileID: 0}
+    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
+      propertyPath: spawnList.Array.data[0].spawnTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
+      propertyPath: spawnList.Array.data[1].spawnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
+      propertyPath: spawnList.Array.data[2].spawnTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
+      propertyPath: spawnList.Array.data[3].spawnTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
+      propertyPath: spawnList.Array.data[4].spawnTime
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
+      propertyPath: spawnList.Array.data[5].spawnTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
+      propertyPath: spawnList.Array.data[6].spawnTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
+      propertyPath: spawnList.Array.data[7].spawnTime
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1146,79 +1178,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31dbe45404190d5419ba23b7f0b7d74e, type: 3}
---- !u!1001 &1475221978
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3521299246632440078, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 383.33334
-      objectReference: {fileID: 0}
-    - target: {fileID: 3521299246632440078, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 171
-      objectReference: {fileID: 0}
-    - target: {fileID: 3521299246632440078, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3521299246632440078, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3521299246632440078, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3521299246632440078, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3521299246632440078, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3521299246632440078, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3521299246632440078, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3521299246632440078, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4366392467519525407, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: m_Name
-      value: SakanaEnemySpawn01 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: spawnList.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: spawnList.Array.data[0].enemyPrefab
-      value: 
-      objectReference: {fileID: 822865633275715713, guid: 947ead84a6f504f42804b55ccb0b0d62, type: 3}
-    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: spawnList.Array.data[0].spawnPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8022695687685996903, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
-      propertyPath: spawnList.Array.data[0].spawnPosition.y
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4edc01387650338439f88183ec7bbdea, type: 3}
 --- !u!1001 &1519433581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2108,4 +2067,3 @@ SceneRoots:
   - {fileID: 59094565}
   - {fileID: 1362363879}
   - {fileID: 713716658}
-  - {fileID: 1475221978}
