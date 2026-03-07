@@ -10,13 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7597826540569389479}
   - component: {fileID: 8188682841970497781}
-  - component: {fileID: 7376248083065983777}
   - component: {fileID: 8260571204170313249}
   - component: {fileID: 2567678452020569295}
   - component: {fileID: 9008764417004708373}
   - component: {fileID: 3813029002301012428}
   - component: {fileID: 5448860891489335015}
-  - component: {fileID: 4067689945177221204}
   - component: {fileID: 1607433421190515985}
   m_Layer: 7
   m_Name: enemy_C
@@ -92,23 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7376248083065983777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4980828594183270744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41d0071423abee143b3874d1de5e54d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  destroyOnHit: 0
-  grazed: 1
-  onlyGraze: 0
-  damageInterval: 0.2
 --- !u!50 &8260571204170313249
 Rigidbody2D:
   serializedVersion: 4
@@ -202,6 +183,14 @@ MonoBehaviour:
   damageCycle: 0.1
   maxHP: 10
   currentHP: 0
+  isLastEnemy: 0
+  blinkColor: {r: 1, g: 0, b: 0, a: 1}
+  blinkDuration: 0.08
+  blinkCount: 3
+  scoreValue: 100
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5448860891489335015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,54 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8682a369da0a394fa5d2d2734d2f99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4067689945177221204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4980828594183270744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfa1784b311fa3943981c0b9f3e80eea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackSet:
-    attackPattern: {fileID: 0}
-    shootInterval: 1
-    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-    initialDelay: 0
-    shootTimer: 0
-  _bulletPooler: {fileID: 0}
-  _moveSpeed: 0.5
-  attackSets:
-  - attackPattern: {fileID: 11400000, guid: 7661a41b9da0b864087e717d8cd31960, type: 2}
-    shootInterval: 1
-    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-    initialDelay: 0
-    shootTimer: 0
-  - attackPattern: {fileID: 11400000, guid: 7989a913d301a5a41b68139c8ba1b38d, type: 2}
-    shootInterval: 1.5
-    bulletPrefab: {fileID: 525268806911035309, guid: 20c07c6179a97e548b2373bc53d501ba, type: 3}
-    initialDelay: 0
-    shootTimer: 0
-  - attackPattern: {fileID: 11400000, guid: 1221b6635d115e94bb944528fe6ed673, type: 2}
-    shootInterval: 4
-    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-    initialDelay: 0
-    shootTimer: 0
-  specialAttack:
-    attackPattern: {fileID: 0}
-    shootInterval: 1
-    bulletPrefab: {fileID: 0}
-    initialDelay: 0
-    shootTimer: 0
-  preSpecialWait: 1
-  postSpecialWait: 2
-  stopPosY: 2
-  firstFallSpeed: 1
-  stopDuration: 0
-  secondFallSpeed: 0
 --- !u!114 &1607433421190515985
 MonoBehaviour:
   m_ObjectHideFlags: 0

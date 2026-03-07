@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bf46b43811a3a458b7665ff10c0c92, type: 3}
   m_Name: "\u659C\u3081\u306B\u79FB\u52D5\uFF08\u5DE6\uFF09"
   m_EditorClassIdentifier: 
-  speed: 1.5
+  speed: 3
   angle: 230
   moveDistance: 12
   moveTime: 9
