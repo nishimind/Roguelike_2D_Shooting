@@ -310,5 +310,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phaseMovePatterns:
   - {fileID: 11400000, guid: 69ac58d7b5464244faa1a6a07a4e7caf, type: 2}
-  - {fileID: 11400000, guid: 67e820263207a3145ac83731d1ce2b91, type: 2}
   _rb: {fileID: 0}
