@@ -24,7 +24,7 @@ public class BossController : MonoBehaviour
     }
 
     // AnimationEvent‚©‚çŒÄ‚Î‚ê‚é
-    public void Fire()
+    public void Fire0()
     {
         if (CurrentAttack == null) return;
 

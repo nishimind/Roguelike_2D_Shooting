@@ -80,7 +80,8 @@ public class EnemyPhaseAttack : MonoBehaviour
     {
         // 初期化完了 & 画面内 & HPコンポーネントあり を待つ
         await UniTask.WaitUntil(
-            () => _initialized && _bAttack && _health != null,
+            //  () => _initialized && _bAttack && _health != null,
+            () => _initialized  && _health != null,
             cancellationToken: token
         );
 
@@ -90,11 +91,11 @@ public class EnemyPhaseAttack : MonoBehaviour
                 break; // すべてのフェーズが終了
 
             // 画面外に出てる間は攻撃しない
-            if (!_bAttack)
+           /* if (!_bAttack)
             {
                 await UniTask.Yield();
                 continue;
-            }
+            }*/
 
             var phase = phases[currentPhaseIndex];
 

@@ -63,23 +63,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a687412ad39219a4a859b1f07acecb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSet:
-    attackPattern: {fileID: 11400000, guid: d4207a8419506164282db7de92776f82, type: 2}
-    shootInterval: 1
-    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-    shootAngle: 0
-    initialDelay: 0
-    startHP: 100
-    endHP: 0
-    damage: 1
-    poolSize: 30
-    burstCount: 0
-    burstInterval: 0
-    shootTimer: 0
-    firstShotDone: 0
-    currentShotCount: 0
-    inBurstCooldown: 0
-    burstTimer: 0
   movePattern: {fileID: 11400000, guid: c9055fc8be9d3e741a0d67989d8e83ec, type: 2}
 --- !u!1102 &-3165480831215044077
 AnimatorState:
@@ -290,21 +273,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a687412ad39219a4a859b1f07acecb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSet:
-    attackPattern: {fileID: 11400000, guid: beec4a14371f6f9439544136ca993dba, type: 2}
-    shootInterval: 1
-    bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
-    shootAngle: 0
-    initialDelay: 0
-    startHP: 100
-    endHP: 0
-    damage: 1
-    poolSize: 30
-    burstCount: 0
-    burstInterval: 0
-    shootTimer: 0
-    firstShotDone: 0
-    currentShotCount: 0
-    inBurstCooldown: 0
-    burstTimer: 0
   movePattern: {fileID: 11400000, guid: 2f2556dafb709a741bfcc98888fc6a47, type: 2}

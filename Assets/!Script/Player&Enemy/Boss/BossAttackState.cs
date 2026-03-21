@@ -3,7 +3,7 @@ using UnityEngine;
 public class BossAttackState : StateMachineBehaviour
 {
     [Header("このステートで使う攻撃")]
-    public AttackSet attackSet;
+  //  public List<AttackSet> attackSet;
 
     [Header("このステートで使う移動")]
     public MovePatternSO movePattern;
@@ -22,10 +22,6 @@ public class BossAttackState : StateMachineBehaviour
             boss.StartMovePattern(movePattern);
         }
 
-        if (attackSet != null)
-        {
-            boss.SetCurrentAttack(attackSet);
-        }
     }
 
     public override void OnStateExit(
