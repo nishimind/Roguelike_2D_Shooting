@@ -202,7 +202,7 @@ MonoBehaviour:
   deadEffect: {fileID: 8807638285694981379, guid: 610e17a383f8f784282cf32ac75ce8ea, type: 3}
   damageTime: 0.5
   damageCycle: 0.1
-  maxHP: 25
+  maxHP: 40
   currentHP: 0
   isLastEnemy: 0
   blinkColor: {r: 1, g: 0, b: 0, a: 1}
@@ -257,7 +257,7 @@ MonoBehaviour:
   phases:
   - attackSets:
     - attackPattern: {fileID: 11400000, guid: e469c5ab110a4374ca8b5f55c45fb6a5, type: 2}
-      shootInterval: 3
+      shootInterval: 5
       bulletPrefab: {fileID: 2718853384716826557, guid: feba4fbf8a7df3741b8088f8bbd5a076, type: 3}
       shootAngle: 180
       initialDelay: 0
@@ -272,7 +272,7 @@ MonoBehaviour:
       currentShotCount: 0
       inBurstCooldown: 0
       burstTimer: 0
-    durationSeconds: 15
+    durationSeconds: 25
     nextPhaseHpPercent: 0
     timer: 0
   - attackSets:

@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 823bdf6ac1ec1234a90a51da8de32049, type: 3}
-  m_Name: TeleportMovePattern
+  m_Script: {fileID: 11500000, guid: 37bf46b43811a3a458b7665ff10c0c92, type: 3}
+  m_Name: "\u659C\u3081\u306B\u79FB\u52D5\uFF08\u5DE6\uFF09 \u753B\u9762\u5916\u3078230"
   m_EditorClassIdentifier: 
-  teleportInterval: 1.5
-  margin: 0.1
+  speed: 1.5
+  angle: 270
+  moveDistance: 300
+  moveTime: 20

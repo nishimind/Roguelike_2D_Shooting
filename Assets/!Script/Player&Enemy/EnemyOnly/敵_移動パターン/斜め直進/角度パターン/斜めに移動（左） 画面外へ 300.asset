@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37bf46b43811a3a458b7665ff10c0c92, type: 3}
-  m_Name: "\u659C\u3081\u306B\u79FB\u52D5 \uFF08\u53F3\uFF09"
+  m_Name: "\u659C\u3081\u306B\u79FB\u52D5\uFF08\u5DE6\uFF09 \u753B\u9762\u5916\u3078
+    300"
   m_EditorClassIdentifier: 
   speed: 1.5
-  angle: 310
-  moveDistance: 12
-  moveTime: 9
+  angle: 300
+  moveDistance: 300
+  moveTime: 20

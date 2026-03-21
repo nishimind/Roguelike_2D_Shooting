@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: "\u6247\u72B6"
   m_EditorClassIdentifier: 
   isPlyerBullet: 0
-  bulletCount: 10
+  bulletCount: 5
   spreadAngle: 161.4

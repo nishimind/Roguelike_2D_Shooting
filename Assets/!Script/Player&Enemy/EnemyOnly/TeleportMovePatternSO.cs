@@ -7,6 +7,10 @@ using UnityEngine;
 )]
 public class TeleportMovePatternSO : MovePatternSO
 {
+    [Header("開始までの待機時間")]
+    public float startDelay = 2f;
+
+    [Header("テレポート間隔")]
     public float teleportInterval = 1.5f;
 
     [Header("画面上部1/3の高さ")]
@@ -25,6 +29,12 @@ public class TeleportMovePatternSO : MovePatternSO
 
     public override async UniTaskVoid Execute(EnemyMovementController controller)
     {
+        // 最初の待機
+        await UniTask.Delay(
+            (int)(startDelay * 1000),
+            cancellationToken: controller.GetCancellationTokenOnDestroy()
+        );
+
         while (controller != null && controller.gameObject.activeInHierarchy)
         {
             nextTeleportPos = CalculateTeleportPosition();
