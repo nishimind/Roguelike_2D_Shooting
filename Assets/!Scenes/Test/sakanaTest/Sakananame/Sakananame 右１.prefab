@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 3074765703881932199}
   - component: {fileID: 2056134525510065117}
   m_Layer: 7
-  m_Name: "Sakananame\u307F\u304E\uFF11"
+  m_Name: "Sakananame \u53F3\uFF11"
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,4 +310,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phaseMovePatterns:
   - {fileID: 11400000, guid: b9aa2a77024c99b4a87ceba946ac8bb6, type: 2}
+  - {fileID: 11400000, guid: 7eb0d16b74747f24bb63cccd6307fe2d, type: 2}
   _rb: {fileID: 0}

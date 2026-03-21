@@ -272,7 +272,7 @@ MonoBehaviour:
       currentShotCount: 0
       inBurstCooldown: 0
       burstTimer: 0
-    durationSeconds: 7
+    durationSeconds: 8
     nextPhaseHpPercent: 0
     timer: 0
   - attackSets:
@@ -310,4 +310,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phaseMovePatterns:
   - {fileID: 11400000, guid: b85c3debf6019e64abf181f67a9e08cf, type: 2}
+  - {fileID: 11400000, guid: 077fe3db3b538c04786dcb9b7534f544, type: 2}
   _rb: {fileID: 0}
