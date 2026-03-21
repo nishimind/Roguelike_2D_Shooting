@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: "\u2190"
   m_EditorClassIdentifier: 
   angleDeg: 180
-  startSpeed: 8
-  acceleration: -2
+  startSpeed: 12
+  acceleration: -4
   maxSpeed: -8

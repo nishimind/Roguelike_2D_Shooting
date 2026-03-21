@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2de3bcb1f5462a468377490eb6cc9e8, type: 3}
   m_Name: "\u5B9A\u901F!\u2192 \u5B9A\u901F"
   m_EditorClassIdentifier: 
-  angleDeg: -45
-  startSpeed: 5
+  angleDeg: 0
+  startSpeed: 10
   acceleration: 0
   maxSpeed: 5
